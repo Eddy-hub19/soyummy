@@ -12,8 +12,13 @@ import Subscribe from 'pages/Subscribe/Subscribe';
 import SharedLayout from './SharedLayout/SharedLayout';
 import AddRecipe from 'pages/AddRecipe/AddRecipe';
 import Error from 'pages/Error/Error';
+import { theme } from 'theme/theme';
 
-const MainPage = lazy(() => import('pages/MainPage/MainPage'));
+const MainPage = lazy(() =>
+  import('pages/MainPage/MainPage').then(module => ({
+    default: module.MainPage,
+  }))
+);
 const Categories = lazy(() => import('pages/Categories/Categories'));
 const CategoriesByName = lazy(() =>
   import('pages/CategoriesByName/CategoriesByName')
@@ -26,9 +31,9 @@ const Recipe = lazy(() => import('pages/Recipe/Recipe'));
 
 export const App = () => {
   return (
-    <ThemeProvider>
+    <ThemeProvider theme={theme}>
       <Routes>
-        <Route
+        {/* <Route
           path="/"
           element={
             <PublicRoute restricted>
@@ -68,11 +73,11 @@ export const App = () => {
               <SharedLayout />
             </PrivateRoute>
           }
-        />
+        /> */}
+        <Route path="/main" element={<MainPage />} />
       </Routes>
 
-      <Route path="/main" element={<MainPage />} />
-      <Route path="/categories" element={<Categories />}>
+      {/* <Route path="/categories" element={<Categories />}>
         <Route path=":categoryName" element={<CategoriesByName />} />
       </Route>
       <Route path="/add" element={<AddRecipe />} />
@@ -81,7 +86,7 @@ export const App = () => {
       <Route path="/shopping-list" element={<ShopingList />} />
       <Route path="/search" element={<SearchPage />} />
       <Route path="/recipe/:recipeId" element={<Recipe />} />
-      <Route path="*" element={<Error />} />
+      <Route path="*" element={<Error />} />  */}
     </ThemeProvider>
   );
 };
