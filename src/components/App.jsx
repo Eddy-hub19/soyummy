@@ -12,7 +12,7 @@ import Subscribe from 'pages/Subscribe/Subscribe';
 import SharedLayout from './SharedLayout/SharedLayout';
 import AddRecipe from 'pages/AddRecipe/AddRecipe';
 import Error from 'pages/Error/Error';
-import { theme } from 'theme/theme';
+import { theme } from '../theme/theme';
 
 const MainPage = lazy(() =>
   import('pages/MainPage/MainPage').then(module => ({
