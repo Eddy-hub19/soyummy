@@ -5,7 +5,7 @@ import { lazy } from 'react';
 // import { PrivateRoute } from 'service/routes';
 import { ThemeProvider } from 'styled-components';
 
-<<<<<<< HEAD
+
 import Main from 'pages/Main/Main';
 import Register from 'pages/Register/Register';
 import Signin from 'pages/Signin/Signin';
@@ -15,16 +15,8 @@ import AddRecipe from 'pages/AddRecipe/AddRecipe';
 import Error from 'pages/Error/Error';
 import { theme } from '../theme/theme';
 import UserSharedLayout from './HeaderUserBar/UserSharedLayout';
-=======
-// import Main from 'pages/Main/Main';
-// import Register from 'pages/Register/Register';
-// import Signin from 'pages/Signin/Signin';
-// import Subscribe from 'pages/Subscribe/Subscribe';
-// import SharedLayout from './SharedLayout/SharedLayout';
-// import AddRecipe from 'pages/AddRecipe/AddRecipe';
-// import Error from 'pages/Error/Error';
-import { theme } from 'theme/theme';
->>>>>>> 5d667fd1a42c6d6bb87b13d973e25cafb57ff5ca
+
+
 
 const MainPage = lazy(() =>
   import('pages/MainPage/MainPage').then(module => ({
