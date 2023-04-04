@@ -1,1 +1,0 @@
-(self.webpackChunksoyummy=self.webpackChunksoyummy||[]).push([[235],{235:function(){}}]);

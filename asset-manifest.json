@@ -1,21 +1,15 @@
 {
   "files": {
     "main.css": "/soyummy/static/css/main.7acaea2f.css",
-    "main.js": "/soyummy/static/js/main.6128bebc.js",
-    "static/js/852.13d0fc85.chunk.js": "/soyummy/static/js/852.13d0fc85.chunk.js",
-    "static/js/922.12ab1dee.chunk.js": "/soyummy/static/js/922.12ab1dee.chunk.js",
-    "static/js/67.d80763dd.chunk.js": "/soyummy/static/js/67.d80763dd.chunk.js",
-    "static/js/484.66a4debe.chunk.js": "/soyummy/static/js/484.66a4debe.chunk.js",
-    "static/js/733.6eedacb4.chunk.js": "/soyummy/static/js/733.6eedacb4.chunk.js",
-    "static/js/444.70b1bdcb.chunk.js": "/soyummy/static/js/444.70b1bdcb.chunk.js",
-    "static/js/645.62e011d9.chunk.js": "/soyummy/static/js/645.62e011d9.chunk.js",
-    "static/js/235.00116ab1.chunk.js": "/soyummy/static/js/235.00116ab1.chunk.js",
+    "main.js": "/soyummy/static/js/main.f5656b60.js",
+    "static/js/852.3a55264a.chunk.js": "/soyummy/static/js/852.3a55264a.chunk.js",
     "index.html": "/soyummy/index.html",
     "main.7acaea2f.css.map": "/soyummy/static/css/main.7acaea2f.css.map",
-    "main.6128bebc.js.map": "/soyummy/static/js/main.6128bebc.js.map"
+    "main.f5656b60.js.map": "/soyummy/static/js/main.f5656b60.js.map",
+    "852.3a55264a.chunk.js.map": "/soyummy/static/js/852.3a55264a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.6128bebc.js"
+    "static/js/main.f5656b60.js"
   ]
 }
