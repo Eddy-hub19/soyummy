@@ -1,4 +1,6 @@
-export const theme = {
+import { createTheme } from '@mui/material/styles';
+
+export const theme = createTheme({
   breakpoints: ['375px', '768px', '1440px'],
   colors: {
     mainDark: '#23262A',
@@ -89,7 +91,7 @@ export const theme = {
   transitions: {
     main: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1)',
   },
-};
+});
 
 export const darkTheme = {
   breakpoints: ['375px', '768px', '1440px'],
