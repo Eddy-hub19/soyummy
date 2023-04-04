@@ -1,17 +1,17 @@
 import { Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
 
-import { PublicRoute } from 'service/routes';
-import { PrivateRoute } from 'service/routes';
+// import { PublicRoute } from 'service/routes';
+// import { PrivateRoute } from 'service/routes';
 import { ThemeProvider } from 'styled-components';
 
-import Main from 'pages/Main/Main';
-import Register from 'pages/Register/Register';
-import Signin from 'pages/Signin/Signin';
-import Subscribe from 'pages/Subscribe/Subscribe';
-import SharedLayout from './SharedLayout/SharedLayout';
-import AddRecipe from 'pages/AddRecipe/AddRecipe';
-import Error from 'pages/Error/Error';
+// import Main from 'pages/Main/Main';
+// import Register from 'pages/Register/Register';
+// import Signin from 'pages/Signin/Signin';
+// import Subscribe from 'pages/Subscribe/Subscribe';
+// import SharedLayout from './SharedLayout/SharedLayout';
+// import AddRecipe from 'pages/AddRecipe/AddRecipe';
+// import Error from 'pages/Error/Error';
 import { theme } from 'theme/theme';
 
 const MainPage = lazy(() =>
@@ -19,15 +19,15 @@ const MainPage = lazy(() =>
     default: module.MainPage,
   }))
 );
-const Categories = lazy(() => import('pages/Categories/Categories'));
-const CategoriesByName = lazy(() =>
-  import('pages/CategoriesByName/CategoriesByName')
-);
-const MyRecipes = lazy(() => import('pages/MyRecipes/MyRecipes'));
-const Favorites = lazy(() => import('pages/Favorites/Favorites'));
-const ShopingList = lazy(() => import('pages/ShoppingList/ShoppingList'));
-const SearchPage = lazy(() => import('pages/SearchPage/SearchPage'));
-const Recipe = lazy(() => import('pages/Recipe/Recipe'));
+// const Categories = lazy(() => import('pages/Categories/Categories'));
+// const CategoriesByName = lazy(() =>
+//   import('pages/CategoriesByName/CategoriesByName')
+// );
+// const MyRecipes = lazy(() => import('pages/MyRecipes/MyRecipes'));
+// const Favorites = lazy(() => import('pages/Favorites/Favorites'));
+// const ShopingList = lazy(() => import('pages/ShoppingList/ShoppingList'));
+// const SearchPage = lazy(() => import('pages/SearchPage/SearchPage'));
+// const Recipe = lazy(() => import('pages/Recipe/Recipe'));
 
 export const App = () => {
   return (
