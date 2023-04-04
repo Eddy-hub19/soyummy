@@ -76,7 +76,7 @@ export const App = () => {
           }
         /> */}
         <Route path="/main" element={<MainPage />} />
-        <Route path="/header" element={<UserSharedLayout />} />
+        <Route path="/" element={<UserSharedLayout />} />
       </Routes>
 
       {/* <Route path="/categories" element={<Categories />}>
