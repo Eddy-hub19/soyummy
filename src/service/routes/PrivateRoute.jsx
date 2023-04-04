@@ -1,3 +1,3 @@
 export const PrivateRoute = () => {
-  console.log(PrivateRoute);
+  return <div></div>;
 };

@@ -6,8 +6,8 @@ import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-    <App />
+    <BrowserRouter basename="soyummy/">
+      <App />
     </BrowserRouter>
   </React.StrictMode>
 );
