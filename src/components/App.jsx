@@ -13,6 +13,7 @@ import SharedLayout from './SharedLayout/SharedLayout';
 import AddRecipe from 'pages/AddRecipe/AddRecipe';
 import Error from 'pages/Error/Error';
 import { theme } from '../theme/theme';
+import UserSharedLayout from './HeaderUserBar/UserSharedLayout';
 
 const MainPage = lazy(() =>
   import('pages/MainPage/MainPage').then(module => ({
@@ -75,7 +76,7 @@ export const App = () => {
           }
         /> */}
         <Route path="/main" element={<MainPage />} />
-        <Route path="/header" element={<MainPage />} />
+        <Route path="/header" element={<UserSharedLayout />} />
       </Routes>
 
       {/* <Route path="/categories" element={<Categories />}>

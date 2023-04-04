@@ -1,12 +1,12 @@
 // ShaderLayout
 
 import ThemeSwitch from 'components/ThemeSwitch/ThemeSwitch';
-import UserBar from 'components/UserBar/UserBar';
-import { DivWrapper } from './SharedLayout.styled';
+import UserBar from './UserBar/UserBar';
+import { DivWrapper } from './UserSharedLayout.styled';
 
 
 
-const SharedLayout = () => {
+const UserSharedLayout = () => {
     return (
         <DivWrapper> 
             <UserBar  />
@@ -16,4 +16,4 @@ const SharedLayout = () => {
   );
 };
 
-export default SharedLayout
+export default UserSharedLayout

@@ -1,6 +1,6 @@
 // import { useEffect, useState } from 'react';
 import { HeaderUserButton, HeaderUserWrapper } from './UserBar.styled';
-import userAvatar from './images/default.jpg';
+import userAvatar from '../../../images/default.jpg';
 
 const UserBar = ({name='User', avatarUrl = userAvatar}) => {
 
