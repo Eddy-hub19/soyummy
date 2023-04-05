@@ -4,8 +4,8 @@ export const getColor = (
   defaultColor = 'rgba(255, 255, 255, 0.8)'
 ) => {
   if (
-    errors === 'Your password is little secure. Add a number!' ||
-    errors === 'Your password is little secure. Add a letter!'
+    errors === 'Your password protection is not enough. Add a number!' ||
+    errors === 'Your password protection is not enough. Add a letter!'
   ) {
     return '#F6C23E';
   }
