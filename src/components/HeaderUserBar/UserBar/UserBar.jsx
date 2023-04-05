@@ -44,11 +44,7 @@ const UserBar = ({ name = 'User', avatarUrl = userAvatar, color = 'light' }) => 
         <><HeaderUserWrapper>
             <HeaderUserButton type='button' onClick={toggleUserMenu} onBlur={handleBlur}>
                 <img src={avatarUrl} alt={name} />
-<<<<<<< HEAD
                 <p>{name}</p>
-=======
-                <p>{name } TEST</p>
->>>>>>> f4cb0f432df2ddb5db26069fbb84192fcaa188d1
             </HeaderUserButton>
             {openUserMenu && <HeaderUserModal openUserModal={openUserModal} setOpenUserMenu={() => setOpenUserMenu } />}
       </HeaderUserWrapper>
