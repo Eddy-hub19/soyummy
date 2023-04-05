@@ -1,5 +1,5 @@
 import { scrollToTop } from 'utils/scrollUp';
-import { Link, FooterNavContent } from './NavFooter.styled';
+import { Link, FooterNavContent } from './FooterNav.styled';
 
 export const FooterNav = () => {
   return (

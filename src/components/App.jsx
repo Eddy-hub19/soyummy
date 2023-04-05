@@ -5,7 +5,6 @@ import { lazy } from 'react';
 // import { PrivateRoute } from 'service/routes';
 import { ThemeProvider } from 'styled-components';
 
-
 // import Main from 'pages/Main/Main';
 // import Register from 'pages/Register/Register';
 // import Signin from 'pages/Signin/Signin';
@@ -15,8 +14,6 @@ import { ThemeProvider } from 'styled-components';
 // import Error from 'pages/Error/Error';
 import { theme } from '../theme/theme';
 import UserSharedLayout from './HeaderUserBar/UserSharedLayout';
-
-
 
 const MainPage = lazy(() =>
   import('pages/MainPage/MainPage').then(module => ({
@@ -78,6 +75,7 @@ export const App = () => {
             </PrivateRoute>
           }
         /> */}
+
         <Route path="/main" element={<MainPage />} />
         <Route path="/" element={<UserSharedLayout />} />
       </Routes>
