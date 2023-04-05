@@ -1,6 +1,6 @@
 import {
-  FooterBg,
   FooterContainer,
+  FooterBg,
   Wrap,
   WrapDesk,
   FooterSm,
@@ -8,7 +8,7 @@ import {
 
 import { FooterText } from './FooterText/FooterText';
 import { FooterNav } from './FooterNav/FooterNav';
-import { FooterForm } from './FooterNav/FooterForm';
+import { FooterForm } from './FooterForm/FooterForm';
 import { SocialLinks } from './SocialLinks/SocialLinks';
 
 export const FooterAssembly = () => {
