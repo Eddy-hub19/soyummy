@@ -12,6 +12,7 @@ import { ThemeProvider } from 'styled-components';
 // import SharedLayout from './SharedLayout/SharedLayout';
 // import AddRecipe from 'pages/AddRecipe/AddRecipe';
 // import Error from 'pages/Error/Error';
+
 import { theme } from '../theme/theme';
 import UserSharedLayout from './HeaderUserBar/UserSharedLayout';
 
@@ -77,6 +78,7 @@ export const App = () => {
         /> */}
 
         <Route path="/main" element={<MainPage />} />
+        <Route path="/my" element={<MyRecipes />} />
         <Route path="/" element={<UserSharedLayout />} />
       </Routes>
 
