@@ -13,7 +13,7 @@ const UserBar = ({name='User', avatarUrl = userAvatar}) => {
         <HeaderUserWrapper>
             <HeaderUserButton>
                 <img src={avatarUrl} alt={name} />
-                <p>{name }</p>
+                <p>{name } TEST</p>
             </HeaderUserButton>
         </HeaderUserWrapper>
     )
