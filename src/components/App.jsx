@@ -13,6 +13,8 @@ import { ThemeProvider } from 'styled-components';
 // import AddRecipe from 'pages/AddRecipe/AddRecipe';
 // import Error from 'pages/Error/Error';
 
+import MyRecipes from 'pages/MyRecipes/MyRecipes';
+
 import { theme } from '../theme/theme';
 import UserSharedLayout from './HeaderUserBar/UserSharedLayout';
 
@@ -25,7 +27,7 @@ const MainPage = lazy(() =>
 // const CategoriesByName = lazy(() =>
 //   import('pages/CategoriesByName/CategoriesByName')
 // );
-const MyRecipes = lazy(() => import('pages/MyRecipes/MyRecipes'));
+// const MyRecipes = lazy(() => import('pages/MyRecipes/MyRecipes'));
 // const Favorites = lazy(() => import('pages/Favorites/Favorites'));
 // const ShopingList = lazy(() => import('pages/ShoppingList/ShoppingList'));
 // const SearchPage = lazy(() => import('pages/SearchPage/SearchPage'));
