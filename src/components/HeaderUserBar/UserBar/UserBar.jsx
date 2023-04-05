@@ -1,8 +1,13 @@
 // import { useEffect, useState } from 'react';
 import { HeaderUserButton, HeaderUserWrapper } from './UserBar.styled';
 import userAvatar from '../../../images/default.jpg';
+import { useState } from 'react';
+import HeaderUserModal from '../HeaderUserModal/HeaderUserModal';
 
-const UserBar = ({name='User', avatarUrl = userAvatar}) => {
+const UserBar = ({ name = 'User', avatarUrl = userAvatar }) => {
+
+    const [openUserMenu, setOpenUserMenu] = useState(false);
+
 
 //   const [showUserMenu, setShowUserMenu] = useState(false);
 //   const [showModal, setShowModal] = useState(false);
@@ -10,12 +15,14 @@ const UserBar = ({name='User', avatarUrl = userAvatar}) => {
 
 
     return (
-        <HeaderUserWrapper>
+        <><HeaderUserWrapper>
             <HeaderUserButton>
                 <img src={avatarUrl} alt={name} />
-                <p>{name }</p>
+                <p>{name}</p>
             </HeaderUserButton>
         </HeaderUserWrapper>
+            <HeaderUserModal />
+        </>
     )
 
 }
