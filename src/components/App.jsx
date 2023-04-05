@@ -6,13 +6,13 @@ import { lazy } from 'react';
 import { ThemeProvider } from 'styled-components';
 
 
-import Main from 'pages/Main/Main';
-import Register from 'pages/Register/Register';
-import Signin from 'pages/Signin/Signin';
-import Subscribe from 'pages/Subscribe/Subscribe';
-import SharedLayout from './SharedLayout/SharedLayout';
-import AddRecipe from 'pages/AddRecipe/AddRecipe';
-import Error from 'pages/Error/Error';
+// import Main from 'pages/Main/Main';
+// import Register from 'pages/Register/Register';
+// import Signin from 'pages/Signin/Signin';
+// import Subscribe from 'pages/Subscribe/Subscribe';
+// import SharedLayout from './SharedLayout/SharedLayout';
+// import AddRecipe from 'pages/AddRecipe/AddRecipe';
+// import Error from 'pages/Error/Error';
 import { theme } from '../theme/theme';
 import UserSharedLayout from './HeaderUserBar/UserSharedLayout';
 
