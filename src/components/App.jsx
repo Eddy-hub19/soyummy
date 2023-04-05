@@ -12,11 +12,12 @@ import { ThemeProvider } from 'styled-components';
 // import SharedLayout from './SharedLayout/SharedLayout';
 // import AddRecipe from 'pages/AddRecipe/AddRecipe';
 // import Error from 'pages/Error/Error';
-
-import MyRecipes from 'pages/MyRecipes/MyRecipes';
-
 import { theme } from '../theme/theme';
 import UserSharedLayout from './HeaderUserBar/UserSharedLayout';
+import { AuthNav } from './AuthNav/AuthNav';
+import Register from 'pages/Register/Register';
+import SignIn from 'pages/Signin/Signin';
+
 
 const MainPage = lazy(() =>
   import('pages/MainPage/MainPage').then(module => ({
@@ -44,32 +45,34 @@ export const App = () => {
               <Main />
             </PublicRoute>
           }
+        /> */}
+        <Route
+          path="/start"
+          element={<AuthNav />}
+          restricted
+          redirectTo="/main"
         />
         <Route
           path="/register"
-          element={
-            <PublicRoute restricted>
-              <Register />
-            </PublicRoute>
-          }
+          Component={Register}
+          restricted
+          redirectTo="/main"
         />
         <Route
           path="/signin"
-          element={
-            <PublicRoute restricted>
-              <Signin />
-            </PublicRoute>
-          }
+          Component={SignIn}
+          restricted
+          redirectTo="/main"
         />
-        <Route
+        {/* <Route
           path="/confirm-email"
           element={
             <PublicRoute>
               <Subscribe />
             </PublicRoute>
           }
-        />
-
+        /> */}
+        {/* 
         <Route
           path="/"
           element={
@@ -82,6 +85,8 @@ export const App = () => {
         <Route path="/main" element={<MainPage />} />
         <Route path="/my" element={<MyRecipes />} />
         <Route path="/" element={<UserSharedLayout />} />
+        {/* <Route path="/signin" element={<AuthNav />} />
+        <Route path="/register" element={<AuthNav />} /> */}
       </Routes>
 
       {/* <Route path="/categories" element={<Categories />}>
