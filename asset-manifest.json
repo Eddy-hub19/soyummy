@@ -1,23 +1,17 @@
 {
   "files": {
-    "main.css": "/soyummy/static/css/main.a3552b88.css",
-    "main.js": "/soyummy/static/js/main.656f1bd5.js",
-    "static/js/93.23e60b62.chunk.js": "/soyummy/static/js/93.23e60b62.chunk.js",
-    "static/media/bg_search_desktop@2x.png": "/soyummy/static/media/bg_search_desktop@2x.195c8cc165ac8d4aba1f.png",
-    "static/media/bg_search_tablet@2x.png": "/soyummy/static/media/bg_search_tablet@2x.195c8cc165ac8d4aba1f.png",
-    "static/media/bg_search_mob@2x.png": "/soyummy/static/media/bg_search_mob@2x.7f02eca71ddf396f17e0.png",
-    "static/media/bg_search_desktop@1x.png": "/soyummy/static/media/bg_search_desktop@1x.bc91271998b75900e48e.png",
-    "static/media/bg_search_tablet@1x.png": "/soyummy/static/media/bg_search_tablet@1x.bc91271998b75900e48e.png",
+    "main.css": "/soyummy/static/css/main.616d4ae7.css",
+    "main.js": "/soyummy/static/js/main.a0ce5489.js",
+    "static/js/93.2a6c4b9f.chunk.js": "/soyummy/static/js/93.2a6c4b9f.chunk.js",
+    "static/media/mainTab-min.png": "/soyummy/static/media/mainTab-min.0b3a2e47751bdfde27fc.png",
     "static/media/foto.jpg": "/soyummy/static/media/foto.eeb2fd607983520e02d7.jpg",
-    "static/media/bg_search_mob@1x.png": "/soyummy/static/media/bg_search_mob@1x.63c33e63d51609222126.png",
-    "static/media/sprite.svg": "/soyummy/static/media/sprite.d5b5384cb95212f815b676ebf8628de0.svg",
     "index.html": "/soyummy/index.html",
-    "main.a3552b88.css.map": "/soyummy/static/css/main.a3552b88.css.map",
-    "main.656f1bd5.js.map": "/soyummy/static/js/main.656f1bd5.js.map",
-    "93.23e60b62.chunk.js.map": "/soyummy/static/js/93.23e60b62.chunk.js.map"
+    "main.616d4ae7.css.map": "/soyummy/static/css/main.616d4ae7.css.map",
+    "main.a0ce5489.js.map": "/soyummy/static/js/main.a0ce5489.js.map",
+    "93.2a6c4b9f.chunk.js.map": "/soyummy/static/js/93.2a6c4b9f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a3552b88.css",
-    "static/js/main.656f1bd5.js"
+    "static/css/main.616d4ae7.css",
+    "static/js/main.a0ce5489.js"
   ]
 }
