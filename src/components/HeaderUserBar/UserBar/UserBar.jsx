@@ -1,27 +1,53 @@
-// import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { HeaderUserButton, HeaderUserWrapper } from './UserBar.styled';
 import userAvatar from '../../../images/default.jpg';
-import { useState } from 'react';
 import HeaderUserModal from '../HeaderUserModal/HeaderUserModal';
 
-const UserBar = ({ name = 'User', avatarUrl = userAvatar }) => {
+const UserBar = ({ name = 'User', avatarUrl = userAvatar, color = 'light' }) => {
 
     const [openUserMenu, setOpenUserMenu] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [statusModal, setStatusModal] = useState('');
+
+  
+    
+    const toggleUserMenu = (e) => {
+        setOpenUserMenu(!openUserMenu);
+
+    }
+
+    const openUserModal = (status) => {
+        setOpenUserMenu(false);
+        setShowModal(!showModal);
+        setStatusModal(status);
+    }
 
 
-//   const [showUserMenu, setShowUserMenu] = useState(false);
-//   const [showModal, setShowModal] = useState(false);
-//   const [statusModal, setStatusModal] = useState('');
+    useEffect(() => {
+    const onEscPress = event => {
+      if (event.code === 'Escape') {
+        setOpenUserMenu(false);
+      }
+    };
 
+    window.addEventListener('keydown', onEscPress);
+
+    return () => {
+      window.removeEventListener('keydown', onEscPress);
+    };
+    }, []);
+    
+    const handleBlur = () => { setTimeout(() => setOpenUserMenu(false), 300) };
 
     return (
         <><HeaderUserWrapper>
-            <HeaderUserButton>
+            <HeaderUserButton type='button' onClick={toggleUserMenu} onBlur={handleBlur}>
                 <img src={avatarUrl} alt={name} />
                 <p>{name}</p>
             </HeaderUserButton>
+            {openUserMenu && <HeaderUserModal openUserModal={openUserModal} setOpenUserMenu={() => setOpenUserMenu } />}
         </HeaderUserWrapper>
-            <HeaderUserModal />
+           
         </>
     )
 
