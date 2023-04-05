@@ -1,5 +1,5 @@
 import { useMediaRules } from 'hooks/MediaRules';
-import { FooterTextContainer, Link, FooterContent } from './FooterText.styled';
+import { FooterTextContainer, FooterContent, Link } from './FooterText.styled';
 import footerLogo from '../../../images/footer/logo_tablet-desk_footer.svg';
 
 export const FooterText = () => {
