@@ -25,7 +25,7 @@ const MainPage = lazy(() =>
 // const CategoriesByName = lazy(() =>
 //   import('pages/CategoriesByName/CategoriesByName')
 // );
-// const MyRecipes = lazy(() => import('pages/MyRecipes/MyRecipes'));
+const MyRecipes = lazy(() => import('pages/MyRecipes/MyRecipes'));
 // const Favorites = lazy(() => import('pages/Favorites/Favorites'));
 // const ShopingList = lazy(() => import('pages/ShoppingList/ShoppingList'));
 // const SearchPage = lazy(() => import('pages/SearchPage/SearchPage'));
@@ -85,9 +85,9 @@ export const App = () => {
       {/* <Route path="/categories" element={<Categories />}>
         <Route path=":categoryName" element={<CategoriesByName />} />
       </Route>
-      <Route path="/add" element={<AddRecipe />} />
+      <Route path="/add" element={<AddRecipe />} /> */}
       <Route path="/my" element={<MyRecipes />} />
-      <Route path="/favorite" element={<Favorites />} />
+      {/* <Route path="/favorite" element={<Favorites />} />
       <Route path="/shopping-list" element={<ShopingList />} />
       <Route path="/search" element={<SearchPage />} />
       <Route path="/recipe/:recipeId" element={<Recipe />} />
