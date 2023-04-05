@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { HeaderUserButton, HeaderUserWrapper } from './UserBar.styled';
 import userAvatar from '../../../images/default.jpg';
 import HeaderUserModal from '../HeaderUserModal/HeaderUserModal';
+import HeaderProfileLogOutModel from '../HeaderProfileLogOutModal/HeaderProfileLogOutModal';
 
 const UserBar = ({ name = 'User', avatarUrl = userAvatar, color = 'light' }) => {
 
@@ -46,7 +47,13 @@ const UserBar = ({ name = 'User', avatarUrl = userAvatar, color = 'light' }) => 
                 <p>{name}</p>
             </HeaderUserButton>
             {openUserMenu && <HeaderUserModal openUserModal={openUserModal} setOpenUserMenu={() => setOpenUserMenu } />}
-        </HeaderUserWrapper>
+      </HeaderUserWrapper>
+        {showModal && <HeaderProfileLogOutModel
+          name={name}
+          avatarUrl={avatarUrl}
+          status={statusModal}
+          openUserModal={openUserModal}
+        />}
            
         </>
     )
