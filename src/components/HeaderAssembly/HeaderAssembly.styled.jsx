@@ -135,6 +135,10 @@ export const MobileMenuHeaderContainer = styled.div`
   justify-content: space-between;
 `;
 
+<<<<<<< Updated upstream
 export const MobileMenuThemeChangeWrapper = styled.div`
+=======
+export const MobileMenuThemeTogglerWrapper = styled.div`
+>>>>>>> Stashed changes
   display: flex;
 `;

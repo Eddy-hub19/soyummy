@@ -3,12 +3,17 @@ import { lazy } from 'react';
 
 // import { PublicRoute } from 'service/routes';
 // import { PrivateRoute } from 'service/routes';
+<<<<<<< Updated upstream
 import { ThemeProvider } from 'styled-components';
+=======
+// import { ThemeProvider } from 'styled-components';
+>>>>>>> Stashed changes
 
 // import Main from 'pages/Main/Main';
 // import Register from 'pages/Register/Register';
 // import Signin from 'pages/Signin/Signin';
 // import Subscribe from 'pages/Subscribe/Subscribe';
+<<<<<<< Updated upstream
 // import SharedLayout from './SharedLayout/SharedLayout';
 // import AddRecipe from 'pages/AddRecipe/AddRecipe';
 // import Error from 'pages/Error/Error';
@@ -20,6 +25,16 @@ const MainPage = lazy(() =>
   import('pages/MainPage/MainPage').then(module => ({
     default: module.MainPage,
   }))
+=======
+import SharedLayout from './SharedLayout/SharedLayout';
+// import AddRecipe from 'pages/AddRecipe/AddRecipe';
+// import Error from 'pages/Error/Error';
+
+// const MainPage = lazy(() => import('pages/MainPage/MainPage'));
+const Categories = lazy(() => import('pages/Categories/Categories'));
+const CategoriesByName = lazy(() =>
+  import('pages/CategoriesByName/CategoriesByName')
+>>>>>>> Stashed changes
 );
 // const Categories = lazy(() => import('pages/Categories/Categories'));
 // const CategoriesByName = lazy(() =>
@@ -33,33 +48,39 @@ const MainPage = lazy(() =>
 
 export const App = () => {
   return (
+<<<<<<< Updated upstream
     <ThemeProvider theme={theme}>
       <Routes>
         {/* <Route
+=======
+    // <ThemeProvider>
+    <Routes>
+      {/* <Route
+>>>>>>> Stashed changes
           path="/"
           element={
             <PublicRoute restricted>
               <Main />
             </PublicRoute>
           }
-        />
-        <Route
+        /> */}
+      {/* <Route
           path="/register"
           element={
             <PublicRoute restricted>
               <Register />
             </PublicRoute>
           }
-        />
-        <Route
+        /> */}
+      {/* <Route
           path="/signin"
           element={
             <PublicRoute restricted>
               <Signin />
             </PublicRoute>
           }
-        />
-        <Route
+        /> */}
+      {/* <Route
           path="/confirm-email"
           element={
             <PublicRoute>
@@ -68,6 +89,7 @@ export const App = () => {
           }
         /> */}
 
+<<<<<<< Updated upstream
         {/* <Route
           path="/"
           element={
@@ -91,5 +113,29 @@ export const App = () => {
         <Route path="/" element={<UserSharedLayout />} />
       </Routes>
     </ThemeProvider>
+=======
+      {/* <Route
+        path="/"
+        element={
+          <PrivateRoute>
+            <SharedLayout />
+          </PrivateRoute>
+        }
+      /> */}
+
+      <Route path="/" element={<SharedLayout />} />
+      <Route path="/categories" element={<Categories />}>
+        <Route path=":categoryName" element={<CategoriesByName />} />
+      </Route>
+      {/* <Route path="/add" element={<AddRecipe />} /> */}
+      <Route path="/my" element={<MyRecipes />} />
+      <Route path="/favorite" element={<Favorites />} />
+      <Route path="/shopping-list" element={<ShopingList />} />
+      <Route path="/search" element={<SearchPage />} />
+      <Route path="/recipe/:recipeId" element={<Recipe />} />
+      {/* <Route path="*" element={<Error />} /> */}
+    </Routes>
+    // </ThemeProvider>
+>>>>>>> Stashed changes
   );
 };

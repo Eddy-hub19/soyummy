@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+<<<<<<< Updated upstream
 import { useMediaQuery } from 'hooks/useMediaRequest';
+=======
+import { useMediaQuery } from 'hooks/useMedia';
+>>>>>>> Stashed changes
 import { getName, getAvatar } from 'redux/auth/authSelectors';
 import sprite from '../../images/sprite.svg';
 import {
@@ -11,7 +15,11 @@ import {
   HeaderWrapper,
   LogoWrapper,
   MobileMenuHeaderContainer,
+<<<<<<< Updated upstream
   MobileMenuThemeChangeWrapper,
+=======
+  MobileMenuThemeTogglerWrapper,
+>>>>>>> Stashed changes
   MobileMenuWrapper,
   NavigationLinkStyled,
 } from './HeaderAssembly.styled';
@@ -19,7 +27,11 @@ import logo from '../../images/svg-before sprite/logo_desc.svg';
 import { HeaderNavigation } from 'components/HeaderAssembly/HeaderNavigation/HeaderNavigation';
 import { HeaderUserLogo } from 'components/HeaderAssembly/HeaderUserLogo/HeaderUserLogo';
 import { Container } from 'components/Container/Container';
+<<<<<<< Updated upstream
 import { ThemeChange } from 'components/ThemeSwitch/ThemeSwitch';
+=======
+import { ThemeToggler } from 'components/ThemeToggler/ThemeToggler';
+>>>>>>> Stashed changes
 import { CloseBtnAssembly } from 'components/CloseButtonAssembly/CloseBtnAssembly';
 
 export const HeaderAssembly = () => {
@@ -79,7 +91,11 @@ export const HeaderAssembly = () => {
                 name={userName}
                 avatarUrl={userAvatar}
               />
+<<<<<<< Updated upstream
               <ThemeChange />
+=======
+              <ThemeToggler />
+>>>>>>> Stashed changes
             </HeaderWrapper>
           </Container>
         </HeaderBox>
@@ -127,9 +143,15 @@ export const HeaderAssembly = () => {
               <CloseBtnAssembly onClick={toggleMobileMenu} />
             </MobileMenuHeaderContainer>
             <HeaderNavigation setShowMenu={setShowMenu} />
+<<<<<<< Updated upstream
             <MobileMenuThemeChangeWrapper>
               <ThemeChange />
             </MobileMenuThemeChangeWrapper>
+=======
+            <MobileMenuThemeTogglerWrapper>
+              <ThemeToggler />
+            </MobileMenuThemeTogglerWrapper>
+>>>>>>> Stashed changes
           </MobileMenuWrapper>
         </>
       )}

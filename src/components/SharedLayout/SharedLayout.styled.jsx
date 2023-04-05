@@ -14,12 +14,21 @@ import smallDesk1 from '../../images/bg/bg_small_desktop_1x.png';
 import smallDesk2 from '../../images/bg/bg_small_desktop_2x.png';
 
 export const SharedLayoutConteiner = styled.div`
+<<<<<<< Updated upstream
   display: flex;
   position: relative;
   flex-direction: column;
   min-height: 100vh;
   width: 100%;
   margin: 0 auto;
+=======
+  margin: 0 auto;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+>>>>>>> Stashed changes
   background-image: url(${bigMob1}), url(${smallMob1});
   background-repeat: no-repeat;
   background-size: 315px 487px, 179px 155px;
@@ -40,9 +49,15 @@ export const SharedLayoutConteiner = styled.div`
     width: 768px;
 
     background-image: url(${bigTab1}), url(${smallTab1});
+<<<<<<< Updated upstream
     background-size: 500px 790px, 341px 261px;
     background-position: bottom 130px left, bottom right;
     background-repeat: no-repeat;
+=======
+    background-repeat: no-repeat;
+    background-size: 500px 790px, 341px 261px;
+    background-position: bottom 130px left, bottom right;
+>>>>>>> Stashed changes
 
     @media screen and (min-device-pixel-ratio: 2),
       screen and (min-resolution: 192dpi),

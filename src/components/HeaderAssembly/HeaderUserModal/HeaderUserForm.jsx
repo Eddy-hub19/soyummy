@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import { ErrorMessage, Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
+<<<<<<< Updated upstream
 import { getColor } from 'utils/colorForm';
+=======
+import { getColor } from 'utils/formikColors';
+>>>>>>> Stashed changes
 import { getAvatar } from 'redux/auth/authSelectors';
 import { updateUserInfo } from 'redux/auth/authOperations';
 import sprite from '../../../images/sprite.svg';
@@ -13,11 +17,19 @@ import {
   InputsWrapper,
   NameInput,
   NameLabel,
+<<<<<<< Updated upstream
   UserAvatarWrapper,
   UserIcon,
   UserSvgWrapper,
   ResetBtn,
   SubmitBtn,
+=======
+  ResetBtn,
+  SubmitBtn,
+  UserAvatarWrapper,
+  UserIcon,
+  UserSvgWrapper,
+>>>>>>> Stashed changes
 } from './HeaderUserForm.styled.js';
 
 const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png'];

@@ -8,7 +8,11 @@ import {
   logOutUserAPI,
   updateUserInfoAPI,
   getCurrentUserAPI,
+<<<<<<< Updated upstream
 } from 'service/API/AuthUserAPI';
+=======
+} from 'service/API/Auth&UserAPI';
+>>>>>>> Stashed changes
 
 export const token = {
   set(token) {
