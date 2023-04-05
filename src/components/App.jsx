@@ -5,7 +5,6 @@ import { lazy } from 'react';
 // import { PrivateRoute } from 'service/routes';
 import { ThemeProvider } from 'styled-components';
 
-
 import Main from 'pages/Main/Main';
 import Register from 'pages/Register/Register';
 import Signin from 'pages/Signin/Signin';
@@ -13,10 +12,9 @@ import Subscribe from 'pages/Subscribe/Subscribe';
 import SharedLayout from './SharedLayout/SharedLayout';
 import AddRecipe from 'pages/AddRecipe/AddRecipe';
 import Error from 'pages/Error/Error';
+import MyRecipes from 'pages/MyRecipes/MyRecipes';
 import { theme } from '../theme/theme';
 import UserSharedLayout from './HeaderUserBar/UserSharedLayout';
-
-
 
 const MainPage = lazy(() =>
   import('pages/MainPage/MainPage').then(module => ({
@@ -79,6 +77,7 @@ export const App = () => {
           }
         /> */}
         <Route path="/main" element={<MainPage />} />
+        <Route path="/my" element={<MyRecipes />} />
         <Route path="/" element={<UserSharedLayout />} />
       </Routes>
 
