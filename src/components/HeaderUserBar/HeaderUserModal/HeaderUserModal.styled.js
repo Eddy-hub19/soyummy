@@ -2,8 +2,7 @@ import styled from 'styled-components';
 
 export const ModalBox = styled.div`
 position: absolute;
-width: 177px;
-height: 134px;
+
 top: calc(100% + 14px);
 right: 0;
 display: flex;
@@ -46,32 +45,54 @@ export const EditBtn = styled.button`
   }
 `
 export const LogoutBtn = styled.button`
-position: absolute;
-width: 141px;
-height: 43px;
-left: 18px;
-top: 73px;
+box-sizing: border-box;
+width: 100%;
+display: flex;
+gap: 4px;
+background-color: ${p => p.theme.colors.mainAccent};
+font-family: ${p => p.theme.fonts.main};
+font-weight: ${p => p.theme.fontWeights[1]};
+line-height: ${p => p.theme.lineHeights.headerLinks};
+font-size: 10px;
+white-space: nowrap;
+align-items: center;
+text-align: center;
+color: ${p => p.theme.colors.btnTextLight};
+padding: 12px 30px;
+border: none;
+border-top-left-radius: 30px;
+border-top-right-radius: 80px;
+border-bottom-left-radius: 80px;
+border-bottom-right-radius: 30px;
+overflow: hidden;
+outline: none;
+border: 1px solid transparent;
+ cursor: pointer;
+  transition: ${p => p.theme.transitions.main};
 
-background: #8BAA36;
 
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 21px;
-
-color: #FAFAFA;
-
-clip-path: inset(25% 0 25% 0 round 15% 35% 15% 30%); padding: 50px 42px; background-color: #8BAA36; border: red;
-
-& svg {
-    width: 18px;
-    height: 18px;
-    stroke: currentColor;
-  }
   &:hover,
   &:focus {
-    color: ${p => p.theme.colors.mainAccent};
+    border: ${p => p.theme.borders.mainNavBord};
+    color: ${p => p.theme.colors.mainSerchHoverText};
+    background-color: ${p => p.theme.colors.searchFormHoverBtn};
+  }
+  &:hover svg,
+  &:focus svg {
+    stroke: ${p => p.theme.colors.mainSerchHoverText};
+  }
+  & svg {
+    width: 18px;
+    height: 18px;
+    stroke: ${p => p.theme.colors.btnTextLight};
+    transition: ${p => p.theme.transitions.main};
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
+  @media screen and (min-width: 1440px) {
+    font-size: 16px;
+    line-height: ${p => p.theme.lineHeights.btnText};
   }
 
 `

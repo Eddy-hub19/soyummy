@@ -11,7 +11,7 @@ const HeaderUserModal = () => {
                 </svg>
             </EditBtn>
             <LogoutBtn>
-                <span>Logout</span>
+                <span>Log Out</span>
                 <svg>
                     <use href={ sprite + `#arrow-right`}/>
                 </svg>
