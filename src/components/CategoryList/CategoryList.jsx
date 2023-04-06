@@ -14,39 +14,34 @@ export const CategoryList = () => {
     const navigate = useNavigate();
     const [flag, setFlag] = useState(false);
 
-    getCategoryListAPI()
-    const arr = getCategoryListAPI()
-    console.log(arr)
+    useEffect(() => {
+      
+    try {
+      const categorys = getCategoryListAPI();
 
-    const fullCategoryList = ["Beef",
-    "Breakfast",
-    "Chicken",
-    "Dessert",
-    "Goat",
-    "Lamb",
-    "Miscellaneous",
-    "Pasta",
-    "Pork",
-    "Seafood",
-    "Side",
-    "Starter",
-    "Vegan",
-    "Vegetarian"];
+      categorys.then(data => {
+        return setMapArray(data);
+      });
+    } catch (error) {
+      console.log(error)
+    }
+  }, []);
+
 
 
     useEffect(() => {
-        if (fullCategoryList.length === 0) return;
+        // if (fullCategoryList.length === 0) return;
 
-        setMapArray([...fullCategoryList]);
+        // setMapArray([...fullCategoryList]);
 
-        const idx = fullCategoryList.findIndex(e => {
+        const idx = mapArray.findIndex(e => {
             return e.toLowerCase() === categoryName;
         });
 
         if (idx !== -1) {
             setValue(idx);
         }
-    }, [ categoryName]);
+    }, [ categoryName, mapArray]);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);

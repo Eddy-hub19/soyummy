@@ -18,6 +18,7 @@ import Register from 'pages/Register/Register';
 import SignIn from 'pages/Signin/Signin';
 import Categories from 'pages/Categories/Categories';
 import MyRecipes from 'pages/MyRecipes/MyRecipes';
+import CategoriesByName from 'pages/CategoriesByName/CategoriesByName';
 
 
 const MainPage = lazy(() =>
@@ -88,7 +89,10 @@ export const App = () => {
         <Route path="/shopping-list" element={<ShopingList />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/main" element={<MainPage />} />
-        <Route path="/categories" element={<Categories />}></Route>
+        <Route path="/categories" element={<Categories />}>
+          <Route path=":categoryName" element={<CategoriesByName />} />
+
+        </Route>
         {/* <Route path="/my" element={<MyRecipes />} /> */}
 
         {/* <Route path="/" element={<UserSharedLayout />} /> */}

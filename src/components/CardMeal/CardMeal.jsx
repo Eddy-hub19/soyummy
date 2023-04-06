@@ -11,15 +11,15 @@ import { scrollToTop } from 'utils/scrollUp';
 export const CardMeal = ({ meal }) => {
   return (
     <CardDish>
-      <Link to={`/recipe/${meal.idMeal}`} onClick={scrollToTop}>
+      <Link to={`/recipe/${meal._id}`} onClick={scrollToTop}>
         <CardImg
-          src={meal.strMealThumb ? meal.strMealThumb : { NoImage }}
-          alt={meal.strMeal}
+          src={meal.thumb ? meal.thumb : { NoImage }}
+          alt={meal.title}
         />
-        <CardTitle data-tooltip-id={meal.idMeal}>{meal.strMeal}</CardTitle>
-        {meal.strMeal.length > 30 && (
+        <CardTitle data-tooltip-id={meal._id}>{meal.title}</CardTitle>
+        {meal.title.length > 30 && (
           <TooltipWrapper>
-            <p>{meal.strMeal}</p>
+            <p>{meal.title}</p>
           </TooltipWrapper>
         )}
       </Link>

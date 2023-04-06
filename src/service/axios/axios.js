@@ -12,7 +12,7 @@ export const getRecipeById = async id => {
 };
 
 export const getCategoryListAPI = async () => {
-   const response = await axios.get('/recipes/category-list');
+    const response = await axios.get('/recipes/category-list');
     return response.data;
 
 };
