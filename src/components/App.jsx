@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { lazy } from 'react';
+import { lazy, Suspense } from 'react';
 
 // import { PublicRoute } from 'service/routes';
 // import { PrivateRoute } from 'service/routes';
@@ -23,15 +23,12 @@ const MainPage = lazy(() =>
     default: module.MainPage,
   }))
 );
-// const Categories = lazy(() => import('pages/Categories/Categories'));
-// const CategoriesByName = lazy(() =>
-//   import('pages/CategoriesByName/CategoriesByName')
-// );
-// const MyRecipes = lazy(() => import('pages/MyRecipes/MyRecipes'));
-// const Favorites = lazy(() => import('pages/Favorites/Favorites'));
-// const ShopingList = lazy(() => import('pages/ShoppingList/ShoppingList'));
-// const SearchPage = lazy(() => import('pages/SearchPage/SearchPage'));
-const Recipe = lazy(() => import('pages/RecipePage/RecipePage'));
+
+const MyRecipes = lazy(() => import('pages/MyRecipes/MyRecipes'));
+const Favorites = lazy(() => import('pages/Favorites/Favorites'));
+const ShopingList = lazy(() => import('pages/ShoppingList/ShoppingList'));
+const SearchPage = lazy(() => import('../pages/SearchPage/SearchPage'));
+const Recipe = lazy(() => import('pages/Recipe/Recipe'));
 
 export const App = () => {
   return (
@@ -95,9 +92,9 @@ export const App = () => {
       <Route path="/add" element={<AddRecipe />} /> */}
       {/* <Route path="/favorite" element={<Favorites />} />
       <Route path="/shopping-list" element={<ShopingList />} />
-      <Route path="/search" element={<SearchPage />} />
-      
-      <Route path="*" element={<Error />} />  */}
+      <Route path="soyummy/search" element={<SearchPage />} />
+      <Route path="/recipe/:recipeId" element={<Recipe />} />
+      <Route path="*" element={<Error />} />
     </ThemeProvider>
   );
 };
