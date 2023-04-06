@@ -68,7 +68,7 @@ export const Navigation = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  // flex-direction: column;
+  flex-direction: column;
   gap: 32px;
 
   @media screen and (min-width: 768px) {

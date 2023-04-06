@@ -28,7 +28,7 @@ const MainPage = lazy(() =>
 // const Favorites = lazy(() => import('pages/Favorites/Favorites'));
 // const ShopingList = lazy(() => import('pages/ShoppingList/ShoppingList'));
 // const SearchPage = lazy(() => import('../pages/SearchPage/SearchPage'));
-const Recipe = lazy(() => import('pages/Recipe/Recipe'));
+// const Recipe = lazy(() => import('pages/Recipe/Recipe'));
 
 export const App = () => {
   return (
@@ -83,7 +83,7 @@ export const App = () => {
         {/* <Route path="/" element={<UserSharedLayout />} /> */}
         {/* <Route path="/signin" element={<AuthNav />} />
         <Route path="/register" element={<AuthNav />} /> */}
-        <Route path="/recipes/:recipeId" element={<Recipe />} />
+        {/* <Route path="/recipes/:recipeId" element={<Recipe />} /> */}
       </Routes>
 
       {/* <Route path="/categories" element={<Categories />}>
