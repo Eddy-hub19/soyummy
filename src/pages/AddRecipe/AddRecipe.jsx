@@ -15,6 +15,7 @@ import { AddRecipeSubmit } from 'components/AddRecipeSubmit/AddRecipeSubmit';
 // import { addOwnRecipe } from 'redux/ownRecipes/ownRecipesOperations';
 import { useMediaRules } from 'hooks/MediaRules';
 import { AddRecipeToastifyError } from 'components/AddRecipeToastifyError/AddRecipeToastifyError';
+import { RecipeIngredientsFields } from 'components/RecipeIngredientsFields/RecipeIngredientsFields';
 // import { useNavigate } from 'react-router-dom';
 // import { scrollToTop } from 'utils/scrollUp';
 
@@ -239,6 +240,8 @@ const AddRecipe = () => {
             localTheme={theme}
           /> */}
         </MainWrapper>
+
+        <RecipeIngredientsFields />
       </Container>
     </>
   );
