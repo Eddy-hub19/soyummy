@@ -10,7 +10,7 @@ export const FooterWrap = styled.form`
 
   .icon {
     position: absolute;
-    top: 13px;
+    top: 15px;
     left: 14px;
     width: 16px;
     height: 12px;
@@ -20,11 +20,11 @@ export const FooterWrap = styled.form`
       width: 20px;
       height: 16px;
       top: 16px;
-      left: 75px;
+      left: 120px;
     }
 
     @media screen and (min-width: 1440px) {
-      top: 126px;
+      top: 145px;
       left: 20px;
     }
   }
@@ -92,7 +92,7 @@ export const FooterWrapText = styled.div`
 `;
 
 export const FooterWrapInput = styled.input`
-  width: 204px;
+  /* width: 204px; */
   height: 38px;
   font-weight: 400;
   font-size: 10px;
@@ -108,15 +108,15 @@ export const FooterWrapInput = styled.input`
   transition: ${p => p.theme.transitions.main};
 
   @media screen and (min-width: 768px) {
-    width: 259px;
-    height: 50px;
+    /* width: 259px; */
+    height: 46px;
     padding-left: 51px;
     font-size: 14px;
     line-height: 21px;
   }
 
   @media screen and (min-width: 1440px) {
-    width: 338px;
+    /* width: 338px; */
     padding-left: 51px;
     height: 59px;
   }
