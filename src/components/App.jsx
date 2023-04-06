@@ -9,15 +9,14 @@ import { ThemeProvider } from 'styled-components';
 // import Register from 'pages/Register/Register';
 // import Signin from 'pages/Signin/Signin';
 // import Subscribe from 'pages/Subscribe/Subscribe';
-// import SharedLayout from './SharedLayout/SharedLayout';
+import SharedLayout from './SharedLayout/SharedLayout';
 // import AddRecipe from 'pages/AddRecipe/AddRecipe';
 // import Error from 'pages/Error/Error';
 import { theme } from '../theme/theme';
-import UserSharedLayout from './HeaderUserBar/UserSharedLayout';
+// import UserSharedLayout from './HeaderUserBar/UserSharedLayout';
 import { AuthNav } from './AuthNav/AuthNav';
 import Register from 'pages/Register/Register';
 import SignIn from 'pages/Signin/Signin';
-
 
 const MainPage = lazy(() =>
   import('pages/MainPage/MainPage').then(module => ({
@@ -72,19 +71,19 @@ export const App = () => {
             </PublicRoute>
           }
         /> */}
-        {/* 
+
         <Route
           path="/"
           element={
-            <PrivateRoute>
-              <SharedLayout />
-            </PrivateRoute>
+            // <PrivateRoute>
+            <SharedLayout />
+            // </PrivateRoute>
           }
-        /> */}
+        />
 
         <Route path="/main" element={<MainPage />} />
         {/* <Route path="/my" element={<MyRecipes />} /> */}
-        <Route path="/" element={<UserSharedLayout />} />
+        {/* <Route path="/" element={<UserSharedLayout />} /> */}
         {/* <Route path="/signin" element={<AuthNav />} />
         <Route path="/register" element={<AuthNav />} /> */}
       </Routes>
