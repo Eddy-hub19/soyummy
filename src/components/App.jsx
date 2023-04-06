@@ -16,6 +16,7 @@ import { theme } from '../theme/theme';
 import { AuthNav } from './AuthNav/AuthNav';
 import Register from 'pages/Register/Register';
 import SignIn from 'pages/Signin/Signin';
+import Categories from 'pages/Categories/Categories';
 
 const MainPage = lazy(() =>
   import('pages/MainPage/MainPage').then(module => ({
@@ -77,6 +78,7 @@ export const App = () => {
         />
 
         <Route path="/main" element={<MainPage />} />
+        <Route path="/categories" element={<Categories />}></Route>
         {/* <Route path="/my" element={<MyRecipes />} /> */}
         {/* <Route path="/" element={<UserSharedLayout />} /> */}
         {/* <Route path="/signin" element={<AuthNav />} />
