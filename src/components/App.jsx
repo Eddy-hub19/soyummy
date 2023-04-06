@@ -82,17 +82,17 @@ export const App = () => {
         {/* <Route path="/signin" element={<AuthNav />} />
         <Route path="/register" element={<AuthNav />} /> */}
         {/* <Route path="/recipes/:recipeId" element={<Recipe />} /> */}
-      </Routes>
 
-      {/* <Route path="/categories" element={<Categories />}>
+        {/* <Route path="/categories" element={<Categories />}>
         <Route path=":categoryName" element={<CategoriesByName />} />
       </Route>
       <Route path="/add" element={<AddRecipe />} /> */}
-      {/* <Route path="/favorite" element={<Favorites />} /> */}
-      <Route path="/shopping-list" element={<ShopingList />} />
-      <Route path="soyummy/search" element={<SearchPage />} />
-      {/* <Route path="/recipe/:recipeId" element={<Recipe />} /> */}
-      {/* <Route path="*" element={<Error />} /> */}
+        {/* <Route path="/favorite" element={<Favorites />} /> */}
+        <Route path="/shopping-list" element={<ShopingList />} />
+        <Route path="/search" element={<SearchPage />} />
+        {/* <Route path="/recipe/:recipeId" element={<Recipe />} /> */}
+        {/* <Route path="*" element={<Error />} /> */}
+      </Routes>
     </ThemeProvider>
   );
 };
