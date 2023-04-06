@@ -10,7 +10,7 @@ export const FooterWrap = styled.form`
 
   .icon {
     position: absolute;
-    top: 15px;
+    top: 13px;
     left: 14px;
     width: 16px;
     height: 12px;
@@ -19,7 +19,7 @@ export const FooterWrap = styled.form`
     @media screen and (min-width: 768px) {
       width: 20px;
       height: 16px;
-      top: 18px;
+      top: 16px;
       left: 75px;
     }
 

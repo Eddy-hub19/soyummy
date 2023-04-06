@@ -27,7 +27,7 @@ const MainPage = lazy(() =>
 // const Favorites = lazy(() => import('pages/Favorites/Favorites'));
 const ShopingList = lazy(() => import('pages/ShoppingList/ShoppingList'));
 const SearchPage = lazy(() => import('../pages/SearchPage/SearchPage'));
-const Recipe = lazy(()=> import('../pages/RecipePage/RecipePage'))
+const Recipe = lazy(() => import('../pages/RecipePage/RecipePage'));
 
 export const App = () => {
   return (
@@ -75,12 +75,11 @@ export const App = () => {
             <SharedLayout />
             // </PrivateRoute>
           }
-        >
-          <Route path="/add" element={<AddRecipe />} />
-        </Route>
+        />
+        <Route path="/add" element={<AddRecipe />} />
 
         <Route path="/main" element={<MainPage />} />
-        <Route path="/add" element={<AddRecipe />} />
+        {/* <Route path="/add" element={<AddRecipe />} /> */}
         {/* <Route path="/my" element={<MyRecipes />} /> */}
         {/* <Route path="/" element={<UserSharedLayout />} /> */}
         {/* <Route path="/signin" element={<AuthNav />} />
@@ -89,8 +88,8 @@ export const App = () => {
 
         {/* <Route path="/categories" element={<Categories />}>
         <Route path=":categoryName" element={<CategoriesByName />} />
-      </Route>
-      <Route path="/add" element={<AddRecipe />} /> */}
+        </Route>
+        <Route path="/add" element={<AddRecipe />} /> */}
         {/* <Route path="/favorite" element={<Favorites />} /> */}
         <Route path="/shopping-list" element={<ShopingList />} />
         <Route path="/search" element={<SearchPage />} />
