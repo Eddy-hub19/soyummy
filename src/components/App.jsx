@@ -77,25 +77,23 @@ export const App = () => {
             // </PrivateRoute>
           }
         >
+          <Route path="/main" element={<MainPage />} />
           <Route path="/add" element={<AddRecipe />} />
           <Route path="/my" element={<MyRecipes />} />
         </Route>
 
-        <Route path="/main" element={<MainPage />} />
-        <Route path="/add" element={<AddRecipe />} />
+        <Route path="/recipes/:recipeId" element={<Recipe />} />
+        <Route path="/shopping-list" element={<ShopingList />} />
+        <Route path="/search" element={<SearchPage />} />
 
         {/* <Route path="/" element={<UserSharedLayout />} /> */}
         {/* <Route path="/signin" element={<AuthNav />} />
         <Route path="/register" element={<AuthNav />} /> */}
-        <Route path="/recipes/:recipeId" element={<Recipe />} />
-
         {/* <Route path="/categories" element={<Categories />}>
         <Route path=":categoryName" element={<CategoriesByName />} />
         </Route>
         <Route path="/add" element={<AddRecipe />} /> */}
         {/* <Route path="/favorite" element={<Favorites />} /> */}
-        <Route path="/shopping-list" element={<ShopingList />} />
-        <Route path="/search" element={<SearchPage />} />
         {/* <Route path="/recipe/:recipeId" element={<Recipe />} /> */}
         {/* <Route path="*" element={<Error />} /> */}
       </Routes>
