@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
+import { lazy } from 'react';
 
 // import { PublicRoute } from 'service/routes';
 // import { PrivateRoute } from 'service/routes';
@@ -24,10 +24,10 @@ const MainPage = lazy(() =>
   }))
 );
 
-const MyRecipes = lazy(() => import('pages/MyRecipes/MyRecipes'));
-const Favorites = lazy(() => import('pages/Favorites/Favorites'));
-const ShopingList = lazy(() => import('pages/ShoppingList/ShoppingList'));
-const SearchPage = lazy(() => import('../pages/SearchPage/SearchPage'));
+// const MyRecipes = lazy(() => import('pages/MyRecipes/MyRecipes'));
+// const Favorites = lazy(() => import('pages/Favorites/Favorites'));
+// const ShopingList = lazy(() => import('pages/ShoppingList/ShoppingList'));
+// const SearchPage = lazy(() => import('../pages/SearchPage/SearchPage'));
 const Recipe = lazy(() => import('pages/Recipe/Recipe'));
 
 export const App = () => {
@@ -94,7 +94,7 @@ export const App = () => {
       <Route path="/shopping-list" element={<ShopingList />} />
       <Route path="soyummy/search" element={<SearchPage />} />
       <Route path="/recipe/:recipeId" element={<Recipe />} />
-      <Route path="*" element={<Error />} />
+      <Route path="*" element={<Error />} /> */}
     </ThemeProvider>
   );
 };
