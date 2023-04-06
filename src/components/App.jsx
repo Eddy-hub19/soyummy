@@ -9,7 +9,7 @@ import { ThemeProvider } from 'styled-components';
 // import Signin from 'pages/Signin/Signin';
 // import Subscribe from 'pages/Subscribe/Subscribe';
 import SharedLayout from './SharedLayout/SharedLayout';
-// import AddRecipe from 'pages/AddRecipe/AddRecipe';
+import AddRecipe from 'pages/AddRecipe/AddRecipe';
 // import Error from 'pages/Error/Error';
 import { theme } from '../theme/theme';
 // import UserSharedLayout from './HeaderUserBar/UserSharedLayout';
@@ -74,9 +74,12 @@ export const App = () => {
             <SharedLayout />
             // </PrivateRoute>
           }
-        />
+        >
+          <Route path="/add" element={<AddRecipe />} />
+        </Route>
 
         <Route path="/main" element={<MainPage />} />
+        <Route path="/add" element={<AddRecipe />} />
         {/* <Route path="/my" element={<MyRecipes />} /> */}
         {/* <Route path="/" element={<UserSharedLayout />} /> */}
         {/* <Route path="/signin" element={<AuthNav />} />
