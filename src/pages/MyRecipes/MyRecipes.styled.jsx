@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+import img from '../../images/default.jpg';
+
+export { img };
 export const RecipesList = styled.ul`
   width: 100%;
   display: flex;

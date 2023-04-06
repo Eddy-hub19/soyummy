@@ -16,6 +16,7 @@ import { theme } from '../theme/theme';
 import { AuthNav } from './AuthNav/AuthNav';
 import Register from 'pages/Register/Register';
 import SignIn from 'pages/Signin/Signin';
+import MyRecipes from 'pages/MyRecipes/MyRecipes';
 
 const MainPage = lazy(() =>
   import('pages/MainPage/MainPage').then(module => ({
@@ -75,12 +76,14 @@ export const App = () => {
             <SharedLayout />
             // </PrivateRoute>
           }
-        />
-        <Route path="/add" element={<AddRecipe />} />
+        >
+          <Route path="/add" element={<AddRecipe />} />
+          <Route path="/my" element={<MyRecipes />} />
+        </Route>
 
         <Route path="/main" element={<MainPage />} />
-        {/* <Route path="/add" element={<AddRecipe />} /> */}
-        {/* <Route path="/my" element={<MyRecipes />} /> */}
+        <Route path="/add" element={<AddRecipe />} />
+
         {/* <Route path="/" element={<UserSharedLayout />} /> */}
         {/* <Route path="/signin" element={<AuthNav />} />
         <Route path="/register" element={<AuthNav />} /> */}

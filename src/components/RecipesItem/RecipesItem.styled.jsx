@@ -1,86 +1,26 @@
-import { NavLink } from 'react-router-dom';
-import { DeleteBtn } from './DeleteBtn';
-import { NavLinkSkew } from './NavLinkSkew';
-import { useMediaQuery } from 'hooks/useMedia';
-
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
-export const RecipesItem = ({ location, id, text, title, img, time }) => {
-  const isRowBased = useMediaQuery('(min-width: 768px)');
-
-  return (
-    <RecipeBlockWrapper location={location}>
-      {!isRowBased && location === 'favorite' ? (
-        <NavLink to={`/recipe/${id}`}>
-          <ImageWrapper location={location}>
-            <img src={img} alt={title} />
-          </ImageWrapper>
-        </NavLink>
-      ) : (
-        <ImageWrapper location={location}>
-          <img src={img} alt={title} />
-        </ImageWrapper>
-      )}
-      <DataWrapper location={location}>
-        <TitleWrapper>
-          <SubTitle>
-            <h3>{title}</h3>
-          </SubTitle>
-          {isRowBased && location === 'favorite' && (
-            <DeleteBtn location={location} id={id} />
-          )}
-          {location === 'recipes' && <DeleteBtn location={location} id={id} />}
-        </TitleWrapper>
-        <DescrWrapper>{text}</DescrWrapper>
-        <TimeWrapper>
-          <Time>{time}</Time>
-          {!isRowBased && location === 'recipes' && (
-            <NavLinkSkew
-              navigate={`/recipe/${id}`}
-              location={location}
-              text="See recipe"
-              styled="olive"
-            />
-          )}
-          {!isRowBased && location === 'favorite' && (
-            <DeleteBtn location={location} id={id} />
-          )}
-          {isRowBased && (
-            <NavLinkSkew
-              navigate={`/recipe/${id}`}
-              location={location}
-              text="See recipe"
-              styled={location === 'favorite' ? 'black' : 'olive'}
-            />
-          )}
-        </TimeWrapper>
-      </DataWrapper>
-    </RecipeBlockWrapper>
-  );
-};
-
-////// TERMERARY STYLE FOR RecipesItem!!!!!
-
-export const RecipeBlockWrapper = styled.div`
+export const Recipe = styled.div`
   height: 152px;
   width: 100%;
   display: flex;
-  gap: ${p => (p.location === 'favorite' ? '14px' : '4px')};
+  gap: ${p => (p.ViewMode === 'favorite' ? '14px' : '4px')};
   background-color: ${p =>
-    p.location === 'favorite' ? p.theme.colors.recipeBlockBg : 'transparent'};
-  padding: ${p => (p.location === 'favorite' ? '14px' : '0px')};
+    p.ViewMode === 'favorite' ? p.theme.colors.recipeBlockBg : 'transparent'};
+  padding: ${p => (p.ViewMode === 'favorite' ? '14px' : '0px')};
   border-radius: ${p => p.theme.radii.image};
 
   @media screen and (min-width: 768px) {
     height: 288px;
-    gap: ${p => (p.location === 'favorite' ? '24px' : '8px')};
-    padding: ${p => (p.location === 'favorite' ? '28px 24px' : '0px')};
+    gap: ${p => (p.ViewMode === 'favorite' ? '24px' : '8px')};
+    padding: ${p => (p.ViewMode === 'favorite' ? '28px 24px' : '0px')};
   }
 
   @media screen and (min-width: 1440px) {
     height: 372px;
-    gap: ${p => (p.location === 'favorite' ? '40px' : '14px')};
-    padding: ${p => (p.location === 'favorite' ? '40px' : '0px')};
+    gap: ${p => (p.ViewMode === 'favorite' ? '40px' : '14px')};
+    padding: ${p => (p.ViewMode === 'favorite' ? '40px' : '0px')};
   }
 `;
 
@@ -92,17 +32,17 @@ export const ImageWrapper = styled.div`
 
   & img {
     border-radius: ${p => p.theme.radii.image};
-    width: ${p => (p.location === 'favorite' ? '124px' : '130px')};
-    height: ${p => (p.location === 'favorite' ? '124px' : '152px')};
+    width: ${p => (p.ViewMode === 'favorite' ? '124px' : '130px')};
+    height: ${p => (p.ViewMode === 'favorite' ? '124px' : '152px')};
 
     @media screen and (min-width: 768px) {
-      width: ${p => (p.location === 'favorite' ? '228px' : '250px')};
-      height: ${p => (p.location === 'favorite' ? '232px' : '100%')};
+      width: ${p => (p.ViewMode === 'favorite' ? '228px' : '250px')};
+      height: ${p => (p.ViewMode === 'favorite' ? '232px' : '100%')};
     }
 
     @media screen and (min-width: 1440px) {
-      width: ${p => (p.location === 'favorite' ? '318px' : '340px')};
-      height: ${p => (p.location === 'favorite' ? '324px' : '372px')};
+      width: ${p => (p.ViewMode === 'favorite' ? '318px' : '340px')};
+      height: ${p => (p.ViewMode === 'favorite' ? '324px' : '372px')};
     }
   }
 `;
@@ -115,17 +55,17 @@ export const DataWrapper = styled.div`
   flex-grow: 1;
 
   border-radius: ${p =>
-    p.location === 'recipes' ? p.theme.radii.image : 'none'};
+    p.ViewMode === 'recipes' ? p.theme.radii.image : 'none'};
   background-color: ${p =>
-    p.location === 'recipes' ? p.theme.colors.recipeBlockBg : 'transparent'};
-  padding: ${p => (p.location === 'recipes' ? '14px' : '0px')};
+    p.ViewMode === 'recipes' ? p.theme.colors.recipeBlockBg : 'transparent'};
+  padding: ${p => (p.ViewMode === 'recipes' ? '14px' : '0px')};
 
   @media screen and (min-width: 768px) {
-    padding: ${p => (p.location === 'recipes' ? '28px' : '0px')};
+    padding: ${p => (p.ViewMode === 'recipes' ? '28px' : '0px')};
   }
 
   @media screen and (min-width: 1440px) {
-    padding: ${p => (p.location === 'recipes' ? '40px' : '0px')};
+    padding: ${p => (p.ViewMode === 'recipes' ? '40px' : '0px')};
   }
 `;
 

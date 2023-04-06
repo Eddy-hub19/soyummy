@@ -1,15 +1,8 @@
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const NavLinkSkew = ({ navigate, text, styled, location }) => {
-  return (
-    <NavLinkStyled location={location} styled={styled} to={navigate}>
-      {text}
-    </NavLinkStyled>
-  );
-};
+import { NavLink } from 'react-router-dom';
 
-const NavLinkStyled = styled(NavLink)`
+export const NavigateTo = styled(NavLink)`
   box-sizing: border-box;
   font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights[0]};
