@@ -15,7 +15,8 @@ import { AddRecipeSubmit } from 'components/AddRecipeSubmit/AddRecipeSubmit';
 // import { addOwnRecipe } from 'redux/ownRecipes/ownRecipesOperations';
 import { useMediaRules } from 'hooks/MediaRules';
 import { AddRecipeToastifyError } from 'components/AddRecipeToastifyError/AddRecipeToastifyError';
-import { RecipeIngredientsFields } from 'components/RecipeIngredientsFields/RecipeIngredientsFields';
+// import { RecipeIngredientsFields } from 'components/RecipeIngredientsFields/RecipeIngredientsFields';
+import { FollowUs } from 'components/FollowUs/FollowUs';
 // import { useNavigate } from 'react-router-dom';
 // import { scrollToTop } from 'utils/scrollUp';
 
@@ -199,6 +200,7 @@ const AddRecipe = () => {
     <>
       <Container>
         <Title>Add recipe</Title>
+        <FollowUs />
         <MainWrapper isDesktop={isDesktop}>
           <RecipeForm
             onSubmit={handleSubmit}
@@ -241,7 +243,7 @@ const AddRecipe = () => {
           /> */}
         </MainWrapper>
 
-        <RecipeIngredientsFields />
+        {/* <RecipeIngredientsFields /> */}
       </Container>
     </>
   );
