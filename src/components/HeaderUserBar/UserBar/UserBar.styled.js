@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 export const HeaderUserWrapper = styled.div`
   position: relative;
-  margin-top: 19px;
 `;
 export const HeaderUserButton = styled.button`
   display: flex;

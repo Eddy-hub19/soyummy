@@ -5,33 +5,29 @@ import { lazy } from 'react';
 // import { PrivateRoute } from 'service/routes';
 import { ThemeProvider } from 'styled-components';
 
-
 // import Main from 'pages/Main/Main';
-// import Register from 'pages/Register/Register';
 // import Signin from 'pages/Signin/Signin';
 // import Subscribe from 'pages/Subscribe/Subscribe';
-// import SharedLayout from './SharedLayout/SharedLayout';
-// import AddRecipe from 'pages/AddRecipe/AddRecipe';
+import SharedLayout from './SharedLayout/SharedLayout';
+import AddRecipe from 'pages/AddRecipe/AddRecipe';
 // import Error from 'pages/Error/Error';
 import { theme } from '../theme/theme';
-import UserSharedLayout from './HeaderUserBar/UserSharedLayout';
-
-
+// import UserSharedLayout from './HeaderUserBar/UserSharedLayout';
+import { AuthNav } from './AuthNav/AuthNav';
+import Register from 'pages/Register/Register';
+import SignIn from 'pages/Signin/Signin';
 
 const MainPage = lazy(() =>
   import('pages/MainPage/MainPage').then(module => ({
     default: module.MainPage,
   }))
 );
-// const Categories = lazy(() => import('pages/Categories/Categories'));
-// const CategoriesByName = lazy(() =>
-//   import('pages/CategoriesByName/CategoriesByName')
-// );
+
 // const MyRecipes = lazy(() => import('pages/MyRecipes/MyRecipes'));
 // const Favorites = lazy(() => import('pages/Favorites/Favorites'));
-// const ShopingList = lazy(() => import('pages/ShoppingList/ShoppingList'));
-// const SearchPage = lazy(() => import('pages/SearchPage/SearchPage'));
-// const Recipe = lazy(() => import('pages/Recipe/Recipe'));
+const ShopingList = lazy(() => import('pages/ShoppingList/ShoppingList'));
+const SearchPage = lazy(() => import('../pages/SearchPage/SearchPage'));
+const Recipe = lazy(()=> import('../pages/RecipePage/RecipePage'))
 
 export const App = () => {
   return (
@@ -44,54 +40,63 @@ export const App = () => {
               <Main />
             </PublicRoute>
           }
+        /> */}
+        <Route
+          path="/start"
+          element={<AuthNav />}
+          restricted
+          redirectTo="/main"
         />
         <Route
           path="/register"
-          element={
-            <PublicRoute restricted>
-              <Register />
-            </PublicRoute>
-          }
+          Component={Register}
+          restricted
+          redirectTo="/main"
         />
         <Route
           path="/signin"
-          element={
-            <PublicRoute restricted>
-              <Signin />
-            </PublicRoute>
-          }
+          Component={SignIn}
+          restricted
+          redirectTo="/main"
         />
-        <Route
+        {/* <Route
           path="/confirm-email"
           element={
             <PublicRoute>
               <Subscribe />
             </PublicRoute>
           }
-        />
+        /> */}
 
         <Route
           path="/"
           element={
-            <PrivateRoute>
-              <SharedLayout />
-            </PrivateRoute>
+            // <PrivateRoute>
+            <SharedLayout />
+            // </PrivateRoute>
           }
-        /> */}
-        <Route path="/main" element={<MainPage />} />
-        <Route path="/" element={<UserSharedLayout />} />
-      </Routes>
+        >
+          <Route path="/add" element={<AddRecipe />} />
+        </Route>
 
-      {/* <Route path="/categories" element={<Categories />}>
+        <Route path="/main" element={<MainPage />} />
+        <Route path="/add" element={<AddRecipe />} />
+        {/* <Route path="/my" element={<MyRecipes />} /> */}
+        {/* <Route path="/" element={<UserSharedLayout />} /> */}
+        {/* <Route path="/signin" element={<AuthNav />} />
+        <Route path="/register" element={<AuthNav />} /> */}
+        <Route path="/recipes/:recipeId" element={<Recipe />} />
+
+        {/* <Route path="/categories" element={<Categories />}>
         <Route path=":categoryName" element={<CategoriesByName />} />
       </Route>
-      <Route path="/add" element={<AddRecipe />} />
-      <Route path="/my" element={<MyRecipes />} />
-      <Route path="/favorite" element={<Favorites />} />
-      <Route path="/shopping-list" element={<ShopingList />} />
-      <Route path="/search" element={<SearchPage />} />
-      <Route path="/recipe/:recipeId" element={<Recipe />} />
-      <Route path="*" element={<Error />} />  */}
+      <Route path="/add" element={<AddRecipe />} /> */}
+        {/* <Route path="/favorite" element={<Favorites />} /> */}
+        <Route path="/shopping-list" element={<ShopingList />} />
+        <Route path="/search" element={<SearchPage />} />
+        {/* <Route path="/recipe/:recipeId" element={<Recipe />} /> */}
+        {/* <Route path="*" element={<Error />} /> */}
+      </Routes>
     </ThemeProvider>
   );
 };

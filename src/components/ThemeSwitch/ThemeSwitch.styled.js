@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Switcher = styled.div`
   position: relative;
-  margin-top: 27px;
+  margin-top: 8px;
 `;
 export const CheckBoxLabel = styled.label`
   position: absolute;
