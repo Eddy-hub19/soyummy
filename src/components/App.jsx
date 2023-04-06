@@ -91,8 +91,8 @@ export const App = () => {
 
         {/* <Route path="/categories" element={<Categories />}>
         <Route path=":categoryName" element={<CategoriesByName />} />
-      </Route>
-      <Route path="/add" element={<AddRecipe />} /> */}
+        </Route>
+        <Route path="/add" element={<AddRecipe />} /> */}
         {/* <Route path="/favorite" element={<Favorites />} /> */}
         <Route path="/shopping-list" element={<ShopingList />} />
         <Route path="/search" element={<SearchPage />} />

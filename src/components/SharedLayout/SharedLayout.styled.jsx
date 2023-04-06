@@ -33,11 +33,11 @@ export const SharedLayoutConteiner = styled.div`
   }
 
   @media screen and (min-width: 375px) {
-    width: 375px;
+    width: 100%;
   }
 
   @media screen and (min-width: 768px) {
-    width: 768px;
+    width: 100%;
 
     background-image: url(${bigTab1}), url(${smallTab1});
     background-repeat: no-repeat;
@@ -53,7 +53,7 @@ export const SharedLayoutConteiner = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    width: 1440px;
+    width: 100%;
 
     background-image: url(${bigDesk1}), url(${smallDesk1});
     background-repeat: no-repeat;
