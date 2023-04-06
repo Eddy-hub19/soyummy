@@ -1,6 +1,6 @@
 // import { ReactComponent as DefaultIngredient } from 'images/svg-before sprite/paperbag.svg';
 
-const IngredientsItem = ({ image, title, key, weight, description }) => {
+const IngredientsItem = ({ image, title, weight, description }) => {
     return (
         <div>
             <div>
