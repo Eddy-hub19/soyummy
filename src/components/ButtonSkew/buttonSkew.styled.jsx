@@ -1,20 +1,16 @@
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const NavLinkSkew = ({ navigate, text, styled, location }) => {
-  return (
-    <NavLinkStyled location={location} styled={styled} to={navigate}>
-      {text}
-    </NavLinkStyled>
-  );
-};
-
-const NavLinkStyled = styled(NavLink)`
+export const ButtonSkewStyle = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  white-space: nowrap;
   box-sizing: border-box;
   font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights[0]};
   line-height: ${p => p.theme.lineHeights.subheader};
-  font-size: 10px;
+  font-size: 14px;
 
   color: ${p =>
     p.styled === 'black'
@@ -22,9 +18,9 @@ const NavLinkStyled = styled(NavLink)`
       : p.styled === 'olive'
       ? p.theme.colors.btnTextLight
       : p.styled === 'other'
-      ? p.theme.colors.btnTextLight
+      ? p.theme.colors.mainBtnText
       : p.styled === 'transparent'
-      ? p.theme.colors.btnTextLight
+      ? p.theme.colors.mainDark
       : 'red'};
 
   padding: ${p =>
@@ -37,9 +33,9 @@ const NavLinkStyled = styled(NavLink)`
       ? p.theme.colors.recipeBlockBtnBg
       : p.styled === 'olive'
       ? p.theme.colors.mainAccent
-      : p.styled === 'transparent'
-      ? 'transparent'
       : p.styled === 'other'
+      ? 'transparent'
+      : p.styled === 'transparent'
       ? 'transparent'
       : 'red'};
 
@@ -51,55 +47,69 @@ const NavLinkStyled = styled(NavLink)`
   border-bottom-left-radius: 80px;
   border-bottom-right-radius: 30px;
 
-  min-width: 85px;
   text-align: center;
 
-  border: ${p =>
-    p.styled === 'other'
-      ? `1px solid ${p.theme.colors.mainAccent}`
-      : p.styled === 'transparent'
-      ? `1px solid ${p.theme.colors.btnTextLight}`
-      : '1px solid transparent'};
+  border: ${({ styled, theme }) => {
+    switch (styled) {
+      case 'other':
+        return `1px solid ${theme.colors.mainAccent}`;
+      case 'transparent':
+        return `1px solid ${theme.colors.btnTextLight}`;
+      default:
+        return '1px solid transparent';
+    }
+  }};
 
   cursor: pointer;
-  transition: ${p => p.theme.transitions.main};
+  transition: ${({ theme }) => {
+    return theme.transitions.main;
+  }};
 
   &:hover {
-    color: ${p =>
-      p.styled === 'black'
-        ? p.theme.colors.btnTextLight
-        : p.styled === 'olive'
-        ? p.theme.colors.btnTextLight
-        : p.styled === 'other'
-        ? p.theme.colors.btnTextLight
-        : p.styled === 'transparent'
-        ? p.theme.colors.mainAccent
-        : 'red'};
-
-    background-color: ${p =>
-      p.styled === 'black'
-        ? p.theme.colors.mainAccent
-        : p.styled === 'olive'
-        ? p.theme.colors.btnHoverBg
-        : p.styled === 'transparent'
-        ? 'transparent'
-        : p.styled === 'other'
-        ? p.theme.colors.mainAccent
-        : 'red'};
-
+    color: ${({ styled, theme }) => {
+      switch (styled) {
+        case 'black':
+          return theme.colors.mainSerchHoverText;
+        case 'olive':
+          return theme.colors.searchDropDownBg;
+        case 'other':
+          return theme.colors.btnTextLight;
+        case 'transparent':
+          return theme.colors.mainAccent;
+        default:
+          return 'red';
+      }
+    }};
+    background-color: ${({ styled, theme }) => {
+      switch (styled) {
+        case 'black':
+          return theme.colors.footerSMlinks;
+        case 'olive':
+          return theme.colors.searchFormHoverBtn;
+        case 'transparent':
+          return 'transparent';
+        case 'other':
+          return theme.colors.mainAccent;
+        default:
+          return 'red';
+      }
+    }};
     border: ${p =>
-      p.styled === 'transparent'
+      p.styled === 'black'
+        ? `1px solid ${p.theme.colors.mainAccent}`
+        : p.styled === 'olive'
+        ? p.theme.borders.mainNavBord
+        : p.styled === 'transparent'
         ? `1px solid ${p.theme.colors.mainAccent}`
         : '1px solid transparent'};
   }
 
   @media screen and (min-width: 768px) {
-    min-width: 130px;
-    font-size: 14px;
     padding: ${p =>
       p.location === 'favorite' || p.location === 'recipes'
         ? '12px 32px'
-        : '16px 40px'};
+        : '16px 32px'};
+    min-width: 130px;
   }
 
   @media screen and (min-width: 1440px) {

@@ -22,7 +22,7 @@ const SearchPage = () => {
   useEffect(() => {
     axios({
       method: 'get',
-      url: `http://localhost:3001/recipes/search/${keyword}?page=${page}&limit=${LIMIT}`,
+      url: `https://determined-ruby-nematode.cyclic.app/recipes/search/${keyword}?page=${page}&limit=${LIMIT}`,
     }).then(function (data) {
       console.log(data);
       setRecipes(

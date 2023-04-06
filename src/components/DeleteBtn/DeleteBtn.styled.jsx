@@ -1,36 +1,10 @@
-// import { useDispatch } from 'react-redux';
-
 import styled from 'styled-components';
-// import {
-//   deleteFavorite,
-//   deleteOwnRecipe,
-// } from 'redux/ownRecipes/ownRecipesOperations';
+
 import sprite from '../../images/sprite.svg';
 
-export const DeleteBtn = ({ location, id }) => {
-  // const dispatch = useDispatch();
-  const handleDeleteBtnClick = () => {
-    // if (location === 'favorite') {
-    //   dispatch(deleteFavorite(id));
-    // } else {
-    //   dispatch(deleteOwnRecipe(id));
-    // }
-    console.log(handleDeleteBtnClick);
-  };
-  return (
-    <DeleteBtnWrapper
-      type="button"
-      onClick={handleDeleteBtnClick}
-      location={location}
-    >
-      <svg>
-        <use href={sprite + `#trash`} />
-      </svg>
-    </DeleteBtnWrapper>
-  );
-};
+export { sprite };
 
-export const DeleteBtnWrapper = styled.button`
+export const Wrapper = styled.button`
   width: 24px;
   height: 24px;
   display: flex;
@@ -41,7 +15,7 @@ export const DeleteBtnWrapper = styled.button`
   cursor: pointer;
   border-radius: ${p => p.theme.radii.btnIcon};
   background-color: ${p =>
-    p.location === 'recipes'
+    p.ViewMode === 'recipes'
       ? p.theme.colors.mainAccent
       : p.theme.colors.secondaryAccent};
   transition: ${p => p.theme.transitions.main};
@@ -70,7 +44,7 @@ export const DeleteBtnWrapper = styled.button`
 
   & svg {
     stroke: ${p =>
-      p.location === 'recipes'
+      p.ViewMode === 'recipes'
         ? p.theme.colors.deleteBtnIcon
         : p.theme.colors.mainDark};
     width: 14px;

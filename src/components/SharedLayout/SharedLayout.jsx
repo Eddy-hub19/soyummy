@@ -4,6 +4,7 @@ import { Loader } from '../Loader/Loader';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { SharedLayoutConteiner } from './SharedLayout.styled';
+// import { MainPage } from 'pages/MainPage/MainPage';
 
 const SharedLayout = () => {
   return (
