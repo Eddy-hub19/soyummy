@@ -1,18 +1,37 @@
 {
   "files": {
     "main.css": "/soyummy/static/css/main.616d4ae7.css",
-    "main.js": "/soyummy/static/js/main.08961637.js",
-    "static/js/93.2a6c4b9f.chunk.js": "/soyummy/static/js/93.2a6c4b9f.chunk.js",
+    "main.js": "/soyummy/static/js/main.3d00fc5c.js",
+    "static/js/93.23e60b62.chunk.js": "/soyummy/static/js/93.23e60b62.chunk.js",
+    "static/media/bg_big_desktop_2x.png": "/soyummy/static/media/bg_big_desktop_2x.088180e00dd0b716a522.png",
+    "static/media/bg_big_tablet_2x.png": "/soyummy/static/media/bg_big_tablet_2x.315208ec35d471abc100.png",
     "static/media/mainTab-min.png": "/soyummy/static/media/mainTab-min.0b3a2e47751bdfde27fc.png",
+    "static/media/bg_small_desktop_2x.png": "/soyummy/static/media/bg_small_desktop_2x.0832559b62dc82041efa.png",
+    "static/media/bg_big_desktop_1x.png": "/soyummy/static/media/bg_big_desktop_1x.8c0030c464bcdef435ea.png",
+    "static/media/bg_big_mobile_2x.png": "/soyummy/static/media/bg_big_mobile_2x.e6bddf98431a062a2c9a.png",
+    "static/media/bg_big_tablet_1x.png": "/soyummy/static/media/bg_big_tablet_1x.df22f7cad53eb74831f8.png",
+    "static/media/bg_small_tablet_2x.png": "/soyummy/static/media/bg_small_tablet_2x.d0755725e0e15adf9ea0.png",
     "static/media/foto.jpg": "/soyummy/static/media/foto.eeb2fd607983520e02d7.jpg",
+    "static/media/mobile-menu-bg-tab-2x-min.png": "/soyummy/static/media/mobile-menu-bg-tab-2x-min.a7f59d34bb6f73793435.png",
+    "static/media/bg_small_desktop_1x.png": "/soyummy/static/media/bg_small_desktop_1x.62aeca015d405cb3d721.png",
+    "static/media/bg_big_mobile_1x.png": "/soyummy/static/media/bg_big_mobile_1x.ab9dc927e6e3af42cae1.png",
+    "static/media/bg_small_mob_2x.png": "/soyummy/static/media/bg_small_mob_2x.b2d8cebd8d8139202231.png",
+    "static/media/mobile-menu-bg-mob-2x-min.png": "/soyummy/static/media/mobile-menu-bg-mob-2x-min.68d247441edc70fd5c0b.png",
+    "static/media/bg_small_tablet_1x.png": "/soyummy/static/media/bg_small_tablet_1x.cd965a444181b88f1cfd.png",
+    "static/media/mobile-menu-bg-tab-1x-min.png": "/soyummy/static/media/mobile-menu-bg-tab-1x-min.94ab13c1f302b6f94cb9.png",
     "static/media/sprite.svg": "/soyummy/static/media/sprite.d5b5384cb95212f815b676ebf8628de0.svg",
+    "static/media/bg_small_mob_1x.png": "/soyummy/static/media/bg_small_mob_1x.22078318d1abb582886d.png",
+    "static/media/mobile-menu-bg-mob-1x-min.png": "/soyummy/static/media/mobile-menu-bg-mob-1x-min.b236250f3373e3cd26b8.png",
+    "static/media/logo_desc.svg": "/soyummy/static/media/logo_desc.3326a095578a5f612526f7ab93edd379.svg",
     "index.html": "/soyummy/index.html",
+    "static/media/logo_tablet-desk_footer.svg": "/soyummy/static/media/logo_tablet-desk_footer.3973999e1d5e8f9f9106b706397f54e9.svg",
+    "static/media/plus.svg": "/soyummy/static/media/plus.e2a277e044198db3f782f3e240f0af13.svg",
     "main.616d4ae7.css.map": "/soyummy/static/css/main.616d4ae7.css.map",
-    "main.08961637.js.map": "/soyummy/static/js/main.08961637.js.map",
-    "93.2a6c4b9f.chunk.js.map": "/soyummy/static/js/93.2a6c4b9f.chunk.js.map"
+    "main.3d00fc5c.js.map": "/soyummy/static/js/main.3d00fc5c.js.map",
+    "93.23e60b62.chunk.js.map": "/soyummy/static/js/93.23e60b62.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.616d4ae7.css",
-    "static/js/main.08961637.js"
+    "static/js/main.3d00fc5c.js"
   ]
 }
