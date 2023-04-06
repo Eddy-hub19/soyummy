@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 // import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { useMediaRules } from 'hooks/MediaRules';
+import { useMediaQuery } from 'hooks/useMedia';
 // import { getName, getAvatar } from 'redux/auth/authSelectors';
 import sprite from '../../images/sprite.svg';
 import {
@@ -24,7 +24,7 @@ import { CloseBtnAssembly } from 'components/CloseButtonAssembly/CloseBtnAssembl
 
 export const HeaderAssembly = () => {
   const { pathname } = useLocation();
-  const isRowBased = useMediaRules('(min-width: 1440px)');
+  const isRowBased = useMediaQuery('(min-width: 1440px)');
   const [showMenu, setShowMenu] = useState(false);
   const [color, setColor] = useState('light');
   const [navColor, setNavColor] = useState('light');
