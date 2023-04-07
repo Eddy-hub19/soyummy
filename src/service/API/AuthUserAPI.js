@@ -2,6 +2,15 @@ import axios from 'axios';
 
 axios.defaults.baseURL = process.env.REACT_APP_BASE_URL_BACK;
 
+const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = '';
+  },
+};
+
 export const signUpUserAPI = user => {
   return axios.post('/auth/signup', user).then(({ data }) => {
     return data;
@@ -51,3 +60,26 @@ export const subscribeEmailConfirmation = token => {
       return data;
     });
 };
+
+export async function postUser(credentials) {
+  const { data } = await axios.post(`/auth/register`, credentials);
+  token.set(data.token);
+  return data;
+}
+
+export async function logIn(credentials) {
+  const { data } = await axios.post(`/auth/login`, credentials);
+  token.set(data.token);
+  return data;
+}
+
+export async function logOut() {
+  await axios.post(`/auth/logout`);
+  token.unset();
+}
+
+export async function fetchCurrentUser(persisterToken) {
+  token.set(persisterToken);
+  const { data } = await axios.get(`/auth/current`);
+  return data;
+}

@@ -1,4 +1,56 @@
+import styled from 'styled-components';
+import FormAuthDes from '../../images/desktop/FormAuthDes.png';
+import mobileBg from '../../images/mobile/FormAuthMob-min.png';
+import tabletBg from '../../images/tablet/FormAuthTab-min.png';
 
+export const Button = styled.button`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 21px 138px;
+  gap: 8px;
+
+  width: 400px;
+  height: 59px;
+  left: 50px;
+  top: 316px;
+
+  background: #8baa36;
+  border-radius: 6px;
+
+  color: #fafafa;
+
+  transition: ${({ theme }) => theme.transitions.main};
+  &:hover {
+    color: black;
+
+    &:active:focus {
+      /* box-shadow: 0 5px #666; */
+      transform: translateY(4px);
+    }
+  }
+`;
+
+export const AuthBg = styled.div`
+  @media (max-width: 700px) {
+    background-image: url(${mobileBg});
+  }
+  @media (min-width: 768), (max-width: 1439px) {
+    background-image: url(${tabletBg});
+  }
+  @media (min-width: 1440px) {
+    background-image: url(${FormAuthDes});
+  }
+  height: 100vh;
+  width: 100vw;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+`;
+
+/* 
 
 .container {
   margin: auto;
@@ -67,29 +119,17 @@ border-radius: 15px;
   filter: hue-rotate(110deg);
 }
 .button {
-  background: #03e9f4;;
-  min-width: 100px;
-  text-decoration: none;
-  position: relative;
-  display: inline-block;
-  padding: 10px;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: 0.35s;
-  letter-spacing: 4px;
-  overflow: hidden;
+  clip-path: inset(25% 0 25% 0 round 15% 35% 15% 30%) ;
+  padding: 50px 42px;
+  background-color: #8BAA36;
   border: none;
-  border-radius: 15px;
-  box-shadow: 0 5px #666;
 }
 .button:hover {
-  background: #03e9f4;
-  color: #050801;
+  background: #22252A;
+  color: #FAFAFA;
 }
 .button:active {
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
-.button:nth-child(4) {
-  filter: hue-rotate(180deg);
-}
+ */
