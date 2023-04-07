@@ -6,6 +6,7 @@ export const SeeAllButton = ({ adress }) => {
     <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
       {/* "See all" button*/}
       <NavLink
+        to={adress}
         style={{
           backgroundColor: '#8AA936',
           maxWidth: 50,
