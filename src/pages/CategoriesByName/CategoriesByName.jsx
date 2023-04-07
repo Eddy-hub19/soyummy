@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 // import { getLimitedRecipes } from 'redux/outerRecipes/outerRecipesSelectors';
 import { RowTable } from './CategoriesByName.styled';
 import { getAllRecipesByCategoryAPI } from 'service/axios/axios';
-import { Loader } from 'components/Loader/Loader';
+import { LoaderAbsolute } from 'components/LoaderAbsolute/LoaderAbsolute';
 
 const CategoriesByName = () => {
     const { categoryName } = useParams();
@@ -39,7 +39,7 @@ const CategoriesByName = () => {
 
     return (
       <RowTable>
-        {recipes.length === 0 && <Loader/>}
+        {recipes.length === 0 && <LoaderAbsolute/>}
             {recipes.map(meal => (
                 <CardMeal meal={meal} key={meal._id} />
             ))}

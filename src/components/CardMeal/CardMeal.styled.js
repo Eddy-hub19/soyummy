@@ -79,6 +79,7 @@ export const CardDish = styled.li`
   
 
     :hover img {
+      box-shadow: 0 0 7px 5px #7b3a02;
       transform: scale(1.25);
       filter: contrast(130%);
     }
