@@ -62,6 +62,7 @@ export const CardDish = styled.li`
   height: 323px;
   border-radius: 8px;
   position: relative;
+ 
 
   @media (min-width: 768px) {
     width: calc((100% - 32px) / 2);
@@ -75,6 +76,7 @@ export const CardDish = styled.li`
     display: block;
     overflow: hidden;
     border-radius: 8px;
+  
 
     :hover img {
       transform: scale(1.25);

@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 // import { getLimitedRecipes } from 'redux/outerRecipes/outerRecipesSelectors';
 import { RowTable } from './CategoriesByName.styled';
 import { getAllRecipesByCategoryAPI } from 'service/axios/axios';
+import { Loader } from 'components/Loader/Loader';
 
 const CategoriesByName = () => {
     const { categoryName } = useParams();
@@ -15,10 +16,8 @@ const CategoriesByName = () => {
   return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
-    const [trendFilms, setTrendFilms] = useState([]);
+    const [recipes, setRecipes] = useState([]);
     const category = capitalizeWord(categoryName)
-
-    // console.log(getAllRecipesByCategoryAPI(category))
 
     useEffect(() => {
       
@@ -26,20 +25,22 @@ const CategoriesByName = () => {
       const categorys = getAllRecipesByCategoryAPI(category);
 
       categorys.then(data => {
-        return setTrendFilms(data);
+        return setRecipes(data);
       });
     } catch (error) {
       console.log(error)
     }
-    }, [categoryName,category]);
+    }, [categoryName, category]);
+  
+  console.log('recipes.length:', recipes.length)
 
-    console.log(trendFilms)
   
 
 
     return (
-        <RowTable>
-            {trendFilms.map(meal => (
+      <RowTable>
+        {recipes.length === 0 && <Loader/>}
+            {recipes.map(meal => (
                 <CardMeal meal={meal} key={meal._id} />
             ))}
         </RowTable>
