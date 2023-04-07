@@ -21,7 +21,7 @@ export const RecipeIngredientsFields = () => {
     <ul>
       <h2>RecipeIngredientsFields</h2>
       {ingredients.map(({ ttl, id }) => {
-        <li key={id}>{ttl}</li>;
+        return <li key={id}>{ttl}</li>;
       })}
     </ul>
   );
