@@ -5,7 +5,7 @@ export const TooltipWrapper = styled.div`
   display: none;
 `;
 
-export const CardTitle = styled.div`
+export const CardTitle = styled.p`
   font-family: ${theme.fonts.main};
   font-style: normal;
   font-weight: 500;
@@ -17,9 +17,9 @@ export const CardTitle = styled.div`
   background-color: ${p => p.theme.colors.recipeBlockBg};
   position: absolute;
   top: 245px;
-  left: 18px;
+  left: 16px;
   border-radius: 8px;
-  width: calc(100% - 36px);
+  width: calc(100% - 64px);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

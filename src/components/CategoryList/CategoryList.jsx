@@ -30,7 +30,7 @@ export const CategoryList = () => {
 
 
     useEffect(() => {
-        // if (fullCategoryList.length === 0) return;
+        if (mapArray.length === 0) return;
 
         // setMapArray([...fullCategoryList]);
 
