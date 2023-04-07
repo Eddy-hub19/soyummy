@@ -13,7 +13,7 @@ export const MainPageRecipesList = ({ recipes }) => {
             listStyle: 'none',
             display: 'flex',
             flexDirection: 'row',
-            justifyContent: 'space-around',
+            justifyContent: 'space-between',
           }}
         >
           {/* Recipe item */}
@@ -22,7 +22,7 @@ export const MainPageRecipesList = ({ recipes }) => {
           })}
         </ul>
 
-        <SeeAllButton />
+        <SeeAllButton adress={`/categories/${Object.keys(recipes)[0]}`} />
       </li>
 
       <li key={Object.keys(recipes)[1]} style={{ marginBottom: 100 }}>
@@ -32,7 +32,7 @@ export const MainPageRecipesList = ({ recipes }) => {
             listStyle: 'none',
             display: 'flex',
             flexDirection: 'row',
-            justifyContent: 'space-around',
+            justifyContent: 'space-between',
             marginBottom: 20,
           }}
         >
@@ -41,7 +41,7 @@ export const MainPageRecipesList = ({ recipes }) => {
           })}
         </ul>
 
-        <SeeAllButton />
+        <SeeAllButton adress={`/categories/${Object.keys(recipes)[1]}`} />
       </li>
 
       <li key={Object.keys(recipes)[2]} style={{ marginBottom: 100 }}>
@@ -51,7 +51,7 @@ export const MainPageRecipesList = ({ recipes }) => {
             listStyle: 'none',
             display: 'flex',
             flexDirection: 'row',
-            justifyContent: 'space-around',
+            justifyContent: 'space-between',
             marginBottom: 20,
           }}
         >
@@ -60,7 +60,7 @@ export const MainPageRecipesList = ({ recipes }) => {
           })}
         </ul>
 
-        <SeeAllButton />
+        <SeeAllButton adress={`/categories/${Object.keys(recipes)[2]}`} />
       </li>
 
       <li key={Object.keys(recipes)[3]} style={{ marginBottom: 100 }}>
@@ -70,7 +70,7 @@ export const MainPageRecipesList = ({ recipes }) => {
             listStyle: 'none',
             display: 'flex',
             flexDirection: 'row',
-            justifyContent: 'space-around',
+            justifyContent: 'space-between',
             marginBottom: 20,
           }}
         >
@@ -79,7 +79,7 @@ export const MainPageRecipesList = ({ recipes }) => {
           })}
         </ul>
 
-        <SeeAllButton />
+        <SeeAllButton adress={`/categories/${Object.keys(recipes)[3]}`} />
       </li>
     </ul>
   );
