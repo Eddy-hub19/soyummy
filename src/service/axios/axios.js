@@ -22,3 +22,8 @@ export const getAllRecipesByCategoryAPI = category => {
     return data;
   });
 };
+
+export const getIngradientsFieldsApi = async () => {
+  const response = await axios.get(`/ingredients/list`);
+  return response.data;
+};

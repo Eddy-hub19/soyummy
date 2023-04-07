@@ -2,11 +2,10 @@ import { toast } from 'react-toastify';
 
 import { useEffect, useState } from 'react';
 import store from 'store';
-import { SocialLinks } from 'components/FooterAssembly/SocialLinks/SocialLinks';
+// import { SocialLinks } from 'components/FooterAssembly/SocialLinks/SocialLinks';
 import {
   RecipeForm,
   MainWrapper,
-  StyledSocialTitle,
   StyledSocialWrepper,
 } from './addRecipe.styled';
 import { Title } from 'components/Titel/Titel';
@@ -21,7 +20,7 @@ import { AddRecipeSubmit } from 'components/AddRecipeSubmit/AddRecipeSubmit';
 import { useMediaRules } from 'hooks/MediaRules';
 import { AddRecipeToastifyError } from 'components/AddRecipeToastifyError/AddRecipeToastifyError';
 
-// import { RecipeIngredientsFields } from 'components/RecipeIngredientsFields/RecipeIngredientsFields';
+import { RecipeIngredientsFields } from 'components/RecipeIngredientsFields/RecipeIngredientsFields';
 import { FollowUs } from 'components/FollowUs/FollowUs';
 
 // import { useNavigate } from 'react-router-dom';
@@ -207,7 +206,6 @@ const AddRecipe = () => {
     <>
       <Container>
         <Title>Add recipe</Title>
-        <FollowUs />
         <MainWrapper isDesktop={isDesktop}>
           <RecipeForm
             onSubmit={handleSubmit}
@@ -238,6 +236,8 @@ const AddRecipe = () => {
               localTheme={theme}
             />
 
+            <RecipeIngredientsFields />
+
             <AddRecipeSubmit
               inputs={inputs}
               handleChange={handleChange}
@@ -246,8 +246,9 @@ const AddRecipe = () => {
           </RecipeForm>
           <div>
             <StyledSocialWrepper>
-              <StyledSocialTitle> Follow us</StyledSocialTitle>
-              <SocialLinks />
+              {/* <StyledSocialTitle> Follow us</StyledSocialTitle>
+              <SocialLinks /> */}
+              <FollowUs text={'Folow Us'} />
             </StyledSocialWrepper>
             {/* <AddRecipePopular
             isDesktop={isDesktop}
@@ -256,7 +257,6 @@ const AddRecipe = () => {
           /> */}
           </div>
         </MainWrapper>
-        {/* <RecipeIngredientsFields /> */}
       </Container>
     </>
   );
