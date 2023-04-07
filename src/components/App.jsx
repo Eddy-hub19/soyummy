@@ -3,10 +3,11 @@ import { lazy } from 'react';
 
 // import { PublicRoute } from 'service/routes';
 // import { PrivateRoute } from 'service/routes';
+import { RestrictedRoute } from 'service/routes';
+
 import { ThemeProvider } from 'styled-components';
 
 // import Main from 'pages/Main/Main';
-// import Signin from 'pages/Signin/Signin';
 // import Subscribe from 'pages/Subscribe/Subscribe';
 import SharedLayout from './SharedLayout/SharedLayout';
 import AddRecipe from 'pages/AddRecipe/AddRecipe';
@@ -19,7 +20,6 @@ import SignIn from 'pages/Signin/Signin';
 import Categories from 'pages/Categories/Categories';
 import MyRecipes from 'pages/MyRecipes/MyRecipes';
 import CategoriesByName from 'pages/CategoriesByName/CategoriesByName';
-
 
 const MainPage = lazy(() =>
   import('pages/MainPage/MainPage').then(module => ({
@@ -53,9 +53,7 @@ export const App = () => {
         />
         <Route
           path="/register"
-          Component={Register}
-          restricted
-          redirectTo="/main"
+          element={<RestrictedRoute component={Register} redirectTo="/main" />}
         />
         <Route
           path="/signin"
@@ -84,17 +82,15 @@ export const App = () => {
           <Route path="/add" element={<AddRecipe />} />
           <Route path="/my" element={<MyRecipes />} />
           <Route path="/categories" element={<Categories />}>
-          <Route path=":categoryName" element={<CategoriesByName />} />
+            <Route path=":categoryName" element={<CategoriesByName />} />
           </Route>
-
-
         </Route>
 
         <Route path="/recipes/:recipeId" element={<Recipe />} />
         <Route path="/shopping-list" element={<ShopingList />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/main" element={<MainPage />} />
-        
+        <Route path="*" element={<MainPage />} />
         {/* <Route path="/my" element={<MyRecipes />} /> */}
 
         {/* <Route path="/" element={<UserSharedLayout />} /> */}
