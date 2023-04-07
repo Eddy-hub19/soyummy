@@ -1,10 +1,10 @@
 import sprite from '../../images/sprite.svg';
-import { FollowUsWrap, IconsFolowUs } from './FollowUs.styled';
+import { FolowUsTitle, IconsFolowUs } from './FollowUs.styled';
 
-export const FollowUs = () => {
+export const FollowUs = ({ text }) => {
   return (
-    <FollowUsWrap>
-      <h2 style={{ color: '#3E4462' }}>Follow us</h2>
+    <>
+      <FolowUsTitle>{text}</FolowUsTitle>
       <IconsFolowUs>
         <a
           href="https://www.facebook.com"
@@ -43,6 +43,6 @@ export const FollowUs = () => {
           </svg>
         </a>
       </IconsFolowUs>
-    </FollowUsWrap>
+    </>
   );
 };
