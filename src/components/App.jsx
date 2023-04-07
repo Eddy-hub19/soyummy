@@ -83,16 +83,17 @@ export const App = () => {
           <Route path="/main" element={<MainPage />} />
           <Route path="/add" element={<AddRecipe />} />
           <Route path="/my" element={<MyRecipes />} />
+          <Route path="/categories" element={<Categories />}>
+            <Route path=":categoryName" element={<CategoriesByName />} />
+          </Route>
+          
         </Route>
 
         <Route path="/recipes/:recipeId" element={<Recipe />} />
         <Route path="/shopping-list" element={<ShopingList />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/main" element={<MainPage />} />
-        <Route path="/categories" element={<Categories />}>
-          <Route path=":categoryName" element={<CategoriesByName />} />
-
-        </Route>
+        
         {/* <Route path="/my" element={<MyRecipes />} /> */}
 
         {/* <Route path="/" element={<UserSharedLayout />} /> */}
