@@ -62,8 +62,11 @@ export const CardDish = styled.li`
   height: 323px;
   border-radius: 8px;
   position: relative;
+  transition: box-shadow 500ms cubic-bezier(0.4, 0, 0.2, 1);
  
-
+  :hover {
+      box-shadow: 0 0 7px 5px ${p=> p.theme.colors.mainGrey};
+    }
   @media (min-width: 768px) {
     width: calc((100% - 32px) / 2);
   }
@@ -79,9 +82,9 @@ export const CardDish = styled.li`
   
 
     :hover img {
-      box-shadow: 0 0 7px 5px #7b3a02;
       transform: scale(1.25);
       filter: contrast(130%);
     }
+
   }
 `;
