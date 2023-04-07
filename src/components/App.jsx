@@ -85,10 +85,14 @@ export const App = () => {
             <Route path=":categoryName" element={<CategoriesByName />} />
           </Route>
           <Route path="/shopping-list" element={<ShopingList />} />
+
+          
+
         </Route>
         <Route path="/recipes/:recipeId" element={<Recipe />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/main" element={<MainPage />} />
+
         <Route path="*" element={<MainPage />} />
 
         {/* <Route path="/my" element={<MyRecipes />} /> */}
