@@ -16,6 +16,10 @@ import { theme } from '../theme/theme';
 import { AuthNav } from './AuthNav/AuthNav';
 import Register from 'pages/Register/Register';
 import SignIn from 'pages/Signin/Signin';
+import Categories from 'pages/Categories/Categories';
+import MyRecipes from 'pages/MyRecipes/MyRecipes';
+import CategoriesByName from 'pages/CategoriesByName/CategoriesByName';
+
 
 const MainPage = lazy(() =>
   import('pages/MainPage/MainPage').then(module => ({
@@ -27,6 +31,7 @@ const MainPage = lazy(() =>
 // const Favorites = lazy(() => import('pages/Favorites/Favorites'));
 const ShopingList = lazy(() => import('pages/ShoppingList/ShoppingList'));
 const SearchPage = lazy(() => import('../pages/SearchPage/SearchPage'));
+const Recipe = lazy(() => import('../pages/RecipePage/RecipePage'));
 
 export const App = () => {
   return (
@@ -75,24 +80,29 @@ export const App = () => {
             // </PrivateRoute>
           }
         >
+          <Route path="/main" element={<MainPage />} />
           <Route path="/add" element={<AddRecipe />} />
+          <Route path="/my" element={<MyRecipes />} />
         </Route>
 
+        <Route path="/recipes/:recipeId" element={<Recipe />} />
+        <Route path="/shopping-list" element={<ShopingList />} />
+        <Route path="/search" element={<SearchPage />} />
         <Route path="/main" element={<MainPage />} />
-        <Route path="/add" element={<AddRecipe />} />
+        <Route path="/categories" element={<Categories />}>
+          <Route path=":categoryName" element={<CategoriesByName />} />
+
+        </Route>
         {/* <Route path="/my" element={<MyRecipes />} /> */}
+
         {/* <Route path="/" element={<UserSharedLayout />} /> */}
         {/* <Route path="/signin" element={<AuthNav />} />
         <Route path="/register" element={<AuthNav />} /> */}
-        {/* <Route path="/recipes/:recipeId" element={<Recipe />} /> */}
-
         {/* <Route path="/categories" element={<Categories />}>
         <Route path=":categoryName" element={<CategoriesByName />} />
-      </Route>
-      <Route path="/add" element={<AddRecipe />} /> */}
+        </Route>
+        <Route path="/add" element={<AddRecipe />} /> */}
         {/* <Route path="/favorite" element={<Favorites />} /> */}
-        <Route path="/shopping-list" element={<ShopingList />} />
-        <Route path="/search" element={<SearchPage />} />
         {/* <Route path="/recipe/:recipeId" element={<Recipe />} /> */}
         {/* <Route path="*" element={<Error />} /> */}
       </Routes>

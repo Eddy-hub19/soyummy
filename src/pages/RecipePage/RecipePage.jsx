@@ -4,19 +4,20 @@ import RecipePreparation from "components/RecipePreparation/RecipePreparation";
 import { getRecipeById } from "../../service/axios/axios";
 import React from "react";
 import { useState, useEffect } from 'react';
-// import { useParams, Outlet, Link, useLocation } from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 // import  from '@mui/material/Button';
 
 
-const RecipePage = ({ id = "640cd5ac2d9fecf12e8897ef" }) => {
+const RecipePage = () => {
     const [recipe, setRecipe] = useState(null);
-    //   const { id } = useParams();
+    const { recipeId } = useParams();
+    console.log(recipeId);
     //   const location = useLocation();
     //   const backLinkHref = location.state?.from ?? '/recipes';
 
     useEffect(() => {
-        getRecipeById(id).then(setRecipe);
-    }, [id]);
+        getRecipeById(recipeId).then(setRecipe);
+    }, [recipeId]);
 
 
     console.log(recipe);

@@ -4,10 +4,29 @@ import styled from 'styled-components';
 
 export const MainWrapper = styled.div`
   display: ${({ isDesktop }) => (isDesktop ? 'flex' : 'unset')};
-  gap: 100px;
+  gap: 121px;
   padding-bottom: 200px;
+  margin-top: 72px;
+  @media screen and (min-width: 768px) {
+    margin-top: 100px;
+  }
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    justify-content: space-between;
+  }
 `;
 
+export const StyledSocialTitle = styled.h3`
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: -0.24px;
+  color: var(--mainTextColor);
+  margin-bottom: 40px;
+`;
+export const StyledSocialWrepper = styled.div`
+  margin-top: 72px;
+`;
 export const RecipeForm = styled.form`
   width: 100%;
 

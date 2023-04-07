@@ -19,12 +19,12 @@ export const FooterWrap = styled.form`
     @media screen and (min-width: 768px) {
       width: 20px;
       height: 16px;
-      top: 18px;
-      left: 75px;
+      top: 16px;
+      left: 120px;
     }
 
     @media screen and (min-width: 1440px) {
-      top: 126px;
+      top: 145px;
       left: 20px;
     }
   }
@@ -63,7 +63,7 @@ export const FooterWrap = styled.form`
     }
 
     @media screen and (min-width: 1440px) {
-      top: 82px;
+      top: 100px;
       left: 0;
     }
   }
@@ -92,7 +92,6 @@ export const FooterWrapText = styled.div`
 `;
 
 export const FooterWrapInput = styled.input`
-  width: 204px;
   height: 38px;
   font-weight: 400;
   font-size: 10px;
@@ -108,15 +107,13 @@ export const FooterWrapInput = styled.input`
   transition: ${p => p.theme.transitions.main};
 
   @media screen and (min-width: 768px) {
-    width: 259px;
-    height: 50px;
+    height: 46px;
     padding-left: 51px;
     font-size: 14px;
     line-height: 21px;
   }
 
   @media screen and (min-width: 1440px) {
-    width: 338px;
     padding-left: 51px;
     height: 59px;
   }
@@ -154,7 +151,7 @@ export const FooterWrapInput = styled.input`
 
 export const InputFlag = styled.div`
   position: absolute;
-  top: 11px;
+  top: 13px;
   right: 12px;
   width: 20px;
   height: 20px;
@@ -164,13 +161,13 @@ export const InputFlag = styled.div`
   pointer-events: none;
 
   @media screen and (min-width: 768px) {
-    top: 15px;
+    top: 17px;
     right: 302px;
   }
 
   @media screen and (min-width: 1440px) {
-    top: 126px;
-    right: 12px;
+    top: 145px;
+    right: 16px;
   }
 `;
 
