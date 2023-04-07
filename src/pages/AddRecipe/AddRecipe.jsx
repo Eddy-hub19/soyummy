@@ -2,14 +2,13 @@ import { toast } from 'react-toastify';
 
 import { useEffect, useState } from 'react';
 import store from 'store';
-import { SocialLinks } from 'components/FooterAssembly/SocialLinks/SocialLinks';
+// import { SocialLinks } from 'components/FooterAssembly/SocialLinks/SocialLinks';
 import {
   RecipeForm,
   MainWrapper,
-  StyledSocialTitle,
   StyledSocialWrepper,
 } from './addRecipe.styled';
-import { Title } from 'components/Titel/Titel';
+import { Title } from 'components/Title/Title';
 import { nanoid } from '@reduxjs/toolkit';
 import { Container } from 'components/Container/Container';
 // import { useDispatch } from 'react-redux';
@@ -20,6 +19,9 @@ import { AddRecipeSubmit } from 'components/AddRecipeSubmit/AddRecipeSubmit';
 // import { addOwnRecipe } from 'redux/ownRecipes/ownRecipesOperations';
 import { useMediaRules } from 'hooks/MediaRules';
 import { AddRecipeToastifyError } from 'components/AddRecipeToastifyError/AddRecipeToastifyError';
+
+import { RecipeIngredientsFields } from 'components/RecipeIngredientsFields/RecipeIngredientsFields';
+import { FollowUs } from 'components/FollowUs/FollowUs';
 
 // import { useNavigate } from 'react-router-dom';
 // import { scrollToTop } from 'utils/scrollUp';
@@ -234,6 +236,8 @@ const AddRecipe = () => {
               localTheme={theme}
             />
 
+            <RecipeIngredientsFields />
+
             <AddRecipeSubmit
               inputs={inputs}
               handleChange={handleChange}
@@ -242,8 +246,9 @@ const AddRecipe = () => {
           </RecipeForm>
           <div>
             <StyledSocialWrepper>
-              <StyledSocialTitle> Follow us</StyledSocialTitle>
-              <SocialLinks />
+              {/* <StyledSocialTitle> Follow us</StyledSocialTitle>
+              <SocialLinks /> */}
+              <FollowUs text={'Folow Us'} />
             </StyledSocialWrepper>
             {/* <AddRecipePopular
             isDesktop={isDesktop}

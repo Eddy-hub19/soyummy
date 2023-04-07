@@ -5,12 +5,15 @@ import {
   SelectComp,
 } from 'pages/AddRecipe/addRecipe.styled';
 // import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+
 import Select from 'react-select';
-// import { categoriesOptionsList } from 'utils/categoriesOptionList';
+//import { categoriesOptionsList } from 'utils/categoriesOptionList';
 import { timeOptionsList } from 'utils/timeOptionsList';
 // import { getFullCategoryList } from 'redux/outerRecipes/outerRecipesSelectors';
 import icons from '../../images/sprite.svg';
 import { stylesMeta } from 'pages/AddRecipe/selectStyles';
+import { getCategoryListAPI } from 'service/axios/axios';
 import store from 'store';
 
 export const AddRecipeMeta = ({
@@ -23,8 +26,30 @@ export const AddRecipeMeta = ({
   file,
   isMobile,
 }) => {
-  // const optionsCategoris = useSelector(getFullCategoryList);
   const theme = store.get('theme');
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const handleEffect = async () => {
+      try {
+        const allCategories = await getCategoryListAPI();
+
+        setItems([...allCategories]);
+
+        if (allCategories.length === 0) {
+          return;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    handleEffect();
+  }, []);
+
+  const options = items.map(item => ({
+    label: item,
+    value: item,
+  }));
 
   return (
     <AddRecepiSection isDesktop={isDesktop} path={path}>
@@ -58,14 +83,15 @@ export const AddRecipeMeta = ({
         <InputsWithSelectWrapper>
           <SelectComp localTheme={theme} isMobile={isMobile}>
             <p>Categories</p>
+
             <Select
               styles={stylesMeta(theme)}
-              // options={categoriesOptionsList(optionsCategoris)}
+              options={options}
               defaultValue={{
                 label: inputs.category,
                 value: inputs.category,
               }}
-              placeholder=" "
+              placeholder=""
               onChange={handleSelect}
               name="category"
             />

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 // import axios from 'axios';
 
 import { Container } from '../../components/Container/Container';
-import { Title } from 'components/Titel/Titel';
+import { Title } from 'components/Title/Title';
 import { RecipesItem } from 'components/RecipesItem/RecipesItem';
 import { EmptyPlaceholder } from 'pages/EmptyPlaceholder/EmptyPlaceholder';
 
