@@ -1,23 +1,44 @@
 import React from 'react';
-import {ReactComponent as Clock} from 'images/svg-before sprite/clock.svg';
+import { ButtonSkew } from 'components/ButtonSkew/ButtonSkew';
+import sprite from '../../images/sprite.svg';
+import {
+  RecipeHeroContainer,
+  HeroTitle,
+    HeroText,
+    CookingTime
+} from './RecipePageHero.styled';
+import { Loader } from 'components/Loader/Loader';
 
 const RecipePageHero = ({ recipe }) => {
     const { title, description, time,  } = recipe;
+    
     return (
-        // <div style={"background-image: url('./images/recipe_hero_mob_1x.jpg'); width: 375px; height: 455px;}" >
-        <div>
-            <h1>{title}</h1>
-            <p>{description}</p>
-            <button type="button">Add to favorite recipes</button>
+        <>
+            <RecipeHeroContainer>
+            {/* <Loader></Loader> */}
+            <HeroTitle>{title}</HeroTitle>
+            <HeroText>{description}</HeroText>
+            <ButtonSkew
+                type="button"
+                text="Add to favorite recipes"
+                styled="other"
+                location="recipes"
+                // fn={addtoFavorite}
+                />
 
-            {/* <div style="display: flex; justify-content: center;"> */}
-            <div>
-                {/* <img src="images/clock.svg" /> */}
-                <Clock/>
-                <p>{time}</p>
-            </div>
-        </div>
-    );
-};
+            {time !== '' ? (
+            <CookingTime>
+                <svg>
+                <use href={sprite + `#icon-clock`} />
+                </svg>
+                <span>{time + ` min`}</span>
+            </CookingTime>
+            ) : (
+            <CookingTime></CookingTime>
+                )}
+                
+            </RecipeHeroContainer>
+            </>
+    )};
 
 export default RecipePageHero;
