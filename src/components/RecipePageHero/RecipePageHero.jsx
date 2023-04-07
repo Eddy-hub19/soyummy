@@ -7,7 +7,7 @@ import {
     HeroText,
     CookingTime
 } from './RecipePageHero.styled';
-import { Loader } from 'components/Loader/Loader';
+// import { Loader } from 'components/Loader/Loader';
 
 const RecipePageHero = ({ recipe }) => {
     const { title, description, time,  } = recipe;
