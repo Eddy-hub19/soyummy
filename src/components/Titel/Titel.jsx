@@ -6,7 +6,7 @@ export const Title = ({ children }) => {
   // const { mode } = useSelector(getMode);
 
   return (
-    <TitleConteiner>
+    <TitleConteiner mode="light">
       <h2>{children}</h2>
     </TitleConteiner>
   );

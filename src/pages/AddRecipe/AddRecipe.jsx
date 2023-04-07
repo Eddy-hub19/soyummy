@@ -2,9 +2,14 @@ import { toast } from 'react-toastify';
 
 import { useEffect, useState } from 'react';
 import store from 'store';
-
-import { RecipeForm, MainWrapper } from './addRecipe.styled';
-import { Title } from 'components/Title/Title';
+import { SocialLinks } from 'components/FooterAssembly/SocialLinks/SocialLinks';
+import {
+  RecipeForm,
+  MainWrapper,
+  StyledSocialTitle,
+  StyledSocialWrepper,
+} from './addRecipe.styled';
+import { Title } from 'components/Titel/Titel';
 import { nanoid } from '@reduxjs/toolkit';
 import { Container } from 'components/Container/Container';
 // import { useDispatch } from 'react-redux';
@@ -15,7 +20,7 @@ import { AddRecipeSubmit } from 'components/AddRecipeSubmit/AddRecipeSubmit';
 // import { addOwnRecipe } from 'redux/ownRecipes/ownRecipesOperations';
 import { useMediaRules } from 'hooks/MediaRules';
 import { AddRecipeToastifyError } from 'components/AddRecipeToastifyError/AddRecipeToastifyError';
-import { RecipeIngredientsFields } from 'components/RecipeIngredientsFields/RecipeIngredientsFields';
+
 // import { useNavigate } from 'react-router-dom';
 // import { scrollToTop } from 'utils/scrollUp';
 
@@ -216,6 +221,7 @@ const AddRecipe = () => {
               handleChange={handleChange}
               handleSelect={handleSelect}
             />
+
             <AddRecipeIngredients
               counter={userIngredients.length}
               userIngredients={userIngredients}
@@ -234,14 +240,18 @@ const AddRecipe = () => {
               localTheme={theme}
             />
           </RecipeForm>
-          {/* <AddRecipePopular
+          <div>
+            <StyledSocialWrepper>
+              <StyledSocialTitle> Follow us</StyledSocialTitle>
+              <SocialLinks />
+            </StyledSocialWrepper>
+            {/* <AddRecipePopular
             isDesktop={isDesktop}
             isTablet={isTablet}
             localTheme={theme}
           /> */}
+          </div>
         </MainWrapper>
-
-        <RecipeIngredientsFields />
       </Container>
     </>
   );
