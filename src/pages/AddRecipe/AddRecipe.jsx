@@ -9,7 +9,7 @@ import {
   StyledSocialTitle,
   StyledSocialWrepper,
 } from './addRecipe.styled';
-import { Title } from 'components/Title/Title';
+import { Title } from 'components/Titel/Titel';
 import { nanoid } from '@reduxjs/toolkit';
 import { Container } from 'components/Container/Container';
 // import { useDispatch } from 'react-redux';
