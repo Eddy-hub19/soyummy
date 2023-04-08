@@ -1,7 +1,9 @@
 import { Counter } from 'components/Counter/Counter';
 import { SubTitle } from 'components/SubTitle/SubTitle';
+import { useState, useEffect } from 'react';
 import Select from 'react-select';
 import icons from '../../images/sprite.svg';
+import { getIngradientsFieldsApi } from 'service/axios/axios';
 
 import {
   ButtonRemoveItem,
@@ -24,24 +26,51 @@ export const AddRecipeIngredients = ({
   isMobile,
   handleDecrement,
   handleIncrement,
-  handleUserIngredient,
+  // handleUserIngredient,
   handleUnitValue,
   handleRemove,
   localTheme,
 }) => {
   // const optionsIngredients = useSelector(getIngredients);
+  const [options, setOptions] = useState([]);
 
+  useEffect(() => {
+    const handleEffect = async () => {
+      try {
+        const ingredientsObj = await getIngradientsFieldsApi();
+        const allIngredients = ingredientsObj.ingredients;
+        const options = allIngredients.map(ingr => ({
+          label: ingr.ttl,
+          value: ingr.ttl,
+        }));
+
+        setOptions([...options]);
+
+        // if (allCategories.length === 0) {
+        //   return;
+        // }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    handleEffect();
+  }, []);
+
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  function handleSelect(selectedOption) {
+    setSelectedOption(selectedOption);
+  }
   const userIngredientsList = userIngredients.map(
     ({ id, unitValue, ingredient, qty }) => {
       return (
         <IngredientsItem key={id} localTheme={localTheme}>
           <Select
             styles={stylesIngredient(localTheme)}
-            // options={ingredientsOptionsList(optionsIngredients)}
-            defaultValue={{ label: ingredient, value: ingredient }}
+            options={options}
+            value={selectedOption}
             placeholder=" "
-            onChange={handleUserIngredient}
-            name={`ingredient ${id}`}
+            onChange={handleSelect}
           />
           <ValueInputWrapper isMobile={isMobile} localTheme={localTheme}>
             <InputUnitValue
@@ -56,11 +85,11 @@ export const AddRecipeIngredients = ({
             <Select
               styles={stylesUnit(localTheme)}
               options={unitsOptionsList}
-              defaultValue={{ label: qty, value: qty }}
               placeholder=" "
-              onChange={handleUserIngredient}
-              isSearchable={false}
-              name={`qty ${id}`}
+              onChange={handleSelect}
+              value={selectedOption}
+              // isSearchable={false}
+              // name={`qty ${id}`}
             />
           </ValueInputWrapper>
           <ButtonRemoveItem type="button" id={id} onClick={handleRemove}>
