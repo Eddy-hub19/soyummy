@@ -72,7 +72,7 @@ const Favorites = () => {
 
     history(`?page=${pageNumber}`);
     setcurrentSlice([pageNumber * perPage - 4, pageNumber * perPage]);
-  }, [history, pageNumber]);
+  }, [history, pageNumber, total]);
 
   return (
     <Thumb>
