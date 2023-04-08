@@ -66,7 +66,7 @@ export const App = () => {
             ></PrivateRoute>
           }
         >
-          <Route path="/main" element={<MainPage />} />
+          <Route index element={<MainPage />} />
           <Route path="/add" element={<AddRecipe />} />
           <Route path="/my" element={<MyRecipes />} />
           <Route path="/favorite" element={<Favorites />} />
