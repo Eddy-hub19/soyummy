@@ -34,7 +34,7 @@ const MyRecipes = () => {
   useEffect(() => {
     dispatch(fetchMyRecipes());
     setRecipes(storageRecipes);
-
+    setisLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
