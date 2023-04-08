@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import userAvatar from '../../../images/default.jpg';
-import { HeaderUserModal } from '../HeaderUserModal/HeaderUserModalInfo';
+import { HeaderUserModal } from '../HeaderUserModal/HeaderUserModal';
 import { HeaderUserModalLogo } from '../HeaderModalLogo/UserModalLogo';
 import { HeaderUserBtn, HeaderUserWrapper } from './HeaderUserLogo.styled';
 
 export const HeaderUserLogo = ({
+  avatarUrl = userAvatar,
   color = 'light',
   name = 'User',
-  avatarUrl = userAvatar,
 }) => {
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -58,7 +58,7 @@ export const HeaderUserLogo = ({
 
         {showUserMenu && (
           <HeaderUserModalLogo
-            setShowUserMenu={() => setShowUserMenu}
+            setShowUserMenu={setShowUserMenu}
             toggleModal={toggleUserModal}
           />
         )}

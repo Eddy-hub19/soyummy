@@ -5,7 +5,7 @@ import {
   HeaderCloseBtnWrapper,
   HeaderModalOverlay,
   ModalWindow,
-} from './HeaderUserModalInfo.styled.js';
+} from './HeaderUserModal.styled.js';
 
 import { CloseBtnAssembly } from 'components/CloseButtonAssembly/CloseBtnAssembly.jsx';
 import { UserFormAssembly } from './HeaderUserForm.jsx';

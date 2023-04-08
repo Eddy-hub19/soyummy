@@ -9,15 +9,15 @@ import * as Yup from 'yup';
 
 import {
   UserForm,
-  FlagForInput,
-  InputsWrapper,
+  FlagInput,
+  InputWrapper,
   NameInput,
   NameLabel,
   UserAvatarWrapper,
   UserIcon,
-  // UserSvgWrapper,
-  ResetBtn,
-  SubmitBtn,
+  UserSvgWrapper,
+  BtnWrapper,
+  SaveChangesBtn,
 } from './HeaderUserForm.styled.js';
 
 const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png'];
@@ -42,8 +42,9 @@ const EditNameSchema = Yup.object().shape({
     .required('Name is required'),
 });
 
-export const UserFormAssembly = ({ name, avatarUrl, closeModalWindow }) => {
+export const UserFormAssembly = ({ name, avatarUrl, closeModal }) => {
   // const dispatch = useDispatch();
+  // eslint-disable-next-line no-undef
   // const userAvatar = useSelector(getAvatar);
   // const [path, setPath] = useState(userAvatar);
 
@@ -52,7 +53,7 @@ export const UserFormAssembly = ({ name, avatarUrl, closeModalWindow }) => {
     formData.append('name', values.name.trim());
     formData.append('picture', values.picture);
     // dispatch(updateUserInfo(formData));
-    closeModalWindow();
+    closeModal();
   };
 
   return (
@@ -71,10 +72,12 @@ export const UserFormAssembly = ({ name, avatarUrl, closeModalWindow }) => {
       {props => (
         <UserForm onSubmit={props.handleSubmit}>
           <UserAvatarWrapper>
-            {/* <label htmlFor="picture" id="labelFile">
-              {path ? (
+            <label htmlFor="picture" id="labelFile">
+              {/* {path ? ( */}
+              {0 ? (
                 <UserSvgWrapper>
-                  <img src={path} alt="user_picture" />
+                  {/* <img src={path} alt="user_picture" /> */}
+                  <img src={0} alt="user_picture" />
                 </UserSvgWrapper>
               ) : (
                 <UserSvgWrapper>
@@ -83,7 +86,7 @@ export const UserFormAssembly = ({ name, avatarUrl, closeModalWindow }) => {
                   </svg>
                 </UserSvgWrapper>
               )}
-            </label> */}
+            </label>
             <input
               type="file"
               id="picture"
@@ -108,7 +111,7 @@ export const UserFormAssembly = ({ name, avatarUrl, closeModalWindow }) => {
             <ErrorMessage location="file">{props.errors.picture}</ErrorMessage>
           ) : null}
 
-          <InputsWrapper>
+          <InputWrapper>
             <NameLabel htmlFor="name" id="labelName">
               <NameInput
                 type="text"
@@ -141,31 +144,31 @@ export const UserFormAssembly = ({ name, avatarUrl, closeModalWindow }) => {
                 <use href={sprite + `#user`} />
               </UserIcon>
               {props.touched.name && props.values.name ? (
-                <FlagForInput>
+                <FlagInput>
                   <use
                     href={`${sprite}${getColor(
                       props.errors.name,
                       props.values.name
                     )}`}
                   ></use>
-                </FlagForInput>
+                </FlagInput>
               ) : (
                 props.values.name && (
-                  <ResetBtn
+                  <BtnWrapper
                     type="button"
                     onClick={() => props.setFieldValue('name', '')}
                   >
                     <svg>
                       <use href={sprite + `#edit`} />
                     </svg>
-                  </ResetBtn>
+                  </BtnWrapper>
                 )
               )}
             </NameLabel>
             {props.errors.name && props.touched.name ? (
               <ErrorMessage>{props.errors.name}</ErrorMessage>
             ) : null}
-            <SubmitBtn
+            <SaveChangesBtn
               type="submit"
               disabled={
                 !(
@@ -179,8 +182,8 @@ export const UserFormAssembly = ({ name, avatarUrl, closeModalWindow }) => {
               }
             >
               Save changes
-            </SubmitBtn>
-          </InputsWrapper>
+            </SaveChangesBtn>
+          </InputWrapper>
         </UserForm>
       )}
     </Formik>
