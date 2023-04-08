@@ -3,15 +3,107 @@ import FormAuthDes from '../../images/desktop/FormAuthDes.png';
 import mobileBg from '../../images/mobile/FormAuthMob-min.png';
 import tabletBg from '../../images/tablet/FormAuthTab-min.png';
 
+export const Input = styled.input`
+  max-width: 199px;
+  width: 100%;
+  height: 41px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+  color: ${p => p.theme.colors.mainLight};
+  background-color: transparent;
+  border-radius: 6px;
+  padding-left: 42px;
+  padding-right: 38px;
+  border: 1px solid ${({ borderColor }) => borderColor};
+  outline: transparent;
+  transition: ${p => p.theme.transitions.main};
+  margin-bottom: 12px;
+
+  @media screen and (min-width: 768px) {
+    height: 46px;
+    padding-left: 51px;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding-left: 51px;
+    height: 59px;
+  }
+
+  :hover,
+  :focus {
+    border: 1px solid ${({ color }) => color};
+    &::placeholder {
+      opacity: 1;
+    }
+  }
+
+  ::placeholder {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 15px;
+    letter-spacing: -0.02em;
+    color: ${p => p.theme.colors.mainLight};
+    opacity: 0.8;
+
+    @media screen and (min-width: 768px) {
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
+
+  :-webkit-autofill {
+    transition: background-color 250s linear, color 250s linear;
+  }
+
+  &:hover ~ svg.icon use {
+    opacity: 1;
+  }
+`;
+
+export const Box = styled.div`
+  @media (min-width: 1440px) {
+    gap: 50px;
+    padding: 44px 50px;
+  }
+  @media (min-width: 768px), (max-width: 1439px) {
+    padding: 44px 50px;
+    gap: 25px;
+  }
+  @media (max-width: 767px) {
+    max-width: 279px;
+    gap: 25px;
+    padding: 32px 28px 40px;
+  }
+
+  max-width: 500px;
+  width: 100%;
+  background-color: #2a2c36;
+  box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+`;
+
 export const Button = styled.button`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 21px 138px;
+  padding: 21px;
   gap: 8px;
 
+  @media (max-width: 900px) {
+    width: 279px;
+  }
   width: 400px;
+
   height: 59px;
   left: 50px;
   top: 316px;
@@ -33,7 +125,7 @@ export const Button = styled.button`
 `;
 
 export const AuthBg = styled.div`
-  @media (max-width: 700px) {
+  @media (max-width: 767px) {
     background-image: url(${mobileBg});
   }
   @media (min-width: 768), (max-width: 1439px) {
