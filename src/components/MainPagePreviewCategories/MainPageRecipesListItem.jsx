@@ -1,21 +1,28 @@
 import { NavLink } from 'react-router-dom';
+import { Item } from './MainItem.styled';
+import { CardImg } from 'components/CardMeal/CardMeal.styled';
 //============================================================//
 
 export const MainPageRecipesListItem = ({ recipe }) => {
   return (
-    <li
+    <Item
       style={{
-        border: 'solid 1px red',
         position: 'relative',
         marginBottom: 50,
       }}
       key={recipe._id}
     >
       <NavLink to="">
-        <img src={recipe.preview} alt="foto" />
+        <CardImg
+          style={{
+            transition: 'all 1030ms ease-out 0s',
+          }}
+          src={recipe.preview}
+          alt="foto"
+        />
         <h6>{recipe.title}</h6>
       </NavLink>
-    </li>
+    </Item>
   );
 };
 // key={recipe._id}
