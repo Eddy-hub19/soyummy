@@ -19,6 +19,7 @@ import Register from 'pages/Register/Register';
 import SignIn from 'pages/Signin/Signin';
 import Categories from 'pages/Categories/Categories';
 import MyRecipes from 'pages/MyRecipes/MyRecipes';
+import Favorites from 'pages/Favorites/Favorites';
 import CategoriesByName from 'pages/CategoriesByName/CategoriesByName';
 
 const MainPage = lazy(() =>
@@ -81,13 +82,11 @@ export const App = () => {
           <Route path="/main" element={<MainPage />} />
           <Route path="/add" element={<AddRecipe />} />
           <Route path="/my" element={<MyRecipes />} />
+          <Route path="/favorite" element={<Favorites />} />
           <Route path="/categories" element={<Categories />}>
             <Route path=":categoryName" element={<CategoriesByName />} />
           </Route>
           <Route path="/shopping-list" element={<ShopingList />} />
-
-          
-
         </Route>
         <Route path="/recipes/:recipeId" element={<Recipe />} />
         <Route path="/search" element={<SearchPage />} />
@@ -104,7 +103,7 @@ export const App = () => {
         <Route path=":categoryName" element={<CategoriesByName />} />
         </Route>
         <Route path="/add" element={<AddRecipe />} /> */}
-        {/* <Route path="/favorite" element={<Favorites />} /> */}
+
         {/* <Route path="/recipe/:recipeId" element={<Recipe />} /> */}
         {/* <Route path="*" element={<Error />} /> */}
       </Routes>
