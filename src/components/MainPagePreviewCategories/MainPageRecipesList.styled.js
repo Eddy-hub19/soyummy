@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const Item = styled.li`
   width: 300px;
@@ -30,12 +31,16 @@ export const TitlePageCategory = styled.h4`
   margin-bottom: 50px;
 `;
 
-export const BtnSeeAll = styled.button`
-  width: 94px;
-  height: 38px;
-  background: #8aa936;
+export const NavLinkBtnSeeAll = styled(NavLink)`
+  background-color: #8aa936;
+  max-width: 50;
   border-radius: 6px;
-  flex: none;
-  order: 1;
-  flex-grow: 0;
+  font-size: 14px;
+  padding: 10px 24px;
+  color: white;
+  transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  :hover {
+    background-color: rgb(35, 38, 42);
+    color: white;
+  }
 `;
