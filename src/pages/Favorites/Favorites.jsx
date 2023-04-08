@@ -33,7 +33,7 @@ const Favorites = () => {
   useEffect(() => {
     dispatch(fetchFavorites());
     setRecipes(storageFavorite);
-
+    setisLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
