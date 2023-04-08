@@ -1,27 +1,28 @@
 // import { useDispatch } from 'react-redux';
 // import { logOut } from 'redux/auth/authOperations';
 import {
-  Content,
-  ConfirmText,
+  LogOutContainer,
+  LogOutText,
   LogoutWrapper,
-  LogoutMenuBtn,
+  LogoutBtn,
+  LogoutBtnCancel,
 } from './HeaderLogoutConfirmation.styled';
 
-export const LogoutAssembly = ({ closeModalWindow }) => {
+export const LogoutAssembly = ({ closeModal }) => {
   // const dispatch = useDispatch();
   const onLogOutBtnClick = () => {
     // dispatch(logOut());
-    closeModalWindow();
+    closeModal();
   };
   return (
-    <Content>
-      <ConfirmText>Are you sure you want to log out?</ConfirmText>
+    <LogOutContainer>
+      <LogOutText>Are you sure you want to log out?</LogOutText>
       <LogoutWrapper>
-        <LogoutMenuBtn onClick={onLogOutBtnClick}>Log out</LogoutMenuBtn>
-        <LogoutMenuBtn status="cancel" onClick={closeModalWindow}>
+        <LogoutBtn onClick={onLogOutBtnClick}>Log out</LogoutBtn>
+        <LogoutBtnCancel status="cancel" onClick={closeModal}>
           Cancel
-        </LogoutMenuBtn>
+        </LogoutBtnCancel>
       </LogoutWrapper>
-    </Content>
+    </LogOutContainer>
   );
 };
