@@ -45,7 +45,7 @@ export const App = () => {
             </PublicRoute>
           }
         /> */}
-        <Route
+        {/* <Route
           path="/start"
           element={<AuthNav />}
           restricted
@@ -60,7 +60,7 @@ export const App = () => {
           Component={SignIn}
           restricted
           redirectTo="/main"
-        />
+        /> */}
         {/* <Route
           path="/confirm-email"
           element={
@@ -85,15 +85,12 @@ export const App = () => {
             <Route path=":categoryName" element={<CategoriesByName />} />
           </Route>
           <Route path="/shopping-list" element={<ShopingList />} />
+          <Route path="/recipes/:recipeId" element={<Recipe />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/main" element={<MainPage />} />
 
-          
-
+          <Route path="*" element={<MainPage />} />
         </Route>
-        <Route path="/recipes/:recipeId" element={<Recipe />} />
-        <Route path="/search" element={<SearchPage />} />
-        <Route path="/main" element={<MainPage />} />
-
-        <Route path="*" element={<MainPage />} />
 
         {/* <Route path="/my" element={<MyRecipes />} /> */}
 

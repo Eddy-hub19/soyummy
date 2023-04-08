@@ -11,6 +11,7 @@ import {
 } from './EmptyPlaceholder.styled';
 
 export const EmptyPlaceholder = ({ text }) => {
+  console.log(text);
   return (
     <EmptyDiv>
       <EmptyImgDiv>
