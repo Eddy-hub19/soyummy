@@ -41,17 +41,20 @@ const ShoppingListTabl = () => {
     try {
       async function remove() {
         if (e.target.id) {
-          const response = await removeShoppingListAPI(e.target.id);
+          await removeShoppingListAPI(e.target.id);
+          // const response = await removeShoppingListAPI(e.target.id);
         }
 
         if (e.target.parentNode.id) {
-          const response = await removeShoppingListAPI(e.target.parentNode.id);
+          await removeShoppingListAPI(e.target.parentNode.id);
+          // const response = await removeShoppingListAPI(e.target.parentNode.id);
         }
 
         if (e.target.parentNode.parentNode.id) {
-          const response = await removeShoppingListAPI(
-            e.target.parentNode.parentNode.id
-          );
+          await removeShoppingListAPI(e.target.parentNode.parentNode.id);
+          // const response = await removeShoppingListAPI(
+          //   e.target.parentNode.parentNode.id
+          // );
         }
       }
 
