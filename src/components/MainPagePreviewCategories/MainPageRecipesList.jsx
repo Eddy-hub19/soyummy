@@ -1,4 +1,4 @@
-import { TitlePageCategory } from './MainItem.styled';
+import { TitlePageCategory } from './MainPageRecipesList.styled';
 import { MainPageRecipesListItem } from './MainPageRecipesListItem';
 import { SeeAllButton } from './SeeAllButton';
 //============================================================//
