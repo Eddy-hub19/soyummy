@@ -1,8 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+//temporary
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchFavorites } from 'redux/favorites/favoritesOperation';
+import {
+  fetchFavorites,
+  deleteFavorite,
+} from 'redux/favorites/favoritesOperation';
+
 import { getFavorites } from 'redux/favorites/favoritesSelectors';
 
 import { Container } from '../../components/Container/Container';
@@ -17,10 +22,10 @@ import { RecipesList, Thumb, img } from './Favorites.styled';
 
 const Favorites = () => {
   const dispatch = useDispatch();
-  const storageFavorite = useSelector(getFavorites);
+  const favorite = dispatch(fetchFavorites());
 
   const [recipes, setRecipes] = useState([]);
-  const [isLoading, setisLoading] = useState(false);
+  const [isLoading, setisLoading] = useState(true);
 
   const [total, setTotal] = useState(0);
   const [currentSlice, setcurrentSlice] = useState([0, 4]);
@@ -30,17 +35,43 @@ const Favorites = () => {
   const [pageNumber, setPageNumber] = useState(+page);
   const perPage = 4;
 
-  useEffect(() => {
-    dispatch(fetchFavorites());
-    setRecipes(storageFavorite);
+  // useEffect(() => {
+  //   dispatch(fetchFavorites());
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch]);
+  // }, []);
 
   useEffect(() => {
-    setRecipes(storageFavorite);
-    setTotal(storageFavorite.length);
-  }, [storageFavorite]);
+    try {
+      // setisLoading(true);
+      // fetchRecipes();
+    } catch (error) {
+    } finally {
+    }
+  }, []);
+
+  // const fetchRecipes = async () => {
+  //   const token =
+  //     'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmRiYmRjODE3Mzc2ZTIzY2IxZjI5OCIsImlhdCI6MTY4MDg5MjEwNSwiZXhwIjoxNjgyNjkyMTA1fQ.Y22mj81DN2y6H8_WspbIOS_E6qCwuXKrx-VdoWP1Y9k';
+
+  //   try {
+  //     const response = await fetch(
+  //       `https://determined-ruby-nematode.cyclic.app/favorite/`,
+  //       {
+  //         headers: {
+  //           Authorization: `${token}`,
+  //         },
+  //       }
+  //     );
+  //     const data = await response.json();
+  //     setisLoading(false);
+
+  //     setTotal(data.result.length);
+
+  //     setRecipes(data.result);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   const handleChange = (event, value) => {
     setPageNumber(value);
@@ -63,8 +94,8 @@ const Favorites = () => {
         <Loader />
       ) : (
         <Container>
-          <Title>Favorites</Title>
-          {storageFavorite && storageFavorite.length > 0 ? (
+          <Title>My recipes</Title>
+          {recipes && recipes.length > 0 ? (
             <RecipesList>
               {recipes.slice(...currentSlice).map(recipe => {
                 return (
