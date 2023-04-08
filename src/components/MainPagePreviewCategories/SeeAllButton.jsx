@@ -13,6 +13,7 @@ export const SeeAllButton = ({ adress }) => {
           borderRadius: '6px',
           fontSize: '14px',
           padding: '10px 24px',
+          color: "white",
         }}
       >
         See all
