@@ -1,11 +1,19 @@
 import styled from 'styled-components';
 
+export const Thumb = styled.div`
+  padding-bottom: 100px;
+
+  @media screen and (min-width: 768px) {
+    padding-bottom: 200px;
+  }
+`;
+
+
 export const Table = styled.ul`
   width: 100%;
   font-family: ${p => p.theme.fonts.main};
-  margin: 0 0 100px 0;
   @media screen and (min-width: 769px) {
-    margin: -25px 0 195px 0;
+    margin-top: -25px;
   }
 `;
 
