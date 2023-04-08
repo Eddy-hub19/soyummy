@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const BASE_URL_BACKEND = 'https://determined-ruby-nematode.cyclic.app';
 const AUTH_TOKEN =
-  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmFkODk1YjFlNmFkYzgxYTkzNmYzYiIsImlhdCI6MTY4MDg4NTAyOSwiZXhwIjoxNjgyNjg1MDI5fQ.8IhA_kR_T9Vbctcmrgk_FHQvkob9LzUhhNoSwiLI1cA';
+  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzExYzAxMzA2Njc3YmU0MDJkNGEyMCIsImlhdCI6MTY4MDk0MDA3MSwiZXhwIjoxNjgxMTkyMDcxfQ.lIqBoVEiNf-HlGNYMzzRNtQa0Qxv3DNaqVE8tJYPYKM';
 // axios.defaults.baseURL = process.env.BASE_URL_BACKEND;
 axios.defaults.baseURL = BASE_URL_BACKEND;
 axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
