@@ -1,19 +1,16 @@
 import { Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
-
-// import { PublicRoute } from 'service/routes';
-// import { PrivateRoute } from 'service/routes';
-import { RestrictedRoute } from 'service/routes';
-
 import { ThemeProvider } from 'styled-components';
+import { theme } from '../theme/theme';
+import { PrivateRoute } from 'service/routes';
+import { RestrictedRoute } from 'service/routes';
 
 // import Main from 'pages/Main/Main';
 // import Subscribe from 'pages/Subscribe/Subscribe';
+// import Error from 'pages/Error/Error';
+// import UserSharedLayout from './HeaderUserBar/UserSharedLayout';
 import SharedLayout from './SharedLayout/SharedLayout';
 import AddRecipe from 'pages/AddRecipe/AddRecipe';
-// import Error from 'pages/Error/Error';
-import { theme } from '../theme/theme';
-// import UserSharedLayout from './HeaderUserBar/UserSharedLayout';
 import { AuthNav } from './AuthNav/AuthNav';
 import Register from 'pages/Register/Register';
 import SignIn from 'pages/Signin/Signin';
@@ -28,39 +25,29 @@ const MainPage = lazy(() =>
   }))
 );
 
-// const MyRecipes = lazy(() => import('pages/MyRecipes/MyRecipes'));
-// const Favorites = lazy(() => import('pages/Favorites/Favorites'));
 const ShopingList = lazy(() => import('pages/ShoppingList/ShoppingList'));
 const SearchPage = lazy(() => import('../pages/SearchPage/SearchPage'));
 const Recipe = lazy(() => import('../pages/RecipePage/RecipePage'));
-
+// const MyRecipes = lazy(() => import('pages/MyRecipes/MyRecipes'));
+// const Favorites = lazy(() => import('pages/Favorites/Favorites'));
+//============================================================================//
 export const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Routes>
-        {/* <Route
-          path="/"
-          element={
-            <PublicRoute restricted>
-              <Main />
-            </PublicRoute>
-          }
-        /> */}
         <Route
-          path="/start"
-          element={<AuthNav />}
-          restricted
-          redirectTo="/main"
+          path="/startPage"
+          element={<RestrictedRoute redirectTo="/main" component={AuthNav} />}
         />
+
         <Route
           path="/register"
-          element={<RestrictedRoute component={Register} redirectTo="/main" />}
+          element={<RestrictedRoute redirectTo="/main" component={Register} />}
         />
+
         <Route
           path="/signin"
-          Component={SignIn}
-          restricted
-          redirectTo="/main"
+          element={<RestrictedRoute redirectTo="/main" component={SignIn} />}
         />
         {/* <Route
           path="/confirm-email"
@@ -70,13 +57,13 @@ export const App = () => {
             </PublicRoute>
           }
         /> */}
-
         <Route
           path="/"
           element={
-            // <PrivateRoute>
-            <SharedLayout />
-            // </PrivateRoute>
+            <PrivateRoute
+              redirectTo="/startPage"
+              component={SharedLayout}
+            ></PrivateRoute>
           }
         >
           <Route path="/main" element={<MainPage />} />
@@ -87,15 +74,11 @@ export const App = () => {
             <Route path=":categoryName" element={<CategoriesByName />} />
           </Route>
           <Route path="/shopping-list" element={<ShopingList />} />
+          <Route path="/recipes/:recipeId" element={<Recipe />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="*" element={<MainPage />} />
         </Route>
-        <Route path="/recipes/:recipeId" element={<Recipe />} />
-        <Route path="/search" element={<SearchPage />} />
-        <Route path="/main" element={<MainPage />} />
-
-        <Route path="*" element={<MainPage />} />
-
         {/* <Route path="/my" element={<MyRecipes />} /> */}
-
         {/* <Route path="/" element={<UserSharedLayout />} /> */}
         {/* <Route path="/signin" element={<AuthNav />} />
         <Route path="/register" element={<AuthNav />} /> */}
@@ -103,7 +86,6 @@ export const App = () => {
         <Route path=":categoryName" element={<CategoriesByName />} />
         </Route>
         <Route path="/add" element={<AddRecipe />} /> */}
-
         {/* <Route path="/recipe/:recipeId" element={<Recipe />} /> */}
         {/* <Route path="*" element={<Error />} /> */}
       </Routes>
