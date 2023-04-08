@@ -69,7 +69,7 @@ export const AddRecepiSection = styled.div`
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: white;
+    color: black !important;
     overflow: hidden;
     background-image: ${({ path }) => (path ? `url(${path})` : 'unset')};
     background-size: cover;
