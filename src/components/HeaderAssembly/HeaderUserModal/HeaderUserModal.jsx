@@ -13,16 +13,11 @@ import { LogoutAssembly } from './HeaderLogoutConfirmation.jsx';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export const HeaderUserModal = ({
-  status,
-  name,
-  closeModalWindow,
-  avatarUrl,
-}) => {
+export const HeaderUserModal = ({ status, name, closeModal, avatarUrl }) => {
   useEffect(() => {
     const onEscPress = event => {
       if (event.code === 'Escape') {
-        closeModalWindow();
+        closeModal();
       }
     };
 
@@ -31,11 +26,11 @@ export const HeaderUserModal = ({
     return () => {
       window.removeEventListener('keydown', onEscPress);
     };
-  }, [closeModalWindow]);
+  }, [closeModal]);
 
   const onBackdropClick = event => {
     if (event.currentTarget === event.target) {
-      closeModalWindow();
+      closeModal();
     }
   };
 
@@ -43,19 +38,17 @@ export const HeaderUserModal = ({
     <HeaderModalOverlay onClick={onBackdropClick}>
       <ModalWindow status={status}>
         <HeaderCloseBtnWrapper>
-          <CloseBtnAssembly location="modal" onClick={closeModalWindow} />
+          <CloseBtnAssembly location="modal" onClick={closeModal} />
         </HeaderCloseBtnWrapper>
 
         {status === 'edit' && (
           <UserFormAssembly
             name={name}
             avatarUrl={avatarUrl}
-            closeModalWindow={closeModalWindow}
+            closeModalWindow={closeModal}
           />
         )}
-        {status === 'logout' && (
-          <LogoutAssembly closeModalWindow={closeModalWindow} />
-        )}
+        {status === 'logout' && <LogoutAssembly closeModal={closeModal} />}
       </ModalWindow>
     </HeaderModalOverlay>,
     modalRoot
