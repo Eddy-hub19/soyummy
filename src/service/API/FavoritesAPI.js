@@ -1,6 +1,4 @@
-import axios from 'axios';
-
-axios.defaults.baseURL = process.env.REACT_APP_BASE_URL_BACK;
+import { axiosInstance } from 'service/API/axios';
 
 export const fetchFavorites = token => {
   const config = {
@@ -9,7 +7,7 @@ export const fetchFavorites = token => {
     },
   };
 
-  return axios.get(`/favorite/`, config).then(({ data }) => {
+  return axiosInstance.get(`/favorite/`, config).then(({ data }) => {
     return data;
   });
 };
@@ -21,9 +19,11 @@ export const deleteFavorite = (token, id) => {
     },
   };
 
-  return axios.delete(`/favorite/del/${id}`, config).then(({ data }) => {
-    return data;
-  });
+  return axiosInstance
+    .delete(`/favorite/del/${id}`, config)
+    .then(({ data }) => {
+      return data;
+    });
 };
 
 export const addFavorite = (token, id) => {
@@ -34,7 +34,9 @@ export const addFavorite = (token, id) => {
   };
 
   console.log(`/favorite/add/${id}`);
-  return axios.put(`/favorite/add/${id}`, {}, config).then(({ data }) => {
-    return data;
-  });
+  return axiosInstance
+    .put(`/favorite/add/${id}`, {}, config)
+    .then(({ data }) => {
+      return data;
+    });
 };

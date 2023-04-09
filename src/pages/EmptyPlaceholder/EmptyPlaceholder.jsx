@@ -9,8 +9,10 @@ import {
   plugDesktop1,
   plugDesktop2,
 } from './EmptyPlaceholder.styled';
+import { axiosInstance } from 'service/API/axios';
 
 export const EmptyPlaceholder = ({ text }) => {
+  console.log(axiosInstance.defaults.headers.common.Authorization);
   return (
     <EmptyDiv>
       <EmptyImgDiv>

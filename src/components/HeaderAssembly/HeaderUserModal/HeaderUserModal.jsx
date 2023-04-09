@@ -45,7 +45,7 @@ export const HeaderUserModal = ({ status, name, closeModal, avatarUrl }) => {
           <UserFormAssembly
             name={name}
             avatarUrl={avatarUrl}
-            closeModalWindow={closeModal}
+            closeModal={closeModal}
           />
         )}
         {status === 'logout' && <LogoutAssembly closeModal={closeModal} />}
