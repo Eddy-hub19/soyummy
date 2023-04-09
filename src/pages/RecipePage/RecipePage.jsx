@@ -1,6 +1,6 @@
 import RecipePageHero from 'components/RecipePageHero/RecipePageHero';
 import RecipeIngredientsList from 'components/RecipeIngredientsList/RecipeIngredientsList';
-import RecipePreparation from 'components/RecipePreparation/RecipePreparation';git status
+import RecipePreparation from 'components/RecipePreparation/RecipePreparation';
 import { getRecipeById } from '../../service/API/RecipeAPI';
 import React from 'react';
 import { useState, useEffect } from 'react';
