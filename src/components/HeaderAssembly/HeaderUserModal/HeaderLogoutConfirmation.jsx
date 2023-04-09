@@ -19,7 +19,7 @@ export const LogoutAssembly = ({ closeModal }) => {
       <LogOutText>Are you sure you want to log out?</LogOutText>
       <LogoutWrapper>
         <LogoutBtn onClick={onLogOutBtnClick}>Log out</LogoutBtn>
-        <LogoutBtnCancel status="cancel" onClick={closeModal}>
+        <LogoutBtnCancel status="cancel" onClick={() => closeModal()}>
           Cancel
         </LogoutBtnCancel>
       </LogoutWrapper>

@@ -71,13 +71,14 @@ export const App = () => {
             ></PrivateRoute>
           }
         >
-          <Route path="/main" element={<MainPage />} />
+          <Route index element={<MainPage />} />
           <Route path="/add" element={<AddRecipe />} />
           <Route path="/my" element={<MyRecipes />} />
           <Route path="/favorite" element={<Favorites />} />
           <Route path="/categories" element={<Categories />}>
             <Route path=":categoryName" element={<CategoriesByName />} />
           </Route>
+
           <Route path="/shopping-list" element={<ShopingList />} />
           <Route path="/recipes/:recipeId" element={<Recipe />} />
           <Route path="/search" element={<SearchPage />} />
