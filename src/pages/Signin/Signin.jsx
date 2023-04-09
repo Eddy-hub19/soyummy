@@ -1,93 +1,147 @@
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-
 import * as authOperation from '../../redux/auth/authOperation';
+import sprite from '../../images/sprite.svg';
 
 import { NavLink } from 'react-router-dom';
-import { Container, Box } from '@mui/material';
-import { AuthBg, Button } from './Signin.styled';
-import AuthPanaDesRet from '../../images/desktop/AuthPanaDesRet.png';
+import {
+  AuthBg,
+  Button,
+  Box,
+  Input,
+  BoxWraper,
+  Image,
+  Container,
+  InputWraper,
+} from './Signin.styled';
+import { getColor } from 'utils/formikColors';
+import * as Yup from 'yup';
+import { Formik, Form } from 'formik';
+
+const emailRegexp =
+  /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
 
 const SignIn = () => {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
-  const handleChange = ({ target: { name, value } }) => {
-    switch (name) {
-      case 'email':
-        return setEmail(value);
-      case 'password':
-        return setPassword(value);
-      default:
-        console.log('Invalid subscription type');
-    }
-  };
+  const schema = Yup.object().shape({
+    email: Yup.string()
+      .matches(emailRegexp, {
+        message: 'Your email must be valid',
+        name: 'email',
+        excludeEmptyString: true,
+      })
+      .min(5, 'Your email is too short')
+      .max(254, 'Your email is too long')
+      .lowercase()
+      .required('Type your email please'),
+    password: Yup.string()
+      .trim()
+      .matches(
+        /^[a-zA-Zа-яА-ЯА-ЩЬьЮюЯяЇїІіЄєҐґ0-9]+(([' -][a-zA-Zа-яА-Я0-9 ])?[a-zA-Zа-яА-Я0-9]*)*$/,
+        'Special symbols are not allowed'
+      )
+      .min(6, 'Your password is too short')
+      .max(16, 'Your password must be 16 characters max')
+      .required('Type your password please'),
+  });
 
-  const formSubmit = e => {
-    e.preventDefault();
-    dispatch(authOperation.logIn({ email, password }));
-    e.currentTarget.reset();
-    setEmail('');
-    setPassword('');
-  };
   return (
-    <AuthBg>
-      <Container
-        fixed
-        sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <img src={AuthPanaDesRet} alt="authBg" width={532} />
-        <Box
-          sx={{
-            width: '400px',
-            backgroundColor: '#2A2C36',
-            boxShadow: '0px 4px 48px rgba(0, 0, 0, 0.1)',
-            borderRadius: 30,
-            color: '#fafafa',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'start',
-            justifyContent: 'center',
-            gap: '50px',
-            padding: '44px 50px',
-          }}
-        >
-          <h2>Sign In</h2>
-          <form onSubmit={formSubmit}>
-            <div>
-              <input
-                autoComplete="off"
-                type="email"
-                name="email"
-                title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-                required
-                onChange={handleChange}
-              />
-              <label>Mail</label>
-            </div>
-            <div>
-              <input
-                autoComplete="off"
-                type="password"
-                name="password"
-                title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-                required
-                onChange={handleChange}
-              />
-              <label>Password</label>
-            </div>
-            <Button type="submit">Sign in</Button>
-          </form>
-          <NavLink to={'/register'}>Register</NavLink>
-        </Box>
+    <>
+      <Container>
+        <Image />
+        <BoxWraper>
+          <Box>
+            <h1>Registration</h1>
+            <Formik
+              initialValues={{
+                email: '',
+                password: '',
+              }}
+              isSubmitting={false}
+              isInitialValid={false}
+              validationSchema={schema}
+              onSubmit={async (values, actions) => {
+                const { email, password } = values;
+                console.log(email, password);
+                await dispatch(authOperation.logIn({ email, password }));
+              }}
+            >
+              {props => (
+                <Form>
+                  <InputWraper>
+                    <Input
+                      autoComplete="off"
+                      type="email"
+                      name="email"
+                      required
+                      onChange={props.handleChange}
+                      placeholder="Email"
+                      onBlur={props.handleBlur}
+                      value={props.values.email}
+                      color={getColor(
+                        props.errors.email,
+                        props.values.email,
+                        'rgba(255, 255, 255, 0.8)'
+                      )}
+                      borderColor={getColor(
+                        props.errors.email,
+                        props.values.email,
+                        'rgba(255, 255, 255, 0.3)'
+                      )}
+                    />
+                    <svg
+                      className="icon"
+                      fill={getColor(
+                        props.errors.email,
+                        props.values.email,
+                        'rgba(255, 255, 255, 0.8)'
+                      )}
+                    >
+                      <use href={sprite + '#email'}></use>
+                    </svg>
+                  </InputWraper>
+                  <InputWraper>
+                    <Input
+                      autoComplete="off"
+                      type="password"
+                      name="password"
+                      required
+                      onChange={props.handleChange}
+                      placeholder="password"
+                      onBlur={props.handleBlur}
+                      value={props.values.password}
+                      color={getColor(
+                        props.errors.password,
+                        props.values.password,
+                        'rgba(255, 255, 255, 0.8)'
+                      )}
+                      borderColor={getColor(
+                        props.errors.password,
+                        props.values.password,
+                        'rgba(255, 255, 255, 0.3)'
+                      )}
+                    />
+                    <svg
+                      className="icon"
+                      fill={getColor(
+                        props.errors.password,
+                        props.values.password,
+                        'rgba(255, 255, 255, 0.8)'
+                      )}
+                    >
+                      <use href={sprite + '#password'}></use>
+                    </svg>
+                  </InputWraper>
+                  <Button type="submit">Sign up</Button>
+                </Form>
+              )}
+            </Formik>
+          </Box>
+          <NavLink to={'/register'}>Register</NavLink>;
+        </BoxWraper>
       </Container>
-    </AuthBg>
+      <AuthBg></AuthBg>
+    </>
   );
 };
 export default SignIn;
