@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/soyummy/static/css/main.d9c30c8f.css",
-    "main.js": "/soyummy/static/js/main.3cea6620.js",
+    "main.js": "/soyummy/static/js/main.bbbb637d.js",
     "static/js/738.cca9f8c0.chunk.js": "/soyummy/static/js/738.cca9f8c0.chunk.js",
     "static/js/933.3c32b57d.chunk.js": "/soyummy/static/js/933.3c32b57d.chunk.js",
     "static/js/241.99c22f28.chunk.js": "/soyummy/static/js/241.99c22f28.chunk.js",
     "static/js/97.f863913b.chunk.js": "/soyummy/static/js/97.f863913b.chunk.js",
-    "static/js/347.b24242c3.chunk.js": "/soyummy/static/js/347.b24242c3.chunk.js",
-    "static/js/688.c68e5185.chunk.js": "/soyummy/static/js/688.c68e5185.chunk.js",
+    "static/js/347.1b08a2dc.chunk.js": "/soyummy/static/js/347.1b08a2dc.chunk.js",
+    "static/js/688.611984a9.chunk.js": "/soyummy/static/js/688.611984a9.chunk.js",
     "static/js/86.4687f8ef.chunk.js": "/soyummy/static/js/86.4687f8ef.chunk.js",
     "static/media/bg_big_desktop_2x.png": "/soyummy/static/media/bg_big_desktop_2x.088180e00dd0b716a522.png",
     "static/media/bg_big_tablet_2x.png": "/soyummy/static/media/bg_big_tablet_2x.315208ec35d471abc100.png",
@@ -48,17 +48,17 @@
     "static/media/logo_tablet-desk_footer.svg": "/soyummy/static/media/logo_tablet-desk_footer.3973999e1d5e8f9f9106b706397f54e9.svg",
     "static/media/plus.svg": "/soyummy/static/media/plus.e2a277e044198db3f782f3e240f0af13.svg",
     "main.d9c30c8f.css.map": "/soyummy/static/css/main.d9c30c8f.css.map",
-    "main.3cea6620.js.map": "/soyummy/static/js/main.3cea6620.js.map",
+    "main.bbbb637d.js.map": "/soyummy/static/js/main.bbbb637d.js.map",
     "738.cca9f8c0.chunk.js.map": "/soyummy/static/js/738.cca9f8c0.chunk.js.map",
     "933.3c32b57d.chunk.js.map": "/soyummy/static/js/933.3c32b57d.chunk.js.map",
     "241.99c22f28.chunk.js.map": "/soyummy/static/js/241.99c22f28.chunk.js.map",
     "97.f863913b.chunk.js.map": "/soyummy/static/js/97.f863913b.chunk.js.map",
-    "347.b24242c3.chunk.js.map": "/soyummy/static/js/347.b24242c3.chunk.js.map",
-    "688.c68e5185.chunk.js.map": "/soyummy/static/js/688.c68e5185.chunk.js.map",
+    "347.1b08a2dc.chunk.js.map": "/soyummy/static/js/347.1b08a2dc.chunk.js.map",
+    "688.611984a9.chunk.js.map": "/soyummy/static/js/688.611984a9.chunk.js.map",
     "86.4687f8ef.chunk.js.map": "/soyummy/static/js/86.4687f8ef.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d9c30c8f.css",
-    "static/js/main.3cea6620.js"
+    "static/js/main.bbbb637d.js"
   ]
 }
