@@ -1,11 +1,19 @@
-// import { useState } from 'react';
-// import { useDispatch } from 'react-redux';
-// import * as authOperation from '../../redux/auth/authOperation';
+import { useDispatch } from 'react-redux';
+import * as authOperation from '../../redux/auth/authOperation';
+import sprite from '../../images/sprite.svg';
+import iconPass from '../../images/Icon-pass.svg';
 
 import { NavLink } from 'react-router-dom';
-import { Container } from '@mui/material';
-import { AuthBg, Button, Box, Input } from './Register.styled';
-import AuthPanaDesRet from '../../images/desktop/AuthPanaDesRet.png';
+import {
+  AuthBg,
+  Button,
+  Box,
+  Input,
+  BoxWraper,
+  Image,
+  Container,
+  InputWraper,
+} from './Register.styled';
 import { getColor } from 'utils/formikColors';
 import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
@@ -14,10 +22,7 @@ const emailRegexp =
   /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
 
 const Register = () => {
-  // const dispatch = useDispatch();
-  // const [name, setName] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
 
   const schema = Yup.object().shape({
     name: Yup.string()
@@ -50,132 +55,138 @@ const Register = () => {
       .required('Type your password please'),
   });
 
-  // const handleChange = ({ target: { name, value } }) => {
-  //   switch (name) {
-  //     case 'name':
-  //       return setName(value);
-  //     case 'email':
-  //       return setEmail(value);
-  //     case 'password':
-  //       return setPassword(value);
-  //     default:
-  //       console.log('Invalid subscription type');
-  //   }
-  // };
-
-  // const formSubmit = e => {
-  //   e.preventDefault();
-  //   const { name, email, password } = e;
-
-  //   dispatch(authOperation.register({ name, email, password }));
-  // };
-
-  const submitHandler = e => {
-    e.preventDefault();
-    console.log(e);
-    // dispatch(authOperation.register());
-  };
-
   return (
-    <AuthBg>
-      <Container
-        sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <img src={AuthPanaDesRet} alt="authBg" width={532} />
-
-        <Box>
-          <h1>Registration</h1>
-          <Formik
-            initialValues={{
-              name: '',
-              email: '',
-              password: '',
-            }}
-            isSubmitting={true}
-            isInitialValid={true}
-            validationSchema={schema}
-            onSubmit={(values, actions) => {
-              console.log(values, actions);
-            }}
-          >
-            {props => (
-              <Form onSubmit={submitHandler}>
-                <Input
-                  autoComplete="off"
-                  type="text"
-                  name="name"
-                  tytle="name"
-                  required
-                  onChange={props.handleChange}
-                  placeholder="Name"
-                  onBlur={props.handleBlur}
-                  value={props.values.name}
-                  color={getColor(
-                    props.errors.name,
-                    props.values.name,
-                    'rgba(255, 255, 255, 0.8)'
-                  )}
-                  borderColor={getColor(
-                    props.errors.name,
-                    props.values.name,
-                    'rgba(255, 255, 255, 0.3)'
-                  )}
-                />
-                <Input
-                  autoComplete="off"
-                  type="email"
-                  name="email"
-                  title="email"
-                  required
-                  onChange={props.handleChange}
-                  placeholder="Email"
-                  onBlur={props.handleBlur}
-                  value={props.values.email}
-                  color={getColor(
-                    props.errors.email,
-                    props.values.email,
-                    'rgba(255, 255, 255, 0.8)'
-                  )}
-                  borderColor={getColor(
-                    props.errors.email,
-                    props.values.email,
-                    'rgba(255, 255, 255, 0.3)'
-                  )}
-                />
-                <Input
-                  autoComplete="off"
-                  type="password"
-                  name="password"
-                  title="password"
-                  required
-                  onChange={props.handleChange}
-                  placeholder="password"
-                  onBlur={props.handleBlur}
-                  value={props.values.password}
-                  color={getColor(
-                    props.errors.password,
-                    props.values.password,
-                    'rgba(255, 255, 255, 0.8)'
-                  )}
-                  borderColor={getColor(
-                    props.errors.password,
-                    props.values.password,
-                    'rgba(255, 255, 255, 0.3)'
-                  )}
-                />
-                <Button type="submit">Sign up</Button>
-              </Form>
-            )}
-          </Formik>
+    <>
+      <Container>
+        <Image />
+        <BoxWraper>
+          <Box>
+            <h1>Registration</h1>
+            <Formik
+              initialValues={{
+                name: '',
+                email: '',
+                password: '',
+              }}
+              isSubmitting={false}
+              isInitialValid={false}
+              validationSchema={schema}
+              onSubmit={async (values, actions) => {
+                const { name, email, password } = values;
+                console.log(name, email, password);
+                await dispatch(
+                  authOperation.register({ name, email, password })
+                );
+              }}
+            >
+              {props => (
+                <Form>
+                  <InputWraper>
+                    <Input
+                      autoComplete="off"
+                      type="text"
+                      name="name"
+                      required
+                      onChange={props.handleChange}
+                      placeholder="Name"
+                      onBlur={props.handleBlur}
+                      value={props.values.name}
+                      color={getColor(
+                        props.errors.name,
+                        props.values.name,
+                        'rgba(255, 255, 255, 0.8)'
+                      )}
+                      borderColor={getColor(
+                        props.errors.name,
+                        props.values.name,
+                        'rgba(255, 255, 255, 0.3)'
+                      )}
+                    />
+                    <svg
+                      className="icon"
+                      fill={getColor(
+                        props.errors.name,
+                        props.values.name,
+                        'rgba(255, 255, 255, 0.8)'
+                      )}
+                    >
+                      <use href={sprite + '#icon-user'}></use>
+                    </svg>
+                  </InputWraper>
+                  <InputWraper>
+                    <Input
+                      autoComplete="off"
+                      type="email"
+                      name="email"
+                      required
+                      onChange={props.handleChange}
+                      placeholder="Email"
+                      onBlur={props.handleBlur}
+                      value={props.values.email}
+                      color={getColor(
+                        props.errors.email,
+                        props.values.email,
+                        'rgba(255, 255, 255, 0.8)'
+                      )}
+                      borderColor={getColor(
+                        props.errors.email,
+                        props.values.email,
+                        'rgba(255, 255, 255, 0.3)'
+                      )}
+                    />
+                    <svg
+                      className="icon"
+                      fill={getColor(
+                        props.errors.email,
+                        props.values.email,
+                        'rgba(255, 255, 255, 0.8)'
+                      )}
+                    >
+                      <use href={sprite + '#email'}></use>
+                    </svg>
+                  </InputWraper>
+                  <InputWraper>
+                    <Input
+                      autoComplete="off"
+                      type="password"
+                      name="password"
+                      required
+                      onChange={props.handleChange}
+                      placeholder="password"
+                      onBlur={props.handleBlur}
+                      value={props.values.password}
+                      color={getColor(
+                        props.errors.password,
+                        props.values.password,
+                        'rgba(255, 255, 255, 0.8)'
+                      )}
+                      borderColor={getColor(
+                        props.errors.password,
+                        props.values.password,
+                        'rgba(255, 255, 255, 0.3)'
+                      )}
+                    />
+                    <svg
+                      className="icon"
+                      fill={getColor(
+                        props.errors.password,
+                        props.values.password,
+                        'rgba(255, 255, 255, 0.8)'
+                      )}
+                    >
+                      <use href={iconPass}></use>
+                    </svg>
+                  </InputWraper>
+                  <Button type="submit">Sign up</Button>
+                </Form>
+              )}
+            </Formik>
+          </Box>
           <NavLink to={'/signin'}>Sign in</NavLink>
-        </Box>
+        </BoxWraper>
       </Container>
-    </AuthBg>
+      <AuthBg></AuthBg>
+    </>
   );
 };
 export default Register;
