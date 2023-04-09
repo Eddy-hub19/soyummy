@@ -26,7 +26,7 @@ const Favorites = createSlice({
         favoritesOperation.deleteFavorite.fulfilled,
         (state, { payload }) => {
           state.data = state.data.filter(id => id._id !== payload);
-          state.isRefreshing = false;
+          // state.isRefreshing = false;
           console.log(state.data);
         }
       )
@@ -36,7 +36,10 @@ const Favorites = createSlice({
           state.data = state.data.filter(id => id._id !== payload);
           console.log(state.data);
         }
-      ),
+      )
+      .addDefaultCase(state => {
+        state.isRefreshing = false;
+      }),
 });
 
 export default Favorites.reducer;
