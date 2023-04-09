@@ -12,11 +12,10 @@ const CategoriesByName = () => {
     return word.charAt(0).toUpperCase() + word.slice(1);
   }
 
-    const [recipes, setRecipes] = useState([]);
-    const category = capitalizeWord(categoryName)
+  const [recipes, setRecipes] = useState([]);
+  const category = capitalizeWord(categoryName);
 
-    useEffect(() => {
-      
+  useEffect(() => {
     try {
       const categorys = getAllRecipesByCategoryAPI(category);
 
@@ -24,7 +23,7 @@ const CategoriesByName = () => {
         return setRecipes(data);
       });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
     }, [categoryName, category]);
 
@@ -36,6 +35,7 @@ const CategoriesByName = () => {
             ))}
         </RowTable>
     );
+
 };
 
 export default CategoriesByName;

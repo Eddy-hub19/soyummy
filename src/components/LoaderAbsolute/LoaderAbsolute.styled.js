@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const LoaderBox1 = styled.div`
-position: absolute;
-top: 0;
+  position: absolute;
+  top: 0;
   display: flex;
   justify-content: center;
   align-items: center;

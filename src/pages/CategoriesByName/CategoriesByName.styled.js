@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const RowTable = styled.ul`
-  
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -18,6 +17,5 @@ export const RowTable = styled.ul`
   @media (min-width: 1440px) {
     gap: 14px;
     row-gap: 100px;
-    
   }
 `;

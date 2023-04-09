@@ -17,7 +17,6 @@ import favoritesSlice from './favorites/favoritesSlice';
 import myRecipesSlice from './myRecipes/myRecipesSlice';
 import themeReducer from './themeR/themeSlice';
 
-
 const authPersistConfig = {
   key: 'auth',
   storage,
@@ -38,8 +37,8 @@ const myRecipesConfig = {
 const themePersistConfig = {
   key: 'theme',
   storage,
-}
-const persistedThemeReducer = persistReducer(themePersistConfig, themeReducer)
+};
+const persistedThemeReducer = persistReducer(themePersistConfig, themeReducer);
 
 export const store = configureStore({
   reducer: {

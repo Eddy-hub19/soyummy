@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import mob1 from "../../images/mobile/recipeHero_mob_1x.jpg";
-import mob2 from "../../images/mobile/recipeHero_mob_2x.jpg";
+import mob1 from '../../images/mobile/recipeHero_mob_1x.jpg';
+import mob2 from '../../images/mobile/recipeHero_mob_2x.jpg';
 import tab1 from '../../images/tablet/recipeHero_tab_1x.jpg';
 import tab2 from '../../images/tablet/recipeHero_tab_2x.jpg';
 import desktop1 from '../../images/desktop/recipeHero_desktop_1x.jpg';
@@ -138,7 +138,7 @@ export const HeroText = styled.p`
   }
 `;
 
-  export const CookingTime = styled.div`
+export const CookingTime = styled.div`
   display: flex;
   width: fit-content;
   align-items: center;

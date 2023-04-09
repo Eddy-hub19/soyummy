@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
 import { ThemeProvider } from 'styled-components';
-import {theme as lightMode, darkTheme as darkMode  } from '../theme/theme';
+import { theme as lightMode, darkTheme as darkMode } from '../theme/theme';
 import { PrivateRoute } from 'service/routes';
 import { RestrictedRoute } from 'service/routes';
 
@@ -30,17 +30,18 @@ const ShopingList = lazy(() => import('pages/ShoppingList/ShoppingList'));
 const SearchPage = lazy(() => import('../pages/SearchPage/SearchPage'));
 const Recipe = lazy(() => import('../pages/RecipePage/RecipePage'));
 const Categories = lazy(() => import('pages/Categories/Categories'));
-const CategoriesByName = lazy(() => import('pages/CategoriesByName/CategoriesByName'));
+const CategoriesByName = lazy(() =>
+  import('pages/CategoriesByName/CategoriesByName')
+);
 // const MyRecipes = lazy(() => import('pages/MyRecipes/MyRecipes'));
 // const Favorites = lazy(() => import('pages/Favorites/Favorites'));
 //============================================================================//
 export const App = () => {
-
   const { mode } = useSelector(getMode);
   const themeMode = mode === 'light' ? lightMode : darkMode;
   return (
     <ThemeProvider theme={themeMode}>
-      <GlobalStyle/>
+      <GlobalStyle />
       <Routes>
         <Route
           path="/startPage"
