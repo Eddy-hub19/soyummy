@@ -1,11 +1,14 @@
 {
   "files": {
     "main.css": "/soyummy/static/css/main.d9c30c8f.css",
-    "main.js": "/soyummy/static/js/main.60825a4c.js",
-    "static/js/738.9d6123af.chunk.js": "/soyummy/static/js/738.9d6123af.chunk.js",
+    "main.js": "/soyummy/static/js/main.ea375ea3.js",
+    "static/js/738.7d75fb76.chunk.js": "/soyummy/static/js/738.7d75fb76.chunk.js",
     "static/js/933.e7d374bd.chunk.js": "/soyummy/static/js/933.e7d374bd.chunk.js",
     "static/js/241.99c22f28.chunk.js": "/soyummy/static/js/241.99c22f28.chunk.js",
-    "static/js/490.f2483238.chunk.js": "/soyummy/static/js/490.f2483238.chunk.js",
+    "static/js/97.7e4cc202.chunk.js": "/soyummy/static/js/97.7e4cc202.chunk.js",
+    "static/js/347.ed0d34cd.chunk.js": "/soyummy/static/js/347.ed0d34cd.chunk.js",
+    "static/js/688.832c2ddf.chunk.js": "/soyummy/static/js/688.832c2ddf.chunk.js",
+    "static/js/877.bec1b5b0.chunk.js": "/soyummy/static/js/877.bec1b5b0.chunk.js",
     "static/media/bg_big_desktop_2x.png": "/soyummy/static/media/bg_big_desktop_2x.088180e00dd0b716a522.png",
     "static/media/bg_big_tablet_2x.png": "/soyummy/static/media/bg_big_tablet_2x.315208ec35d471abc100.png",
     "static/media/mainTab-min.png": "/soyummy/static/media/mainTab-min.0b3a2e47751bdfde27fc.png",
@@ -32,6 +35,7 @@
     "static/media/bg_small_tablet_1x.png": "/soyummy/static/media/bg_small_tablet_1x.cd965a444181b88f1cfd.png",
     "static/media/mobile-menu-bg-tab-1x-min.png": "/soyummy/static/media/mobile-menu-bg-tab-1x-min.94ab13c1f302b6f94cb9.png",
     "static/media/recipeHero_mob_2x.jpg": "/soyummy/static/media/recipeHero_mob_2x.04772b35d4bcde8116a5.jpg",
+    "static/media/paperbag.svg": "/soyummy/static/media/paperbag.73e860166355cdf6c5d12dd434c901f7.svg",
     "static/media/sprite.svg": "/soyummy/static/media/sprite.d5b5384cb95212f815b676ebf8628de0.svg",
     "static/media/bg_small_mob_1x.png": "/soyummy/static/media/bg_small_mob_1x.22078318d1abb582886d.png",
     "static/media/recipeHero_tab_1x.jpg": "/soyummy/static/media/recipeHero_tab_1x.9eca7de25584899934cd.jpg",
@@ -41,14 +45,17 @@
     "static/media/logo_tablet-desk_footer.svg": "/soyummy/static/media/logo_tablet-desk_footer.3973999e1d5e8f9f9106b706397f54e9.svg",
     "static/media/plus.svg": "/soyummy/static/media/plus.e2a277e044198db3f782f3e240f0af13.svg",
     "main.d9c30c8f.css.map": "/soyummy/static/css/main.d9c30c8f.css.map",
-    "main.60825a4c.js.map": "/soyummy/static/js/main.60825a4c.js.map",
-    "738.9d6123af.chunk.js.map": "/soyummy/static/js/738.9d6123af.chunk.js.map",
+    "main.ea375ea3.js.map": "/soyummy/static/js/main.ea375ea3.js.map",
+    "738.7d75fb76.chunk.js.map": "/soyummy/static/js/738.7d75fb76.chunk.js.map",
     "933.e7d374bd.chunk.js.map": "/soyummy/static/js/933.e7d374bd.chunk.js.map",
     "241.99c22f28.chunk.js.map": "/soyummy/static/js/241.99c22f28.chunk.js.map",
-    "490.f2483238.chunk.js.map": "/soyummy/static/js/490.f2483238.chunk.js.map"
+    "97.7e4cc202.chunk.js.map": "/soyummy/static/js/97.7e4cc202.chunk.js.map",
+    "347.ed0d34cd.chunk.js.map": "/soyummy/static/js/347.ed0d34cd.chunk.js.map",
+    "688.832c2ddf.chunk.js.map": "/soyummy/static/js/688.832c2ddf.chunk.js.map",
+    "877.bec1b5b0.chunk.js.map": "/soyummy/static/js/877.bec1b5b0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d9c30c8f.css",
-    "static/js/main.60825a4c.js"
+    "static/js/main.ea375ea3.js"
   ]
 }
