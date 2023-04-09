@@ -5,17 +5,6 @@ export const getRecipeById = async id => {
   return response.data;
 };
 
-export const getCategoryListAPI = async () => {
-  const response = await axiosInstance.get('/recipes/category-list');
-  return response.data;
-};
-
-export const getAllRecipesByCategoryAPI = category => {
-  return axiosInstance.get(`/recipes/category/${category}`).then(({ data }) => {
-    return data;
-  });
-};
-
 export const getIngradientsFieldsApi = async () => {
   const response = await axiosInstance.get('/ingredients/list');
   return response.data;

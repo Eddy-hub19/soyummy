@@ -9,7 +9,6 @@ import NoImage from '../../images/default.jpg';
 import { scrollToTop } from 'utils/scrollUp';
 
 export const CardMeal = ({ meal }) => {
-  console.log(meal.length)
   return (
     <CardDish>
       <Link to={`/recipe/${meal._id}`} onClick={scrollToTop}>

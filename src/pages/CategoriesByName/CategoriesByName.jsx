@@ -1,27 +1,22 @@
 import { CardMeal } from 'components/CardMeal/CardMeal';
-// import { Loader } from 'components/Loader/Loader';
 import { useEffect, useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-// import { getLimitedRecipesByCategory } from 'redux/outerRecipes/outerRecipesOperations';
-// import { getLimitedRecipes } from 'redux/outerRecipes/outerRecipesSelectors';
 import { RowTable } from './CategoriesByName.styled';
-import { getAllRecipesByCategoryAPI } from 'service/axios/axios';
+import { getAllRecipesByCategoryAPI } from 'service/API/CategoriesAPI';
 import { LoaderAbsolute } from 'components/LoaderAbsolute/LoaderAbsolute';
-import { axiosInstance } from 'service/API/axios';
 
 const CategoriesByName = () => {
-  console.log(axiosInstance.defaults.headers.common.Authorization);
   const { categoryName } = useParams();
 
   function capitalizeWord(word) {
     return word.charAt(0).toUpperCase() + word.slice(1);
   }
 
-  const [recipes, setRecipes] = useState([]);
-  const category = capitalizeWord(categoryName);
+    const [recipes, setRecipes] = useState([]);
+    const category = capitalizeWord(categoryName)
 
-  useEffect(() => {
+    useEffect(() => {
+      
     try {
       const categorys = getAllRecipesByCategoryAPI(category);
 
@@ -29,20 +24,18 @@ const CategoriesByName = () => {
         return setRecipes(data);
       });
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  }, [categoryName, category]);
+    }, [categoryName, category]);
 
-  console.log('recipes.length:', recipes.length);
-
-  return (
-    <RowTable>
-      {recipes.length === 0 && <LoaderAbsolute />}
-      {recipes.map(meal => (
-        <CardMeal meal={meal} key={meal._id} />
-      ))}
-    </RowTable>
-  );
+    return (
+      <RowTable>
+        {recipes.length === 0 && <LoaderAbsolute/>}
+            {recipes.map(meal => (
+                <CardMeal meal={meal} key={meal._id} />
+            ))}
+        </RowTable>
+    );
 };
 
 export default CategoriesByName;
