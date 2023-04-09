@@ -18,8 +18,6 @@ export const CategoryList = () => {
       const categorys = getCategoryListAPI();
 
       categorys.then(data => {
-        console.log(data);
-
         return setMapArray(data);
       });
     } catch (error) {
