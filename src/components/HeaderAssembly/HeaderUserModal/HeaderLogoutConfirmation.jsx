@@ -1,5 +1,5 @@
-// import { useDispatch } from 'react-redux';
-// import { logOut } from 'redux/auth/authOperations';
+import { useDispatch } from 'react-redux';
+import { logOut } from 'redux/auth/authOperation';
 import {
   LogOutContainer,
   LogOutText,
@@ -9,9 +9,9 @@ import {
 } from './HeaderLogoutConfirmation.styled';
 
 export const LogoutAssembly = ({ closeModal }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const onLogOutBtnClick = () => {
-    // dispatch(logOut());
+    dispatch(logOut());
     closeModal();
   };
   return (
