@@ -6,7 +6,7 @@ export const fetchFavorites = token => {
       Authorization: `Bearer ${token}`,
     },
   };
-
+  console.log(`token`, token);
   return axiosInstance.get(`/favorite/`, config).then(({ data }) => {
     return data;
   });
