@@ -3,7 +3,7 @@ import { ErrorMessage, Formik } from 'formik';
 import { useSelector } from 'react-redux';
 // import { useDispatch, useSelector } from 'react-redux';
 import { getColor } from 'utils/formikColors';
-import { getAvatar } from 'redux/auth/authSelectors';
+import authSelectors from 'redux/auth/authSelectors';
 // import { updateUserInfo } from 'redux/auth/authOperation';
 import sprite from '../../../images/sprite.svg';
 import * as Yup from 'yup';
@@ -45,8 +45,8 @@ const EditNameSchema = Yup.object().shape({
 
 export const UserFormAssembly = ({ name, avatarUrl, closeModal }) => {
   // const dispatch = useDispatch();
-  const userAvatar = useSelector(getAvatar);
-  const [path, setPath] = useState(userAvatar);
+  const user = useSelector(authSelectors.getUserData);
+  const [path, setPath] = useState(user.avatarUrl);
 
   const handleSubmit = values => {
     const formData = new FormData();
