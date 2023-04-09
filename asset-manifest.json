@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/soyummy/static/css/main.d9c30c8f.css",
-    "main.js": "/soyummy/static/js/main.d2f63ea5.js",
+    "main.js": "/soyummy/static/js/main.fbe52652.js",
     "static/js/738.7d75fb76.chunk.js": "/soyummy/static/js/738.7d75fb76.chunk.js",
     "static/js/933.e7d374bd.chunk.js": "/soyummy/static/js/933.e7d374bd.chunk.js",
     "static/js/241.99c22f28.chunk.js": "/soyummy/static/js/241.99c22f28.chunk.js",
@@ -48,7 +48,7 @@
     "static/media/logo_tablet-desk_footer.svg": "/soyummy/static/media/logo_tablet-desk_footer.3973999e1d5e8f9f9106b706397f54e9.svg",
     "static/media/plus.svg": "/soyummy/static/media/plus.e2a277e044198db3f782f3e240f0af13.svg",
     "main.d9c30c8f.css.map": "/soyummy/static/css/main.d9c30c8f.css.map",
-    "main.d2f63ea5.js.map": "/soyummy/static/js/main.d2f63ea5.js.map",
+    "main.fbe52652.js.map": "/soyummy/static/js/main.fbe52652.js.map",
     "738.7d75fb76.chunk.js.map": "/soyummy/static/js/738.7d75fb76.chunk.js.map",
     "933.e7d374bd.chunk.js.map": "/soyummy/static/js/933.e7d374bd.chunk.js.map",
     "241.99c22f28.chunk.js.map": "/soyummy/static/js/241.99c22f28.chunk.js.map",
@@ -59,6 +59,6 @@
   },
   "entrypoints": [
     "static/css/main.d9c30c8f.css",
-    "static/js/main.d2f63ea5.js"
+    "static/js/main.fbe52652.js"
   ]
 }
