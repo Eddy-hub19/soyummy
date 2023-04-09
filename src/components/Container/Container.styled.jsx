@@ -2,6 +2,11 @@ import styled from 'styled-components';
 
 export const MainConteiner = styled.div`
   padding: 0 16px;
+
+  max-width: 767px;
+  margin-left: auto;
+  margin-right: auto;
+
   margin-left: auto;
   margin-right: auto;
 
