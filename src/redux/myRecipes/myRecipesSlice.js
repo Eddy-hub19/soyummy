@@ -15,7 +15,7 @@ const myRecipesSlice = createSlice({
         myRecipesOperation.fetchMyRecipes.fulfilled,
         (state, { payload }) => {
           state.data = payload;
-          state.isRefreshing = false;
+          // state.isRefreshing = false;
           console.log(state.data);
         }
       )
@@ -26,7 +26,7 @@ const myRecipesSlice = createSlice({
         myRecipesOperation.deleteMyRecipe.fulfilled,
         (state, { payload }) => {
           state.data = state.data.filter(r => r._id !== payload);
-          state.isRefreshing = false;
+          // state.isRefreshing = false;
           console.log(state.data);
         }
       )
@@ -36,7 +36,10 @@ const myRecipesSlice = createSlice({
           state.data = [...state.data, payload];
           console.log(state.data);
         }
-      ),
+      )
+      .addDefaultCase(state => {
+        state.isRefreshing = false;
+      }),
 });
 
 export default myRecipesSlice.reducer;
