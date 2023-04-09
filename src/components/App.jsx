@@ -16,9 +16,6 @@ import Register from 'pages/Register/Register';
 import SignIn from 'pages/Signin/Signin';
 import MyRecipes from 'pages/MyRecipes/MyRecipes';
 import Favorites from 'pages/Favorites/Favorites';
-
-// import Categories from 'pages/Categories/Categories';
-// import CategoriesByName from 'pages/CategoriesByName/CategoriesByName';
 import { useSelector } from 'react-redux';
 import { getMode } from 'redux/themeR/themeSelector';
 import { GlobalStyle } from './App.styled';
