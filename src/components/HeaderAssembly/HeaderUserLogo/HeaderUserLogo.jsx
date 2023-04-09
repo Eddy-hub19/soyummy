@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import authSelectors from 'redux/auth/authSelectors';
 import userAvatar from '../../../images/default.jpg';
-import { HeaderUserModal } from '../HeaderUserModal/HeaderUserModalInfo';
+import { HeaderUserModal } from '../HeaderUserModal/HeaderUserModal';
 import { HeaderUserModalLogo } from '../HeaderModalLogo/UserModalLogo';
 import { HeaderUserBtn, HeaderUserWrapper } from './HeaderUserLogo.styled';
 
-export const HeaderUserLogo = ({
-  color = 'light',
-  name = 'User',
-  avatarUrl = userAvatar,
-}) => {
+export const HeaderUserLogo = ({ avatarUrl = userAvatar, color = 'light' }) => {
+  const user = useSelector(authSelectors.getUserData);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [statusModal, setStatusModal] = useState('');
@@ -52,13 +51,13 @@ export const HeaderUserLogo = ({
           onBlur={handleBlur}
           color={color}
         >
-          <img src={avatarUrl} alt={name} />
-          <p>{name}</p>
+          <img src={avatarUrl} alt={user.name} />
+          <p>{user.name}</p>
         </HeaderUserBtn>
 
         {showUserMenu && (
           <HeaderUserModalLogo
-            setShowUserMenu={() => setShowUserMenu}
+            setShowUserMenu={setShowUserMenu}
             toggleModal={toggleUserModal}
           />
         )}
@@ -66,7 +65,7 @@ export const HeaderUserLogo = ({
 
       {showModal && (
         <HeaderUserModal
-          name={name}
+          name={user.name}
           avatarUrl={avatarUrl}
           closeModal={toggleUserModal}
           status={statusModal}

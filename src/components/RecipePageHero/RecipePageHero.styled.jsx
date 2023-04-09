@@ -38,7 +38,7 @@ export const RecipeHeroContainer = styled.div`
     }
 
     &:hover {
-      color: white;
+      /* color: white; */
     }
   }
 

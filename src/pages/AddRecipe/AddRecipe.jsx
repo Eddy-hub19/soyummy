@@ -19,8 +19,6 @@ import { AddRecipeSubmit } from 'components/AddRecipeSubmit/AddRecipeSubmit';
 // import { addOwnRecipe } from 'redux/ownRecipes/ownRecipesOperations';
 import { useMediaRules } from 'hooks/MediaRules';
 import { AddRecipeToastifyError } from 'components/AddRecipeToastifyError/AddRecipeToastifyError';
-
-import { RecipeIngredientsFields } from 'components/RecipeIngredientsFields/RecipeIngredientsFields';
 import { FollowUs } from 'components/FollowUs/FollowUs';
 
 // import { useNavigate } from 'react-router-dom';
@@ -236,8 +234,6 @@ const AddRecipe = () => {
               localTheme={theme}
             />
 
-            <RecipeIngredientsFields />
-
             <AddRecipeSubmit
               inputs={inputs}
               handleChange={handleChange}
@@ -246,8 +242,6 @@ const AddRecipe = () => {
           </RecipeForm>
           <div>
             <StyledSocialWrepper>
-              {/* <StyledSocialTitle> Follow us</StyledSocialTitle>
-              <SocialLinks /> */}
               <FollowUs text={'Folow Us'} />
             </StyledSocialWrepper>
             {/* <AddRecipePopular

@@ -30,7 +30,9 @@ const MainPage = lazy(() =>
 // const MyRecipes = lazy(() => import('pages/MyRecipes/MyRecipes'));
 // const Favorites = lazy(() => import('pages/Favorites/Favorites'));
 const ShopingList = lazy(() => import('pages/ShoppingList/ShoppingList'));
-const SearchPage = lazy(() => import('../pages/SearchPage/SearchPage'));
+const SearchPage = lazy(() =>
+  import('../pages/SearchPage/SearchPage/SearchPage')
+);
 const Recipe = lazy(() => import('../pages/RecipePage/RecipePage'));
 
 export const App = () => {

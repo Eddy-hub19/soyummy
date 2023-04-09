@@ -1,7 +1,9 @@
 import { Counter } from 'components/Counter/Counter';
 import { SubTitle } from 'components/SubTitle/SubTitle';
+import { useState, useEffect } from 'react';
 import Select from 'react-select';
 import icons from '../../images/sprite.svg';
+import { getIngradientsFieldsApi } from 'service/axios/axios';
 
 import {
   ButtonRemoveItem,
@@ -30,6 +32,29 @@ export const AddRecipeIngredients = ({
   localTheme,
 }) => {
   // const optionsIngredients = useSelector(getIngredients);
+  const [options, setOptions] = useState([]);
+
+  useEffect(() => {
+    const handleEffect = async () => {
+      try {
+        const ingredientsObj = await getIngradientsFieldsApi();
+        const allIngredients = ingredientsObj.ingredients;
+        const options = allIngredients.map(ingr => ({
+          label: ingr.ttl,
+          value: ingr.ttl,
+        }));
+
+        setOptions([...options]);
+
+        // if (allCategories.length === 0) {
+        //   return;
+        // }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    handleEffect();
+  }, []);
 
   const userIngredientsList = userIngredients.map(
     ({ id, unitValue, ingredient, qty }) => {
@@ -37,8 +62,7 @@ export const AddRecipeIngredients = ({
         <IngredientsItem key={id} localTheme={localTheme}>
           <Select
             styles={stylesIngredient(localTheme)}
-            // options={ingredientsOptionsList(optionsIngredients)}
-            defaultValue={{ label: ingredient, value: ingredient }}
+            options={options}
             placeholder=" "
             onChange={handleUserIngredient}
             name={`ingredient ${id}`}

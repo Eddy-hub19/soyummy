@@ -3,26 +3,24 @@ import styled from 'styled-components';
 export const HeaderModalOverlay = styled.div`
   display: flex;
   position: fixed;
-  align-items: center;
   justify-content: center;
-  z-index: 10000;
+  align-items: center;
   top: 0;
   left: 0;
-  height: 100vh;
   width: 100vw;
-
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10000;
 `;
-
 export const ModalWindow = styled.div`
+  display: flex;
   position: relative;
   height: fit-content;
-  align-items: space-between;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
   width: 330px;
   padding: ${p => (p.status === 'logout' ? '44px 24px' : '32px 24px')};
-  display: flex;
   background-color: ${p => p.theme.colors.bodyBg};
   border-radius: ${p => p.theme.radii.modal};
   opacity: 1;
@@ -36,8 +34,8 @@ export const ModalWindow = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    width: 500px;
     padding: ${p => (p.status === 'logout' ? '50px' : '60px 50px')};
+    width: 500px;
   }
 `;
 
