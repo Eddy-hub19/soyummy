@@ -17,8 +17,8 @@ import SignIn from 'pages/Signin/Signin';
 import MyRecipes from 'pages/MyRecipes/MyRecipes';
 import Favorites from 'pages/Favorites/Favorites';
 
-import Categories from 'pages/Categories/Categories';
-import CategoriesByName from 'pages/CategoriesByName/CategoriesByName';
+// import Categories from 'pages/Categories/Categories';
+// import CategoriesByName from 'pages/CategoriesByName/CategoriesByName';
 import { useSelector } from 'react-redux';
 import { getMode } from 'redux/themeR/themeSelector';
 import { GlobalStyle } from './App.styled';
@@ -32,7 +32,8 @@ const MainPage = lazy(() =>
 const ShopingList = lazy(() => import('pages/ShoppingList/ShoppingList'));
 const SearchPage = lazy(() => import('../pages/SearchPage/SearchPage'));
 const Recipe = lazy(() => import('../pages/RecipePage/RecipePage'));
-
+const Categories = lazy(() => import('pages/Categories/Categories'));
+const CategoriesByName = lazy(() => import('pages/CategoriesByName/CategoriesByName'));
 // const MyRecipes = lazy(() => import('pages/MyRecipes/MyRecipes'));
 // const Favorites = lazy(() => import('pages/Favorites/Favorites'));
 //============================================================================//
