@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { getIngradientsFieldsApi } from 'service/axios/axios';
+// import { useEffect, useState } from 'react';
+// import { getIngradientsFieldsApi } from 'service/axios/axios';
 
 export const RecipeIngredientsFields = () => {
   // const [ingredients, setIngredients] = useState([{}]);

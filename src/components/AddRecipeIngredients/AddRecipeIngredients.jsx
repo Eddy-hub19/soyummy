@@ -26,7 +26,7 @@ export const AddRecipeIngredients = ({
   isMobile,
   handleDecrement,
   handleIncrement,
-  // handleUserIngredient,
+  handleUserIngredient,
   handleUnitValue,
   handleRemove,
   localTheme,
@@ -56,11 +56,6 @@ export const AddRecipeIngredients = ({
     handleEffect();
   }, []);
 
-  const [selectedOption, setSelectedOption] = useState(null);
-
-  function handleSelect(selectedOption) {
-    setSelectedOption(selectedOption);
-  }
   const userIngredientsList = userIngredients.map(
     ({ id, unitValue, ingredient, qty }) => {
       return (
@@ -68,9 +63,9 @@ export const AddRecipeIngredients = ({
           <Select
             styles={stylesIngredient(localTheme)}
             options={options}
-            value={selectedOption}
             placeholder=" "
-            onChange={handleSelect}
+            onChange={handleUserIngredient}
+            name={`ingredient ${id}`}
           />
           <ValueInputWrapper isMobile={isMobile} localTheme={localTheme}>
             <InputUnitValue
@@ -85,11 +80,11 @@ export const AddRecipeIngredients = ({
             <Select
               styles={stylesUnit(localTheme)}
               options={unitsOptionsList}
+              defaultValue={{ label: qty, value: qty }}
               placeholder=" "
-              onChange={handleSelect}
-              value={selectedOption}
-              // isSearchable={false}
-              // name={`qty ${id}`}
+              onChange={handleUserIngredient}
+              isSearchable={false}
+              name={`qty ${id}`}
             />
           </ValueInputWrapper>
           <ButtonRemoveItem type="button" id={id} onClick={handleRemove}>

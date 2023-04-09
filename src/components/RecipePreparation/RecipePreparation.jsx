@@ -1,22 +1,47 @@
+import {
+  ImageWrapper,
+  PreparationWrapper,
+  InstructionWrapper,
+  InstructionTitle,
+  InstructionText,
+  InstructionList,
+} from './RecipePreparation.styled';
+import { nanoid } from 'nanoid';
 
+const RecipePreparation = ({ instructions, image }) => {
+  const items = instructions
+    .split('\r\n')
+    .filter(elem => {
+      if (!elem) return false;
+      if (!isNaN(elem)) return false;
+      if (elem.toLowerCase().includes('step')) return false;
+      return true;
+    })
+    .map((item, index) => {
+      let slicedItem = item;
+      for (let i = 0; i < 2; i++) {
+        if (!isNaN(slicedItem[i]) || slicedItem[i] === '.') {
+          slicedItem = slicedItem.slice(i + 1);
+        }
+      }
+      return (
+        <InstructionText key={nanoid()}>
+          <span>{index + 1}</span>
+          <p>{slicedItem}</p>
+        </InstructionText>
+      );
+    });
 
-const RecipePreparation = () => {
-    return (
-        <div>
-            <h3>Recipe Preparation</h3>
-            
-            {/* <ol>
-                <li>
-                    <p>Melt the butter in a thick-based pan and gently cook the onion without colour until it is soft.</p>
-                </li>
-                <li>
-                    <p>Add the rice and stir to coat all the grains in the butter.</p>
-                </li>
-                <li>
-                    <p>Add the wine and cook gently stirring until it is absorbed.</p>
-                </li>
-            </ol> */}
-        </div>
+  return (
+    <PreparationWrapper>
+      <InstructionWrapper>
+        <InstructionTitle>Recipe Preparation</InstructionTitle>
+        <InstructionList>{items}</InstructionList>
+      </InstructionWrapper>
+      <ImageWrapper>
+        <img src={image} alt="ImgText" />
+      </ImageWrapper>
+    </PreparationWrapper>
   );
 };
 

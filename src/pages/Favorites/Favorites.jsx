@@ -1,6 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-// import axios from 'axios';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchFavorites } from 'redux/favorites/favoritesOperation';
+import {
+  getFavorites,
+  getFavoritesRefreshStatus,
+} from 'redux/favorites/favoritesSelectors';
 
 import { Container } from '../../components/Container/Container';
 import { Title } from 'components/Title/Title';
@@ -10,54 +16,38 @@ import { Loader } from 'components/Loader/Loader';
 import { Paginator } from 'components/Pagination/Paginator';
 
 import { scrollToTop } from 'utils/scrollUp';
-
 import { RecipesList, Thumb, img } from './Favorites.styled';
 
 const Favorites = () => {
+  const dispatch = useDispatch();
+  const storageFavorite = useSelector(getFavorites);
+  const isRefreshing = useSelector(getFavoritesRefreshStatus);
+
   const [recipes, setRecipes] = useState([]);
-  const [isLoading, setisLoading] = useState(true);
+  const [isLoading, setisLoading] = useState(false);
+
   const [total, setTotal] = useState(0);
   const [currentSlice, setcurrentSlice] = useState([0, 4]);
   const history = useNavigate();
   const { search } = useLocation();
   const page = search.slice(-1);
-
   const [pageNumber, setPageNumber] = useState(+page);
-
   const perPage = 4;
 
   useEffect(() => {
-    try {
-      setisLoading(true);
-      fetchRecipes();
-    } catch (error) {
-    } finally {
-    }
-  }, []);
+    dispatch(fetchFavorites());
+    setRecipes(storageFavorite);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch]);
 
-  const fetchRecipes = async () => {
-    const token =
-      'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MmRiYmRjODE3Mzc2ZTIzY2IxZjI5OCIsImlhdCI6MTY4MDg5MjEwNSwiZXhwIjoxNjgyNjkyMTA1fQ.Y22mj81DN2y6H8_WspbIOS_E6qCwuXKrx-VdoWP1Y9k';
+  useEffect(() => {
+    setRecipes(storageFavorite);
+    setTotal(storageFavorite.length);
+  }, [storageFavorite]);
 
-    try {
-      const response = await fetch(
-        `https://determined-ruby-nematode.cyclic.app/favorite/`,
-        {
-          headers: {
-            Authorization: `${token}`,
-          },
-        }
-      );
-      const data = await response.json();
-      setisLoading(false);
-
-      setTotal(data.result.length);
-
-      setRecipes(data.result);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  useEffect(() => {
+    setisLoading(isRefreshing);
+  }, [isRefreshing]);
 
   const handleChange = (event, value) => {
     setPageNumber(value);
@@ -65,13 +55,20 @@ const Favorites = () => {
   };
 
   useEffect(() => {
-    console.log(Math.ceil(total / perPage));
-    if (pageNumber <= 0 || pageNumber > Math.ceil(total / perPage)) {
+    // if (pageNumber <= 0 || pageNumber > Math.ceil(total / perPage)) {
+    //   setPageNumber(1);
+    // }
+    if (pageNumber <= 0) {
       setPageNumber(1);
+    }
+
+    if (total / perPage === page - 1) {
+      setPageNumber(total / perPage);
     }
 
     history(`?page=${pageNumber}`);
     setcurrentSlice([pageNumber * perPage - 4, pageNumber * perPage]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [history, pageNumber, total]);
 
   return (
@@ -80,8 +77,8 @@ const Favorites = () => {
         <Loader />
       ) : (
         <Container>
-          <Title>My recipes</Title>
-          {recipes && recipes.length > 0 ? (
+          <Title>Favorites</Title>
+          {storageFavorite && storageFavorite.length > 0 ? (
             <RecipesList>
               {recipes.slice(...currentSlice).map(recipe => {
                 return (

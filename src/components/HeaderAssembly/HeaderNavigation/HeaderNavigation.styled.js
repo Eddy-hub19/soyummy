@@ -6,8 +6,8 @@ export const StyledLink = styled(NavLink)`
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  gap: 8px;
   font-size: 18px;
+  gap: 8px;
   font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights[1]};
   letter-spacing: ${p => p.theme.letterSpacings.content};
@@ -66,8 +66,8 @@ export const StyledLink = styled(NavLink)`
 
 export const Navigation = styled.nav`
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   gap: 32px;
 
@@ -77,9 +77,9 @@ export const Navigation = styled.nav`
 
   @media screen and (min-width: 1440px) {
     justify-content: space-between;
-    flex-direction: row;
-    margin-left: 180px;
     margin-right: 220px;
+    margin-left: 180px;
+    flex-direction: row;
     gap: 30px;
   }
 `;

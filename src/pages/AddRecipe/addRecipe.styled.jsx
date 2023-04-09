@@ -124,7 +124,9 @@ export const InputsWrapper = styled.div`
   }
 
   .css-1dimb5e-singleValue {
-    color: ${({ localTheme }) => (localTheme === 'light' ? 'black' : 'white')};
+    /* color: ${({ localTheme }) =>
+      localTheme === 'light' ? 'black' : 'white'}; */
+    color: black;
   }
 `;
 
@@ -189,7 +191,10 @@ export const IngredientsItem = styled.li`
   align-items: center;
 
   .css-1dimb5e-singleValue {
-    color: ${({ localTheme }) => (localTheme === 'light' ? 'black' : 'white')};
+    /* color: ${({ localTheme }) =>
+      localTheme === 'light' ? 'black' : 'white'}; */
+    color: black;
+    opacity: 0.5;
   }
 
   .css-7ossxv-menu {
@@ -215,9 +220,11 @@ export const ValueInputWrapper = styled.div`
   margin-left: ${({ isMobile }) => (isMobile ? '14px' : '32px')};
 
   .css-1dimb5e-singleValue {
-    color: ${({ localTheme }) => {
+    /* color: ${({ localTheme }) => {
       return localTheme === 'light' ? 'black' : 'white';
-    }};
+    }}; */
+    color: black;
+    opacity: 0.5;
   }
 `;
 
