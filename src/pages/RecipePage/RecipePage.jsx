@@ -4,7 +4,11 @@ import RecipePreparation from "components/RecipePreparation/RecipePreparation";
 import { getRecipeById } from "../../service/axios/axios";
 import React from "react";
 import { useState, useEffect } from 'react';
-import { useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+// import { TableHeader} from './RecipePage.styled';
+import { TableHeader, Container} from './RecipePage.styled';
+// import { Container } from 'components/Container/Container';
+
 // import  from '@mui/material/Button';
 
 
@@ -25,11 +29,14 @@ const RecipePage = () => {
         recipe !== null && (
             <>
                 <RecipePageHero recipe={recipe} />
-                <div>
+                <Container>
+                    <TableHeader>
+                    <p>Ingredients</p>
+                    <p>Number <span>Add to list</span></p>
+                    </TableHeader>
                     <RecipeIngredientsList ingredients={recipe.ingredients} />
-                    <RecipePreparation instructions={recipe.instructions} />
-                </div>
-                
+                    <RecipePreparation instructions={recipe.instructions} image={recipe.thumb} />
+                </Container>
             </>
         ));
 };

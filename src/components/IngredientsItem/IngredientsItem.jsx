@@ -1,16 +1,45 @@
-// import { ReactComponent as DefaultIngredient } from 'images/svg-before sprite/paperbag.svg';
+import { ReactComponent as DefaultIngredient } from 'images/svg-before sprite/paperbag.svg';
+import {
+  RecipeIngredientsItem,
+  ImageWrapper,
+  Label,
+  RealCheckbox,
+  CustomCheckbox,
+  Weight,
+  TextContainer,
+  IngName,
+  IngDescr,
+} from './IngredientsItem.styled';
+import sprite from '../../images/sprite.svg';
 
 const IngredientsItem = ({ image, title, weight, description }) => {
     return (
-        <div>
-            <div>
-                <img src={image} alt={`${title} ingredient`} width={40} height={30} />
-                <p>{title}</p>
-                <p>{description}</p>
-            </div>
-            <p>{weight}</p>
-            <input type={"checkbox"}/>
-            </div>
+        <RecipeIngredientsItem>
+        <Label>
+            <ImageWrapper>
+                    {image
+                        ? <img src={image} alt={title} />
+                        : <DefaultIngredient />
+                    }
+            
+          </ImageWrapper>
+          <TextContainer>
+            <IngName>{title}</IngName>
+            <IngDescr>{description}</IngDescr>
+          </TextContainer>
+          <Weight>{weight}</Weight>
+          <RealCheckbox
+            type="checkbox"
+            // onChange={addToShoppingList}
+            // checked={obj.inShoppingList}
+          />
+          <CustomCheckbox>
+            <svg>
+              <use href={sprite + `#icon-pick`} />
+            </svg>
+          </CustomCheckbox>
+        </Label>
+        </RecipeIngredientsItem>
     );
 }
 export default IngredientsItem;

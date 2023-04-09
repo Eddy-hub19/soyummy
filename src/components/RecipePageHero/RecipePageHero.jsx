@@ -2,7 +2,8 @@ import React from 'react';
 import { ButtonSkew } from 'components/ButtonSkew/ButtonSkew';
 import sprite from '../../images/sprite.svg';
 import {
-  RecipeHeroContainer,
+    RecipeHeroContainer,
+    RecHeroCont,
   HeroTitle,
     HeroText,
     CookingTime
@@ -10,11 +11,15 @@ import {
 // import { Loader } from 'components/Loader/Loader';
 
 const RecipePageHero = ({ recipe }) => {
-    const { title, description, time,  } = recipe;
-    
+    console.log(recipe);
+    const { title, description, time, ingredients } = recipe;
+    console.log(ingredients);
+
     return (
         <>
+            {/* <RecHeroCont> */}
             <RecipeHeroContainer>
+                
             {/* <Loader></Loader> */}
             <HeroTitle>{title}</HeroTitle>
             <HeroText>{description}</HeroText>
@@ -37,7 +42,8 @@ const RecipePageHero = ({ recipe }) => {
             <CookingTime></CookingTime>
                 )}
                 
-            </RecipeHeroContainer>
+                </RecipeHeroContainer>
+                {/* </RecHeroCont> */}
             </>
     )};
 
