@@ -1,9 +1,10 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import { ErrorMessage, Formik } from 'formik';
+import { useSelector } from 'react-redux';
 // import { useDispatch, useSelector } from 'react-redux';
 import { getColor } from 'utils/formikColors';
-// import { getAvatar } from 'redux/auth/authSelectors';
-// import { updateUserInfo } from 'redux/auth/authOperations';
+import { getAvatar } from 'redux/auth/authSelectors';
+// import { updateUserInfo } from 'redux/auth/authOperation';
 import sprite from '../../../images/sprite.svg';
 import * as Yup from 'yup';
 
@@ -44,9 +45,8 @@ const EditNameSchema = Yup.object().shape({
 
 export const UserFormAssembly = ({ name, avatarUrl, closeModal }) => {
   // const dispatch = useDispatch();
-  // eslint-disable-next-line no-undef
-  // const userAvatar = useSelector(getAvatar);
-  // const [path, setPath] = useState(userAvatar);
+  const userAvatar = useSelector(getAvatar);
+  const [path, setPath] = useState(userAvatar);
 
   const handleSubmit = values => {
     const formData = new FormData();
@@ -73,11 +73,9 @@ export const UserFormAssembly = ({ name, avatarUrl, closeModal }) => {
         <UserForm onSubmit={props.handleSubmit}>
           <UserAvatarWrapper>
             <label htmlFor="picture" id="labelFile">
-              {/* {path ? ( */}
-              {0 ? (
+              {path ? (
                 <UserSvgWrapper>
-                  {/* <img src={path} alt="user_picture" /> */}
-                  <img src={0} alt="user_picture" />
+                  <img src={path} alt="user_picture" />
                 </UserSvgWrapper>
               ) : (
                 <UserSvgWrapper>
@@ -99,7 +97,7 @@ export const UserFormAssembly = ({ name, avatarUrl, closeModal }) => {
               onChange={event => {
                 if (event.target.files[0]) {
                   if (SUPPORTED_FORMATS.includes(event.target.files[0].type)) {
-                    // setPath(window.URL.createObjectURL(event.target.files[0]));
+                    setPath(window.URL.createObjectURL(event.target.files[0]));
                     props.setFieldValue('picture', event.target.files[0]);
                   }
                   props.setFieldValue('picture', event.target.files[0]);
