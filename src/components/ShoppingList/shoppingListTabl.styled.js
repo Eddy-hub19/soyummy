@@ -66,7 +66,7 @@ export const TableFirstCol = styled.div`
     width: 450px;
   }
   @media screen and (min-width: 1441px) {
-    width: 900px;
+    width: 750px;
   }
 `;
 

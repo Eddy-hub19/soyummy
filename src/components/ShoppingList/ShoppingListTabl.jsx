@@ -1,12 +1,19 @@
 import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  getShoppingListAPI,
-  removeShoppingListAPI,
-} from 'service/API/ShoppingListAPI';
+  fetchShoppingList,
+  deleteShoppingListItem,
+} from '../../redux/shoplist/shoplistOperation';
+import {
+  getShoppingList,
+  getShoppingListRefreshStatus,
+} from '../../redux/shoplist/shoplistSelectors';
+import { Loader } from 'components/Loader/Loader';
 import icons from 'images/sprite.svg';
 import defaultImg from '../../images/default.jpg';
 import { EmptyPlaceholder } from 'pages/EmptyPlaceholder/EmptyPlaceholder';
+
 
 import {
   Table,
@@ -22,50 +29,43 @@ import {
 } from './shoppingListTabl.styled.js';
 
 const ShoppingListTabl = () => {
+  const dispatcher = useDispatch();
+  const storageItems = useSelector(getShoppingList);
+  const isRefreshing = useSelector(getShoppingListRefreshStatus);
+
   const [shopItems, setShopItems] = useState([]);
+  const [isLoading, setisLoading] = useState(false);
 
-  try {
+  useEffect(() => {
+    dispatcher(fetchShoppingList());
+    setShopItems(storageItems);
+  }, [dispatcher]);
+
     useEffect(() => {
-      async function fetchData() {
-        const response = await getShoppingListAPI();
-        setShopItems(response);
-      }
-
-      fetchData();
-    }, [shopItems]);
-  } catch (error) {
-    console.log(error);
-  }
+      setisLoading(isRefreshing);
+    }, [isRefreshing]);
+  
+   useEffect(() => {
+     setShopItems(storageItems);
+   }, [storageItems]);
 
   const deleteItem = e => {
-    try {
-      async function remove() {
-        if (e.target.id) {
-          await removeShoppingListAPI(e.target.id);
-          // const response = await removeShoppingListAPI(e.target.id);
-        }
+    if (e.target.id) {
+      dispatcher(deleteShoppingListItem(e.target.id));
+    }
 
-        if (e.target.parentNode.id) {
-          await removeShoppingListAPI(e.target.parentNode.id);
-          // const response = await removeShoppingListAPI(e.target.parentNode.id);
-        }
+    if (e.target.parentNode.id) {
+      dispatcher(deleteShoppingListItem(e.target.parentNode.id));
+    }
 
-        if (e.target.parentNode.parentNode.id) {
-          await removeShoppingListAPI(e.target.parentNode.parentNode.id);
-          // const response = await removeShoppingListAPI(
-          //   e.target.parentNode.parentNode.id
-          // );
-        }
-      }
-
-      remove();
-    } catch (error) {
-      console.log(error);
+    if (e.target.parentNode.parentNode.id) {
+      dispatcher(deleteShoppingListItem(e.target.parentNode.parentNode.id));
     }
   };
 
   return (
     <Thumb>
+      {isLoading && <Loader/>}
       {shopItems.length === 0 ? (
         <EmptyPlaceholder text="Your shopping list is empty." />
       ) : (

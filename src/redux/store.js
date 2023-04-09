@@ -16,7 +16,7 @@ import authSlice from './auth/authSlice';
 import favoritesSlice from './favorites/favoritesSlice';
 import myRecipesSlice from './myRecipes/myRecipesSlice';
 import themeReducer from './themeR/themeSlice';
-
+import shoplistSlice from './shoplist/shoplistSlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -35,11 +35,16 @@ const myRecipesConfig = {
   // whitelist: ['token'],
 };
 
+const shoppingListConfig = {
+  key: 'shoplist',
+  storage,
+};
+
 const themePersistConfig = {
   key: 'theme',
   storage,
-}
-const persistedThemeReducer = persistReducer(themePersistConfig, themeReducer)
+};
+const persistedThemeReducer = persistReducer(themePersistConfig, themeReducer);
 
 export const store = configureStore({
   reducer: {
@@ -47,6 +52,7 @@ export const store = configureStore({
     favorites: persistReducer(favoritesPersistConfig, favoritesSlice),
     myRecipes: persistReducer(myRecipesConfig, myRecipesSlice),
     theme: persistReducer(themePersistConfig, persistedThemeReducer),
+    shoppingList: persistReducer(shoppingListConfig, shoplistSlice),
   },
 
   middleware(getDefaultMiddleware) {
