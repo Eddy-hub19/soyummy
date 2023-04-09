@@ -1,27 +1,27 @@
-import axios from 'axios';
+import { axiosInstance } from 'service/API/axios';
 
 export const getRecipeById = async id => {
-  const response = await axios.get(`/recipes/${id}`);
+  const response = await axiosInstance.get(`/recipes/${id}`);
   return response.data;
 };
 
 export const getCategoryListAPI = async () => {
-  const response = await axios.get('/recipes/category-list');
+  const response = await axiosInstance.get('/recipes/category-list');
   return response.data;
 };
 
 export const getAllRecipesByCategoryAPI = category => {
-  return axios.get(`/recipes/category/${category}`).then(({ data }) => {
+  return axiosInstance.get(`/recipes/category/${category}`).then(({ data }) => {
     return data;
   });
 };
 
 export const getIngradientsFieldsApi = async () => {
-  const response = await axios.get('/ingredients/list');
+  const response = await axiosInstance.get('/ingredients/list');
   return response.data;
 };
 
 export const getPopularListAPI = async () => {
-  const response = await axios.get('/recipes/popular');
+  const response = await axiosInstance.get('/recipes/popular');
   return response.data;
 };

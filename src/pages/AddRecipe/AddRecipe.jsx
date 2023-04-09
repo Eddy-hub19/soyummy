@@ -18,9 +18,9 @@ import { AddRecipeIngredients } from 'components/AddRecipeIngredients/AddRecipeI
 import { AddRecipeSubmit } from 'components/AddRecipeSubmit/AddRecipeSubmit';
 // import { addOwnRecipe } from 'redux/ownRecipes/ownRecipesOperations';
 import { useMediaRules } from 'hooks/MediaRules';
-import axios from 'axios';
 import { AddRecipeToastifyError } from 'components/AddRecipeToastifyError/AddRecipeToastifyError';
 import { FollowUs } from 'components/FollowUs/FollowUs';
+import { axiosInstance } from 'service/API/axios';
 
 // import { useNavigate } from 'react-router-dom';
 // import { scrollToTop } from 'utils/scrollUp';
@@ -129,7 +129,7 @@ const AddRecipe = () => {
     formData.append('upload_preset', 'alex_preset');
 
     try {
-      const response = await axios.post(
+      const response = await axiosInstance.post(
         'https://determined-ruby-nematode.cyclic.app/auth/picture',
         formData
       );
@@ -175,6 +175,7 @@ const AddRecipe = () => {
   };
 
   const handleUnitValue = ({ currentTarget }) => {
+    console.log(axiosInstance.defaults.headers.common.Authorization);
     const { id, value, name } = currentTarget;
     setInputs(prev => ({
       ...prev,

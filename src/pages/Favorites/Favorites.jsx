@@ -17,8 +17,13 @@ import { Paginator } from 'components/Pagination/Paginator';
 
 import { scrollToTop } from 'utils/scrollUp';
 import { RecipesList, Thumb, img } from './Favorites.styled';
+import { axiosInstance } from 'service/API/axios';
 
 const Favorites = () => {
+  console.log(
+    'axios headers: ',
+    axiosInstance.defaults.headers.common.Authorization
+  );
   const dispatch = useDispatch();
   const storageFavorite = useSelector(getFavorites);
   const isRefreshing = useSelector(getFavoritesRefreshStatus);
