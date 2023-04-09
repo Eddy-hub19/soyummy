@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
-
-// import { PublicRoute } from 'service/routes';
-// import { PrivateRoute } from 'service/routes';
+// import { ThemeProvider } from 'styled-components';
+import { theme as lightMode, darkTheme as darkMode } from '../theme/theme';
+import { PrivateRoute } from 'service/routes';
 import { RestrictedRoute } from 'service/routes';
 
 import { ThemeProvider } from 'styled-components';
@@ -17,9 +17,11 @@ import { theme } from '../theme/theme';
 import { AuthNav } from './AuthNav/AuthNav';
 import Register from 'pages/Register/Register';
 import SignIn from 'pages/Signin/Signin';
-import Categories from 'pages/Categories/Categories';
 import MyRecipes from 'pages/MyRecipes/MyRecipes';
-import CategoriesByName from 'pages/CategoriesByName/CategoriesByName';
+import Favorites from 'pages/Favorites/Favorites';
+import { useSelector } from 'react-redux';
+import { getMode } from 'redux/themeR/themeSelector';
+import { GlobalStyle } from './App.styled';
 
 const MainPage = lazy(() =>
   import('pages/MainPage/MainPage').then(module => ({
@@ -27,17 +29,27 @@ const MainPage = lazy(() =>
   }))
 );
 
+const ShopingList = lazy(() => import('pages/ShoppingList/ShoppingList'));
+const SearchPage = lazy(() => import('pages/SearchPage/SearchPage/SearchPage'));
+const Recipe = lazy(() => import('../pages/RecipePage/RecipePage'));
+const Categories = lazy(() => import('pages/Categories/Categories'));
+const CategoriesByName = lazy(() =>
+  import('pages/CategoriesByName/CategoriesByName')
+);
 // const MyRecipes = lazy(() => import('pages/MyRecipes/MyRecipes'));
 // const Favorites = lazy(() => import('pages/Favorites/Favorites'));
-const ShopingList = lazy(() => import('pages/ShoppingList/ShoppingList'));
-const SearchPage = lazy(() =>
-  import('../pages/SearchPage/SearchPage/SearchPage')
-);
-const Recipe = lazy(() => import('../pages/RecipePage/RecipePage'));
+// const ShopingList = lazy(() => import('pages/ShoppingList/ShoppingList'));
+// const SearchPage = lazy(() =>
+//   import('../pages/SearchPage/SearchPage/SearchPage')
+// );
+// const Recipe = lazy(() => import('../pages/RecipePage/RecipePage'));
 
 export const App = () => {
+  const { mode } = useSelector(getMode);
+  const themeMode = mode === 'light' ? lightMode : darkMode;
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={themeMode}>
+      <GlobalStyle />
       <Routes>
         {/* <Route
           path="/"
@@ -72,27 +84,35 @@ export const App = () => {
           }
         /> */}
 
-        <Route
+        {/* <Route
           path="/"
           element={
             // <PrivateRoute>
             <SharedLayout />
             // </PrivateRoute>
           }
-        >
-          <Route path="/main" element={<MainPage />} />
-          <Route path="/add" element={<AddRecipe />} />
-          <Route path="/my" element={<MyRecipes />} />
-          <Route path="/categories" element={<Categories />}>
-            <Route path=":categoryName" element={<CategoriesByName />} />
-          </Route>
+        > */}
+        <Route path="/main" element={<MainPage />} />
+        <Route path="/add" element={<AddRecipe />} />
+        <Route path="/my" element={<MyRecipes />} />
+
+        <Route path="/search" element={<SearchPage />} />
+
+        <Route path="/categories" element={<Categories />}>
+          {/* <Route path=":categoryName" element={<CategoriesByName />} />
           <Route path="/shopping-list" element={<ShopingList />} />
           <Route path="/recipes/:recipeId" element={<Recipe />} />
           <Route path="/search" element={<SearchPage />} />
-          <Route path="/main" element={<MainPage />} />
-
-          <Route path="*" element={<MainPage />} />
+          <Route path="/main" element={<MainPage />} /> */}
         </Route>
+
+        {/* <Route path="/shopping-list" element={<ShopingList />} />
+          <Route path="/recipes/:recipeId" element={<Recipe />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/main" element={<MainPage />} /> */}
+
+        {/* <Route path="*" element={<MainPage />} /> */}
+        {/* </Route> */}
 
         {/* <Route path="/my" element={<MyRecipes />} /> */}
 

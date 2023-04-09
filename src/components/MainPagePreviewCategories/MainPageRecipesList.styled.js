@@ -29,6 +29,7 @@ export const TitlePageCategory = styled.h4`
   font-feature-settings: 'liga' off;
   color: #001833;
   margin-bottom: 50px;
+  background: transparent;
 `;
 
 export const NavLinkBtnSeeAll = styled(NavLink)`

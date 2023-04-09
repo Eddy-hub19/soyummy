@@ -3,7 +3,10 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMyRecipes } from 'redux/myRecipes/myRecipesOperation';
-import { getMyRecipes } from 'redux/myRecipes/myRecipesSelectors';
+import {
+  getMyRecipes,
+  getMyRecipesRefreshStatus,
+} from 'redux/myRecipes/myRecipesSelectors';
 
 import { Container } from '../../components/Container/Container';
 import { Title } from 'components/Title/Title';
@@ -19,6 +22,7 @@ import { RecipesList, Thumb, img } from './MyRecipes.styled';
 const MyRecipes = () => {
   const dispatch = useDispatch();
   const storageRecipes = useSelector(getMyRecipes);
+  const isRefreshing = useSelector(getMyRecipesRefreshStatus);
 
   const [recipes, setRecipes] = useState([]);
   const [isLoading, setisLoading] = useState(false);
@@ -34,9 +38,13 @@ const MyRecipes = () => {
   useEffect(() => {
     dispatch(fetchMyRecipes());
     setRecipes(storageRecipes);
-    setisLoading(false);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
+
+  useEffect(() => {
+    setisLoading(isRefreshing);
+  }, [isRefreshing]);
 
   useEffect(() => {
     setRecipes(storageRecipes);
@@ -49,11 +57,19 @@ const MyRecipes = () => {
   };
 
   useEffect(() => {
-    if (pageNumber <= 0 || pageNumber > Math.ceil(total / perPage)) {
+    // if (pageNumber <= 0 || pageNumber > Math.ceil(total / perPage)) {
+    //   setPageNumber(1);
+    // }
+    if (pageNumber <= 0) {
       setPageNumber(1);
     }
+    if (total / perPage === page - 1) {
+      setPageNumber(total / perPage);
+    }
+
     history(`?page=${pageNumber}`);
     setcurrentSlice([pageNumber * perPage - 4, pageNumber * perPage]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [history, pageNumber, total]);
 
   return (
