@@ -3,7 +3,10 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchFavorites } from 'redux/favorites/favoritesOperation';
-import { getFavorites } from 'redux/favorites/favoritesSelectors';
+import {
+  getFavorites,
+  getFavoritesRefreshStatus,
+} from 'redux/favorites/favoritesSelectors';
 
 import { Container } from '../../components/Container/Container';
 import { Title } from 'components/Title/Title';
@@ -18,6 +21,7 @@ import { RecipesList, Thumb, img } from './Favorites.styled';
 const Favorites = () => {
   const dispatch = useDispatch();
   const storageFavorite = useSelector(getFavorites);
+  const isRefreshing = useSelector(getFavoritesRefreshStatus);
 
   const [recipes, setRecipes] = useState([]);
   const [isLoading, setisLoading] = useState(false);
@@ -33,7 +37,6 @@ const Favorites = () => {
   useEffect(() => {
     dispatch(fetchFavorites());
     setRecipes(storageFavorite);
-    setisLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
@@ -42,19 +45,30 @@ const Favorites = () => {
     setTotal(storageFavorite.length);
   }, [storageFavorite]);
 
+  useEffect(() => {
+    setisLoading(isRefreshing);
+  }, [isRefreshing]);
+
   const handleChange = (event, value) => {
     setPageNumber(value);
     scrollToTop();
   };
 
   useEffect(() => {
-    console.log(Math.ceil(total / perPage));
-    if (pageNumber <= 0 || pageNumber > Math.ceil(total / perPage)) {
+    // if (pageNumber <= 0 || pageNumber > Math.ceil(total / perPage)) {
+    //   setPageNumber(1);
+    // }
+    if (pageNumber <= 0) {
       setPageNumber(1);
+    }
+
+    if (total / perPage === page - 1) {
+      setPageNumber(total / perPage);
     }
 
     history(`?page=${pageNumber}`);
     setcurrentSlice([pageNumber * perPage - 4, pageNumber * perPage]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [history, pageNumber, total]);
 
   return (

@@ -66,22 +66,22 @@ export const HeaderAssembly = () => {
     <>
       {isRowBased ? (
         <HeaderBox>
-          {/* <Container> */}
-          <HeaderWrapper>
-            <LogoWrapper>
-              <NavigationLinkStyled to="/main">
-                <img src={logo} alt="logo" />
-              </NavigationLinkStyled>
-            </LogoWrapper>
-            <HeaderNavigation navColor={navColor} />
-            <HeaderUserLogo
-              color={color}
-              // name={userName}
-              // avatarUrl={userAvatar}
-            />
-            <ThemeSwitch />
-          </HeaderWrapper>
-          {/* </Container> */}
+          <Container>
+            <HeaderWrapper>
+              <LogoWrapper>
+                <NavigationLinkStyled to="/main">
+                  <img src={logo} alt="logo" />
+                </NavigationLinkStyled>
+              </LogoWrapper>
+              <HeaderNavigation navColor={navColor} />
+              <HeaderUserLogo
+                color={color}
+                // name={userName}
+                // avatarUrl={userAvatar}
+              />
+              <ThemeSwitch />
+            </HeaderWrapper>
+          </Container>
         </HeaderBox>
       ) : (
         <>
