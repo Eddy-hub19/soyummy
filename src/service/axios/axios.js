@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 export const getRecipeById = async id => {
   const response = await axios.get(`/recipes/${id}`);
   return response.data;
@@ -19,5 +18,10 @@ export const getAllRecipesByCategoryAPI = category => {
 
 export const getIngradientsFieldsApi = async () => {
   const response = await axios.get('/ingredients/list');
+  return response.data;
+};
+
+export const getPopularListAPI = async () => {
+  const response = await axios.get('/recipes/popular');
   return response.data;
 };
