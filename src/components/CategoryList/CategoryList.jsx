@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { getCategoryListAPI } from 'service/axios/axios';
+import { getCategoryListAPI } from 'service/API/CategoriesAPI';
 
 export const CategoryList = () => {
   const { categoryName } = useParams();
@@ -29,8 +29,6 @@ export const CategoryList = () => {
 
   useEffect(() => {
     if (mapArray.length === 0) return;
-
-    // setMapArray([...fullCategoryList]);
 
     const idx = mapArray.findIndex(e => {
       return e.toLowerCase() === categoryName;
