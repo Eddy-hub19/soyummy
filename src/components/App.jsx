@@ -20,6 +20,7 @@ import Favorites from 'pages/Favorites/Favorites';
 import CategoriesByName from 'pages/CategoriesByName/CategoriesByName';
 import { useSelector } from 'react-redux';
 import { getMode } from 'redux/themeR/themeSelector';
+import { GlobalStyle } from './App.styled';
 
 const MainPage = lazy(() =>
   import('pages/MainPage/MainPage').then(module => ({
@@ -39,6 +40,7 @@ export const App = () => {
   const themeMode = mode === 'light' ? lightMode : darkMode;
   return (
     <ThemeProvider theme={themeMode}>
+      <GlobalStyle/>
       <Routes>
         <Route
           path="/startPage"
