@@ -1,33 +1,42 @@
 import React from 'react';
 import { ButtonSkew } from 'components/ButtonSkew/ButtonSkew';
 import sprite from '../../images/sprite.svg';
+
+// import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { addToFavorite } from '../../service/API/RecipeAPI';
 import {
   RecipeHeroContainer,
   HeroTitle,
   HeroText,
   CookingTime,
 } from './RecipePageHero.styled';
-// import { Loader } from 'components/Loader/Loader';
 
 const RecipePageHero = ({ recipe }) => {
-  console.log(recipe);
-  const { title, description, time, ingredients } = recipe;
-  console.log(ingredients);
+  const { _id, title, description, time } = recipe;
+
+  const favorites = useSelector(state => state.favorites);
+  console.log(favorites.data);
+  const isFavorite = favorites.data.some(item => item._id === recipe._id);
+
+  function addToFavoriteRecipes() {
+    addToFavorite(_id);
+  }
 
   return (
     <>
-      {/* <RecHeroCont> */}
       <RecipeHeroContainer>
-        {/* <Loader></Loader> */}
         <HeroTitle>{title}</HeroTitle>
         <HeroText>{description}</HeroText>
-        <ButtonSkew
-          type="button"
-          text="Add to favorite recipes"
-          styled="other"
-          location="recipes"
-          // fn={addtoFavorite}
-        />
+        {!isFavorite && (
+          <ButtonSkew
+            type="button"
+            text="Add to favorite recipes"
+            styled="other"
+            location="recipes"
+            fn={addToFavoriteRecipes}
+          />
+        )}
 
         {time !== '' ? (
           <CookingTime>
@@ -40,7 +49,6 @@ const RecipePageHero = ({ recipe }) => {
           <CookingTime></CookingTime>
         )}
       </RecipeHeroContainer>
-      {/* </RecHeroCont> */}
     </>
   );
 };

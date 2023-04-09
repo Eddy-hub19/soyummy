@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = process.env.REACT_APP_BASE_URL_BACK;
+// axios.defaults.baseURL = process.env.REACT_APP_BASE_URL_BACK;
 
 export const fetchFavorites = token => {
   const config = {

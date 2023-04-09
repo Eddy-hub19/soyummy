@@ -1,17 +1,11 @@
 import axios from 'axios';
 
 const BASE_URL_BACKEND = 'https://determined-ruby-nematode.cyclic.app';
-const AUTH_TOKEN =
-  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzExYzAxMzA2Njc3YmU0MDJkNGEyMCIsImlhdCI6MTY4MTAyMjgwMiwiZXhwIjoxNjgxMjc0ODAyfQ.htxFrCJk9ttiMbV1jAXNA_LKV8oSE5anRHSPvMeJ4NU';
+// const AUTH_TOKEN =
+  // 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzA3YjhlMzcxNDE4ZjdjNmJjMzkxZiIsImlhdCI6MTY4MTA2Mjc3MCwiZXhwIjoxNjgxMzE0NzcwfQ.y5yLnK4NC3JoDq4xnsl8eMRvyrzKKUDAoiiSL5xJOlA';
 
-// axios.defaults.baseURL = process.env.BASE_URL_BACKEND;
 axios.defaults.baseURL = BASE_URL_BACKEND;
-axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-
-export const getRecipeById = async id => {
-  const response = await axios.get(`/recipes/${id}`);
-  return response.data;
-};
+// axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 export const getCategoryListAPI = async () => {
   const response = await axios.get('/recipes/category-list');

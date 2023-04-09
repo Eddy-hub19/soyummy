@@ -5,7 +5,7 @@ import { getMode } from 'redux/themeR/themeSelector';
 import { setTheme } from 'redux/themeR/themeSlice';
 
 export const ThemeSwitch = () => {
-   const selectedMode = useSelector(getMode);
+  const selectedMode = useSelector(getMode);
   const dispatch = useDispatch();
   const [mode, setMode] = useState(selectedMode.mode ?? 'light');
 
@@ -25,7 +25,8 @@ export const ThemeSwitch = () => {
           id="theme-switcher"
           type="checkbox"
           checked={mode === 'dark'}
-          onChange={changeTheme}/>
+          onChange={changeTheme}
+        />
         <CheckBoxLabel mode={mode} htmlFor="theme-switcher" />
       </Switcher>
     </>

@@ -1,7 +1,7 @@
-import {createGlobalStyle} from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
     body {
-        background-color: ${p=> p.theme.colors.bodyBg};
+        background-color: ${p => p.theme.colors.bodyBg};
     }
-`
+`;

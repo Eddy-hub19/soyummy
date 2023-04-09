@@ -24,4 +24,3 @@ export const removeShoppingListAPI = id => {
     return data;
   });
 };
-

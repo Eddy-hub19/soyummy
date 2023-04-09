@@ -10,17 +10,16 @@ import { getAllRecipesByCategoryAPI } from 'service/axios/axios';
 import { LoaderAbsolute } from 'components/LoaderAbsolute/LoaderAbsolute';
 
 const CategoriesByName = () => {
-    const { categoryName } = useParams();
-    
-    function capitalizeWord(word) {
-  return word.charAt(0).toUpperCase() + word.slice(1);
-}
+  const { categoryName } = useParams();
 
-    const [recipes, setRecipes] = useState([]);
-    const category = capitalizeWord(categoryName)
+  function capitalizeWord(word) {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }
 
-    useEffect(() => {
-      
+  const [recipes, setRecipes] = useState([]);
+  const category = capitalizeWord(categoryName);
+
+  useEffect(() => {
     try {
       const categorys = getAllRecipesByCategoryAPI(category);
 
@@ -28,23 +27,20 @@ const CategoriesByName = () => {
         return setRecipes(data);
       });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-    }, [categoryName, category]);
-  
-  console.log('recipes.length:', recipes.length)
+  }, [categoryName, category]);
 
-  
+  console.log('recipes.length:', recipes.length);
 
-
-    return (
-      <RowTable>
-        {recipes.length === 0 && <LoaderAbsolute/>}
-            {recipes.map(meal => (
-                <CardMeal meal={meal} key={meal._id} />
-            ))}
-        </RowTable>
-    );
+  return (
+    <RowTable>
+      {recipes.length === 0 && <LoaderAbsolute />}
+      {recipes.map(meal => (
+        <CardMeal meal={meal} key={meal._id} />
+      ))}
+    </RowTable>
+  );
 };
 
 export default CategoriesByName;

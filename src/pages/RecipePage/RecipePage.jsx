@@ -1,45 +1,60 @@
-import RecipePageHero from "components/RecipePageHero/RecipePageHero";
-import RecipeIngredientsList from "components/RecipeIngredientsList/RecipeIngredientsList";
-import RecipePreparation from "components/RecipePreparation/RecipePreparation";
-import { getRecipeById } from "../../service/axios/axios";
-import React from "react";
+import RecipePageHero from 'components/RecipePageHero/RecipePageHero';
+import RecipeIngredientsList from 'components/RecipeIngredientsList/RecipeIngredientsList';
+import RecipePreparation from 'components/RecipePreparation/RecipePreparation';git status
+import { getRecipeById } from '../../service/API/RecipeAPI';
+import React from 'react';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-// import { TableHeader} from './RecipePage.styled';
-import { TableHeader, Container} from './RecipePage.styled';
-// import { Container } from 'components/Container/Container';
-
-// import  from '@mui/material/Button';
-
+import { useSelector } from 'react-redux';
+import { TableHeader, Container } from './RecipePage.styled';
+import { Loader } from 'components/Loader/Loader';
 
 const RecipePage = () => {
-    const [recipe, setRecipe] = useState(null);
-    const { recipeId } = useParams();
-    console.log(recipeId);
-    //   const location = useLocation();
-    //   const backLinkHref = location.state?.from ?? '/recipes';
+  const [recipe, setRecipe] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-    useEffect(() => {
-        getRecipeById(recipeId).then(setRecipe);
-    }, [recipeId]);
+  const { recipeId } = useParams();
+  console.log(recipeId);
+  // const location = useLocation();
 
+  const favorites = useSelector(state => state.favorites);
+  console.log(favorites.data);
 
-    console.log(recipe);
-    return (
+  //   const backLinkHref = location.state?.from ?? '/recipes';
+
+  useEffect(() => {
+    setIsLoading(true);
+    getRecipeById(recipeId).then(setRecipe);
+    setIsLoading(false);
+  }, [recipeId]);
+
+  console.log(recipe);
+  return (
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
         recipe !== null && (
-            <>
-                <RecipePageHero recipe={recipe} />
-                <Container>
-                    <TableHeader>
-                    <p>Ingredients</p>
-                    <p>Number <span>Add to list</span></p>
-                    </TableHeader>
-                    <RecipeIngredientsList ingredients={recipe.ingredients} />
-                    <RecipePreparation instructions={recipe.instructions} image={recipe.thumb} />
-                </Container>
-            </>
-        ));
+          <>
+            <RecipePageHero recipe={recipe} />
+            <Container>
+              <TableHeader>
+                <p>Ingredients</p>
+                <p>
+                  Number <span>Add to list</span>
+                </p>
+              </TableHeader>
+              <RecipeIngredientsList ingredients={recipe.ingredients} />
+              <RecipePreparation
+                instructions={recipe.instructions}
+                image={recipe.thumb}
+              />
+            </Container>
+          </>
+        )
+      )}
+    </>
+  );
 };
-
 
 export default RecipePage;
