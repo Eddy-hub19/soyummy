@@ -20,3 +20,8 @@ export const getIngradientsFieldsApi = async () => {
   const response = await axiosInstance.get('/ingredients/list');
   return response.data;
 };
+
+export const getPopularListAPI = async () => {
+  const response = await axiosInstance.get('/recipes/popular');
+  return response.data;
+};

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { useMediaQuery } from 'hooks/useMedia';
-// import { getName, getAvatar } from 'redux/auth/authSelectors';
+import { getUserName, getAvatar } from 'redux/auth/authSelectors';
 import sprite from '../../images/sprite.svg';
 import {
   BurgerButton,
@@ -56,8 +56,8 @@ export const HeaderAssembly = () => {
     }
   }, [pathname]);
 
-  // const userName = useSelector(getName);
-  // const userAvatar = useSelector(getAvatar);
+  const userName = useSelector(getUserName);
+  const userAvatar = useSelector(getAvatar);
 
   const toggleMobileMenu = e => {
     setShowMenu(!showMenu);
@@ -76,8 +76,8 @@ export const HeaderAssembly = () => {
               <HeaderNavigation navColor={navColor} />
               <HeaderUserLogo
                 color={color}
-                // name={userName}
-                // avatarUrl={userAvatar}
+                name={userName}
+                avatarUrl={userAvatar}
               />
               <ThemeSwitch />
             </HeaderWrapper>
@@ -96,8 +96,8 @@ export const HeaderAssembly = () => {
                 <BurgerWrapper>
                   <HeaderUserLogo
                     color={navColor}
-                    // name={userName}
-                    // avatarUrl={userAvatar}
+                    name={userName}
+                    avatarUrl={userAvatar}
                   />
                   <BurgerButton
                     type="button"
