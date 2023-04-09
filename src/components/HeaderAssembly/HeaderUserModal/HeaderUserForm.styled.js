@@ -5,13 +5,13 @@ import PlusIcon from '../../../images/plus.svg';
 
 export const UserForm = styled(Form)`
   input[type='file'] {
-    position: absolute;
-    height: 0;
     width: 0;
+    height: 0;
     opacity: 0;
+    z-index: -1;
     padding: 0;
     display: block;
-    z-index: -1;
+    position: absolute;
   }
 
   & img {
@@ -27,14 +27,14 @@ export const UserForm = styled(Form)`
 `;
 
 export const UserSvgWrapper = styled.div`
-  position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
   height: 88px;
   width: 88px;
-  background-color: ${p => p.theme.colors.mainGreyBg};
+  justify-content: center;
+  align-items: center;
   border-radius: ${p => p.theme.radii.circle};
+  background-color: ${p => p.theme.colors.mainGreyBg};
 
   & svg {
     height: 40px;
@@ -47,15 +47,14 @@ export const UserSvgWrapper = styled.div`
     position: absolute;
     justify-content: center;
     align-items: flex-end;
-    height: 24px;
-    width: 24px;
     right: 0;
     bottom: -5%;
     transform: translateX(-50%);
     content: url(${PlusIcon});
-
-    border-radius: ${p => p.theme.radii.circle};
+    height: 24px;
+    width: 24px;
     background-color: ${p => p.theme.colors.mainAccent};
+    border-radius: ${p => p.theme.radii.circle};
   }
 
   @media screen and (min-width: 768px) {
@@ -85,7 +84,7 @@ export const UserAvatarWrapper = styled.div`
   }
 `;
 
-export const InputsWrapper = styled.div`
+export const InputWrapper = styled.div`
   display: flex;
   position: relative;
   flex-direction: column;
@@ -102,11 +101,12 @@ export const InputsWrapper = styled.div`
 
 export const NameInput = styled(Field)`
   outline: none;
-  width: 100%;
+  // width: 100%;
+  font-size: 14px;
+  width: 250px;
   padding: 14px;
   padding-left: 63px;
   background-color: transparent;
-  font-size: 14px;
   border-radius: ${p => p.theme.radii.btnStandart};
   font-family: ${p => p.theme.fonts.main};
 
@@ -116,6 +116,13 @@ export const NameInput = styled(Field)`
   color: ${p => p.theme.colors.mainDark};
 
   border: 2px solid ${({ color }) => color};
+
+  @media screen and (min-width: 768px) {
+    width: 400px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 420px;
 `;
 
 export const NameLabel = styled.label`
@@ -125,15 +132,15 @@ export const NameLabel = styled.label`
 
 export const UserIcon = styled.svg`
   position: absolute;
-  width: 18px;
   height: 18px;
+  width: 18px;
   top: 50%;
   left: 16.5px;
   transform: translateY(-50%);
   stroke: ${({ color }) => color};
 `;
 
-export const SubmitBtn = styled.button`
+export const SaveChangesBtn = styled.button`
   cursor: pointer;
   width: 100%;
   padding: 14px;
@@ -164,11 +171,11 @@ export const SubmitBtn = styled.button`
   }
 `;
 
-export const ResetBtn = styled.button`
+export const BtnWrapper = styled.button`
   display: flex;
+  position: absolute;
   align-items: center;
   justify-content: center;
-  position: absolute;
   box-sizing: border-box;
   cursor: pointer;
   top: 50%;
@@ -184,9 +191,9 @@ export const ResetBtn = styled.button`
   }
 `;
 
-export const FlagForInput = styled.svg`
-  position: absolute;
+export const FlagInput = styled.svg`
   display: flex;
+  position: absolute;
   justify-content: center;
   align-items: center;
   pointer-events: none;

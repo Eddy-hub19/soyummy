@@ -1,4 +1,58 @@
-.container {
+import styled from 'styled-components';
+import FormAuthDes from '../../images/desktop/FormAuthDes.png';
+import mobileBg from '../../images/mobile/FormAuthMob-min.png';
+import tabletBg from '../../images/tablet/FormAuthTab-min.png';
+
+export const Button = styled.button`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 21px 138px;
+  gap: 8px;
+
+  width: 400px;
+  height: 59px;
+  left: 50px;
+  top: 316px;
+
+  background: #8baa36;
+  border-radius: 6px;
+
+  color: #fafafa;
+
+  transition: ${({ theme }) => theme.transitions.main};
+  &:hover {
+    color: black;
+
+    &:active:focus {
+      /* box-shadow: 0 5px #666; */
+      transform: translateY(4px);
+    }
+  }
+`;
+
+export const AuthBg = styled.div`
+  @media (max-width: 700px) {
+    background-image: url(${mobileBg});
+  }
+  @media (min-width: 768), (max-width: 1439px) {
+    background-image: url(${tabletBg});
+  }
+  @media (min-width: 1440px) {
+    background-image: url(${FormAuthDes});
+  }
+  height: 100vh;
+  width: 100vw;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+`;
+
+// export const Input = styled.imput``;
+
+/* .container {
   margin: auto;
   padding: 0;
   max-width: 800px;
@@ -92,6 +146,4 @@
   background: #03e9f4;
   color: #050801;
 }
-
-
-
+ */

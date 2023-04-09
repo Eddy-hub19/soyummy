@@ -7,6 +7,7 @@ import BgMobile1x from '../../images/bg/mobile-menu-bg-mob-1x-min.png';
 import BgMobile2x from '../../images/bg/mobile-menu-bg-mob-2x-min.png';
 
 export const HeaderBox = styled.header`
+  width: 100%;
   position: absolute;
   box-sizing: border-box;
   z-index: 10;

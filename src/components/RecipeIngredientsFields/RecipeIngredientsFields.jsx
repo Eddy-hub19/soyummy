@@ -1,23 +1,27 @@
 // import { useEffect, useState } from 'react';
-// import { ingredientFieldsApi } from './ingradientFieldsApi';
+// import { getIngradientsFieldsApi } from 'service/axios/axios';
 
 export const RecipeIngredientsFields = () => {
-  // const [ingredients, setIngredients] = useState([]);
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const response = await ingradientFieldsApi();
-  //     const res = response;
-  //     setIngredients(res);
-  //   }
+  // const [ingredients, setIngredients] = useState([{}]);
 
-  //   fetchData();
-  // }, []);
+  // try {
+  //   useEffect(() => {
+  //     async function fetchData() {
+  //       const response = await getIngradientsFieldsApi();
+  //       setIngredients(response.data.ingredients[0]);
+  //     }
+
+  //     fetchData();
+  //   }, []);
+  // } catch (error) {
+  //   console.log(error);
+  // }
 
   return (
     <ul>
       <h2>RecipeIngredientsFields</h2>
-      {/* {ingredients.map(item => {
-        console.log(item);
+      {/* {ingredients.map(({ ttl, id }) => {
+        return <li key={id}>{ttl}</li>;
       })} */}
     </ul>
   );

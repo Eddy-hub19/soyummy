@@ -1,3 +1,4 @@
+import { TitlePageCategory } from './MainPageRecipesList.styled';
 import { MainPageRecipesListItem } from './MainPageRecipesListItem';
 import { SeeAllButton } from './SeeAllButton';
 //============================================================//
@@ -6,7 +7,7 @@ export const MainPageRecipesList = ({ recipes }) => {
   return (
     <ul style={{ listStyle: 'none' }}>
       <li key={Object.keys(recipes)[0]} style={{ marginBottom: 100 }}>
-        <h4>Breakfast</h4>
+        <TitlePageCategory>Breakfast</TitlePageCategory>
 
         <ul
           style={{
@@ -26,7 +27,7 @@ export const MainPageRecipesList = ({ recipes }) => {
       </li>
 
       <li key={Object.keys(recipes)[1]} style={{ marginBottom: 100 }}>
-        <h4>Miscellaneous</h4>
+        <TitlePageCategory>Miscellaneous</TitlePageCategory>
         <ul
           style={{
             listStyle: 'none',
@@ -45,7 +46,7 @@ export const MainPageRecipesList = ({ recipes }) => {
       </li>
 
       <li key={Object.keys(recipes)[2]} style={{ marginBottom: 100 }}>
-        <h4>Chicken</h4>
+        <TitlePageCategory>Chicken</TitlePageCategory>
         <ul
           style={{
             listStyle: 'none',
@@ -64,7 +65,7 @@ export const MainPageRecipesList = ({ recipes }) => {
       </li>
 
       <li key={Object.keys(recipes)[3]} style={{ marginBottom: 100 }}>
-        <h4>Desserts</h4>
+        <TitlePageCategory>Desserts</TitlePageCategory>
         <ul
           style={{
             listStyle: 'none',

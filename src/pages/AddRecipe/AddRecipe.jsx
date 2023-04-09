@@ -2,14 +2,13 @@ import { toast } from 'react-toastify';
 
 import { useEffect, useState } from 'react';
 import store from 'store';
-import { SocialLinks } from 'components/FooterAssembly/SocialLinks/SocialLinks';
+// import { SocialLinks } from 'components/FooterAssembly/SocialLinks/SocialLinks';
 import {
   RecipeForm,
   MainWrapper,
-  StyledSocialTitle,
   StyledSocialWrepper,
 } from './addRecipe.styled';
-import { Title } from 'components/Titel/Titel';
+import { Title } from 'components/Title/Title';
 import { nanoid } from '@reduxjs/toolkit';
 import { Container } from 'components/Container/Container';
 // import { useDispatch } from 'react-redux';
@@ -19,7 +18,9 @@ import { AddRecipeIngredients } from 'components/AddRecipeIngredients/AddRecipeI
 import { AddRecipeSubmit } from 'components/AddRecipeSubmit/AddRecipeSubmit';
 // import { addOwnRecipe } from 'redux/ownRecipes/ownRecipesOperations';
 import { useMediaRules } from 'hooks/MediaRules';
+import axios from 'axios';
 import { AddRecipeToastifyError } from 'components/AddRecipeToastifyError/AddRecipeToastifyError';
+import { FollowUs } from 'components/FollowUs/FollowUs';
 
 // import { useNavigate } from 'react-router-dom';
 // import { scrollToTop } from 'utils/scrollUp';
@@ -109,57 +110,48 @@ const AddRecipe = () => {
   //   resetForm();
   // };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     const formData = new FormData();
     const { recipe, time, category, about, title } = inputs;
 
-    const unit = userIngredients.some(
-      ({ unitValue }) => Number(unitValue) <= 0
-    );
+    // собираем значения ингредиентов в отдельный массив
+    const ingredients = userIngredients.map(ingredient => {
+      return {
+        id: ingredient.id,
+        name: ingredient.ingredient,
+        unitValue: ingredient.unitValue,
+        qty: ingredient.qty,
+      };
+    });
 
-    const ingredientsList = userIngredients.map(
-      ({ unitValue, ingredient, qty: unit }) => ({
-        ingredient,
-        qty: `${unitValue} ${unit}`,
-      })
-    );
+    formData.append('file', file);
+    formData.append('upload_preset', 'alex_preset');
 
-    const isInvalid =
-      !recipe || !about || !title || !ingredientsList.length || unit;
-
-    if (isInvalid) {
-      toast.error(
-        <AddRecipeToastifyError
-          title={title}
-          about={about}
-          ingredientsList={ingredientsList}
-          recipe={recipe}
-          unit={unit}
-        />,
-        {
-          position: 'bottom-right',
-          autoClose: 5000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light',
-        }
+    try {
+      const response = await axios.post(
+        'https://determined-ruby-nematode.cyclic.app/auth/picture',
+        formData
       );
-      return;
+
+      const imageUrl = response.data.secure_url;
+
+      const data = {
+        recipe,
+        time,
+        category,
+        about,
+        title,
+        ingredients,
+        imageUrl,
+      };
+
+      console.log('Form data:', data);
+    } catch (error) {
+      console.error('Error:', error.message);
+      console.log('Error Response:', error.response);
+      toast.error(<AddRecipeToastifyError />);
     }
-
-    formData.append('description', recipe);
-    formData.append('cookingTime', time);
-    formData.append('category', category);
-    formData.append('about', about);
-    formData.append('title', title);
-    formData.append('picture', file);
-    formData.append('ingredients', JSON.stringify(ingredientsList));
-
-    // dispatch(addOwnRecipe({ body: formData, cb }));
   };
 
   const handleSelect = (...arg) => {
@@ -242,14 +234,13 @@ const AddRecipe = () => {
           </RecipeForm>
           <div>
             <StyledSocialWrepper>
-              <StyledSocialTitle> Follow us</StyledSocialTitle>
-              <SocialLinks />
+              <FollowUs text={'Folow Us'} />
             </StyledSocialWrepper>
             {/* <AddRecipePopular
-            isDesktop={isDesktop}
-            isTablet={isTablet}
-            localTheme={theme}
-          /> */}
+              isDesktop={isDesktop}
+              isTablet={isTablet}
+              localTheme={theme}
+            /> */}
           </div>
         </MainWrapper>
       </Container>

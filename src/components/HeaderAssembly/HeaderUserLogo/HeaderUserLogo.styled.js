@@ -5,13 +5,13 @@ export const HeaderUserWrapper = styled.div`
 `;
 export const HeaderUserBtn = styled.button`
   display: flex;
-  box-sizing: border-box;
   align-items: center;
+  box-sizing: border-box;
   justify-content: space-between;
-  gap: 14px;
   margin-right: 24px;
-  font-family: ${p => p.theme.fonts.main};
   font-size: 14px;
+  gap: 14px;
+  font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights[2]};
   line-height: ${p => p.theme.lineHeights.userLink};
   color: ${p =>
