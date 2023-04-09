@@ -12,7 +12,7 @@ import { Title } from 'components/Title/Title';
 import { nanoid } from '@reduxjs/toolkit';
 import { Container } from 'components/Container/Container';
 // import { useDispatch } from 'react-redux';
-// import { AddRecipePopular } from 'components/AddRecipePopular/AddRecipePopular';
+import { AddRecipePopular } from 'components/AddRecipePopular/AddRecipePopular';
 import { AddRecipeMeta } from 'components/AddRecipeMeta/AddRecipeMeta';
 import { AddRecipeIngredients } from 'components/AddRecipeIngredients/AddRecipeIngredients';
 import { AddRecipeSubmit } from 'components/AddRecipeSubmit/AddRecipeSubmit';
@@ -38,7 +38,7 @@ const AddRecipe = () => {
   // const dispatch = useDispatch();
   // const navigate = useNavigate();
 
-  const { isDesktop, isMobile } = useMediaRules();
+  const { isDesktop, isMobile, isTablet } = useMediaRules();
 
   const [inputs, setInputs] = useState(() => {
     const inputs = store.get('userInputs');
@@ -236,11 +236,11 @@ const AddRecipe = () => {
             <StyledSocialWrepper>
               <FollowUs text={'Folow Us'} />
             </StyledSocialWrepper>
-            {/* <AddRecipePopular
+            <AddRecipePopular
               isDesktop={isDesktop}
               isTablet={isTablet}
               localTheme={theme}
-            /> */}
+            />
           </div>
         </MainWrapper>
       </Container>
