@@ -6,26 +6,25 @@ import tab1 from '../../images/tablet/recipeHero_tab_1x.jpg';
 import tab2 from '../../images/tablet/recipeHero_tab_2x.jpg';
 import desktop1 from '../../images/desktop/recipeHero_desktop_1x.jpg';
 import desktop2 from '../../images/desktop/recipeHero_desktop_2x.jpg';
-import { Loader } from 'components/Loader/Loader';
+
 import { ButtonSkewStyle } from 'components/ButtonSkew/buttonSkew.styled';
 
 export const RecipeHeroContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
   background-image: url(${mob1});
   background-repeat: no-repeat;
-  width: 100%;
+  width: 100% !important;
   height: 455px;
   margin-bottom: 32px;
   padding-top: 144px;
   padding-bottom: 90px;
   background-size: 100%;
-  ${Loader} {
-    background-color: transparent;
-  }
+
   ${ButtonSkewStyle} {
-    margin-top: 24;
+    margin-top: 0;
     padding: 10px 18px;
     color: black;
 
@@ -34,7 +33,6 @@ export const RecipeHeroContainer = styled.div`
       padding: 18px 44px;
     }
     @media screen and (min-width: 1440px) {
-        margin-top: 30;
     }
 
     &:hover {
