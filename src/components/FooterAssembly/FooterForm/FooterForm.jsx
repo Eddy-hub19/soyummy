@@ -3,6 +3,7 @@ import { useMediaRules } from 'hooks/MediaRules';
 import { Formik, ErrorMessage } from 'formik';
 import { getColor } from 'utils/formikColors';
 import sprite from '../../../images/sprite.svg';
+import { HiOutlineMail } from 'react-icons/hi';
 
 import {
   FooterWrap,
@@ -66,17 +67,14 @@ export const FooterForm = () => {
                 'rgba(255, 255, 255, 0.3)'
               )}
             />
-
-            <svg
-              className="icon"
+            <HiOutlineMail
+              className="Envelope"
               fill={getColor(
                 props.errors.email,
                 props.values.email,
                 'rgba(255, 255, 255, 0.8)'
               )}
-            >
-              <use href={sprite + '#email'}></use>
-            </svg>
+            ></HiOutlineMail>
 
             {props.values.email && (
               <InputFlag>
