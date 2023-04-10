@@ -86,6 +86,26 @@ export const InputWraper = styled.div`
     left: 20px;
     transform: translateY(-50%);
   }
+
+  .statusIcon {
+    position: absolute;
+    height: 1.5rem;
+    width: 1.5rem;
+    box-sizing: border-box;
+    top: 38%;
+    right: 20px;
+    transform: translateY(-50%);
+  }
+
+  .error {
+    position: absolute;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    transform: translateY(-90%);
+    color: ${p => p.children[1].props.color};
+  }
 `;
 
 export const Box = styled.div`
@@ -198,20 +218,11 @@ export const AuthBg = styled.div`
   @media (min-width: 1440px) {
     background-image: url(${FormAuthDes});
   }
-  border: 0;
-  margin: 0;
-  padding: 0;
-  vertical-align: initial;
+
   height: 100vh;
-  width: 100vw;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: 50% 0;
-  bottom: 1;
-  top: 266px;
-  position: absolute;
-  display: inline-block;
-  z-index: -1;
+  background-position: 50% 200px;
 `;
 export const Container = styled.div`
   @media (max-width: 767px) {
