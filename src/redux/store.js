@@ -20,6 +20,7 @@ import themeReducer from './themeR/themeSlice';
 const authPersistConfig = {
   key: 'auth',
   storage,
+  // whitelist: ['token'],
 };
 
 const favoritesPersistConfig = {
