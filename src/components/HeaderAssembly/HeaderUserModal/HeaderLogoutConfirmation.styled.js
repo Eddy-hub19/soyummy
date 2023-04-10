@@ -82,7 +82,6 @@ export const LogoutBtnCancel = styled.button`
   width: calc(50% - 4px);
   padding: 14px;
   font-size: 14px;
-  white-space: nowrap;
   background-color: ${p =>
     p.status === 'cancel'
       ? p.theme.colors.mainGreyBg
@@ -92,7 +91,8 @@ export const LogoutBtnCancel = styled.button`
   font-weight: ${p => p.theme.fontWeights[0]};
   line-height: ${p => p.theme.lineHeights.extraContent};
   border: ${({ theme }) => `1px solid ${theme.colors.mainGreyBg}`};
-
+  font-size: 14px;
+  white-space: nowrap;
   color: ${p =>
     p.status === 'cancel'
       ? p.theme.colors.btnHoverBg
@@ -102,7 +102,7 @@ export const LogoutBtnCancel = styled.button`
 
   &:disabled {
     pointer-events: none;
-    opacity: 0.7;
+    opacity: 0.8;
   }
 
   &:hover,
@@ -110,12 +110,12 @@ export const LogoutBtnCancel = styled.button`
     border: ${({ theme }) => `1px solid ${theme.colors.btnHoverBg}`};
     background-color: ${p =>
       p.status === 'cancel'
-        ? p.theme.colors.mainWhite
-        : p.theme.colors.mainAccent};
+        ? p.theme.colors.mainLight
+        : p.theme.colors.btnHoverBg};
     color: ${p =>
       p.status === 'cancel'
         ? p.theme.colors.btnHoverBg
-        : p.theme.colors.btnTextLight};
+        : p.theme.colors.mainAccent};
   }
 
   @media screen and (min-width: 768px) {
