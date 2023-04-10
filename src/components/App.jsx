@@ -22,8 +22,6 @@ import { GlobalStyle } from './App.styled';
 import { useDispatch } from 'react-redux';
 import { fetchCurrentUser } from 'redux/auth/authOperation';
 
-
-
 const MainPage = lazy(() =>
   import('pages/MainPage/MainPage').then(module => ({
     default: module.MainPage,
@@ -45,29 +43,55 @@ const CategoriesByName = lazy(() =>
 export const App = () => {
   const { mode } = useSelector(getMode);
   const themeMode = mode === 'light' ? lightMode : darkMode;
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCurrentUser())
+    dispatch(fetchCurrentUser());
   }, [dispatch]);
 
   return (
     <ThemeProvider theme={themeMode}>
       <GlobalStyle />
       <Routes>
-        <Route
+        {/* <Route
           path="/startPage"
           element={<RestrictedRoute redirectTo="/main" component={AuthNav} />}
+        /> */}
+
+        <Route
+          path="/"
+          element={
+            <RestrictedRoute restricted>
+              <AuthNav />
+            </RestrictedRoute>
+          }
         />
+
+        {/* <Route
+          path="/register"
+          element={<RestrictedRoute redirectTo="/main" component={Register} />}
+        /> */}
 
         <Route
           path="/register"
-          element={<RestrictedRoute redirectTo="/main" component={Register} />}
+          element={
+            <RestrictedRoute restricted>
+              <Register />
+            </RestrictedRoute>
+          }
         />
 
-        <Route
+        {/* <Route
           path="/signin"
           element={<RestrictedRoute redirectTo="/main" component={SignIn} />}
+        /> */}
+        <Route
+          path="/signin"
+          element={
+            <RestrictedRoute restricted>
+              <SignIn />
+            </RestrictedRoute>
+          }
         />
         {/* <Route
           path="/confirm-email"
@@ -77,13 +101,21 @@ export const App = () => {
             </PublicRoute>
           }
         /> */}
-        <Route
+        {/* <Route
           path="/"
           element={
             <PrivateRoute
               redirectTo="/startPage"
               component={SharedLayout}
             ></PrivateRoute>
+          }
+        > */}
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <SharedLayout />
+            </PrivateRoute>
           }
         >
           <Route index element={<MainPage />} />
