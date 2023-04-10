@@ -51,7 +51,7 @@ export const HeaderUserLogo = ({ avatarUrl = userAvatar, color = 'light' }) => {
           onBlur={handleBlur}
           color={color}
         >
-          <img src={avatarUrl} alt={user.name} />
+          <img src={user.avatarUrl} alt={user.name} />
           <p>{user.name}</p>
         </HeaderUserBtn>
 
@@ -66,7 +66,7 @@ export const HeaderUserLogo = ({ avatarUrl = userAvatar, color = 'light' }) => {
       {showModal && (
         <HeaderUserModal
           name={user.name}
-          avatarUrl={avatarUrl}
+          avatarUrl={user.avatarUrl}
           closeModal={toggleUserModal}
           status={statusModal}
         />

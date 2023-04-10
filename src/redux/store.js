@@ -36,7 +36,7 @@ const myRecipesConfig = {
 };
 
 const shoppingListConfig = {
-  key: 'shoplist',
+  key: 'shoppingList',
   storage,
 };
 

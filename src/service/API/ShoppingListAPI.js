@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { axiosInstance } from 'service/API/axios';
 
 export const addShoppingListAPI = (token, body) => {
   const config = {
@@ -7,7 +7,7 @@ export const addShoppingListAPI = (token, body) => {
     },
   };
 
-  return axios.post('/shopping-list', body, config).then(({ data }) => {
+  return axiosInstance.post('/shopping-list', body, config).then(({ data }) => {
     return data;
   });
 };
@@ -19,7 +19,7 @@ export const getShoppingListAPI = token => {
     },
   };
 
-  return axios.get('/shopping-list', config).then(({ data }) => {
+  return axiosInstance.get('/shopping-list', config).then(({ data }) => {
     return data;
   });
 };
@@ -31,7 +31,9 @@ export const removeShoppingListAPI = (token, id) => {
     },
   };
 
-  return axios.delete(`/shopping-list/${id}`, config).then(({ data }) => {
-    return data;
-  });
+  return axiosInstance
+    .delete(`/shopping-list/${id}`, config)
+    .then(({ data }) => {
+      return data;
+    });
 };

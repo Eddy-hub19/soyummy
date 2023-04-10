@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Switcher = styled.div`
   position: relative;
@@ -11,18 +11,18 @@ export const CheckBoxLabel = styled.label`
   width: 61px;
   height: 27px;
   border-radius: 50px;
-  background: #EFEFEF;
+  background: #efefef;
   box-shadow: inset 0px 6px 8px 3px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: background-color 0.25s ease-in-out;
   &::after {
-    content: "";
+    content: '';
     display: block;
     border-radius: 50%;
     width: 21px;
     height: 21px;
     margin: 3px;
-    background: linear-gradient(180deg, #FFFFFF 0%, #E8EAEA 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #e8eaea 100%);
     box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.2);
     transition: 0.5s;
   }
@@ -34,9 +34,9 @@ export const CheckBox = styled.input`
   width: 61px;
   height: 27px;
   &:checked + ${CheckBoxLabel} {
-    background: #8BAA36;
+    background: #8baa36;
     &::after {
-      content: "";
+      content: '';
       display: block;
       border-radius: 50%;
       width: 21px;

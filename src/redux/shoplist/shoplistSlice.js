@@ -36,7 +36,7 @@ const shoppingListSlice = createSlice({
           state.data = [...state.data, payload];
           console.log(state.data);
         }
-      ),
+      )
 });
 
 export default shoppingListSlice.reducer;

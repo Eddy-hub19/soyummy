@@ -41,13 +41,13 @@ const ShoppingListTabl = () => {
     setShopItems(storageItems);
   }, [dispatcher]);
 
-    useEffect(() => {
-      setisLoading(isRefreshing);
-    }, [isRefreshing]);
+  useEffect(() => {
+    setisLoading(isRefreshing);
+  }, [isRefreshing]);
   
-   useEffect(() => {
-     setShopItems(storageItems);
-   }, [storageItems]);
+  useEffect(() => {
+    setShopItems(storageItems);
+  }, [storageItems]);
 
   const deleteItem = e => {
     if (e.target.id) {
@@ -64,45 +64,50 @@ const ShoppingListTabl = () => {
   };
 
   return (
-    <Thumb>
-      {isLoading && <Loader/>}
-      {shopItems.length === 0 ? (
-        <EmptyPlaceholder text="Your shopping list is empty." />
+    <>
+      {isLoading ? (
+        <Loader />
       ) : (
-        <Table>
-          <TableItem key="0">
-            <TableFirstCol>Products</TableFirstCol>
-            <TableSecondThirdCol>Number</TableSecondThirdCol>
-            <TableSecondThirdCol>Remove</TableSecondThirdCol>
-          </TableItem>
-          {shopItems.map(({ _id, nameIngredient, weight, image }) => {
-            return (
-              <TableItem key={_id}>
-                <TableFirstCol>
-                  <BoxForImage>
-                    <Image
-                      src={image || defaultImg}
-                      alt={`product ${nameIngredient}`}
-                    />
-                  </BoxForImage>
-                  <ItemName>{nameIngredient}</ItemName>
-                </TableFirstCol>
-                <TableSecondThirdCol>
-                  <ItemNumber>{weight}</ItemNumber>
-                </TableSecondThirdCol>
-                <TableSecondThirdCol>
-                  <DeleteBtn type="button" id={_id} onClick={deleteItem}>
-                    <svg width="20" height="20">
-                      <use href={icons + '#icon-cross'}></use>
-                    </svg>
-                  </DeleteBtn>
-                </TableSecondThirdCol>
+        <Thumb> 
+          {shopItems.length > 0 ? (
+            <Table>
+              <TableItem key="0">
+                <TableFirstCol>Products</TableFirstCol>
+                <TableSecondThirdCol>Number</TableSecondThirdCol>
+                <TableSecondThirdCol>Remove</TableSecondThirdCol>
               </TableItem>
-            );
-          })}
-        </Table>
+              {shopItems.map(({ _id, nameIngredient, weight, image }) => {
+                return (
+                  <TableItem key={_id}>
+                    <TableFirstCol>
+                      <BoxForImage>
+                        <Image
+                          src={image || defaultImg}
+                          alt={`product ${nameIngredient}`}
+                        />
+                      </BoxForImage>
+                      <ItemName>{nameIngredient}</ItemName>
+                    </TableFirstCol>
+                    <TableSecondThirdCol>
+                      <ItemNumber>{weight}</ItemNumber>
+                    </TableSecondThirdCol>
+                    <TableSecondThirdCol>
+                      <DeleteBtn type="button" id={_id} onClick={deleteItem}>
+                        <svg width="20" height="20">
+                          <use href={icons + '#icon-cross'}></use>
+                        </svg>
+                      </DeleteBtn>
+                    </TableSecondThirdCol>
+                  </TableItem>
+                );
+              })}
+            </Table>
+          ) : (
+            <EmptyPlaceholder text="Your shopping list is empty." />
+          )}
+         </Thumb>
       )}
-    </Thumb>
+    </>
   );
 };
 

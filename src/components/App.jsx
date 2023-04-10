@@ -1,21 +1,23 @@
 import { Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
-import { ThemeProvider } from 'styled-components';
-import {theme as lightMode, darkTheme as darkMode  } from '../theme/theme';
-import { PrivateRoute } from 'service/routes';
+// import { ThemeProvider } from 'styled-components';
+import { theme as lightMode, darkTheme as darkMode } from '../theme/theme';
+// import { PrivateRoute } from 'service/routes';
 import { RestrictedRoute } from 'service/routes';
+
+import { ThemeProvider } from 'styled-components';
 
 // import Main from 'pages/Main/Main';
 // import Subscribe from 'pages/Subscribe/Subscribe';
-// import Error from 'pages/Error/Error';
-// import UserSharedLayout from './HeaderUserBar/UserSharedLayout';
 import SharedLayout from './SharedLayout/SharedLayout';
 import AddRecipe from 'pages/AddRecipe/AddRecipe';
+// import Error from 'pages/Error/Error';
+// import UserSharedLayout from './HeaderUserBar/UserSharedLayout';
 import { AuthNav } from './AuthNav/AuthNav';
 import Register from 'pages/Register/Register';
 import SignIn from 'pages/Signin/Signin';
-import MyRecipes from 'pages/MyRecipes/MyRecipes';
-import Favorites from 'pages/Favorites/Favorites';
+// import MyRecipes from 'pages/MyRecipes/MyRecipes';
+// import Favorites from 'pages/Favorites/Favorites';
 import { useSelector } from 'react-redux';
 import { getMode } from 'redux/themeR/themeSelector';
 import { GlobalStyle } from './App.styled';
@@ -27,34 +29,45 @@ const MainPage = lazy(() =>
 );
 
 const ShopingList = lazy(() => import('pages/ShoppingList/ShoppingList'));
-const SearchPage = lazy(() => import('../pages/SearchPage/SearchPage'));
+const SearchPage = lazy(() => import('pages/SearchPage/SearchPage/SearchPage'));
 const Recipe = lazy(() => import('../pages/RecipePage/RecipePage'));
 const Categories = lazy(() => import('pages/Categories/Categories'));
-const CategoriesByName = lazy(() => import('pages/CategoriesByName/CategoriesByName'));
-// const MyRecipes = lazy(() => import('pages/MyRecipes/MyRecipes'));
-// const Favorites = lazy(() => import('pages/Favorites/Favorites'));
-//============================================================================//
-export const App = () => {
+const CategoriesByName = lazy(() =>
+  import('pages/CategoriesByName/CategoriesByName')
+);
+const MyRecipes = lazy(() => import('pages/MyRecipes/MyRecipes'));
+const Favorites = lazy(() => import('pages/Favorites/Favorites'));
 
+export const App = () => {
   const { mode } = useSelector(getMode);
   const themeMode = mode === 'light' ? lightMode : darkMode;
   return (
     <ThemeProvider theme={themeMode}>
-      <GlobalStyle/>
+      <GlobalStyle />
       <Routes>
+        {/* <Route
+          path="/"
+          element={
+            <PrivateRoute restricted>
+              <Main />
+            </PrivateRoute>
+          }
+        /> */}
         <Route
-          path="/startPage"
-          element={<RestrictedRoute redirectTo="/main" component={AuthNav} />}
+          path="/start"
+          element={<AuthNav />}
+          restricted
+          redirectTo="/main"
         />
-
         <Route
           path="/register"
-          element={<RestrictedRoute redirectTo="/main" component={Register} />}
+          element={<RestrictedRoute component={Register} redirectTo="/main" />}
         />
-
         <Route
           path="/signin"
-          element={<RestrictedRoute redirectTo="/main" component={SignIn} />}
+          Component={SignIn}
+          restricted
+          redirectTo="/main"
         />
         {/* <Route
           path="/confirm-email"
@@ -64,37 +77,39 @@ export const App = () => {
             </PublicRoute>
           }
         /> */}
+
         <Route
           path="/"
           element={
-            <PrivateRoute
-              redirectTo="/startPage"
-              component={SharedLayout}
-            ></PrivateRoute>
+            // <PrivateRoute>
+            <SharedLayout />
+            // </PrivateRoute>
           }
         >
-          <Route index element={<MainPage />} />
+          <Route path="/main" element={<MainPage />} />
           <Route path="/add" element={<AddRecipe />} />
           <Route path="/my" element={<MyRecipes />} />
-          <Route path="/favorite" element={<Favorites />} />
+
+          <Route path="/search" element={<SearchPage />} />
+
           <Route path="/categories" element={<Categories />}>
             <Route path=":categoryName" element={<CategoriesByName />} />
           </Route>
-
           <Route path="/shopping-list" element={<ShopingList />} />
           <Route path="/recipes/:recipeId" element={<Recipe />} />
           <Route path="/search" element={<SearchPage />} />
+          <Route path="/main" element={<MainPage />} />
+          <Route path="/favorite" element={<Favorites />} />
           <Route path="*" element={<MainPage />} />
+
         </Route>
-        {/* <Route path="/my" element={<MyRecipes />} /> */}
+
         {/* <Route path="/" element={<UserSharedLayout />} /> */}
-        {/* <Route path="/signin" element={<AuthNav />} />
-        <Route path="/register" element={<AuthNav />} /> */}
         {/* <Route path="/categories" element={<Categories />}>
         <Route path=":categoryName" element={<CategoriesByName />} />
         </Route>
         <Route path="/add" element={<AddRecipe />} /> */}
-        {/* <Route path="/recipe/:recipeId" element={<Recipe />} /> */}
+        
         {/* <Route path="*" element={<Error />} /> */}
       </Routes>
     </ThemeProvider>

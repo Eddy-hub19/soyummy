@@ -13,7 +13,7 @@ import { timeOptionsList } from 'utils/timeOptionsList';
 // import { getFullCategoryList } from 'redux/outerRecipes/outerRecipesSelectors';
 import icons from '../../images/sprite.svg';
 import { stylesMeta } from 'pages/AddRecipe/selectStyles';
-import { getCategoryListAPI } from 'service/axios/axios';
+import { getCategoryListAPI } from 'service/API/CategoriesAPI';
 import store from 'store';
 
 export const AddRecipeMeta = ({

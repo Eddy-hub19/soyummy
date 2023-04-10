@@ -6,6 +6,7 @@ export const fetchFavorites = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persisterToken = state.auth.token;
+    console.log(`persisterToken`, persisterToken);
     if (persisterToken === null) {
       return thunkAPI.rejectWithValue();
     }

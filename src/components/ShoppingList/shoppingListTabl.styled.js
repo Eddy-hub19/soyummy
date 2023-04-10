@@ -8,7 +8,6 @@ export const Thumb = styled.div`
   }
 `;
 
-
 export const Table = styled.ul`
   width: 100%;
   font-family: ${p => p.theme.fonts.main};
@@ -60,7 +59,7 @@ export const TableItem = styled.li`
 
 export const TableFirstCol = styled.div`
   display: flex;
-  
+
   min-width: 225px;
   @media screen and (min-width: 769px) and (max-width: 1440px) {
     width: 450px;
