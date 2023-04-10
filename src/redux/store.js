@@ -21,6 +21,7 @@ import shoplistSlice from './shoplist/shoplistSlice';
 const authPersistConfig = {
   key: 'auth',
   storage,
+  // whitelist: ['token'],
 };
 
 const favoritesPersistConfig = {
