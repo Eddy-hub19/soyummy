@@ -39,6 +39,7 @@ const ShoppingListTabl = () => {
   useEffect(() => {
     dispatcher(fetchShoppingList());
     setShopItems(storageItems);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatcher]);
 
   useEffect(() => {
