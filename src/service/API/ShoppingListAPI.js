@@ -1,19 +1,39 @@
 import { axiosInstance } from 'service/API/axios';
 
-// export const addShoppingListAPI = body => {
-//   return axios.post('/shopping-list', body).then(({ data }) => {
-//     return data;
-//   });
-// };
+export const addShoppingListAPI = (token, body) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
 
-export const getShoppingListAPI = () => {
-  return axiosInstance.get('/shopping-list').then(({ data }) => {
+  return axiosInstance.post('/shopping-list', body, config).then(({ data }) => {
     return data;
   });
 };
 
-export const removeShoppingListAPI = id => {
-  return axiosInstance.delete(`/shopping-list/${id}`).then(({ data }) => {
+export const getShoppingListAPI = token => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  return axiosInstance.get('/shopping-list', config).then(({ data }) => {
     return data;
   });
+};
+
+export const removeShoppingListAPI = (token, id) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  return axiosInstance
+    .delete(`/shopping-list/${id}`, config)
+    .then(({ data }) => {
+      return data;
+    });
 };
