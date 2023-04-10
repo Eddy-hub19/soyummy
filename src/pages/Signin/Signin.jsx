@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import * as authOperation from '../../redux/auth/authOperation';
-import sprite from '../../images/sprite.svg';
+import { CgLock } from 'react-icons/cg';
+import { HiOutlineMail } from 'react-icons/hi';
 
 import { NavLink } from 'react-router-dom';
 import {
@@ -40,25 +41,30 @@ const SignIn = () => {
         /^[a-zA-Zа-яА-ЯА-ЩЬьЮюЯяЇїІіЄєҐґ0-9]+(([' -][a-zA-Zа-яА-Я0-9 ])?[a-zA-Zа-яА-Я0-9]*)*$/,
         'Special symbols are not allowed'
       )
+      .matches(/[1-9]/, 'Your password is little secure. Add a number!')
+      .matches(
+        /[a-zа-яA-ZА-ЯіїЇІєЄ]/,
+        'Your password is little secure. Add a letter!'
+      )
       .min(6, 'Your password is too short')
       .max(16, 'Your password must be 16 characters max')
       .required('Type your password please'),
   });
 
   return (
-    <>
+    <AuthBg>
       <Container>
         <Image />
         <BoxWraper>
           <Box>
-            <h1>Registration</h1>
+            <h1>Sign in</h1>
             <Formik
               initialValues={{
                 email: '',
                 password: '',
               }}
               isSubmitting={false}
-              isInitialValid={false}
+              isInitialValid={true}
               validationSchema={schema}
               onSubmit={async (values, actions) => {
                 const { email, password } = values;
@@ -89,16 +95,14 @@ const SignIn = () => {
                         'rgba(255, 255, 255, 0.3)'
                       )}
                     />
-                    <svg
+                    <HiOutlineMail
                       className="icon"
-                      fill={getColor(
+                      color={getColor(
                         props.errors.email,
                         props.values.email,
                         'rgba(255, 255, 255, 0.8)'
                       )}
-                    >
-                      <use href={sprite + '#email'}></use>
-                    </svg>
+                    ></HiOutlineMail>
                   </InputWraper>
                   <InputWraper>
                     <Input
@@ -121,16 +125,14 @@ const SignIn = () => {
                         'rgba(255, 255, 255, 0.3)'
                       )}
                     />
-                    <svg
+                    <CgLock
                       className="icon"
-                      fill={getColor(
+                      color={getColor(
                         props.errors.password,
                         props.values.password,
                         'rgba(255, 255, 255, 0.8)'
                       )}
-                    >
-                      <use href={sprite + '#password'}></use>
-                    </svg>
+                    />
                   </InputWraper>
                   <Button type="submit">Sign up</Button>
                 </Form>
@@ -140,8 +142,7 @@ const SignIn = () => {
           <NavLink to={'/register'}>Register</NavLink>;
         </BoxWraper>
       </Container>
-      <AuthBg></AuthBg>
-    </>
+    </AuthBg>
   );
 };
 export default SignIn;
