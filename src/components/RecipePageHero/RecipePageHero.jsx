@@ -18,37 +18,36 @@ import {
 const RecipePageHero = ({ recipe }) => {
   const { _id, title, description, time } = recipe;
 
-  const [btnFav, setBtnFav] = useState(false);
-  const dispatch = useDispatch();
+  const favorites = useSelector(getFavorites);
+  const isFavorite = favorites.some(item => item._id === _id);
+    // const favorites = useSelector(state => state.auth.user.favorite);
+    // const isFavorite = favorites.some(item => item === recipe._id);
   
-  // const favorites = useSelector(getFavorites);
-  // const isFavorite = favorites.some(item => item._id === _id);
-
-  // const favorites = useSelector(state => state.auth.user.favorite);
-  // const isFavorite = favorites.some(item => item === recipe._id);
+  const [isFav, setIsFav] = useState(isFavorite);
+  const dispatch = useDispatch();
 
   function addToFavoriteRecipes() {
     dispatch(addFavorite(_id));
-    setBtnFav(true);
+    setIsFav(true);
     return;
   };
 
     function removeFromFavoriteRecipes() {
       dispatch(deleteFavorite(_id));
-      setBtnFav(false);
+      setIsFav(false);
       return;
     }
   
   useEffect(() => {
     dispatch(fetchFavorites({}));
-  }, [dispatch, btnFav]);
+  }, [dispatch, isFav]);
 
   return (
     <>
       <RecipeHeroContainer>
         <HeroTitle>{title}</HeroTitle>
         <HeroText>{description}</HeroText>
-        {!btnFav ? (
+        {!isFav ? (
           <ButtonSkew
             type="button"
             text="Add to favorite recipes"
