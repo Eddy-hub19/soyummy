@@ -36,13 +36,13 @@ export const Button = styled.button`
     line-height: ${p => p.theme.lineHeights.btnText};
     padding: 67px 23px;
     min-width: 160px;
-    top: -51%;
-    left: 62%;
+    top: -49%;
+    left: 60%;
   }
 `;
 
 export const Input = styled.input`
-  border: ${p => p.theme.borders.searchInput};
+  border: ${p => p.theme.borders.mainSearchInput};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
   width:295px;
   height:53px;
@@ -52,22 +52,16 @@ export const Input = styled.input`
   font-size:16px;
   line-height: ${p => p.theme.lineHeights.subheader};
   border-radius: 18px 44px;
-  border: none;
-  background-color: transparent;
+  background-color:${p => p.theme.colors.searchSelectBg};
   padding-left: 32px;
   color: ${p => p.theme.colors.disabledGrey};
-  &:hover {
-    border: none;
+
+  :hover, 
+  :active,
+  :focus {
+    border: ${p => p.theme.borders.mainSearchInput};
     outline: none;
-  }
-  &:active {
-    border: none;
-    outline: none;
-  }
-  &:focus {
-    border: none;
-    outline: none;
-  }
+  };
 
   @media screen and (min-width: 768px) {
     width:362px;

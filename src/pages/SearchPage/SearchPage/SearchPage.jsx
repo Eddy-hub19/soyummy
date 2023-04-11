@@ -4,10 +4,10 @@ import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import SearchForm from '../SearchForm/SearchForm';
 import SearchRecipesList from '../SearchRecipesList/SearchRecipesList';
+
 import { Container } from 'components/Container/Container';
-import { OtherButton, Wrapper } from '../SearchPage/SearchPage.styled';
+import { OtherButton, Wrapper, Text } from '../SearchPage/SearchPage.styled';
 import { EmptyPlaceholder } from 'pages/EmptyPlaceholder/EmptyPlaceholder';
-import { MainConteiner } from 'components/Container/Container.styled';
 
 const SearchPage = () => {
   const [recipes, setRecipes] = React.useState([]);
@@ -66,22 +66,24 @@ const SearchPage = () => {
 
   return (
     <Container>
-      <MainConteiner>
-        <SearchForm
-          handleSubmit={handleSubmit}
-          query={keyword}
-          type={searchType}
-        />
-        <SearchRecipesList key={recipes._id} recipes={recipes} />
-        <Wrapper>
-          {recipes.length !== 0 && hasMore && (
-            <OtherButton type="button" onClick={loadNextPage}>
-              Other categories
-            </OtherButton>
-          )}
-          {status === 'rejected' && <EmptyPlaceholder text={MESSAGE} />}
-        </Wrapper>
-      </MainConteiner>
+      <SearchForm
+        handleSubmit={handleSubmit}
+        query={keyword}
+        type={searchType}
+      />
+      <SearchRecipesList key={recipes._id} recipes={recipes} />
+      <Wrapper>
+        {recipes.length !== 0 && hasMore && (
+          <OtherButton type="button" onClick={loadNextPage}>
+            Other categories
+          </OtherButton>
+        )}
+        {status === 'rejected' && (
+          <Text>
+            <EmptyPlaceholder text={MESSAGE} />
+          </Text>
+        )}
+      </Wrapper>
     </Container>
   );
 };

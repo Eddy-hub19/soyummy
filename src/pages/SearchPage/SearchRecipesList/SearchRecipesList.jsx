@@ -5,8 +5,9 @@ import {
   RecipeTitle,
 } from './SearchRecipesList.styled';
 import { CardImg } from 'components/CardMeal/CardMeal.styled';
+import { NavLink } from 'react-router-dom';
 
-const SearchRecipesList = ({ recipes }) => {
+const SearchRecipesList = ({ recipes, _id }) => {
   return (
     <div>
       <GridContainer>
@@ -14,11 +15,13 @@ const SearchRecipesList = ({ recipes }) => {
           recipes.map(recipe => {
             return (
               <GridItem>
-                <a
+                <NavLink to={`/recipes/${_id}`}>
+                  {/* <a
                   href={`https://determined-ruby-nematode.cyclic.app/${recipe.id}`}
-                >
+                > */}
                   <CardImg src={recipe.thumb} alt="img" />
-                </a>
+                  {/* </a> */}
+                </NavLink>
                 <RecipeTitle>{recipe.title}</RecipeTitle>
               </GridItem>
             );

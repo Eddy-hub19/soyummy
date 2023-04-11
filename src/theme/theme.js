@@ -167,7 +167,7 @@ export const darkTheme = {
     btnStandart: '2px solid #FAFAFA',
     btnHover: '2px solid #8BAA36',
     mainSearchInput: '1px solid rgba(255, 255, 255, 0.2)',
-    searchInput: '1px solid rgba(255, 255, 255, 0.2)',
+    searchInput: '1px solid #FAFAFA',
     mainNavBord: '1px solid #8BAA36',
   },
   radii: {

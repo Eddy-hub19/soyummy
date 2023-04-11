@@ -2,8 +2,10 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import MenuList from '@mui/material/MenuList';
 import FormControl from '@mui/material/FormControl';
 import { Title } from 'components/Title/Title';
+import store from 'store';
 import {
   Button,
   Input,
@@ -45,12 +47,15 @@ const SearchForm = props => {
     }
   };
 
+  const theme = store.get('theme');
+
   return (
     <div>
       <Title>Search</Title>
       <Form onSubmit={handleSubmit}>
         <Input
           onChange={handleInputChange}
+          localTheme={theme}
           type="text"
           name="name"
           value={keyword}
@@ -65,31 +70,58 @@ const SearchForm = props => {
       </Form>
       <DropdownWrapper>
         <TitleDropdpwn>Search by:</TitleDropdpwn>
-        <FormControl>
-          <Select
+
+        <Select
+          sx={{
+            color: 'rgb(189, 189, 189);',
+            '.MuiOutlinedInput-notchedOutline': {
+              borderColor: 'rgba(217, 217, 217, 0.2)',
+            },
+            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+              borderColor: `rgba(217, 217, 217, 0.2)`,
+            },
+            '&:hover .MuiOutlinedInput-notchedOutline': {
+              borderColor: 'rgba(217, 217, 217, 0.2)',
+            },
+
+            width: '198px',
+          }}
+          value={searchType}
+          onChange={handleSearchTypeChange}
+        >
+          <MenuList
             sx={{
-              color: 'rgba(0, 0, 0, 0.5)',
-              '.MuiOutlinedInput-notchedOutline': {
-                borderColor: 'rgba(217, 217, 217, 0.2)',
+              '& .MuiMenu-list': {
+                border: 'none',
+                backgroundColor: 'green',
+                outline: 'none',
               },
-              '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                borderColor: `rgba(217, 217, 217, 0.2)`,
-              },
-              '&:hover .MuiOutlinedInput-notchedOutline': {
-                borderColor: 'rgba(217, 217, 217, 0.2)',
-              },
-              width: '198px',
             }}
-            value={searchType}
-            onChange={handleSearchTypeChange}
           >
-            <MenuItem value="title">Title</MenuItem>
+            <MenuItem
+              sx={{
+                '& .MuiMenuItem-root': {
+                  backgroundColor: 'green',
+                  outline: 'none',
+                },
+                '&:active': {
+                  backgroundColor: 'green',
+                },
+              }}
+              value="title"
+            >
+              Title
+            </MenuItem>
             <MenuItem value="ingredient">Ingredient</MenuItem>
-          </Select>
-        </FormControl>
+          </MenuList>
+        </Select>
       </DropdownWrapper>
     </div>
   );
 };
 
 export default SearchForm;
+
+export const Text = styled.div`
+   ;
+`;

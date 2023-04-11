@@ -98,10 +98,8 @@ export const App = () => {
           <Route path="/shopping-list" element={<ShopingList />} />
           <Route path="/recipes/:recipeId" element={<Recipe />} />
           <Route path="/search" element={<SearchPage />} />
-          <Route path="/main" element={<MainPage />} />
           <Route path="/favorite" element={<Favorites />} />
           <Route path="*" element={<MainPage />} />
-
         </Route>
 
         {/* <Route path="/" element={<UserSharedLayout />} /> */}
@@ -109,7 +107,7 @@ export const App = () => {
         <Route path=":categoryName" element={<CategoriesByName />} />
         </Route>
         <Route path="/add" element={<AddRecipe />} /> */}
-        
+
         {/* <Route path="*" element={<Error />} /> */}
       </Routes>
     </ThemeProvider>
