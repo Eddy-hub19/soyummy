@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
-import {getFavorites} from "../../redux/favorites/favoritesSelectors"
+import { useDispatch } from 'react-redux';
+// import {getFavorites} from "../../redux/favorites/favoritesSelectors"
 
 import {fetchFavorites, addFavorite, deleteFavorite} from "../../redux/favorites/favoritesOperation"
 import { ButtonSkew } from 'components/ButtonSkew/ButtonSkew';
@@ -21,8 +21,8 @@ const RecipePageHero = ({ recipe }) => {
   const [btnFav, setBtnFav] = useState(false);
   const dispatch = useDispatch();
   
-  const favorites = useSelector(getFavorites);
-  const isFavorite = favorites.some(item => item._id === _id);
+  // const favorites = useSelector(getFavorites);
+  // const isFavorite = favorites.some(item => item._id === _id);
 
   // const favorites = useSelector(state => state.auth.user.favorite);
   // const isFavorite = favorites.some(item => item === recipe._id);
