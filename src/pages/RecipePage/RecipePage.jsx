@@ -5,7 +5,7 @@ import { getRecipeById } from '../../service/API/RecipeAPI';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { TableHeader, Container } from './RecipePage.styled';
 import { Loader } from 'components/Loader/Loader';
 
@@ -16,7 +16,7 @@ const RecipePage = () => {
   const { recipeId } = useParams();
   // const location = useLocation();
 
-  const favorites = useSelector(state => state.favorites);
+  // const favorites = useSelector(state => state.favorites);
 
   //   const backLinkHref = location.state?.from ?? '/recipes';
 
