@@ -4,7 +4,6 @@ import { SeeRecipes } from './SeeRecipes';
 //====================================================//
 export const ChooseYourBreakfast = () => {
   return (
-    <div>
     <div style={{ marginTop: '99px' }}>
       <Title>
         So<Span>Yummy</Span>
