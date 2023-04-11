@@ -1,6 +1,8 @@
 import { getPopularListAPI } from 'service/API/Addrecipes';
 import { useState, useEffect } from 'react';
 import getIsLoggedIn from 'redux/auth/authSelectors';
+import authSelectors from 'redux/auth/authSelectors';
+import { useSelector } from 'react-redux';
 
 import {
   StyledPoularList,
@@ -15,7 +17,7 @@ import {
 } from './AddPopular.styled';
 export const AddRecipePopular = () => {
   const [popularOpt, setPopularOpt] = useState([]);
-
+  const isLoggin = useSelector(authSelectors.getIsLoggedIn);
   useEffect(() => {
     const handleEffect = async () => {
       try {
@@ -33,12 +35,15 @@ export const AddRecipePopular = () => {
         console.log(error);
       }
     };
-
-    if (getIsLoggedIn) {
+    if (popularOpt.length >= 1) {
       handleEffect();
     }
-  }, []);
+    // setTimeout(() => {
+    //   handleEffect();
+    // }, 1000);
+  }, [isLoggin, popularOpt.length]);
 
+  console.log(isLoggin);
   return (
     <StyledPoularList>
       <StyledPopTitle>Popular recipe</StyledPopTitle>
