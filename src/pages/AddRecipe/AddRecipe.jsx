@@ -26,6 +26,10 @@ const init = {
   category: 'Breakfast',
   time: '30',
   unitValue: 100,
+  path: '',
+  thumb: '',
+  preview: null,
+  area: '',
 };
 
 const AddRecipe = () => {
@@ -137,9 +141,9 @@ const AddRecipe = () => {
         ingredients,
         imageUrl,
         path: imageUrl,
-        thumb: '',
-        preview: null,
-        area: '',
+        thumb: imageUrl,
+        preview: imageUrl,
+        area: 'Kyiv',
       };
 
       console.log('Form data:', data);
@@ -175,7 +179,6 @@ const AddRecipe = () => {
   };
 
   const handleUnitValue = ({ currentTarget }) => {
-    console.log(axiosInstance.defaults.headers.common.Authorization);
     const { id, value, name } = currentTarget;
     setInputs(prev => ({
       ...prev,

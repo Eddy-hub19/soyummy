@@ -5,7 +5,6 @@ import { getRecipeById } from '../../service/API/RecipeAPI';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
 import { TableHeader, Container } from './RecipePage.styled';
 import { Loader } from 'components/Loader/Loader';
 
