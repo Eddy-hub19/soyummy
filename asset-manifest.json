@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/soyummy/static/css/main.d9c30c8f.css",
-    "main.js": "/soyummy/static/js/main.aee204f3.js",
+    "main.js": "/soyummy/static/js/main.14c44824.js",
     "static/js/187.c0147c06.chunk.js": "/soyummy/static/js/187.c0147c06.chunk.js",
     "static/js/950.bc9040d9.chunk.js": "/soyummy/static/js/950.bc9040d9.chunk.js",
     "static/js/229.672ebf5e.chunk.js": "/soyummy/static/js/229.672ebf5e.chunk.js",
@@ -38,6 +38,7 @@
     "static/media/bg_small_tablet_1x.png": "/soyummy/static/media/bg_small_tablet_1x.cd965a444181b88f1cfd.png",
     "static/media/AuthPanaMobRet-min.png": "/soyummy/static/media/AuthPanaMobRet-min.14335bd09b581e799964.png",
     "static/media/mobile-menu-bg-tab-1x-min.png": "/soyummy/static/media/mobile-menu-bg-tab-1x-min.94ab13c1f302b6f94cb9.png",
+    "static/media/default.jpg": "/soyummy/static/media/default.c626070d8f57751656fa.jpg",
     "static/media/recipeHero_mob_2x.jpg": "/soyummy/static/media/recipeHero_mob_2x.04772b35d4bcde8116a5.jpg",
     "static/media/paperbag.svg": "/soyummy/static/media/paperbag.73e860166355cdf6c5d12dd434c901f7.svg",
     "static/media/sprite.svg": "/soyummy/static/media/sprite.3b738a9c66e541c4969f08fd68b0eeee.svg",
@@ -49,7 +50,7 @@
     "static/media/logo_tablet-desk_footer.svg": "/soyummy/static/media/logo_tablet-desk_footer.3973999e1d5e8f9f9106b706397f54e9.svg",
     "static/media/plus.svg": "/soyummy/static/media/plus.e2a277e044198db3f782f3e240f0af13.svg",
     "main.d9c30c8f.css.map": "/soyummy/static/css/main.d9c30c8f.css.map",
-    "main.aee204f3.js.map": "/soyummy/static/js/main.aee204f3.js.map",
+    "main.14c44824.js.map": "/soyummy/static/js/main.14c44824.js.map",
     "187.c0147c06.chunk.js.map": "/soyummy/static/js/187.c0147c06.chunk.js.map",
     "950.bc9040d9.chunk.js.map": "/soyummy/static/js/950.bc9040d9.chunk.js.map",
     "229.672ebf5e.chunk.js.map": "/soyummy/static/js/229.672ebf5e.chunk.js.map",
@@ -62,6 +63,6 @@
   },
   "entrypoints": [
     "static/css/main.d9c30c8f.css",
-    "static/js/main.aee204f3.js"
+    "static/js/main.14c44824.js"
   ]
 }
