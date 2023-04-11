@@ -5,8 +5,11 @@ export const FolowUsTitle = styled.h3`
   font-size: 24px;
   line-height: 1;
   letter-spacing: -0.24px;
-  color: var(--mainTextColor);
+  color: ${p => p.theme.colors.sectionHeader};
   margin-bottom: 40px;
+  @media screen and (max-width: 1439px) {
+    display: none;
+  }
 `;
 
 export const IconsFolowUs = styled.div`
@@ -29,5 +32,8 @@ export const IconsFolowUs = styled.div`
   @media screen and (min-width: 768px) {
     margin-top: 38px;
     gap: 18px;
+  }
+  @media screen and (max-width: 1439px) {
+    display: none;
   }
 `;
