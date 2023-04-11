@@ -5,7 +5,6 @@ import { InngredientsWrapper } from './RecipeIngredientsList.styled';
 import IngredientsItem from 'components/IngredientsItem/IngredientsItem';
 
 const RecipeIngredientsList = ({ recipeId, ingredients }) => {
-  console.log(recipeId);
   return (
     <InngredientsWrapper>
       {ingredients.map(ingredient => (
