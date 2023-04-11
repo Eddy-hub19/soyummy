@@ -14,11 +14,9 @@ const RecipePage = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const { recipeId } = useParams();
-  console.log(recipeId);
   // const location = useLocation();
 
   const favorites = useSelector(state => state.favorites);
-  console.log(favorites.data);
 
   //   const backLinkHref = location.state?.from ?? '/recipes';
 
