@@ -15,7 +15,7 @@ const SearchRecipesList = ({ recipes, id }) => {
           recipes.map(recipe => {
             return (
               <GridItem>
-                <NavLink to={`/recipes/${recipe._id}`}>
+                <NavLink to={`/recipes/${recipes._id}`}>
                   <CardImg src={recipe.thumb} alt="img" />
                 </NavLink>
                 <RecipeTitle>{recipe.title}</RecipeTitle>
