@@ -175,7 +175,6 @@ const AddRecipe = () => {
   };
 
   const handleUnitValue = ({ currentTarget }) => {
-    console.log(axiosInstance.defaults.headers.common.Authorization);
     const { id, value, name } = currentTarget;
     setInputs(prev => ({
       ...prev,
