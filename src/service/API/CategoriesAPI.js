@@ -12,3 +12,4 @@ export const getAllRecipesByCategoryAPI = (category) => {
     return data;
   });
 };
+

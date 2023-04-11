@@ -3,7 +3,8 @@ import { SubTitle } from 'components/SubTitle/SubTitle';
 import { useState, useEffect } from 'react';
 import Select from 'react-select';
 import icons from '../../images/sprite.svg';
-import { getIngradientsFieldsApi } from 'service/axios/axios';
+import getIsLoggedIn from 'redux/auth/authSelectors';
+import { getIngradientsFieldsApi } from 'service/API/Addrecipes';
 
 import {
   ButtonRemoveItem,
@@ -14,9 +15,7 @@ import {
   InputUnitValue,
   ValueInputWrapper,
 } from 'pages/AddRecipe/addRecipe.styled';
-// import { ingredientsOptionsList } from 'utils/ingredientsOptionsList';
-// import { useSelector } from 'react-redux';
-// import { getIngredients } from 'redux/ingredients/ingredientsSelectors';
+
 import { unitsOptionsList } from 'utils/unitsOptionsList';
 import { stylesIngredient, stylesUnit } from 'pages/AddRecipe/selectStyles';
 
@@ -31,7 +30,6 @@ export const AddRecipeIngredients = ({
   handleRemove,
   localTheme,
 }) => {
-  // const optionsIngredients = useSelector(getIngredients);
   const [options, setOptions] = useState([]);
 
   useEffect(() => {
@@ -46,56 +44,57 @@ export const AddRecipeIngredients = ({
 
         setOptions([...options]);
 
-        // if (allCategories.length === 0) {
-        //   return;
-        // }
+        if (options.length === 0) {
+          return;
+        }
       } catch (error) {
         console.log(error);
       }
     };
-    handleEffect();
+    console.log(getIsLoggedIn);
+    if (getIsLoggedIn) {
+      handleEffect();
+    }
   }, []);
 
-  const userIngredientsList = userIngredients.map(
-    ({ id, unitValue, ingredient, qty }) => {
-      return (
-        <IngredientsItem key={id} localTheme={localTheme}>
+  const userIngredientsList = userIngredients.map(({ id, unitValue, qty }) => {
+    return (
+      <IngredientsItem key={id} localTheme={localTheme}>
+        <Select
+          styles={stylesIngredient(localTheme)}
+          options={options}
+          placeholder=" "
+          onChange={handleUserIngredient}
+          name={`ingredient ${id}`}
+        />
+        <ValueInputWrapper isMobile={isMobile} localTheme={localTheme}>
+          <InputUnitValue
+            isMobile={isMobile}
+            type="text"
+            name="unitValue"
+            onChange={handleUnitValue}
+            defaultValue={unitValue}
+            autoComplete="off"
+            id={id}
+          />
           <Select
-            styles={stylesIngredient(localTheme)}
-            options={options}
+            styles={stylesUnit(localTheme)}
+            options={unitsOptionsList}
+            defaultValue={{ label: qty, value: qty }}
             placeholder=" "
             onChange={handleUserIngredient}
-            name={`ingredient ${id}`}
+            isSearchable={false}
+            name={`qty ${id}`}
           />
-          <ValueInputWrapper isMobile={isMobile} localTheme={localTheme}>
-            <InputUnitValue
-              isMobile={isMobile}
-              type="text"
-              name="unitValue"
-              onChange={handleUnitValue}
-              defaultValue={unitValue}
-              autoComplete="off"
-              id={id}
-            />
-            <Select
-              styles={stylesUnit(localTheme)}
-              options={unitsOptionsList}
-              defaultValue={{ label: qty, value: qty }}
-              placeholder=" "
-              onChange={handleUserIngredient}
-              isSearchable={false}
-              name={`qty ${id}`}
-            />
-          </ValueInputWrapper>
-          <ButtonRemoveItem type="button" id={id} onClick={handleRemove}>
-            <svg width={20} height={20}>
-              <use href={icons + '#icon-cross'}></use>
-            </svg>
-          </ButtonRemoveItem>
-        </IngredientsItem>
-      );
-    }
-  );
+        </ValueInputWrapper>
+        <ButtonRemoveItem type="button" id={id} onClick={handleRemove}>
+          <svg width={20} height={20}>
+            <use href={icons + '#icon-cross'}></use>
+          </svg>
+        </ButtonRemoveItem>
+      </IngredientsItem>
+    );
+  });
   return (
     <IngredientsSection>
       <IngredientsTitle>
