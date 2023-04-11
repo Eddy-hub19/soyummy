@@ -1,16 +1,6 @@
-// import { SubTitle } from 'components/SubTitle/SubTitle';
-import { getPopularListAPI } from 'service/axios/axios';
+import { getPopularListAPI } from 'service/API/Addrecipes';
 import { useState, useEffect } from 'react';
 
-import //   PopularItem,
-//   PopularRecipe,
-//   PopularSection,
-//   RecepiImg,
-//   RecipeText,
-//   RecipeTitle,
-'pages/AddRecipe/addRecipe.styled';
-// import { useSelector } from 'react-redux';
-// import { Link } from 'react-router-dom';
 import {
   StyledPoularList,
   StyledList,
@@ -22,23 +12,7 @@ import {
   ItemTitle,
   Description,
 } from './AddPopular.styled';
-export const AddRecipePopular = ({ isDesktop, isTablet, localTheme }) => {
-  //   const popularList = popularRecepis.map(
-  //     ({ idMeal, strMealThumb, strInstructions, strMeal }) => (
-
-  //         <PopularItem as={'div'}>
-  //           <Link to={`/recipe/${idMeal}`}>
-  //             <RecepiImg src={strMealThumb} alt={strMeal} />
-  //             <div>
-  //               <RecipeTitle>{strMeal}</RecipeTitle>
-  //               <RecipeText>{strInstructions}</RecipeText>
-  //             </div>
-  //           </Link>
-  //         </PopularItem>
-
-  //     )
-  //   );
-
+export const AddRecipePopular = () => {
   const [popularOpt, setPopularOpt] = useState([]);
 
   useEffect(() => {
@@ -47,21 +21,18 @@ export const AddRecipePopular = ({ isDesktop, isTablet, localTheme }) => {
         const popularOptObj = await getPopularListAPI();
         const popelarArray = popularOptObj.result;
         const firstFour = popelarArray.slice(0, 4);
-        console.log(firstFour);
 
         setPopularOpt([...firstFour]);
 
-        // if (allCategories.length === 0) {
-        //   return;
-        // }
+        if (firstFour.length === 0) {
+          return;
+        }
       } catch (error) {
         console.log(error);
       }
     };
     handleEffect();
   }, []);
-
-  //{ _id, thumb, strInstructions, title }
 
   return (
     <StyledPoularList>
