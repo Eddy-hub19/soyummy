@@ -8,7 +8,7 @@ export const MainPageRecipesList = ({ recipes }) => {
     <ul style={{ listStyle: 'none' }}>
       <li
         key={Object.keys(recipes)[0]}
-        style={{ marginBottom: 100, width: '1260px' }}
+        style={{ marginBottom: 100}}
       >
         <TitlePageCategory>Breakfast</TitlePageCategory>
 

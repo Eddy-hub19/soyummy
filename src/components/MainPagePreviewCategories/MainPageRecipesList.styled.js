@@ -16,6 +16,7 @@ export const Item = styled.li`
   position: relative;
   overflow: hidden;
   transition: box-shadow 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  background: red;
 
   :hover {
     box-shadow: 0 0 7px 5px ${p => p.theme.colors.mainGrey};
@@ -24,6 +25,24 @@ export const Item = styled.li`
   :hover img {
     transform: scale(1.25);
     /* filter: contrast(130%); */
+  }
+
+  @media (max-width: 1440px) {
+    :nth-last-child(-n + 1) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    :nth-last-child(-n + 2) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 375px) {
+    :nth-last-child(-n + 3) {
+      display: none;
+    }
   }
 `;
 
