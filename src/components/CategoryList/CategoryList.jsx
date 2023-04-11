@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { getCategoryListAPI } from 'service/API/CategoriesAPI';
+import { theme } from '../../theme/theme';
 
 export const CategoryList = () => {
   const { categoryName } = useParams();
@@ -49,7 +50,7 @@ export const CategoryList = () => {
       sx={{
         padding: '0',
         paddingBottom: '28px',
-        color: '#BDBDBD',
+        color: theme.colors.disabledGrey,
         '&.Mui-selected': {
           color: '#8BAA36',
         },
@@ -65,7 +66,7 @@ export const CategoryList = () => {
 
   return (
     <Box
-      sx={{ maxWidth: '100%', bgcolor: 'transparent' }}
+      sx={{ maxWidth: '100%', bgcolor: 'transparent', borderBottom: theme.borders.mainSearchInput }}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
