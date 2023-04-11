@@ -1,4 +1,3 @@
-// import { SocialLinksConteiner } from 'components/FooterComp/SocialLinks/SocialLinks.styled';
 import { H3 } from 'components/SubTitle/subTitle.styled';
 import styled from 'styled-components';
 
@@ -95,9 +94,9 @@ export const SelectComp = styled.div`
 
   p {
     font-size: ${({ isMobile }) => (isMobile ? '14px' : '16px')};
-    color: rgba(0, 0, 0, 0.5);
-    /* color: ${({ localTheme }) =>
-      localTheme === 'light' ? 'rgba(0, 0, 0, 0.5)' : 'white'}; */
+
+    color: ${({ localTheme }) =>
+      localTheme === 'light' ? 'rgba(0, 0, 0, 0.5)' : 'white'};
   }
 `;
 
@@ -116,17 +115,16 @@ export const InputsWrapper = styled.div`
     color: ${({ theme }) => theme.colors.mainBlack};
 
     &::placeholder {
-      opacity: 1;
-      color: rgba(0, 0, 0, 0.5);
-      /* color: ${({ localTheme }) =>
-        localTheme === 'light' ? 'rgba(0, 0, 0, 0.5)' : 'white'}; */
+      /* opacity: 1;
+      color: rgba(0, 0, 0, 0.5); */
+      color: ${({ localTheme }) =>
+        localTheme === 'light' ? 'rgba(0, 0, 0, 0.5)' : 'white'};
     }
   }
 
   .css-1dimb5e-singleValue {
-    /* color: ${({ localTheme }) =>
-      localTheme === 'light' ? 'black' : 'white'}; */
-    color: black;
+    color: ${({ localTheme }) => (localTheme === 'light' ? 'black' : 'white')};
+    /* color: black; */
   }
 `;
 
@@ -191,10 +189,9 @@ export const IngredientsItem = styled.li`
   align-items: center;
 
   .css-1dimb5e-singleValue {
-    /* color: ${({ localTheme }) =>
-      localTheme === 'light' ? 'black' : 'white'}; */
-    color: black;
-    opacity: 0.5;
+    color: ${({ localTheme }) => (localTheme === 'light' ? 'black' : 'white')};
+    /* color: black;
+    opacity: 0.5; */
   }
 
   .css-7ossxv-menu {
@@ -220,11 +217,9 @@ export const ValueInputWrapper = styled.div`
   margin-left: ${({ isMobile }) => (isMobile ? '14px' : '32px')};
 
   .css-1dimb5e-singleValue {
-    /* color: ${({ localTheme }) => {
+    color: ${({ localTheme }) => {
       return localTheme === 'light' ? 'black' : 'white';
-    }}; */
-    color: black;
-    opacity: 0.5;
+    }};
   }
 `;
 
