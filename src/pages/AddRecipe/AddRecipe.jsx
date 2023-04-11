@@ -2,7 +2,6 @@ import { toast } from 'react-toastify';
 
 import { useEffect, useState } from 'react';
 import store from 'store';
-// import { SocialLinks } from 'components/FooterAssembly/SocialLinks/SocialLinks';
 import {
   RecipeForm,
   MainWrapper,
@@ -11,27 +10,26 @@ import {
 import { Title } from 'components/Title/Title';
 import { nanoid } from '@reduxjs/toolkit';
 import { Container } from 'components/Container/Container';
-// import { useDispatch } from 'react-redux';
 import { AddRecipePopular } from 'components/AddRecipePopular/AddRecipePopular';
 import { AddRecipeMeta } from 'components/AddRecipeMeta/AddRecipeMeta';
 import { AddRecipeIngredients } from 'components/AddRecipeIngredients/AddRecipeIngredients';
 import { AddRecipeSubmit } from 'components/AddRecipeSubmit/AddRecipeSubmit';
-// import { addOwnRecipe } from 'redux/ownRecipes/ownRecipesOperations';
 import { useMediaRules } from 'hooks/MediaRules';
 import { AddRecipeToastifyError } from 'components/AddRecipeToastifyError/AddRecipeToastifyError';
 import { FollowUs } from 'components/FollowUs/FollowUs';
 import { axiosInstance } from 'service/API/axios';
 
-// import { useNavigate } from 'react-router-dom';
-// import { scrollToTop } from 'utils/scrollUp';
-
 const init = {
-  recipe: '',
+  instructions: '',
   title: '',
-  about: '',
+  description: '',
   category: 'Breakfast',
   time: '30',
   unitValue: 100,
+  path: '',
+  thumb: '',
+  preview: null,
+  area: '',
 };
 
 const AddRecipe = () => {
@@ -113,7 +111,8 @@ const AddRecipe = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     const formData = new FormData();
-    const { recipe, time, category, about, title } = inputs;
+    console.log(inputs);
+    const { instructions, time, category, description, title } = inputs;
 
     // собираем значения ингредиентов в отдельный массив
     const ingredients = userIngredients.map(ingredient => {
@@ -129,24 +128,29 @@ const AddRecipe = () => {
     formData.append('upload_preset', 'alex_preset');
 
     try {
-      const response = await axiosInstance.post(
-        'https://determined-ruby-nematode.cyclic.app/auth/picture',
-        formData
-      );
+      const response = await axiosInstance.post('/auth/picture', formData);
 
       const imageUrl = response.data.secure_url;
 
       const data = {
-        recipe,
+        instructions,
         time,
         category,
-        about,
+        description,
         title,
         ingredients,
         imageUrl,
+        path: imageUrl,
+        thumb: imageUrl,
+        preview: imageUrl,
+        area: 'Kyiv',
       };
 
       console.log('Form data:', data);
+      const addRecipe = await axiosInstance.post('/own-recipes/add', data);
+      if (addRecipe) {
+        console.log('Recipe add succes');
+      }
     } catch (error) {
       console.error('Error:', error.message);
       console.log('Error Response:', error.response);
@@ -175,7 +179,6 @@ const AddRecipe = () => {
   };
 
   const handleUnitValue = ({ currentTarget }) => {
-    console.log(axiosInstance.defaults.headers.common.Authorization);
     const { id, value, name } = currentTarget;
     setInputs(prev => ({
       ...prev,

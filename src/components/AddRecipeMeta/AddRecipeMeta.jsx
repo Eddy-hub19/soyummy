@@ -4,16 +4,13 @@ import {
   InputsWrapper,
   SelectComp,
 } from 'pages/AddRecipe/addRecipe.styled';
-// import { useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
 
+import { useState, useEffect } from 'react';
 import Select from 'react-select';
-//import { categoriesOptionsList } from 'utils/categoriesOptionList';
 import { timeOptionsList } from 'utils/timeOptionsList';
-// import { getFullCategoryList } from 'redux/outerRecipes/outerRecipesSelectors';
 import icons from '../../images/sprite.svg';
 import { stylesMeta } from 'pages/AddRecipe/selectStyles';
-import { getCategoryListAPI } from 'service/API/CategoriesAPI';
+import { getCategoryListAPI } from 'service/API/Addrecipes';
 import store from 'store';
 
 export const AddRecipeMeta = ({
@@ -28,7 +25,6 @@ export const AddRecipeMeta = ({
 }) => {
   const theme = store.get('theme');
   const [items, setItems] = useState([]);
-
   useEffect(() => {
     const handleEffect = async () => {
       try {
@@ -75,8 +71,8 @@ export const AddRecipeMeta = ({
         />
         <input
           placeholder="Enter about recipe"
-          name="about"
-          value={inputs.about}
+          name="description"
+          value={inputs.description}
           onChange={handleChange}
           autoComplete="off"
         />
