@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
-import FormControl from '@mui/material/FormControl';
 import { Title } from 'components/Title/Title';
 import store from 'store';
 import {
@@ -122,6 +121,4 @@ const SearchForm = props => {
 
 export default SearchForm;
 
-export const Text = styled.div`
-   ;
-`;
+export const Text = styled.div``;
