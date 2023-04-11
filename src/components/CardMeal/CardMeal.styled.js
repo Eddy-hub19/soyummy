@@ -14,7 +14,7 @@ export const CardTitle = styled.p`
   letter-spacing: -0.24px;
   color: ${p => p.theme.colors.mainHeaderText};
   padding: 16px;
-  background-color: ${p => p.theme.colors.recipeBlockBg};
+  background-color: ${p => p.theme.colors.mainSearchInput};
   position: absolute;
   top: 245px;
   left: 16px;
