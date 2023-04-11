@@ -39,7 +39,7 @@ const Register = () => {
       .required('Type your name please'),
     email: Yup.string()
       .matches(emailRegexp, {
-        message: 'Your email must be valid',
+        message: 'incorrect Email',
         name: 'email',
         excludeEmptyString: true,
       })
@@ -84,7 +84,6 @@ const Register = () => {
               validationSchema={schema}
               onSubmit={async (values, actions) => {
                 const { name, email, password } = values;
-                console.log(name, email, password);
                 await dispatch(
                   authOperation.register({ name, email, password })
                 );
@@ -151,6 +150,31 @@ const Register = () => {
                         'rgba(255, 255, 255, 0.8)'
                       )}
                     ></HiOutlineMail>
+                    {props.values.email && (
+                      <div>
+                        <svg className="statusIcon">
+                          <use
+                            href={`${sprite}${getColor(
+                              props.errors.email,
+                              props.values.email,
+                              'rgba(255, 255, 255, 0.8)'
+                            )}`}
+                          ></use>
+                        </svg>
+                      </div>
+                    )}
+                    {props.errors.email && props.values.email && (
+                      <ErrorMessage
+                        color={getColor(
+                          props.errors.email,
+                          props.values.email,
+                          'rgba(255, 255, 255, 0.8)'
+                        )}
+                        className="error"
+                        name="email"
+                        component="div"
+                      />
+                    )}
                   </InputWraper>
                   <InputWraper>
                     <Input
@@ -207,12 +231,25 @@ const Register = () => {
                       />
                     )}
                   </InputWraper>
-                  <Button type="submit">Sign up</Button>
+                  <Button
+                    type="submit"
+                    disabled={
+                      props.errors.password ||
+                      props.errors.email ||
+                      props.errors.name
+                        ? true
+                        : false
+                    }
+                  >
+                    Sign up
+                  </Button>
                 </Form>
               )}
             </Formik>
           </Box>
-          <NavLink to={'/signin'}>Sign in</NavLink>
+          <NavLink className={'nav_Link'} to={'/signin'}>
+            Sign in
+          </NavLink>
         </BoxWraper>
       </Container>
     </AuthBg>
