@@ -1,7 +1,8 @@
 import { useDispatch } from 'react-redux';
 import * as authOperation from '../../redux/auth/authOperation';
-import sprite from '../../images/sprite.svg';
-import iconPass from '../../images/Icon-pass.svg';
+import { CgLock } from 'react-icons/cg';
+import { HiOutlineMail } from 'react-icons/hi';
+import { FiUser } from 'react-icons/fi';
 
 import { NavLink } from 'react-router-dom';
 import {
@@ -16,7 +17,9 @@ import {
 } from './Register.styled';
 import { getColor } from 'utils/formikColors';
 import * as Yup from 'yup';
-import { Formik, Form } from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
+import sprite from '../../images/sprite.svg';
+// import { InputFlag } from 'components/FooterAssembly/FooterForm/FooterForm.styled';
 
 const emailRegexp =
   /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
@@ -52,11 +55,19 @@ const Register = () => {
       )
       .min(6, 'Your password is too short')
       .max(16, 'Your password must be 16 characters max')
+      .matches(/[1-9]/, {
+        message: 'Your password is little secure. Add a number!',
+        name: 'password',
+      })
+      .matches(/[a-zа-яA-ZА-ЯіїЇІєЄ]/, {
+        message: 'Your password is little secure. Add a letter!',
+        name: 'password',
+      })
       .required('Type your password please'),
   });
 
   return (
-    <>
+    <AuthBg>
       <Container>
         <Image />
         <BoxWraper>
@@ -68,8 +79,8 @@ const Register = () => {
                 email: '',
                 password: '',
               }}
-              isSubmitting={false}
-              isInitialValid={false}
+              isSubmitting={true}
+              isInitialValid={true}
               validationSchema={schema}
               onSubmit={async (values, actions) => {
                 const { name, email, password } = values;
@@ -102,16 +113,14 @@ const Register = () => {
                         'rgba(255, 255, 255, 0.3)'
                       )}
                     />
-                    <svg
+                    <FiUser
                       className="icon"
-                      fill={getColor(
+                      color={getColor(
                         props.errors.name,
                         props.values.name,
                         'rgba(255, 255, 255, 0.8)'
                       )}
-                    >
-                      <use href={sprite + '#icon-user'}></use>
-                    </svg>
+                    ></FiUser>
                   </InputWraper>
                   <InputWraper>
                     <Input
@@ -134,16 +143,14 @@ const Register = () => {
                         'rgba(255, 255, 255, 0.3)'
                       )}
                     />
-                    <svg
+                    <HiOutlineMail
                       className="icon"
-                      fill={getColor(
+                      color={getColor(
                         props.errors.email,
                         props.values.email,
                         'rgba(255, 255, 255, 0.8)'
                       )}
-                    >
-                      <use href={sprite + '#email'}></use>
-                    </svg>
+                    ></HiOutlineMail>
                   </InputWraper>
                   <InputWraper>
                     <Input
@@ -166,16 +173,39 @@ const Register = () => {
                         'rgba(255, 255, 255, 0.3)'
                       )}
                     />
-                    <svg
+                    <CgLock
                       className="icon"
-                      fill={getColor(
+                      color={getColor(
                         props.errors.password,
                         props.values.password,
                         'rgba(255, 255, 255, 0.8)'
                       )}
-                    >
-                      <use href={iconPass}></use>
-                    </svg>
+                    />
+                    {props.values.password && (
+                      <div>
+                        <svg className="statusIcon">
+                          <use
+                            href={`${sprite}${getColor(
+                              props.errors.password,
+                              props.values.password,
+                              'rgba(255, 255, 255, 0.8)'
+                            )}`}
+                          ></use>
+                        </svg>
+                      </div>
+                    )}
+                    {props.errors.password && props.values.password && (
+                      <ErrorMessage
+                        color={getColor(
+                          props.errors.password,
+                          props.values.password,
+                          'rgba(255, 255, 255, 0.8)'
+                        )}
+                        className="error"
+                        name="password"
+                        component="div"
+                      />
+                    )}
                   </InputWraper>
                   <Button type="submit">Sign up</Button>
                 </Form>
@@ -185,8 +215,7 @@ const Register = () => {
           <NavLink to={'/signin'}>Sign in</NavLink>
         </BoxWraper>
       </Container>
-      <AuthBg></AuthBg>
-    </>
+    </AuthBg>
   );
 };
 export default Register;

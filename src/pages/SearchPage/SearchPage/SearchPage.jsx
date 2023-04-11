@@ -1,4 +1,3 @@
-import axios from 'axios';
 import * as React from 'react';
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
@@ -8,6 +7,7 @@ import SearchRecipesList from '../SearchRecipesList/SearchRecipesList';
 import { Container } from 'components/Container/Container';
 import { OtherButton, Wrapper, Text } from '../SearchPage/SearchPage.styled';
 import { EmptyPlaceholder } from 'pages/EmptyPlaceholder/EmptyPlaceholder';
+import { axiosInstance } from 'service/API/axios';
 
 const SearchPage = () => {
   const [recipes, setRecipes] = React.useState([]);
@@ -36,13 +36,12 @@ const SearchPage = () => {
   };
 
   useEffect(() => {
-    axios({
-      method: 'get',
-      url: `https://determined-ruby-nematode.cyclic.app/recipes/search/${keyword}?page=${page}&limit=${LIMIT}&searchType=${searchType}`,
-    })
+    axiosInstance
+      .get(
+        `recipes/search/${keyword}?page=${page}&limit=${LIMIT}&searchType=${searchType}`
+      )
       .then(function (data) {
         console.log(recipes, data.data);
-
         if (data.data.recepies.length === 0) {
           setStatus('rejected');
           console.log('error');
@@ -71,7 +70,7 @@ const SearchPage = () => {
         query={keyword}
         type={searchType}
       />
-      <SearchRecipesList key={recipes._id} recipes={recipes} />
+      <SearchRecipesList key={recipes._id} recipes={recipes} id={recipes._id} />
       <Wrapper>
         {recipes.length !== 0 && hasMore && (
           <OtherButton type="button" onClick={loadNextPage}>

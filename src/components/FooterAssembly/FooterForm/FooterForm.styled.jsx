@@ -8,23 +8,25 @@ export const FooterWrap = styled.form`
   flex-direction: column;
   width: 204px;
 
-  .icon {
+  .Envelope {
     position: absolute;
-    top: 13px;
+    top: 20px;
     left: 14px;
-    width: 16px;
-    height: 12px;
+    width: 1.1rem;
+    height: 1.1rem;
+    box-sizing: border-box;
     fill: ${({ color }) => color};
+    transform: translateY(-50%);
 
     @media screen and (min-width: 768px) {
-      width: 20px;
-      height: 16px;
-      top: 16px;
+      width: 1.3rem;
+      height: 1.3rem;
+      top: 26px;
       left: 120px;
     }
 
     @media screen and (min-width: 1440px) {
-      top: 126px;
+      top: 153px;
       left: 20px;
     }
   }
@@ -63,7 +65,7 @@ export const FooterWrap = styled.form`
     }
 
     @media screen and (min-width: 1440px) {
-      top: 82px;
+      top: 100px;
       left: 0;
     }
   }
@@ -92,7 +94,6 @@ export const FooterWrapText = styled.div`
 `;
 
 export const FooterWrapInput = styled.input`
-  /* width: 204px; */
   height: 38px;
   font-weight: 400;
   font-size: 10px;
@@ -108,7 +109,6 @@ export const FooterWrapInput = styled.input`
   transition: ${p => p.theme.transitions.main};
 
   @media screen and (min-width: 768px) {
-    /* width: 259px; */
     height: 50px;
     padding-left: 51px;
     font-size: 14px;
@@ -116,7 +116,6 @@ export const FooterWrapInput = styled.input`
   }
 
   @media screen and (min-width: 1440px) {
-    /* width: 338px; */
     padding-left: 51px;
     height: 59px;
   }
@@ -154,22 +153,22 @@ export const FooterWrapInput = styled.input`
 
 export const InputFlag = styled.div`
   position: absolute;
-  top: 11px;
-  right: 12px;
+  top: 15px;
+  right: 20px;
   width: 20px;
-  height: 20px;
+  height: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
   pointer-events: none;
 
   @media screen and (min-width: 768px) {
-    top: 15px;
+    top: 21px;
     right: 302px;
   }
 
   @media screen and (min-width: 1440px) {
-    top: 126px;
+    top: 148px;
     right: 12px;
   }
 `;
