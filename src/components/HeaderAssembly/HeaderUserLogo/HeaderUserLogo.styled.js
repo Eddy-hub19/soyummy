@@ -15,7 +15,9 @@ export const HeaderUserBtn = styled.button`
   font-weight: ${p => p.theme.fontWeights[2]};
   line-height: ${p => p.theme.lineHeights.userLink};
   color: ${p =>
-    p.color === 'light' ? p.theme.colors.mainDark : p.theme.colors.userName};
+    p.color === 'light'
+      ? p.theme.colors.btnHoverBg
+      : p.theme.colors.btnHoverBg};
   cursor: pointer;
   transition: ${p => p.theme.transitions.main};
 
