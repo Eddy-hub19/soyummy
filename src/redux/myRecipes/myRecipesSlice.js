@@ -16,7 +16,6 @@ const myRecipesSlice = createSlice({
         (state, { payload }) => {
           state.data = payload;
           state.isRefreshing = false;
-          console.log(state.data);
         }
       )
       .addCase(myRecipesOperation.deleteMyRecipe.pending, state => {
@@ -27,14 +26,12 @@ const myRecipesSlice = createSlice({
         (state, { payload }) => {
           state.data = state.data.filter(r => r._id !== payload);
           state.isRefreshing = false;
-          console.log(state.data);
         }
       )
       .addCase(
         myRecipesOperation.addToMyRecipes.fulfilled,
         (state, { payload }) => {
           state.data = [...state.data, payload];
-          console.log(state.data);
         }
       )
       .addDefaultCase(state => {

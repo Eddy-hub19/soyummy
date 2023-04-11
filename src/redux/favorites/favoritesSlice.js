@@ -16,7 +16,6 @@ const Favorites = createSlice({
         (state, { payload }) => {
           state.data = payload;
           state.isRefreshing = false;
-          console.log(state.data);
         }
       )
       .addCase(favoritesOperation.deleteFavorite.pending, state => {
@@ -26,15 +25,13 @@ const Favorites = createSlice({
         favoritesOperation.deleteFavorite.fulfilled,
         (state, { payload }) => {
           state.data = state.data.filter(id => id._id !== payload);
-          // state.isRefreshing = false;
-          console.log(state.data);
+          state.isRefreshing = false;
         }
       )
       .addCase(
         favoritesOperation.addFavorite.fulfilled,
         (state, { payload }) => {
           state.data = state.data.filter(id => id._id !== payload);
-          console.log(state.data);
         }
       )
       .addDefaultCase(state => {
