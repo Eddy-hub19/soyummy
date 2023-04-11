@@ -48,11 +48,11 @@ export const UserSvgWrapper = styled.div`
     justify-content: center;
     align-items: flex-end;
     right: 0;
-    bottom: -5%;
+    bottom: -3%;
     transform: translateX(-50%);
     content: url(${PlusIcon});
-    height: 24px;
     width: 24px;
+    height: 26px;
     background-color: ${p => p.theme.colors.mainAccent};
     border-radius: ${p => p.theme.radii.circle};
   }
