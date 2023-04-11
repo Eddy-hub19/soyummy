@@ -1,3 +1,6 @@
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import {addShoppingListItem,} from 'redux/shoplist/shoplistOperation';
 import { ReactComponent as DefaultIngredient } from 'images/svg-before sprite/paperbag.svg';
 import {
   RecipeIngredientsItem,
@@ -12,7 +15,24 @@ import {
 } from './IngredientsItem.styled';
 import sprite from '../../images/sprite.svg';
 
-const IngredientsItem = ({ image, title, weight, description }) => {
+const IngredientsItem = ({ image, title, weight, description, recipeId }) => {
+  const dispatch = useDispatch();
+  
+  // const userId = useSelector(state => state.auth.user._id)
+  
+  const addToShoppingList = () => {
+    dispatch(
+      addShoppingListItem({
+        // userId: userId,
+        nameIngredient: title,
+        weight: weight,
+        image: image,
+        recipeId: recipeId,
+      })
+    );
+    return;
+  };
+
   return (
     <RecipeIngredientsItem>
       <Label>
@@ -26,8 +46,7 @@ const IngredientsItem = ({ image, title, weight, description }) => {
         <Weight>{weight}</Weight>
         <RealCheckbox
           type="checkbox"
-          // onChange={addToShoppingList}
-          // checked={obj.inShoppingList}
+          onChange={addToShoppingList}
         />
         <CustomCheckbox>
           <svg>

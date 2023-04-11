@@ -28,7 +28,7 @@ const RecipePage = () => {
     setIsLoading(false);
   }, [recipeId]);
 
-  console.log(recipe);
+
   return (
     <>
       {isLoading ? (
@@ -44,7 +44,9 @@ const RecipePage = () => {
                   Number <span>Add to list</span>
                 </p>
               </TableHeader>
-              <RecipeIngredientsList ingredients={recipe.ingredients} />
+                <RecipeIngredientsList
+                  recipeId={recipeId}
+                  ingredients={recipe.ingredients} />
               <RecipePreparation
                 instructions={recipe.instructions}
                 image={recipe.thumb}

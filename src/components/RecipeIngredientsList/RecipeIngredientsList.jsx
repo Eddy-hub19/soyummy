@@ -4,7 +4,8 @@ import { nanoid } from 'nanoid';
 import { InngredientsWrapper } from './RecipeIngredientsList.styled';
 import IngredientsItem from 'components/IngredientsItem/IngredientsItem';
 
-const RecipeIngredientsList = ({ ingredients }) => {
+const RecipeIngredientsList = ({ recipeId, ingredients }) => {
+  console.log(recipeId);
   return (
     <InngredientsWrapper>
       {ingredients.map(ingredient => (
@@ -14,8 +15,9 @@ const RecipeIngredientsList = ({ ingredients }) => {
           title={ingredient.ttl}
           weight={ingredient.measure ? ingredient.measure : ''}
           description={ingredient.desc}
+          recipeId={recipeId}
           //   list={list}
-          // recipeId={recipeId + index}
+          ingregientId={ingredient._id}
         />
       ))}
     </InngredientsWrapper>
