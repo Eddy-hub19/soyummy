@@ -4,6 +4,11 @@ export const MainConteiner = styled.div`
   padding: 0 16px;
 
   max-width: 767px;
+  // margin-left: auto;
+  // margin-right: auto;
+
+  // margin-left: auto;
+  // margin-right: auto;
 
   @media screen and (min-width: 768px) {
     padding: 0 32px;

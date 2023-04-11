@@ -139,6 +139,7 @@ export const App = () => {
         <Route path=":categoryName" element={<CategoriesByName />} />
         </Route>
         <Route path="/add" element={<AddRecipe />} /> */}
+
         {/* <Route path="/recipe/:recipeId" element={<Recipe />} /> */}
         {/* <Route path="*" element={<Error />} /> */}
       </Routes>
