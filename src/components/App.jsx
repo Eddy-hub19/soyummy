@@ -59,9 +59,9 @@ export const App = () => {
         /> */}
 
         <Route
-          path="/"
+          path="/welcome"
           element={
-            <RestrictedRoute restricted>
+            <RestrictedRoute restricted redirectTo="/">
               <AuthNav />
             </RestrictedRoute>
           }
@@ -75,7 +75,7 @@ export const App = () => {
         <Route
           path="/register"
           element={
-            <RestrictedRoute restricted>
+            <RestrictedRoute redirectTo="/" restricted>
               <Register />
             </RestrictedRoute>
           }
@@ -88,7 +88,7 @@ export const App = () => {
         <Route
           path="/signin"
           element={
-            <RestrictedRoute restricted>
+            <RestrictedRoute redirectTo="/" restricted>
               <SignIn />
             </RestrictedRoute>
           }

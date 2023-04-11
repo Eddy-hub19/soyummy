@@ -7,16 +7,20 @@ import authSelectors from 'redux/auth/authSelectors';
 //   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 //   const isRefreshing = useSelector(authSelectors.getIsRefreshing);
 //   const shouldRedirect = !isLoggedIn && !isRefreshing;
-  
 
 //   return shouldRedirect ? <Navigate to={redirectTo} /> : <Component />;
 // };
 
-
-
 export const PrivateRoute = ({ children }) => {
-  
   const isUserFetching = useSelector(authSelectors.getIsRefreshing);
-const isLogin = useSelector(authSelectors.getIsLoggedIn);
-return isLogin ? (isUserFetching ? (<Loader/>): children) : <Navigate to="/signin" />;
+  const isLogin = useSelector(authSelectors.getIsLoggedIn);
+  return isLogin ? (
+    isUserFetching ? (
+      <Loader />
+    ) : (
+      children
+    )
+  ) : (
+    <Navigate to="/welcome" />
+  );
 };

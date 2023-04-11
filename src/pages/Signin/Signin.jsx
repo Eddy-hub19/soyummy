@@ -134,7 +134,7 @@ const SignIn = () => {
                       )}
                     />
                   </InputWraper>
-                  <Button type="submit">Sign up</Button>
+                  <Button type="submit">Sign in</Button>
                 </Form>
               )}
             </Formik>
