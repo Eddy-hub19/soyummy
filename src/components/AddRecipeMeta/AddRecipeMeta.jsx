@@ -10,7 +10,7 @@ import Select from 'react-select';
 import { timeOptionsList } from 'utils/timeOptionsList';
 import icons from '../../images/sprite.svg';
 import { stylesMeta } from 'pages/AddRecipe/selectStyles';
-import { getCategoryListAPI } from 'service/API/CategoriesAPI';
+import { getCategoryListAPI } from 'service/API/Addrecipes';
 import store from 'store';
 
 export const AddRecipeMeta = ({

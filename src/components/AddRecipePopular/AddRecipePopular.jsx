@@ -1,5 +1,6 @@
 import { getPopularListAPI } from 'service/API/Addrecipes';
 import { useState, useEffect } from 'react';
+import getIsLoggedIn from 'redux/auth/authSelectors';
 
 import {
   StyledPoularList,
@@ -21,6 +22,7 @@ export const AddRecipePopular = () => {
         const popularOptObj = await getPopularListAPI();
         const popelarArray = popularOptObj.result;
         const firstFour = popelarArray.slice(0, 4);
+        console.log(firstFour);
 
         setPopularOpt([...firstFour]);
 
@@ -31,7 +33,10 @@ export const AddRecipePopular = () => {
         console.log(error);
       }
     };
-    handleEffect();
+
+    if (getIsLoggedIn) {
+      handleEffect();
+    }
   }, []);
 
   return (
@@ -40,7 +45,7 @@ export const AddRecipePopular = () => {
       {popularOpt.length > 0 && (
         <StyledList>
           {popularOpt.map(({ _id, thumb, instructions, title }) => {
-            const link = `/recipe/${_id}`;
+            const link = `/recipes/${_id}`;
             return (
               <StyledPopitem key={_id}>
                 <StyledLink to={link}>
