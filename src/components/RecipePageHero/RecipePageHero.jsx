@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 
-import { useDispatch } from 'react-redux';
-// import {getFavorites} from "../../redux/favorites/favoritesSelectors"
+import { useDispatch, useSelector } from 'react-redux';
+import {getFavorites} from "../../redux/favorites/favoritesSelectors"
 
 import {fetchFavorites, addFavorite, deleteFavorite} from "../../redux/favorites/favoritesOperation"
 import { ButtonSkew } from 'components/ButtonSkew/ButtonSkew';
