@@ -23,7 +23,6 @@ export const MainPage = () => {
         </HeroTextWrapper>
       </MainPageHero>
     <Container>
-      {/* <h2>Main Page</h2> */}
       <ChooseYourBreakfast />
       <MainPageSearchForm styled={'black'}></MainPageSearchForm>
       <PreviewCategories />

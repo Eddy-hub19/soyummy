@@ -31,7 +31,7 @@ export const StyledLinkBtn = styled(NavLink)`
   }
 
   @media screen and (min-width: 768px) {
-    top: -57%;
+    top: -52%;
     left: 59%;
     padding: 57px 16px;
     min-width: 130px;
@@ -41,8 +41,8 @@ export const StyledLinkBtn = styled(NavLink)`
     line-height: ${p => p.theme.lineHeights.btnText};
     padding: 67px 23px;
     min-width: 160px;
-    top: -51%;
-    left: 62%;
+    top: -49%;
+    left: 60%;
   }
 `;
 

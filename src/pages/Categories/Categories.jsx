@@ -9,7 +9,7 @@ import { axiosInstance } from 'service/API/axios';
 const Categories = () => {
   console.log(axiosInstance.defaults.headers.common.Authorization);
   return (
-    <div>
+  
       <Container>
         <Title>Categories</Title>
         <CategoryList />
@@ -17,7 +17,6 @@ const Categories = () => {
           <Outlet />
         </Suspense>
       </Container>
-    </div>
   );
 };
 

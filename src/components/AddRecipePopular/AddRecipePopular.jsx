@@ -1,7 +1,7 @@
 // import { SubTitle } from 'components/SubTitle/SubTitle';
 import { getPopularListAPI } from 'service/axios/axios';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+
 import //   PopularItem,
 //   PopularRecipe,
 //   PopularSection,
@@ -12,6 +12,9 @@ import //   PopularItem,
 // import { useSelector } from 'react-redux';
 // import { Link } from 'react-router-dom';
 import {
+  StyledPoularList,
+  StyledList,
+  StyledLink,
   StyledPopTitle,
   StyledPopitem,
   ImgWrapper,
@@ -61,15 +64,15 @@ export const AddRecipePopular = ({ isDesktop, isTablet, localTheme }) => {
   //{ _id, thumb, strInstructions, title }
 
   return (
-    <div>
+    <StyledPoularList>
       <StyledPopTitle>Popular recipe</StyledPopTitle>
       {popularOpt.length > 0 && (
-        <ul>
+        <StyledList>
           {popularOpt.map(({ _id, thumb, instructions, title }) => {
             const link = `/recipe/${_id}`;
             return (
               <StyledPopitem key={_id}>
-                <Link to={link}>
+                <StyledLink to={link}>
                   <ImgWrapper>
                     <img src={thumb} alt={title} />
                   </ImgWrapper>
@@ -79,13 +82,13 @@ export const AddRecipePopular = ({ isDesktop, isTablet, localTheme }) => {
                     </ItemTitle>
                     <Description>{instructions.slice(0, 80)}...</Description>
                   </TextWrapper>
-                </Link>
+                </StyledLink>
               </StyledPopitem>
             );
           })}
-        </ul>
+        </StyledList>
       )}
-      {popularOpt.length === 0 && <p>No popular recipes</p>}
-    </div>
+      {popularOpt.length === 0 && <Description>No popular recipes</Description>}
+    </StyledPoularList>
   );
 };
