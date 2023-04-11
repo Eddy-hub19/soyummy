@@ -6,9 +6,7 @@ export const fetchMyRecipes = userID => {
   //     Authorization: `Bearer ${token}`,
   //   },
   // };
-  console.log(userID);
   return axiosInstance.get(`/own-recipes/${userID}`).then(({ data }) => {
-    console.log(data);
     return data;
   });
 };
