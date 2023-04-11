@@ -51,7 +51,7 @@ export const HeaderUserLogo = ({ avatarUrl = userAvatar, color = 'light' }) => {
           onBlur={handleBlur}
           color={color}
         >
-          <img src={user.avatarUrl} alt={user.name} />
+          <img src={avatarUrl} alt={user.name} />
           <p>{user.name}</p>
         </HeaderUserBtn>
 
