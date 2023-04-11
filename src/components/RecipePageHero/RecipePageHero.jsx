@@ -1,10 +1,7 @@
-  import React from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
-  // import { useState, useEffect } from 'react';
-  import { useSelector } from 'react-redux';
-
-// import { getRecipeById } from '../../service/API/RecipeAPI';
-// import { addFavorite, deleteFavorite } from '../../service/API/FavoritesAPI';
+import { addFavorite, deleteFavorite } from '../../service/API/FavoritesAPI';
 
 import { ButtonSkew } from 'components/ButtonSkew/ButtonSkew';
 import sprite from '../../images/sprite.svg';
@@ -17,14 +14,19 @@ import {
 
 
 const RecipePageHero = ({ recipe }) => {
-  const { title, description, time } = recipe;
+  const { _id, title, description, time } = recipe;
 
-  const favorites = useSelector(state => state.favorites);
-  console.log(favorites.data);
-  const isFavorite = favorites.data.some(item => item._id === recipe._id);
+  const favorites = useSelector(state => state.favorites.data);
+  console.log(favorites);
+  const isFavorite = favorites.find(item => item._id === _id);
+  console.log(isFavorite);
 
   function addToFavoriteRecipes() {
-    // addFavorite(_id);
+    addFavorite(_id);
+  };
+
+    function removeFromFavoriteRecipes() {
+    deleteFavorite(_id);
   }
 
   return (
@@ -32,13 +34,21 @@ const RecipePageHero = ({ recipe }) => {
       <RecipeHeroContainer>
         <HeroTitle>{title}</HeroTitle>
         <HeroText>{description}</HeroText>
-        {!isFavorite && (
+        {!isFavorite ? (
           <ButtonSkew
             type="button"
             text="Add to favorite recipes"
             styled="other"
             location="recipes"
             fn={addToFavoriteRecipes}
+          />
+        ) : (
+          <ButtonSkew
+            type="button"
+            text="Remove from favorite recipes"
+            styled="other"
+            location="recipes"
+            fn={removeFromFavoriteRecipes}
           />
         )}
 

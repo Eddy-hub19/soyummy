@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const RecipeIngredientsItem = styled.li`
   border-radius: ${li => li.theme.radii.image};
-  background-color: ${li => li.theme.colors.secondaryAccent};
+  background-color: ${li => li.theme.colors.recipeBlockBg};
   background-color: 'rgba(235, 243, 212, 1)';
 `;
 
