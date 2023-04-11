@@ -28,7 +28,7 @@ export const theme = createTheme({
     deleteBtnBg: '#8BAA36',
     deleteBtnIcon: '#FFFFFF',
     recipeBlockBtnBg: '#22252A',
-    recipeBlockBg: '#FFFFFF',
+    recipeBlockBg: '#EBF3D4',
     paginationBg: '#EBF3D4',
     paginationText: '#656565',
     paginationShadow: '0px 4px 4px rgba(135, 135, 135, 0.2)',
