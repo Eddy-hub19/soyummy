@@ -22,11 +22,10 @@ export const FooterWrap = styled.form`
       width: 1.3rem;
       height: 1.3rem;
       top: 26px;
-      left: 120px;
     }
 
     @media screen and (min-width: 1440px) {
-      top: 153px;
+      top: 31px;
       left: 20px;
     }
   }

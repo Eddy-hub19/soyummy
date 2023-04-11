@@ -139,7 +139,7 @@ export const darkTheme = {
     secondaryGreyBg: '#C4C4C4',
     btnHoverBg: '#22252A',
     btnHoverText: '#8BAA36',
-    iconHover: ' #1E1F28',
+    iconHover: '#FAFAFA',
     switchBg: '#EFEFEF',
     burgerRecipeBtn: '#23262A',
   },

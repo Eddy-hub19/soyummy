@@ -9,7 +9,6 @@ export const MainPage = () => {
   console.log(axiosInstance.defaults.headers.common.Authorization);
   return (
     <Container>
-      {/* <h2>Main Page</h2> */}
       <ChooseYourBreakfast />
       <MainPageSearchForm />
       <PreviewCategories />
