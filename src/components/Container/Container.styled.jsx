@@ -7,9 +7,6 @@ export const MainConteiner = styled.div`
   // margin-left: auto;
   // margin-right: auto;
 
-  // margin-left: auto;
-  // margin-right: auto;
-
   @media screen and (min-width: 768px) {
     padding: 0 32px;
     padding-bottom: 200px;
@@ -18,5 +15,6 @@ export const MainConteiner = styled.div`
 
   @media screen and (min-width: 1440px) {
     padding: 0 100px;
+    margin: 0 auto;
   }
 `;

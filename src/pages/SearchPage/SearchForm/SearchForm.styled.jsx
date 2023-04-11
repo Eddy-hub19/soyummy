@@ -44,32 +44,33 @@ export const Button = styled.button`
 export const Input = styled.input`
   border: ${p => p.theme.borders.mainSearchInput};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
-  width:295px;
-  height:53px;
+  width: 295px;
+  height: 53px;
 
   font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights[0]};
-  font-size:16px;
+  font-size: 16px;
   line-height: ${p => p.theme.lineHeights.subheader};
   border-radius: 18px 44px;
-  background-color:${p => p.theme.colors.searchSelectBg};
+  background-color: ${p => p.theme.colors.searchSelectBg};
   padding-left: 32px;
   color: ${p => p.theme.colors.disabledGrey};
 
-  :hover, 
+  :hover,
   :active,
   :focus {
     border: ${p => p.theme.borders.mainSearchInput};
     outline: none;
-  };
+  }
 
   @media screen and (min-width: 768px) {
-    width:362px;
-    height:57px
+    width: 362px;
+    height: 57px;
   }
   @media screen and (min-width: 1440px) {
- width:510px;
- height:71px
+    width: 510px;
+    height: 71px;
+  }
 `;
 
 export const Form = styled.form`
@@ -84,16 +85,12 @@ export const Form = styled.form`
 `;
 
 export const TitleDropdpwn = styled.label`
-
   font-family: ${p => p.theme.fonts.main};
   font-size: 12px;
   font-weight: ${p => p.theme.fontWeights[1]};
   line-height: 24px;
   letter-spacing: ${p => p.theme.letterSpacings.subheader};
   color: ${p => p.theme.colors.sectionHeader};
- 
- 
-}
 
   @media (min-width: 768px) {
     font-size: 14px;

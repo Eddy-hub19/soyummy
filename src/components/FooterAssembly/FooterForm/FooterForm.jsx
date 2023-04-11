@@ -48,47 +48,52 @@ export const FooterForm = () => {
                 </p>
               </FooterWrapText>
             )}
+            <div style={{ position: 'relative' }}>
+              <FooterWrapInput
+                type="email"
+                placeholder="Enter your email address"
+                onBlur={props.handleBlur}
+                onChange={props.handleChange}
+                value={props.values.email}
+                name="email"
+                color={getColor(
+                  props.errors.email,
+                  props.values.email,
+                  'rgba(255, 255, 255, 0.8)'
+                )}
+                borderColor={getColor(
+                  props.errors.email,
+                  props.values.email,
+                  'rgba(255, 255, 255, 0.3)'
+                )}
+              />
 
-            <FooterWrapInput
-              type="email"
-              placeholder="Enter your email address"
-              onBlur={props.handleBlur}
-              onChange={props.handleChange}
-              value={props.values.email}
-              name="email"
-              color={getColor(
-                props.errors.email,
-                props.values.email,
-                'rgba(255, 255, 255, 0.8)'
-              )}
-              borderColor={getColor(
-                props.errors.email,
-                props.values.email,
-                'rgba(255, 255, 255, 0.3)'
-              )}
-            />
-            <HiOutlineMail
-              className="Envelope"
-              fill={getColor(
-                props.errors.email,
-                props.values.email,
-                'rgba(255, 255, 255, 0.8)'
-              )}
-            ></HiOutlineMail>
+              <HiOutlineMail
+                className="Envelope"
+                fill={getColor(
+                  props.errors.email,
+                  props.values.email,
+                  'rgba(255, 255, 255, 0.8)'
+                )}
+              ></HiOutlineMail>
+            </div>
 
             {props.values.email && (
-              <InputFlag>
-                <svg>
-                  <use
-                    href={`${sprite}${getColor(
-                      props.errors.email,
-                      props.values.email,
-                      'rgba(255, 255, 255, 0.8)'
-                    )}`}
-                  ></use>
-                </svg>
-              </InputFlag>
+              <div style={{ postioin: 'relative' }}>
+                <InputFlag>
+                  <svg>
+                    <use
+                      href={`${sprite}${getColor(
+                        props.errors.email,
+                        props.values.email,
+                        'rgba(255, 255, 255, 0.8)'
+                      )}`}
+                    ></use>
+                  </svg>
+                </InputFlag>
+              </div>
             )}
+
             {props.errors.email && props.values.email && (
               <ErrorMessage className="error" name="email" component="div" />
             )}

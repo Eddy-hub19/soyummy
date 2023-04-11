@@ -1,6 +1,14 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
+export const List = styled.ul`
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+`;
+
 export const Item = styled.li`
   width: 300px;
   height: 323px;
@@ -27,7 +35,7 @@ export const TitlePageCategory = styled.h4`
   line-height: 44px;
   letter-spacing: -0.02em;
   font-feature-settings: 'liga' off;
-  color: #001833;
+  color: ${p => p.theme.colors.sectionHeader};
   margin-bottom: 50px;
   background: transparent;
 `;
