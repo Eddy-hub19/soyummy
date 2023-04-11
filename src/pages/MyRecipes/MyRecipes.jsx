@@ -26,7 +26,7 @@ const MyRecipes = () => {
   const isFirstRender = useRef(true);
 
   const [recipes, setRecipes] = useState([]);
-  const [isLoading, setisLoading] = useState(false);
+  const [isLoading, setisLoading] = useState(true);
 
   const [total, setTotal] = useState(0);
   const [currentSlice, setcurrentSlice] = useState([0, 4]);
