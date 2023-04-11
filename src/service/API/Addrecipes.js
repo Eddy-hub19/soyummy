@@ -1,4 +1,3 @@
-
 import { axiosInstance } from 'service/API/axios';
 
 export const getRecipeById = async id => {
@@ -13,5 +12,10 @@ export const getIngradientsFieldsApi = async () => {
 
 export const getPopularListAPI = async () => {
   const response = await axiosInstance.get('/recipes/popular');
+  return response.data;
+};
+
+export const getCategoryListAPI = async () => {
+  const response = await axiosInstance.get('/recipes/category-list');
   return response.data;
 };

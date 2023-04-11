@@ -1,16 +1,9 @@
-// import { SubTitle } from 'components/SubTitle/SubTitle';
-import { getPopularListAPI } from 'service/axios/axios';
+import { getPopularListAPI } from 'service/API/Addrecipes';
 import { useState, useEffect } from 'react';
+import getIsLoggedIn from 'redux/auth/authSelectors';
+import authSelectors from 'redux/auth/authSelectors';
+import { useSelector } from 'react-redux';
 
-import //   PopularItem,
-//   PopularRecipe,
-//   PopularSection,
-//   RecepiImg,
-//   RecipeText,
-//   RecipeTitle,
-'pages/AddRecipe/addRecipe.styled';
-// import { useSelector } from 'react-redux';
-// import { Link } from 'react-router-dom';
 import {
   StyledPoularList,
   StyledList,
@@ -22,25 +15,9 @@ import {
   ItemTitle,
   Description,
 } from './AddPopular.styled';
-export const AddRecipePopular = ({ isDesktop, isTablet, localTheme }) => {
-  //   const popularList = popularRecepis.map(
-  //     ({ idMeal, strMealThumb, strInstructions, strMeal }) => (
-
-  //         <PopularItem as={'div'}>
-  //           <Link to={`/recipe/${idMeal}`}>
-  //             <RecepiImg src={strMealThumb} alt={strMeal} />
-  //             <div>
-  //               <RecipeTitle>{strMeal}</RecipeTitle>
-  //               <RecipeText>{strInstructions}</RecipeText>
-  //             </div>
-  //           </Link>
-  //         </PopularItem>
-
-  //     )
-  //   );
-
+export const AddRecipePopular = () => {
   const [popularOpt, setPopularOpt] = useState([]);
-
+  const isLoggin = useSelector(authSelectors.getIsLoggedIn);
   useEffect(() => {
     const handleEffect = async () => {
       try {
@@ -51,25 +28,29 @@ export const AddRecipePopular = ({ isDesktop, isTablet, localTheme }) => {
 
         setPopularOpt([...firstFour]);
 
-        // if (allCategories.length === 0) {
-        //   return;
-        // }
+        if (firstFour.length === 0) {
+          return;
+        }
       } catch (error) {
         console.log(error);
       }
     };
-    handleEffect();
-  }, []);
+    if (popularOpt.length >= 1) {
+      handleEffect();
+    }
+    // setTimeout(() => {
+    //   handleEffect();
+    // }, 1000);
+  }, [isLoggin, popularOpt.length]);
 
-  //{ _id, thumb, strInstructions, title }
-
+  console.log(isLoggin);
   return (
     <StyledPoularList>
       <StyledPopTitle>Popular recipe</StyledPopTitle>
       {popularOpt.length > 0 && (
         <StyledList>
           {popularOpt.map(({ _id, thumb, instructions, title }) => {
-            const link = `/recipe/${_id}`;
+            const link = `/recipes/${_id}`;
             return (
               <StyledPopitem key={_id}>
                 <StyledLink to={link}>

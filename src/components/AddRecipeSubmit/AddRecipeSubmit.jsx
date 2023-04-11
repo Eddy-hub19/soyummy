@@ -7,8 +7,8 @@ export const AddRecipeSubmit = ({ inputs, handleChange, localTheme }) => {
     <RecepieSection localTheme={localTheme}>
       <SubTitle text="Recipe Preparation" />
       <textarea
-        name="recipe"
-        value={inputs.recipe}
+        name="instructions"
+        value={inputs.instructions}
         placeholder="Enter recipe"
         onChange={handleChange}
       ></textarea>
