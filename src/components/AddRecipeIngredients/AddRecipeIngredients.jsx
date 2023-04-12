@@ -3,7 +3,7 @@ import { SubTitle } from 'components/SubTitle/SubTitle';
 import { useState, useEffect } from 'react';
 import Select from 'react-select';
 import icons from '../../images/sprite.svg';
-import getIsLoggedIn from 'redux/auth/authSelectors';
+
 import { getIngradientsFieldsApi } from 'service/API/Addrecipes';
 
 import {
@@ -43,19 +43,17 @@ export const AddRecipeIngredients = ({
         }));
 
         setOptions([...options]);
-
-        if (options.length === 0) {
-          return;
-        }
       } catch (error) {
         console.log(error);
       }
     };
-    console.log(getIsLoggedIn);
-    if (getIsLoggedIn) {
+    setTimeout(() => {
       handleEffect();
-    }
+    }, 1);
   }, []);
+  if (options.length === 0) {
+    return null;
+  }
 
   const userIngredientsList = userIngredients.map(({ id, unitValue, qty }) => {
     return (

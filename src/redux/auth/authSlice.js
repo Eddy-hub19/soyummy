@@ -14,8 +14,8 @@ const AuthSlice = createSlice({
   extraReducers: {
     [authOperation.register.fulfilled](state, action) {
       state.user = action.payload.user;
-      state.token = action.payload.token;
-      state.isloggedIn = true;
+      // state.token = action.payload.token;
+      // state.isloggedIn = true;
     },
     [authOperation.logIn.fulfilled](state, action) {
       state.user = action.payload.user;

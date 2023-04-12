@@ -5,6 +5,7 @@ import tabletBg from '../../images/tablet/FormAuthTab-min.png';
 import authPanaDesRet from '../../images/desktop/AuthPanaDesRet.png';
 import authImgMob from '../../images/mobile/AuthPanaMobRet-min.png';
 import authTabletImg from '../../images/tablet/AuthPanaTabRet-min.png';
+import { NavLink } from 'react-router-dom';
 
 export const Input = styled.input`
   font-style: normal;
@@ -70,6 +71,14 @@ export const Input = styled.input`
 
   &:hover ~ svg.icon use {
     opacity: 1;
+  }
+`;
+
+export const StyledLink = styled(NavLink)`
+  color: black;
+
+  &:hover {
+    color: #8baa36;
   }
 `;
 
@@ -226,15 +235,17 @@ export const Button = styled.button`
 export const AuthBg = styled.div`
   @media (min-width: 350px) {
     background-image: url(${mobileBg});
+    background-position: 50% 320px;
   }
 
   @media (min-width: 768px) {
     background-image: url(${tabletBg});
+    background-position: 50% 320px;
   }
 
   @media (min-width: 1440px) {
     background-image: url(${FormAuthDes});
-    background-position: 50% 520px;
+    background-position: 50% 420px;
   }
 
   height: 100vh;

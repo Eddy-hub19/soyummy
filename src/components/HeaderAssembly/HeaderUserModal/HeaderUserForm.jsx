@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { ErrorMessage, Formik } from 'formik';
 import { useSelector } from 'react-redux';
+//import axios from 'axios';
+import { axiosInstance } from 'service/API/axios';
 // import { useDispatch, useSelector } from 'react-redux';
 import { getColor } from 'utils/formikColors';
 import authSelectors from 'redux/auth/authSelectors';
@@ -50,11 +52,25 @@ export const UserFormAssembly = ({ name, avatarUrl, closeModal }) => {
   const user = useSelector(authSelectors.getUserData);
   const [path, setPath] = useState(user.avatarUrl);
 
-  const handleSubmit = values => {
+  const handleSubmit = async values => {
     const formData = new FormData();
     formData.append('name', values.name.trim());
     formData.append('picture', values.picture);
-    // dispatch(updateUserInfo(formData));
+    formData.append('upload_preset', 'alex_preset');
+    console.log(values);
+    try {
+      const response = await axiosInstance.patch('/auth/avatar', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      const newData = response.data;
+      console.log(newData);
+    } catch (error) {
+      console.error('Error:', error.message);
+      console.log('Error Response:', error.response);
+    }
+
     closeModal();
   };
 
