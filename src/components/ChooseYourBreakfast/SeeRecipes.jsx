@@ -8,7 +8,7 @@ export const SeeRecipes = () => {
         <ChooseSpan>Delicious and healthy</ChooseSpan> way to enjoy a variety of fresh ingredients in one
         satisfying meal
       </ChooseText>
-      <ChooseLink to="">See recipes
+      <ChooseLink to="/recipes/640cd5ac2d9fecf12e889863">See recipes
         <RightArrow
           width="15"
             height="12"
