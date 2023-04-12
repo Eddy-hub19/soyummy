@@ -5,7 +5,8 @@ export const getColor = (
 ) => {
   if (
     errors === 'Your password is little secure. Add a number!' ||
-    errors === 'Your password is little secure. Add a letter!'
+    errors === 'Your password is little secure. Add a letter!' ||
+    errors === 'incorrect Email'
   ) {
     return '#F6C23E';
   }

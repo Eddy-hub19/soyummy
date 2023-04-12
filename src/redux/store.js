@@ -34,11 +34,6 @@ const authPersistConfig = {
 //   storage,
 // };
 
-const shoppingListConfig = {
-  key: 'shoppingList',
-  storage,
-};
-
 const themePersistConfig = {
   key: 'theme',
   storage,
@@ -54,7 +49,7 @@ export const store = configureStore({
     favorites: favoritesSlice,
     myRecipes: myRecipesSlice,
     theme: persistReducer(themePersistConfig, persistedThemeReducer),
-    shoppingList: persistReducer(shoppingListConfig, shoplistSlice),
+    shoppingList: shoplistSlice,
   },
 
   middleware(getDefaultMiddleware) {

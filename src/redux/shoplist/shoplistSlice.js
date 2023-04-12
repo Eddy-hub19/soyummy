@@ -16,7 +16,6 @@ const shoppingListSlice = createSlice({
         (state, { payload }) => {
           state.data = payload;
           state.isRefreshing = false;
-          console.log(state.data);
         }
       )
       .addCase(shoppingListOperation.deleteShoppingListItem.pending, state => {
@@ -25,16 +24,14 @@ const shoppingListSlice = createSlice({
       .addCase(
         shoppingListOperation.deleteShoppingListItem.fulfilled,
         (state, { payload }) => {
-          state.data = state.data.filter(r => r._id !== payload);
+          state.data = state.data.filter(i => i._id !== payload);
           state.isRefreshing = false;
-          console.log(state.data);
         }
       )
       .addCase(
         shoppingListOperation.addShoppingListItem.fulfilled,
         (state, { payload }) => {
           state.data = [...state.data, payload];
-          console.log(state.data);
         }
       )
 });
