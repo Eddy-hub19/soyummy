@@ -7,6 +7,7 @@ import {
   Span,
   HeroTextWrapper,
   Text,
+  MainPageContainer
 } from './MainPage.styled';
 import { MainPageSearchForm } from '../../components/MainPageSearchForm/MainPageSearchForm';
 
@@ -15,7 +16,7 @@ export const MainPage = () => {
   return (
     <>
       <MainPageHero>
-        <HeroTextWrapper>
+        <MainPageContainer>
           <Title>
             <Span>So</Span>Yummy
           </Title>
@@ -25,7 +26,7 @@ export const MainPage = () => {
             the future.
           </Text>
           <MainPageSearchForm styled={'black'}></MainPageSearchForm>
-        </HeroTextWrapper>
+        </MainPageContainer>
       </MainPageHero>
       <Container>
         <ChooseYourBreakfast />
