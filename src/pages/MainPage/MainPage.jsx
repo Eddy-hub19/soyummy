@@ -5,7 +5,6 @@ import {
   MainPageHero,
   Title,
   Span,
-  HeroTextWrapper,
   Text,
   MainPageContainer
 } from './MainPage.styled';
