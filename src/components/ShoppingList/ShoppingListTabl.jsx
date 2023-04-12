@@ -14,7 +14,6 @@ import icons from 'images/sprite.svg';
 import defaultImg from '../../images/default.jpg';
 import { EmptyPlaceholder } from 'pages/EmptyPlaceholder/EmptyPlaceholder';
 
-
 import {
   Table,
   TableItem,
@@ -45,7 +44,7 @@ const ShoppingListTabl = () => {
   useEffect(() => {
     setisLoading(isRefreshing);
   }, [isRefreshing]);
-  
+
   useEffect(() => {
     setShopItems(storageItems);
   }, [storageItems]);
@@ -69,7 +68,7 @@ const ShoppingListTabl = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <Thumb> 
+        <Thumb>
           {shopItems.length > 0 ? (
             <Table>
               <TableItem key="0">
@@ -106,15 +105,10 @@ const ShoppingListTabl = () => {
           ) : (
             <EmptyPlaceholder text="Your shopping list is empty." />
           )}
-         </Thumb>
+        </Thumb>
       )}
     </>
   );
 };
 
 export default ShoppingListTabl;
-
-// "nameIngredient": "Chicken",
-// "weight": "100",
-// "image": "https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678564123/rw8pn3541bmukb8d3mio.png",
-// "recipeId": "640cd5ac2d9fecf12e8897fc"

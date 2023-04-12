@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,9 +23,10 @@ const MyRecipes = () => {
   const dispatch = useDispatch();
   const storageRecipes = useSelector(getMyRecipes);
   const isRefreshing = useSelector(getMyRecipesRefreshStatus);
+  const isFirstRender = useRef(true);
 
   const [recipes, setRecipes] = useState([]);
-  const [isLoading, setisLoading] = useState(false);
+  const [isLoading, setisLoading] = useState(true);
 
   const [total, setTotal] = useState(0);
   const [currentSlice, setcurrentSlice] = useState([0, 4]);
@@ -36,6 +37,10 @@ const MyRecipes = () => {
   const perPage = 4;
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     dispatch(fetchMyRecipes());
     setRecipes(storageRecipes);
 

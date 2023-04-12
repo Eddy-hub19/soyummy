@@ -2,7 +2,6 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import MenuList from '@mui/material/MenuList';
 import { Title } from 'components/Title/Title';
 import store from 'store';
 import {
@@ -72,8 +71,8 @@ const SearchForm = props => {
 
         <Select
           sx={{
-            // color: 'rgb(189, 189, 189);',
-            color: 'red',
+            color: 'rgb(189, 189, 189);',
+
             '.MuiOutlinedInput-notchedOutline': {
               borderColor: 'rgba(217, 217, 217, 0.2)',
             },
@@ -89,31 +88,21 @@ const SearchForm = props => {
           value={searchType}
           onChange={handleSearchTypeChange}
         >
-          <MenuList
-            sx={{
-              '& .MuiMenu-list': {
-                border: 'none',
-                backgroundColor: 'green',
-                outline: 'none',
-              },
-            }}
+          <MenuItem
+            // sx={{
+            //   '& .MuiMenuItem-root': {
+            //     backgroundColor: 'green',
+            //     outline: 'none',
+            //   },
+            //   '&:active': {
+            //     backgroundColor: 'green',
+            //   },
+            // }}
+            value="title"
           >
-            <MenuItem
-              sx={{
-                '& .MuiMenuItem-root': {
-                  backgroundColor: 'green',
-                  outline: 'none',
-                },
-                '&:active': {
-                  backgroundColor: 'green',
-                },
-              }}
-              value="title"
-            >
-              Title
-            </MenuItem>
-            <MenuItem value="ingredient">Ingredient</MenuItem>
-          </MenuList>
+            Title
+          </MenuItem>
+          <MenuItem value="ingredient">Ingredient</MenuItem>
         </Select>
       </DropdownWrapper>
     </div>

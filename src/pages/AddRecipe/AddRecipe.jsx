@@ -1,23 +1,28 @@
+import { useEffect, useState, useRef } from 'react';
+import { useMediaRules } from 'hooks/MediaRules';
+import { nanoid } from '@reduxjs/toolkit';
+import store from 'store';
+
+import { axiosInstance } from 'service/API/axios';
+import { scrollToTop } from 'utils/scrollUp';
 import { toast } from 'react-toastify';
 
-import { useEffect, useState } from 'react';
-import store from 'store';
-import {
-  RecipeForm,
-  MainWrapper,
-  StyledSocialWrepper,
-} from './addRecipe.styled';
 import { Title } from 'components/Title/Title';
-import { nanoid } from '@reduxjs/toolkit';
+import { Loader } from 'components/Loader/Loader';
 import { Container } from 'components/Container/Container';
 import { AddRecipePopular } from 'components/AddRecipePopular/AddRecipePopular';
 import { AddRecipeMeta } from 'components/AddRecipeMeta/AddRecipeMeta';
 import { AddRecipeIngredients } from 'components/AddRecipeIngredients/AddRecipeIngredients';
 import { AddRecipeSubmit } from 'components/AddRecipeSubmit/AddRecipeSubmit';
-import { useMediaRules } from 'hooks/MediaRules';
+
 import { AddRecipeToastifyError } from 'components/AddRecipeToastifyError/AddRecipeToastifyError';
 import { FollowUs } from 'components/FollowUs/FollowUs';
-import { axiosInstance } from 'service/API/axios';
+
+import {
+  RecipeForm,
+  MainWrapper,
+  StyledSocialWrepper,
+} from './addRecipe.styled';
 
 const init = {
   instructions: '',
@@ -37,6 +42,7 @@ const AddRecipe = () => {
   // const navigate = useNavigate();
 
   const { isDesktop, isMobile, isTablet } = useMediaRules();
+  const isFirstRender = useRef(true);
 
   const [inputs, setInputs] = useState(() => {
     const inputs = store.get('userInputs');
@@ -51,8 +57,14 @@ const AddRecipe = () => {
   });
 
   const [path, setPath] = useState('');
+  const [isLoading, setisLoading] = useState(false);
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    // убирает ошибку при первом рендере!!
     store.set('userInputs', inputs);
     store.set('userIngredients', userIngredients);
   }, [inputs, userIngredients]);
@@ -111,9 +123,16 @@ const AddRecipe = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     const formData = new FormData();
+
     console.log(inputs);
     const { instructions, time, category, description, title } = inputs;
-
+    // ПРОВЕРКА НА ЗАПОЛНЕНОСТЬ ПОЛЕЙ
+    if (!instructions || !time || !category || !description || !title) {
+      console.log('НЕ ВСЕ ПОЛЯ ЗАПОЛНЕНЫ');
+      return;
+    }
+    setisLoading(true);
+    scrollToTop();
     // собираем значения ингредиентов в отдельный массив
     const ingredients = userIngredients.map(ingredient => {
       return {
@@ -150,11 +169,14 @@ const AddRecipe = () => {
       const addRecipe = await axiosInstance.post('/own-recipes/add', data);
       if (addRecipe) {
         console.log('Recipe add succes');
+        setInputs(init);
       }
+      setisLoading(false);
     } catch (error) {
       console.error('Error:', error.message);
       console.log('Error Response:', error.response);
       toast.error(<AddRecipeToastifyError />);
+      setisLoading(false);
     }
   };
 
@@ -179,7 +201,6 @@ const AddRecipe = () => {
   };
 
   const handleUnitValue = ({ currentTarget }) => {
-    console.log(axiosInstance.defaults.headers.common.Authorization);
     const { id, value, name } = currentTarget;
     setInputs(prev => ({
       ...prev,
@@ -199,56 +220,60 @@ const AddRecipe = () => {
 
   return (
     <>
-      <Container>
-        <Title>Add recipe</Title>
-        <MainWrapper isDesktop={isDesktop}>
-          <RecipeForm
-            onSubmit={handleSubmit}
-            enctype="multipart/form-data"
-            isMobile={isMobile}
-            localTheme={theme}
-          >
-            <AddRecipeMeta
-              path={path}
-              inputs={inputs}
-              file={file}
-              isDesktop={isDesktop}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <Container>
+          <Title>Add recipe</Title>
+          <MainWrapper isDesktop={isDesktop}>
+            <RecipeForm
+              onSubmit={handleSubmit}
+              enctype="multipart/form-data"
               isMobile={isMobile}
-              handleFile={handleFile}
-              handleChange={handleChange}
-              handleSelect={handleSelect}
-            />
+              localTheme={theme}
+            >
+              <AddRecipeMeta
+                path={path}
+                inputs={inputs}
+                file={file}
+                isDesktop={isDesktop}
+                isMobile={isMobile}
+                handleFile={handleFile}
+                handleChange={handleChange}
+                handleSelect={handleSelect}
+              />
 
-            <AddRecipeIngredients
-              counter={userIngredients.length}
-              userIngredients={userIngredients}
-              isMobile={isMobile}
-              handleDecrement={handleDecrement}
-              handleIncrement={handleIncrement}
-              handleUserIngredient={handleUserIngredient}
-              handleUnitValue={handleUnitValue}
-              handleRemove={handleRemove}
-              localTheme={theme}
-            />
+              <AddRecipeIngredients
+                counter={userIngredients.length}
+                userIngredients={userIngredients}
+                isMobile={isMobile}
+                handleDecrement={handleDecrement}
+                handleIncrement={handleIncrement}
+                handleUserIngredient={handleUserIngredient}
+                handleUnitValue={handleUnitValue}
+                handleRemove={handleRemove}
+                localTheme={theme}
+              />
 
-            <AddRecipeSubmit
-              inputs={inputs}
-              handleChange={handleChange}
-              localTheme={theme}
-            />
-          </RecipeForm>
-          <div>
-            <StyledSocialWrepper>
-              <FollowUs text={'Folow Us'} />
-            </StyledSocialWrepper>
-            <AddRecipePopular
-              isDesktop={isDesktop}
-              isTablet={isTablet}
-              localTheme={theme}
-            />
-          </div>
-        </MainWrapper>
-      </Container>
+              <AddRecipeSubmit
+                inputs={inputs}
+                handleChange={handleChange}
+                localTheme={theme}
+              />
+            </RecipeForm>
+            <div>
+              <StyledSocialWrepper>
+                <FollowUs text={'Folow Us'} />
+              </StyledSocialWrepper>
+              <AddRecipePopular
+                isDesktop={isDesktop}
+                isTablet={isTablet}
+                localTheme={theme}
+              />
+            </div>
+          </MainWrapper>
+        </Container>
+      )}
     </>
   );
 };

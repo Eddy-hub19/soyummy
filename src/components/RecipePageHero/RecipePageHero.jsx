@@ -1,8 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
 
-import { addFavorite, deleteFavorite } from '../../service/API/FavoritesAPI';
+import { useDispatch, useSelector } from 'react-redux';
+import {getFavorites} from "../../redux/favorites/favoritesSelectors"
 
+import {fetchFavorites, addFavorite, deleteFavorite} from "../../redux/favorites/favoritesOperation"
 import { ButtonSkew } from 'components/ButtonSkew/ButtonSkew';
 import sprite from '../../images/sprite.svg';
 import {
@@ -16,25 +18,36 @@ import {
 const RecipePageHero = ({ recipe }) => {
   const { _id, title, description, time } = recipe;
 
-  const favorites = useSelector(state => state.favorites.data);
-  console.log(favorites);
-  const isFavorite = favorites.find(item => item._id === _id);
-  console.log(isFavorite);
+  const favorites = useSelector(getFavorites);
+  const isFavorite = favorites.some(item => item._id === _id);
+    // const favorites = useSelector(state => state.auth.user.favorite);
+    // const isFavorite = favorites.some(item => item === recipe._id);
+  
+  const [isFav, setIsFav] = useState(isFavorite);
+  const dispatch = useDispatch();
 
   function addToFavoriteRecipes() {
-    addFavorite(_id);
+    dispatch(addFavorite(_id));
+    setIsFav(true);
+    return;
   };
 
     function removeFromFavoriteRecipes() {
-    deleteFavorite(_id);
-  }
+      dispatch(deleteFavorite(_id));
+      setIsFav(false);
+      return;
+    }
+  
+  useEffect(() => {
+    dispatch(fetchFavorites({}));
+  }, [dispatch, isFav]);
 
   return (
     <>
       <RecipeHeroContainer>
         <HeroTitle>{title}</HeroTitle>
         <HeroText>{description}</HeroText>
-        {!isFavorite ? (
+        {!isFav ? (
           <ButtonSkew
             type="button"
             text="Add to favorite recipes"

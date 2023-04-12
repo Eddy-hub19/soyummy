@@ -24,36 +24,32 @@ const authPersistConfig = {
   // whitelist: ['token'],
 };
 
-const favoritesPersistConfig = {
-  key: 'favorites',
-  storage,
-  // whitelist: ['token'],
-};
+// const favoritesPersistConfig = {
+//   key: 'favorites',
+//   storage,
+// };
 
-const myRecipesConfig = {
-  key: 'myRecipes',
-  storage,
-  // whitelist: ['token'],
-};
-
-const shoppingListConfig = {
-  key: 'shoppingList',
-  storage,
-};
+// const myRecipesConfig = {
+//   key: 'myRecipes',
+//   storage,
+// };
 
 const themePersistConfig = {
   key: 'theme',
   storage,
 };
+
 const persistedThemeReducer = persistReducer(themePersistConfig, themeReducer);
 
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authSlice),
-    favorites: persistReducer(favoritesPersistConfig, favoritesSlice),
-    myRecipes: persistReducer(myRecipesConfig, myRecipesSlice),
+    // favorites: persistReducer(favoritesPersistConfig, favoritesSlice),
+    // myRecipes: persistReducer(myRecipesConfig, myRecipesSlice),
+    favorites: favoritesSlice,
+    myRecipes: myRecipesSlice,
     theme: persistReducer(themePersistConfig, persistedThemeReducer),
-    shoppingList: persistReducer(shoppingListConfig, shoplistSlice),
+    shoppingList: shoplistSlice,
   },
 
   middleware(getDefaultMiddleware) {

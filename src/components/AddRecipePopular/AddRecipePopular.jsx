@@ -1,6 +1,5 @@
 import { getPopularListAPI } from 'service/API/Addrecipes';
 import { useState, useEffect } from 'react';
-import getIsLoggedIn from 'redux/auth/authSelectors';
 import authSelectors from 'redux/auth/authSelectors';
 import { useSelector } from 'react-redux';
 

@@ -77,6 +77,11 @@ export const InputWraper = styled.div`
   position: relative;
 
   .icon {
+    @media screen and (max-width: 768px) {
+      height: 1rem;
+      width: 1rem;
+      top: 39%;
+    }
     position: absolute;
     height: 1.5rem;
     width: 1.5rem;
@@ -85,6 +90,35 @@ export const InputWraper = styled.div`
     top: 35%;
     left: 20px;
     transform: translateY(-50%);
+  }
+
+  .statusIcon {
+    @media screen and (max-width: 768px) {
+      height: 1rem;
+      width: 1rem;
+      top: 39%;
+    }
+    position: absolute;
+    height: 1.5rem;
+    width: 1.5rem;
+    box-sizing: border-box;
+    top: 38%;
+    right: 10px;
+    transform: translateY(-50%);
+  }
+
+  .error {
+    @media screen and (max-width: 768px) {
+      font-size: 10px;
+      line-height: 15px;
+    }
+    position: absolute;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    transform: translateY(-90%);
+    color: ${p => p.children[1].props.color};
   }
 `;
 
@@ -183,6 +217,9 @@ export const Button = styled.button`
       /* box-shadow: 0 5px #666; */
       transform: translateY(4px);
     }
+    &:disabled {
+      background: grey;
+    }
   }
 `;
 
@@ -197,11 +234,14 @@ export const AuthBg = styled.div`
 
   @media (min-width: 1440px) {
     background-image: url(${FormAuthDes});
+    background-position: 50% 520px;
   }
+
   height: 100vh;
+  min-height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: 50% 200px;
+  background-position: 50% 380px;
 `;
 export const Container = styled.div`
   @media (max-width: 767px) {
@@ -213,9 +253,9 @@ export const Container = styled.div`
     margin-top: 96px;
   }
   @media (min-width: 1440px) {
-    margin-top: 125px;
+    margin-top: 50px;
   }
-
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
