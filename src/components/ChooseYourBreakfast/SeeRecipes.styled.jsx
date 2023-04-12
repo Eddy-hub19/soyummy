@@ -11,7 +11,8 @@ export const ChooseBlock = styled.div`
   margin-left: 88px;
   margin-bottom: 115px;
   position: absolute;
-  right: 34px;
+  // left: 70px;
+  right: 43px;
   top: 435px;
 
   @media (min-width: 768px) {
@@ -22,7 +23,7 @@ export const ChooseBlock = styled.div`
     width: 261px;
     height: 100px;
     position: absolute;
-    right: 32px;
+    // right: 43px;
     top: 372px;
   }
 
@@ -32,6 +33,7 @@ export const ChooseBlock = styled.div`
     width: 298px;
     height: 114px;
     position: absolute;
+    // left: 1200px;
     right: 122px;
     top: 462px;
   }

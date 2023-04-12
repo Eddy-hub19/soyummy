@@ -195,7 +195,7 @@ export const MainPageBg = styled.div`
 `;
 
 export const MainPageContainer = styled.div`
-  
+  position: relative;
   // padding-bottom: 149px;
   max-width: 767px;
   // margin-left: auto;

@@ -24,8 +24,8 @@ export const MainPage = () => {
             the future.
           </Text>
           <MainPageSearchForm styled={'black'}></MainPageSearchForm>
-          <SeeRecipes />
         </MainPageContainer>
+        <SeeRecipes />
       </MainPageHero>
       <MainPageContainer>
         <PreviewCategories />
