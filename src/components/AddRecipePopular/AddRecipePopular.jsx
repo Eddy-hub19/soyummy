@@ -1,7 +1,5 @@
 import { getPopularListAPI } from 'service/API/Addrecipes';
 import { useState, useEffect } from 'react';
-import authSelectors from 'redux/auth/authSelectors';
-import { useSelector } from 'react-redux';
 
 import {
   StyledPoularList,
@@ -16,14 +14,13 @@ import {
 } from './AddPopular.styled';
 export const AddRecipePopular = () => {
   const [popularOpt, setPopularOpt] = useState([]);
-  const isLoggin = useSelector(authSelectors.getIsLoggedIn);
+
   useEffect(() => {
     const handleEffect = async () => {
       try {
         const popularOptObj = await getPopularListAPI();
         const popelarArray = popularOptObj.result;
         const firstFour = popelarArray.slice(0, 4);
-        console.log(firstFour);
 
         setPopularOpt([...firstFour]);
 
@@ -34,15 +31,10 @@ export const AddRecipePopular = () => {
         console.log(error);
       }
     };
-    if (popularOpt.length >= 1) {
+    setTimeout(() => {
       handleEffect();
-    }
-    // setTimeout(() => {
-    //   handleEffect();
-    // }, 1000);
-  }, [isLoggin, popularOpt.length]);
-
-  console.log(isLoggin);
+    }, 1);
+  }, []);
   return (
     <StyledPoularList>
       <StyledPopTitle>Popular recipe</StyledPopTitle>
