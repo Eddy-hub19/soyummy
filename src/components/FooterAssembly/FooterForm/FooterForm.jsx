@@ -1,4 +1,3 @@
-import * as Yup from 'yup';
 import * as React from 'react';
 import { useMediaRules } from 'hooks/MediaRules';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -15,16 +14,7 @@ import {
   InputFlag,
   FooterWrapBtn,
 } from './FooterForm.styled';
-
-// const LoginSchema = Yup.object().shape({
-//   email: Yup.mixed().test({
-//     name: 'email',
-//     params: { a: 'test', b: 'qwe' },
-//     test: value => {
-//       return /\w+@\w+\.\w{1,5}/.test(value);
-//     },
-//   }),
-// });
+import { axiosInstance } from 'service/API/axios';
 
 export const FooterForm = () => {
   const { isDesktop } = useMediaRules();
@@ -50,13 +40,14 @@ export const FooterForm = () => {
     validate,
     onSubmit: value => {
       console.log('onSubmit', value);
+      axiosInstance.post('/auth/subscribe', value);
     },
   });
 
   return (
     <div>
       <h1>Subscribe</h1>
-      <form onSubmit={formik.handleSubmit}>
+      <FooterWrap onSubmit={formik.handleSubmit}>
         <label htmlFor="email">Email Address</label>
         <input
           onChange={formik.handleChange}
@@ -70,8 +61,10 @@ export const FooterForm = () => {
           {formik.errors.email && formik.touched.email && formik.errors.email}
         </div>
 
-        <button type="submit">Submit</button>
-      </form>
+        <button type="submit" onClick={formik.handleReset}>
+          Submit
+        </button>
+      </FooterWrap>
     </div>
   );
 };

@@ -7,7 +7,7 @@ import {
 import { CardImg } from 'components/CardMeal/CardMeal.styled';
 import { NavLink } from 'react-router-dom';
 
-const SearchRecipesList = ({ recipes, id }) => {
+const SearchRecipesList = ({ recipes }) => {
   return (
     <div>
       <GridContainer>
@@ -15,7 +15,7 @@ const SearchRecipesList = ({ recipes, id }) => {
           recipes.map(recipe => {
             return (
               <GridItem>
-                <NavLink to={`/recipes/${id}`}>
+                <NavLink to={`/recipes/${recipe._id}`}>
                   <CardImg src={recipe.thumb} alt="img" />
                 </NavLink>
                 <RecipeTitle>{recipe.title}</RecipeTitle>

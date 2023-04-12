@@ -72,8 +72,8 @@ const SearchForm = props => {
 
         <Select
           sx={{
-            // color: 'rgb(189, 189, 189);',
-            color: 'red',
+            color: 'rgb(189, 189, 189);',
+
             '.MuiOutlinedInput-notchedOutline': {
               borderColor: 'rgba(217, 217, 217, 0.2)',
             },
@@ -89,31 +89,21 @@ const SearchForm = props => {
           value={searchType}
           onChange={handleSearchTypeChange}
         >
-          <MenuList
-            sx={{
-              '& .MuiMenu-list': {
-                border: 'none',
-                backgroundColor: 'green',
-                outline: 'none',
-              },
-            }}
+          <MenuItem
+            // sx={{
+            //   '& .MuiMenuItem-root': {
+            //     backgroundColor: 'green',
+            //     outline: 'none',
+            //   },
+            //   '&:active': {
+            //     backgroundColor: 'green',
+            //   },
+            // }}
+            value="title"
           >
-            <MenuItem
-              sx={{
-                '& .MuiMenuItem-root': {
-                  backgroundColor: 'green',
-                  outline: 'none',
-                },
-                '&:active': {
-                  backgroundColor: 'green',
-                },
-              }}
-              value="title"
-            >
-              Title
-            </MenuItem>
-            <MenuItem value="ingredient">Ingredient</MenuItem>
-          </MenuList>
+            Title
+          </MenuItem>
+          <MenuItem value="ingredient">Ingredient</MenuItem>
         </Select>
       </DropdownWrapper>
     </div>
