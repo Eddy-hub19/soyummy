@@ -7,6 +7,7 @@ import authSelectors from 'redux/auth/authSelectors';
 // import { updateUserInfo } from 'redux/auth/authOperation';
 import sprite from '../../../images/sprite.svg';
 import * as Yup from 'yup';
+// import { getAvatar } from 'redux/auth/authSelectors';
 
 import {
   UserForm,
@@ -45,6 +46,7 @@ const EditNameSchema = Yup.object().shape({
 
 export const UserFormAssembly = ({ name, avatarUrl, closeModal }) => {
   // const dispatch = useDispatch();
+  // const userAvatar = useSelector(getAvatar);
   const user = useSelector(authSelectors.getUserData);
   const [path, setPath] = useState(user.avatarUrl);
 
