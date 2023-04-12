@@ -3,7 +3,6 @@ import * as authOperation from '../../redux/auth/authOperation';
 import { CgLock } from 'react-icons/cg';
 import { HiOutlineMail } from 'react-icons/hi';
 
-import { NavLink } from 'react-router-dom';
 import {
   AuthBg,
   Button,
@@ -13,6 +12,7 @@ import {
   Image,
   Container,
   InputWraper,
+  StyledLink,
 } from './Signin.styled';
 import { getColor } from 'utils/formikColors';
 import * as Yup from 'yup';
@@ -114,24 +114,12 @@ const SignIn = () => {
                       placeholder="password"
                       onBlur={props.handleBlur}
                       value={props.values.password}
-                      color={getColor(
-                        props.errors.password,
-                        props.values.password,
-                        'rgba(255, 255, 255, 0.8)'
-                      )}
-                      borderColor={getColor(
-                        props.errors.password,
-                        props.values.password,
-                        'rgba(255, 255, 255, 0.3)'
-                      )}
+                      color={'rgba(255, 255, 255, 0.8)'}
+                      borderColor={'rgba(255, 255, 255, 0.3)'}
                     />
                     <CgLock
                       className="icon"
-                      color={getColor(
-                        props.errors.password,
-                        props.values.password,
-                        'rgba(255, 255, 255, 0.8)'
-                      )}
+                      color={'rgba(255, 255, 255, 0.8)'}
                     />
                   </InputWraper>
                   <Button type="submit">Sign in</Button>
@@ -139,7 +127,7 @@ const SignIn = () => {
               )}
             </Formik>
           </Box>
-          <NavLink to={'/register'}>Register</NavLink>;
+          <StyledLink to={'/register'}>Register</StyledLink>
         </BoxWraper>
       </Container>
     </AuthBg>

@@ -5,6 +5,7 @@ import tabletBg from '../../images/tablet/FormAuthTab-min.png';
 import authPanaDesRet from '../../images/desktop/AuthPanaDesRet.png';
 import authImgMob from '../../images/mobile/AuthPanaMobRet-min.png';
 import authTabletImg from '../../images/tablet/AuthPanaTabRet-min.png';
+import { NavLink } from 'react-router-dom';
 
 export const Input = styled.input`
   font-style: normal;
@@ -148,10 +149,15 @@ export const Box = styled.div`
   flex-direction: column;
   align-items: start;
   justify-content: center;
+`;
 
-  a.nav_Link:hover {
-    cursor: pointer;
-    color: red;
+export const StyledLink = styled(NavLink)`
+  color: black;
+  padding-bottom: 120px;
+  box-sizing: border-box;
+  display: block;
+  &:hover {
+    color: #8baa36;
   }
 `;
 
@@ -231,21 +237,19 @@ export const Button = styled.button`
 export const AuthBg = styled.div`
   @media (min-width: 350px) {
     background-image: url(${mobileBg});
-    background-position: 50% 600px;
+    background-position: 50% 330px;
   }
 
   @media (min-width: 768px) {
     background-image: url(${tabletBg});
-    background-position: 50% 500px;
+    background-position: 50% 250px;
   }
 
   @media (min-width: 1440px) {
     background-image: url(${FormAuthDes});
-    background-position: 50% 520px;
+    background-position: 50% 470px;
   }
-
   height: 100vh;
-  min-height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
 `;
