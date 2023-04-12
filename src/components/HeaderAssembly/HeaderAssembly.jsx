@@ -57,8 +57,6 @@ export const HeaderAssembly = () => {
   }, [pathname]);
 
   const user = useSelector(authSelectors.getUserData);
-  // const userName = useSelector(getName);
-  // const userAvatar = useSelector(getAvatar);
 
   const toggleMobileMenu = e => {
     setShowMenu(!showMenu);
