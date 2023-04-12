@@ -66,7 +66,7 @@ export const HeaderUserLogo = ({ avatarUrl = userAvatar, color = 'light' }) => {
       {showModal && (
         <HeaderUserModal
           name={user.name}
-          avatarUrl={user.avatarUrl}
+          avatarUrl={avatarUrl}
           closeModal={toggleUserModal}
           status={statusModal}
         />

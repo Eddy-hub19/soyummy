@@ -72,7 +72,7 @@ export const HeaderAssembly = () => {
                   <img src={logo} alt="logo" />
                 </NavigationLinkStyled>
               </LogoWrapper>
-              <HeaderNavigation navColor={navColor} />
+              <HeaderNavigation navColor={navColor} setShowMenu={setShowMenu} />
               <HeaderUserLogo
                 color={color}
                 name={user.name}
