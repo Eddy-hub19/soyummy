@@ -45,7 +45,7 @@ export const RecipesItem = ({ ViewMode, id, text, title, img, time }) => {
           <Time>{time}</Time>
           {!RowDirrection && ViewMode === 'recipes' && (
             <NavigateBtn
-              navigate={`/recipe/${id}`}
+              navigate={`/recipes/${id}`}
               ViewMode={ViewMode}
               text="See recipe"
               styled="olive"
@@ -56,7 +56,7 @@ export const RecipesItem = ({ ViewMode, id, text, title, img, time }) => {
           )}
           {RowDirrection && (
             <NavigateBtn
-              navigate={`/recipe/${id}`}
+              navigate={`/recipes/${id}`}
               ViewMode={ViewMode}
               text="See recipe"
               styled={ViewMode === 'favorite' ? 'black' : 'olive'}
