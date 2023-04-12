@@ -1,6 +1,8 @@
 //====================================================//
 import * as React from 'react';
-import { StyledLinkBtn, Input, Form } from './MainPageSearchForm.styled';
+import { Link } from "react-router-dom";
+import { Wrapper, SearchBtn,  SearchInput, Form } from './MainPageSearchForm.styled';
+// import { ButtonSkew } from '../../components/ButtonSkew/ButtonSkew';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -30,9 +32,9 @@ export const MainPageSearchForm = ({ keyword }) => {
   };
 
   return (
-    <div>
+    <Wrapper>
       <Form onSubmit={onSubmit}>
-        <Input
+        <SearchInput
           onChange={handleInputChange}
           type="text"
           name="name"
@@ -40,13 +42,13 @@ export const MainPageSearchForm = ({ keyword }) => {
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For
          example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-        ></Input>
-        <StyledLinkBtn to={`/search?query=${rKeyword}`} onClick={onSubmit}>
-          Search
-        </StyledLinkBtn>
+        />
+        <SearchBtn type="submit" styled="black">
+        <Link to={`/search?query=${rKeyword}`} onClick={onSubmit} />
+        Search</SearchBtn>
         <ToastContainer />
       </Form>
-    </div>
+    </Wrapper>
   );
 };
 //--------------------------------------------
