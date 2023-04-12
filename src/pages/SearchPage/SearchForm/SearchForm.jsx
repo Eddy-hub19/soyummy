@@ -2,7 +2,6 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import MenuList from '@mui/material/MenuList';
 import { Title } from 'components/Title/Title';
 import store from 'store';
 import {
