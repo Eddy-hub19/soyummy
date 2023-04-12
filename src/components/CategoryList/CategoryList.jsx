@@ -7,12 +7,14 @@ import { useParams } from 'react-router-dom';
 import { getCategoryListAPI } from 'service/API/CategoriesAPI';
 import { theme } from '../../theme/theme';
 
+
 export const CategoryList = () => {
   const { categoryName } = useParams();
   const [value, setValue] = useState(0);
   const [mapArray, setMapArray] = useState([]);
   const navigate = useNavigate();
   const [flag, setFlag] = useState(false);
+
 
   useEffect(() => {
     try {
@@ -22,7 +24,7 @@ export const CategoryList = () => {
         return setMapArray(data);
       });
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   }, []);
 
@@ -86,6 +88,7 @@ export const CategoryList = () => {
               display: 'none',
             },
           },
+          
           '& .MuiTabs-flexContainer': {
             gap: '55px',
             '& :hover': {
@@ -109,10 +112,10 @@ export const CategoryList = () => {
             strokeWidth: '3px',
             transition: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1)',
           },
+
         }}
       >
         {items}
       </Tabs>
-    </Box>
-  );
+    </Box>)
 };
