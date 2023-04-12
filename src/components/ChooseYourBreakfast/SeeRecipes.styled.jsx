@@ -5,13 +5,12 @@ import { NavLink } from 'react-router-dom';
 export const ChooseBlock = styled.div`
   width: 225px;
   height: 92px;
-  background-color: ${p => p.theme.colors.recipeBlockBg};
+  background-color: ${p => p.theme.colors.seeRecipeBlock};
   border-radius: 8px;
   padding: 8px;
   margin-left: 88px;
   margin-bottom: 115px;
   position: absolute;
-  // left: 70px;
   right: 43px;
   top: 435px;
 
@@ -23,7 +22,6 @@ export const ChooseBlock = styled.div`
     width: 261px;
     height: 100px;
     position: absolute;
-    // right: 43px;
     top: 372px;
   }
 
@@ -33,7 +31,6 @@ export const ChooseBlock = styled.div`
     width: 298px;
     height: 114px;
     position: absolute;
-    // left: 1200px;
     right: 122px;
     top: 462px;
   }
@@ -96,7 +93,6 @@ export const ChooseLink = styled(NavLink)`
     }
   }
 
-  
   @media (min-width: 768px) {
     font-size: 14px;
   }
@@ -114,5 +110,4 @@ export const RightArrow = styled.svg`
   stroke: ${p => p.theme.colors.secondaryDark};
   transition: ${p => p.theme.transitions.main};
   transform: ${theme.transitions.main};
-  
 `;

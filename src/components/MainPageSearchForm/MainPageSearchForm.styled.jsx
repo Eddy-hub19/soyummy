@@ -172,9 +172,8 @@ export const SearchBtn = styled.button`
 
 export const SearchInput = styled.input`
   box-sizing: border-box;
-  border: ${p => p.theme.borders.searchInput};
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
-  background-color:#fff!important;
+  border: ${p => p.theme.borders.mainSearchInput};
+  background-color:# ${p => p.theme.colors.mainSearchInput};
   width:295px;
   height:52px;
   padding-left: 30px;
@@ -183,7 +182,6 @@ export const SearchInput = styled.input`
   font-size:16px;
   line-height: ${p => p.theme.lineHeights.subheader};
   border-radius: 18px 44px;
-  border: none;
   background-color: transparent;
 
   color: ${p => p.theme.colors.disabledGrey};
