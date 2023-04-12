@@ -39,7 +39,7 @@ export const theme = createTheme({
     searchDropDownBg: '#FFFFFF',
     tooltipbg: '#EBF3D4',
     ingredientsBgrCol: '#EBF3D4',
-
+    seeRecipeBlock: '#FFFFFF',
     mainSerchHoverText: '#ffffff',
     searchFormHoverBtn: '#23262A',
     mainGreyBg: '#D9D9D9',
@@ -129,7 +129,7 @@ export const darkTheme = {
     searchDropDownBg: '#8BAA36',
     tooltipbg: '#8BAA36',
     ingredientsBgrCol: '#2A2C36',
-
+    seeRecipeBlock: '#2A2C36',
     mainSerchHoverText: '#8BAA36',
     searchFormHoverBtn: '#FFFFFF',
     mainBg: '#ECECEC',

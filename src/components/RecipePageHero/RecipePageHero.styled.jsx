@@ -112,6 +112,8 @@ export const HeroTitle = styled.title`
 
 export const HeroText = styled.p`
   font-weight: ${p => p.theme.fontWeights[0]};
+  color: ${p => p.theme.colors.secondaryDark};
+  
   text-align: center;
   font-size: 12px;
   line-height: ${p => p.theme.lineHeights.description};
