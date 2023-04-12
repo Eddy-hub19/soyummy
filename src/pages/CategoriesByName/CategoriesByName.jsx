@@ -20,7 +20,6 @@ const CategoriesByName = () => {
 
   useEffect(() => {
     try {
-      // setIsLoading(true)
       const categorys = getAllRecipesByCategoryAPI(category);
 
       categorys.then(data => {
@@ -29,7 +28,6 @@ const CategoriesByName = () => {
     } catch (error) {
       console.log(error);
     }
-    // finally { setIsLoading(false) }
   }, [categoryName, category]);
 
   return (

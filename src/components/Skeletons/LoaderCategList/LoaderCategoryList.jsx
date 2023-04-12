@@ -23,6 +23,10 @@ export const LoaderCategoryList = () => {
           <MyLoader />
           <MyLoader />
           <MyLoader />
+          <MyLoader />
+          <MyLoader />
+          <MyLoader />
+          <MyLoader />
     </div>
   );
 };
