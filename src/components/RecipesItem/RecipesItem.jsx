@@ -45,7 +45,7 @@ export const RecipesItem = ({ ViewMode, id, text, title, img, time }) => {
           <Time>{time}</Time>
           {!RowDirrection && ViewMode === 'recipes' && (
             <NavigateBtn
-              navigate={`/recipes/${id}`}
+              navigate={`/recipe/${id}`}
               ViewMode={ViewMode}
               text="See recipe"
               styled="olive"
