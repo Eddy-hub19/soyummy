@@ -31,8 +31,9 @@ export const StyledLinkBtn = styled(NavLink)`
   }
 
   @media screen and (min-width: 768px) {
-    top: -52%;
-    left: 59%;
+    top: 0;
+    left: 0;
+    transform: translate(-60%, 65%);
     padding: 57px 16px;
     min-width: 130px;
   }
@@ -41,8 +42,8 @@ export const StyledLinkBtn = styled(NavLink)`
     line-height: ${p => p.theme.lineHeights.btnText};
     padding: 67px 23px;
     min-width: 160px;
-    top: -49%;
-    left: 60%;
+    top: 15%;
+    left: 0;
   }
 `;
 
@@ -60,6 +61,8 @@ export const Input = styled.input`
   border: none;
   background-color: transparent;
   padding-left: 32px;
+position: absolute;
+
   color: ${p => p.theme.colors.disabledGrey};
   &:hover {
     border: none;
@@ -77,10 +80,18 @@ export const Input = styled.input`
   @media screen and (min-width: 768px) {
     width:362px;
     height:57px
+    margin-top: 32px;  
+    top: 50%;
+    left: 0;
+    transform: translate(-88%, -50%);
   }
   @media screen and (min-width: 1440px) {
- width:510px;
+ width:500px;
  height:71px
+ top: 0;
+ left: 0;
+ 
+ 
 `;
 
 export const Form = styled.form`
@@ -93,4 +104,3 @@ export const Form = styled.form`
   position: relative;
   margin-bottom: 15px;
 `;
-
