@@ -5,10 +5,13 @@ export const getColor = (
 ) => {
   if (
     errors === 'Your password is little secure. Add a number!' ||
-    errors === 'Your password is little secure. Add a letter!' ||
-    errors === 'incorrect Email'
+    errors === 'Your password is little secure. Add a letter!'
   ) {
     return '#F6C23E';
+  }
+
+  if (values === 'incorrect Email') {
+    return '#E74A3B';
   }
   return values ? (errors && '#E74A3B') || '#3CBC81' : defaultColor;
 };
