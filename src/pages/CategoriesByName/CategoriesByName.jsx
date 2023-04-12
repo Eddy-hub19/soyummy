@@ -3,13 +3,13 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { RowTable } from './CategoriesByName.styled';
 import { getAllRecipesByCategoryAPI } from 'service/API/CategoriesAPI';
-import { LoaderAbsolute } from 'components/LoaderAbsolute/LoaderAbsolute';
+// import { LoaderAbsolute } from 'components/LoaderAbsolute/LoaderAbsolute';
 import {Desktop} from '../../components/Skeletons/LoaderCategList/LoaderCategoryList'
 
 const CategoriesByName = () => {
   const { categoryName } = useParams();
   const [recipes, setRecipes] = useState([]);
-  const [isLoading, setIsLoading] = useState(false)
+  // const [isLoading, setIsLoading] = useState(false)
 
   function capitalizeWord(word) {
     return word.charAt(0).toUpperCase() + word.slice(1);
@@ -20,7 +20,7 @@ const CategoriesByName = () => {
 
   useEffect(() => {
     try {
-      setIsLoading(true)
+      // setIsLoading(true)
       const categorys = getAllRecipesByCategoryAPI(category);
 
       categorys.then(data => {
@@ -28,7 +28,8 @@ const CategoriesByName = () => {
       });
     } catch (error) {
       console.log(error);
-    } finally { setIsLoading(false) }
+    }
+    // finally { setIsLoading(false) }
   }, [categoryName, category]);
 
   return (
