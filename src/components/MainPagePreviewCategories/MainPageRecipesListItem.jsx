@@ -12,7 +12,7 @@ export const MainPageRecipesListItem = ({ recipe }) => {
       }}
       key={recipe._id}
     >
-      <NavLink to="">
+      <NavLink to={`recipes/` + recipe._id}>
         <CardImg
           style={{
             transition: 'all 1030ms ease-out 0s',

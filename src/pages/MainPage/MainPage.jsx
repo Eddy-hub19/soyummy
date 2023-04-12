@@ -1,14 +1,13 @@
-import { Container } from 'components/Container/Container';
-import { ChooseYourBreakfast } from 'components/ChooseYourBreakfast/ChooseYourBreakfast';
 import { PreviewCategories } from 'components/MainPagePreviewCategories/PreviewCategories';
 import {
   MainPageHero,
   Title,
   Span,
   Text,
-  MainPageContainer
+  MainPageContainer,
 } from './MainPage.styled';
 import { MainPageSearchForm } from '../../components/MainPageSearchForm/MainPageSearchForm';
+import { SeeRecipes } from 'components/ChooseYourBreakfast/SeeRecipes';
 
 // =================================================================================================//
 export const MainPage = () => {
@@ -25,12 +24,12 @@ export const MainPage = () => {
             the future.
           </Text>
           <MainPageSearchForm styled={'black'}></MainPageSearchForm>
+          <SeeRecipes />
         </MainPageContainer>
       </MainPageHero>
-      <Container>
-        <ChooseYourBreakfast />
+      <MainPageContainer>
         <PreviewCategories />
-      </Container>
+      </MainPageContainer>
     </>
   );
 };

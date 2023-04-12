@@ -208,7 +208,7 @@ export const MainPageContainer = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    // padding: 0 100px;
+    padding: 0 100px;
     margin: 0 auto;
   }
 `;

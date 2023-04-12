@@ -7,7 +7,7 @@ export const List = styled.ul`
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 20px;
-  gap: 20px;
+  gap: 14px;
 `;
 
 export const Item = styled.li`
@@ -18,7 +18,6 @@ export const Item = styled.li`
   position: relative;
   overflow: hidden;
   transition: box-shadow 500ms cubic-bezier(0.4, 0, 0.2, 1);
-  background: red;
 
   :hover {
     box-shadow: 0 0 7px 5px ${p => p.theme.colors.mainGrey};
@@ -26,7 +25,6 @@ export const Item = styled.li`
 
   :hover img {
     transform: scale(1.25);
-    /* filter: contrast(130%); */
   }
 
   @media (max-width: 375px) {
@@ -58,7 +56,7 @@ export const TitlePageCategory = styled.h4`
   font-style: normal;
   font-weight: 600;
   font-size: 44px;
-  line-height: 44px;
+  line-height: 1;
   letter-spacing: -0.02em;
   font-feature-settings: 'liga' off;
   color: ${p => p.theme.colors.sectionHeader};
