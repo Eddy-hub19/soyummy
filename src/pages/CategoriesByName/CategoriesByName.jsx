@@ -3,16 +3,19 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { RowTable } from './CategoriesByName.styled';
 import { getAllRecipesByCategoryAPI } from 'service/API/CategoriesAPI';
-import { LoaderAbsolute } from 'components/LoaderAbsolute/LoaderAbsolute';
+// import { LoaderAbsolute } from 'components/LoaderAbsolute/LoaderAbsolute';
+import { LoaderCategoryList} from '../../components/Skeletons/LoaderCategList/LoaderCategoryList'
 
 const CategoriesByName = () => {
   const { categoryName } = useParams();
+  const [recipes, setRecipes] = useState([]);
+  // const [isLoading, setIsLoading] = useState(false)
 
   function capitalizeWord(word) {
     return word.charAt(0).toUpperCase() + word.slice(1);
   }
 
-  const [recipes, setRecipes] = useState([]);
+  
   const category = capitalizeWord(categoryName);
 
   useEffect(() => {
@@ -25,15 +28,15 @@ const CategoriesByName = () => {
     } catch (error) {
       console.log(error);
     }
-    }, [categoryName, category]);
+  }, [categoryName, category]);
 
-    return (
-      <RowTable>
-        {recipes.length === 0 && <LoaderAbsolute/>}
+  return (
+    <RowTable>
+        {recipes.length === 0 && < LoaderCategoryList />}
             {recipes.map(meal => (
                 <CardMeal meal={meal} key={meal._id} />
             ))}
-        </RowTable>
+      </RowTable>
     );
 
 };
