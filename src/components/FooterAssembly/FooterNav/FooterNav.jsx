@@ -4,7 +4,7 @@ import { Link, FooterNavContent } from './FooterNav.styled';
 export const FooterNav = () => {
   return (
     <FooterNavContent>
-      <Link to="/search?query=&type=ingredients" onClick={scrollToTop}>
+      <Link to="/search?query=&type=ingredient" onClick={scrollToTop}>
         Ingredients
       </Link>
       <Link to="/add" onClick={scrollToTop}>

@@ -185,6 +185,7 @@ export const SearchInput = styled.input`
   border-radius: 18px 44px;
   border: none;
   background-color: transparent;
+
   color: ${p => p.theme.colors.disabledGrey};
   &:hover {
     border: none;

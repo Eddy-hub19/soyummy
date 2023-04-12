@@ -1,38 +1,74 @@
-import * as Yup from 'yup';
-import { useMediaRules } from 'hooks/MediaRules';
-import { Formik, ErrorMessage } from 'formik';
-import { getColor } from 'utils/formikColors';
-import sprite from '../../../images/sprite.svg';
-import { HiOutlineMail } from 'react-icons/hi';
+import * as React from 'react';
+// import { useMediaRules } from 'hooks/MediaRules';
+// import { Formik, Form, Field, ErrorMessage } from 'formik';
+// import styled from 'styled-components';
+// import { getColor } from 'utils/formikColors';
+// import sprite from '../../../images/sprite.svg';
+// import { HiOutlineMail } from 'react-icons/hi';
+import { useFormik } from 'formik';
 
 import {
   FooterWrap,
-  FooterWrapText,
-  FooterWrapInput,
-  InputFlag,
-  FooterWrapBtn,
+  // FooterWrapText,
+  // FooterWrapInput,
+  // InputFlag,
+  // FooterWrapBtn,
 } from './FooterForm.styled';
-
-const LoginSchema = Yup.object().shape({
-  email: Yup.mixed().test({
-    name: 'email',
-    params: { a: 'test', b: 'qwe' },
-    test: value => {
-      return /\w+@\w+\.\w{1,5}/.test(value);
-    },
-  }),
-});
+import { axiosInstance } from 'service/API/axios';
 
 export const FooterForm = () => {
-  const { isDesktop } = useMediaRules();
+  // const { isDesktop } = useMediaRules();
 
-  const getDisabledBtn = (errors, value) => {
-    return !value || errors ? true : false;
+  const validate = values => {
+    const errors = {};
+    if (!values.email) {
+      errors.email = 'Required';
+    } else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+    ) {
+      errors.email = 'Invalid email address';
+    }
+
+    return errors;
   };
 
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+    },
+    validate,
+    onSubmit: value => {
+      console.log('onSubmit', value);
+      axiosInstance.post('/auth/subscribe', value);
+    },
+  });
+
   return (
-    <>
-      <Formik
+    <div>
+      <h1>Subscribe</h1>
+      <FooterWrap onSubmit={formik.handleSubmit}>
+        <label htmlFor="email">Email Address</label>
+        <input
+          onChange={formik.handleChange}
+          id="email"
+          name="email"
+          type="email"
+          value={formik.values.email}
+          onBlur={formik.onBlur}
+        />
+        <div>
+          {formik.errors.email && formik.touched.email && formik.errors.email}
+        </div>
+
+        <button type="submit" onClick={formik.handleReset}>
+          Submit
+        </button>
+      </FooterWrap>
+    </div>
+  );
+};
+
+/* <Formik
         initialValues={{ email: `` }}
         validationSchema={LoginSchema}
         onSubmit={(values, actions) => {}}
@@ -105,7 +141,4 @@ export const FooterForm = () => {
             </FooterWrapBtn>
           </FooterWrap>
         )}
-      </Formik>
-    </>
-  );
-};
+      </Formik> */
