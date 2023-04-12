@@ -1,14 +1,11 @@
 import { useState, useEffect } from 'react';
 import { MainPageRecipesList } from './MainPageRecipesList';
-import axios from 'axios';
+import { axiosInstance } from 'service/API/axios';
 //============================================================//
 
 const fetchRecipes = async () => {
   try {
-    const { data: recipes } = await axios.get(
-      'https://determined-ruby-nematode.cyclic.app/recipes/main-page'
-    );
-
+    const { data: recipes } = await axiosInstance.get('/recipes/main-page');
     return recipes;
   } catch (error) {
     return error.message;

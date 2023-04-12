@@ -60,6 +60,7 @@ export const Title = styled.h1`
   font-size: 60px;
   line-height: 60px;
   display: flex;
+  justify-content: center;
   text-align: center;
   letter-spacing: -0.005em;
 
@@ -77,9 +78,9 @@ export const Title = styled.h1`
   }
 `;
 
-export const ColorWrap = styled.div`
-  background-color: ${theme.colors.btnTextLight};
-`;
+// export const ColorWrap = styled.div`
+//   background-color: ${theme.colors.btnTextLight};
+// `;
 
 export const Span = styled.span`
   color: ${p => p.theme.colors.mainAccent};
@@ -102,6 +103,7 @@ export const Span = styled.span`
 `;
 
 export const Text = styled.p`
+  width: 248px;
   margin: 14px 40px 157px 40px;
   color: ${p => p.theme.colors.secondaryDark};
   font-family: ${theme.fonts.main};
@@ -114,8 +116,10 @@ export const Text = styled.p`
   & br {
     display: none;
   }
+  
 
   @media (min-width: 768px) {
+    width: 362px;
     margin: 24px 0 32px;
     font-size: 14px;
     line-height: 18px;
@@ -126,6 +130,7 @@ export const Text = styled.p`
   }
 
   @media (min-width: 1440px) {
+    width: 465px;
     margin: 14px 0 50px;
     font-size: 18px;
     line-height: 24px;
@@ -135,13 +140,13 @@ export const Text = styled.p`
 export const HeroTextWrapper = styled.div`
   @media (min-width: 768px) {
     display: flex;
-    margin-right: 368px;
+    // margin-right: 368px;
     flex-wrap: wrap;
     justify-content: flex-start;
   }
 
   @media (min-width: 1440px) {
-    margin-right: 835px;
+    // margin-right: 835px;
   }
 `;
 
@@ -189,3 +194,21 @@ export const MainPageBg = styled.div`
   }
 `;
 
+export const MainPageContainer = styled.div`
+  
+  // padding-bottom: 149px;
+  max-width: 767px;
+  // margin-left: auto;
+  // margin-right: auto;
+
+  @media screen and (min-width: 768px) {
+    // padding: 0 32px;
+    // padding-bottom: 200px;
+    max-width: 1439px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding: 0 100px;
+    margin: 0 auto;
+  }
+`;

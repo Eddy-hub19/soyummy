@@ -5,8 +5,8 @@ import store from 'store';
 
 import { axiosInstance } from 'service/API/axios';
 import { scrollToTop } from 'utils/scrollUp';
-import { toast } from 'react-toastify';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Title } from 'components/Title/Title';
 import { Loader } from 'components/Loader/Loader';
 import { Container } from 'components/Container/Container';
@@ -124,11 +124,11 @@ const AddRecipe = () => {
     e.preventDefault();
     const formData = new FormData();
 
-    console.log(inputs);
+    // console.log(inputs);
     const { instructions, time, category, description, title } = inputs;
     // ПРОВЕРКА НА ЗАПОЛНЕНОСТЬ ПОЛЕЙ
     if (!instructions || !time || !category || !description || !title) {
-      console.log('НЕ ВСЕ ПОЛЯ ЗАПОЛНЕНЫ');
+      toast.error('Please fill out all fields');
       return;
     }
     setisLoading(true);
@@ -165,16 +165,17 @@ const AddRecipe = () => {
         area: 'Kyiv',
       };
 
-      console.log('Form data:', data);
+      // console.log('Form data:', data);
       const addRecipe = await axiosInstance.post('/own-recipes/add', data);
       if (addRecipe) {
-        console.log('Recipe add succes');
+        // console.log('Recipe add succes');
         setInputs(init);
+        toast.success('Recipe added successfully');
       }
       setisLoading(false);
     } catch (error) {
-      console.error('Error:', error.message);
-      console.log('Error Response:', error.response);
+      // console.error('Error:', error.message);
+      // console.log('Error Response:', error.response);
       toast.error(<AddRecipeToastifyError />);
       setisLoading(false);
     }
@@ -260,6 +261,7 @@ const AddRecipe = () => {
                 handleChange={handleChange}
                 localTheme={theme}
               />
+              <ToastContainer />
             </RecipeForm>
             <div>
               <StyledSocialWrepper>

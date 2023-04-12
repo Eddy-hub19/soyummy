@@ -3,6 +3,7 @@ import * as authOperation from '../../redux/auth/authOperation';
 import { CgLock } from 'react-icons/cg';
 import { HiOutlineMail } from 'react-icons/hi';
 import { FiUser } from 'react-icons/fi';
+import styled from 'styled-components';
 
 import { NavLink } from 'react-router-dom';
 import {
@@ -20,6 +21,14 @@ import * as Yup from 'yup';
 import { Formik, Form, ErrorMessage } from 'formik';
 import sprite from '../../images/sprite.svg';
 // import { InputFlag } from 'components/FooterAssembly/FooterForm/FooterForm.styled';
+
+const StyledLink = styled(NavLink)`
+  color: black;
+
+  &.active {
+    color: orange;
+  }
+`;
 
 const emailRegexp =
   /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
@@ -80,7 +89,7 @@ const Register = () => {
                 password: '',
               }}
               isSubmitting={true}
-              isInitialValid={true}
+              validateOnMount={true}
               validationSchema={schema}
               onSubmit={async (values, actions) => {
                 const { name, email, password } = values;
@@ -247,9 +256,9 @@ const Register = () => {
               )}
             </Formik>
           </Box>
-          <NavLink className={'nav_Link'} to={'/signin'}>
+          <StyledLink className={'nav_Link'} to={'/signin'}>
             Sign in
-          </NavLink>
+          </StyledLink>
         </BoxWraper>
       </Container>
     </AuthBg>

@@ -57,6 +57,8 @@ export const HeaderAssembly = () => {
   }, [pathname]);
 
   const user = useSelector(authSelectors.getUserData);
+  // const userName = useSelector(getName);
+  // const userAvatar = useSelector(getAvatar);
 
   const toggleMobileMenu = e => {
     setShowMenu(!showMenu);
@@ -72,7 +74,7 @@ export const HeaderAssembly = () => {
                   <img src={logo} alt="logo" />
                 </NavigationLinkStyled>
               </LogoWrapper>
-              <HeaderNavigation navColor={navColor} />
+              <HeaderNavigation navColor={navColor} setShowMenu={setShowMenu} />
               <HeaderUserLogo
                 color={color}
                 name={user.name}
