@@ -16,7 +16,7 @@ const MyLoader = (props) => (
   </ContentLoader>
 )
 
-export const Desktop = () => {
+export const LoaderCategoryList = () => {
   return (
     <div>
           <MyLoader />

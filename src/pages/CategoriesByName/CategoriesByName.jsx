@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { RowTable } from './CategoriesByName.styled';
 import { getAllRecipesByCategoryAPI } from 'service/API/CategoriesAPI';
 // import { LoaderAbsolute } from 'components/LoaderAbsolute/LoaderAbsolute';
-import {Desktop} from '../../components/Skeletons/LoaderCategList/LoaderCategoryList'
+import { LoaderCategoryList} from '../../components/Skeletons/LoaderCategList/LoaderCategoryList'
 
 const CategoriesByName = () => {
   const { categoryName } = useParams();
@@ -34,7 +34,7 @@ const CategoriesByName = () => {
 
   return (
     <RowTable>
-        {recipes.length === 0 && < Desktop />}
+        {recipes.length === 0 && < LoaderCategoryList />}
             {recipes.map(meal => (
                 <CardMeal meal={meal} key={meal._id} />
             ))}

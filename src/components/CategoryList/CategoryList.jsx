@@ -6,25 +6,34 @@ import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { getCategoryListAPI } from 'service/API/CategoriesAPI';
 import { theme } from '../../theme/theme';
+import { LoaderCategory } from 'components/Skeletons/LoaderCategory/LoaderCategory';
 
 export const CategoryList = () => {
   const { categoryName } = useParams();
   const [value, setValue] = useState(0);
   const [mapArray, setMapArray] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const [flag, setFlag] = useState(false);
 
+  console.log('1', isLoading);
+
   useEffect(() => {
     try {
+      setIsLoading(true);
+      console.log('1', isLoading);
       const categorys = getCategoryListAPI();
 
       categorys.then(data => {
         return setMapArray(data);
       });
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
-  }, []);
+    finally {
+      setIsLoading(false);
+    console.log('2', isLoading);}
+  }, [isLoading]);
 
   useEffect(() => {
     if (mapArray.length === 0) return;
@@ -63,9 +72,11 @@ export const CategoryList = () => {
   const onMouseLeave = () => {
     setFlag(false);
   };
+  console.log(isLoading);
 
   return (
-    <Box
+     isLoading ? (<LoaderCategory />) :
+   ( <Box
       sx={{ maxWidth: '100%', bgcolor: 'transparent', borderBottom: theme.borders.mainSearchInput }}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
@@ -113,6 +124,6 @@ export const CategoryList = () => {
       >
         {items}
       </Tabs>
-    </Box>
+    </Box>)
   );
 };
