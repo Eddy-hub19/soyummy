@@ -51,7 +51,6 @@ export const UserFormAssembly = ({ name, avatarUrl, closeModal }) => {
   // const userAvatar = useSelector(getAvatar);
   const user = useSelector(authSelectors.getUserData);
   const [path, setPath] = useState(user.avatarUrl);
-  const [data, setData] = useState(null);
 
   const handleSubmit = async values => {
     const formData = new FormData();
