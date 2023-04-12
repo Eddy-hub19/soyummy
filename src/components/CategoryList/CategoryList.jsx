@@ -75,8 +75,7 @@ export const CategoryList = () => {
   console.log(isLoading);
 
   return (
-     isLoading ? (<LoaderCategory />) :
-   ( <Box
+    <Box
       sx={{ maxWidth: '100%', bgcolor: 'transparent', borderBottom: theme.borders.mainSearchInput }}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
@@ -125,5 +124,4 @@ export const CategoryList = () => {
         {items}
       </Tabs>
     </Box>)
-  );
 };
