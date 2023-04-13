@@ -2,7 +2,7 @@ import RecipePageHero from 'components/RecipePageHero/RecipePageHero';
 import RecipeIngredientsList from 'components/RecipeIngredientsList/RecipeIngredientsList';
 import RecipePreparation from 'components/RecipePreparation/RecipePreparation';
 import { getRecipeById } from '../../service/API/RecipeAPI';
-import React, { useRef } from 'react';
+import React from 'react';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { TableHeader, Container } from './RecipePage.styled';
@@ -27,7 +27,6 @@ const RecipePage = () => {
     setIsLoading(false);
   }, [recipeId]);
 
-
   return (
     <>
       {isLoading ? (
@@ -43,9 +42,10 @@ const RecipePage = () => {
                   Number <span>Add to list</span>
                 </p>
               </TableHeader>
-                <RecipeIngredientsList
-                  recipeId={recipeId}
-                  ingredients={recipe.ingredients} />
+              <RecipeIngredientsList
+                recipeId={recipeId}
+                ingredients={recipe.ingredients}
+              />
               <RecipePreparation
                 instructions={recipe.instructions}
                 image={recipe.thumb}
