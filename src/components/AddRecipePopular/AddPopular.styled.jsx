@@ -78,6 +78,10 @@ export const ImgWrapper = styled.div`
   height: 85px;
   border-radius: 8px;
   overflow: hidden;
+
+  img {
+    max-width: 100%;
+  }
   @media screen and (min-width: 1440px) {
     width: 97px;
   }

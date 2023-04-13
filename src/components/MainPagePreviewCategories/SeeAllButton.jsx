@@ -5,7 +5,7 @@ export const SeeAllButton = ({ adress }) => {
     //"See all" button wrapper
     <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
       {/* "See all" button*/}
-      <NavLinkBtnSeeAll to={adress}>See all</NavLinkBtnSeeAll>
+      <NavLinkBtnSeeAll className={"btnSeeAll"} to={adress}>See all</NavLinkBtnSeeAll>
     </div>
   );
 };

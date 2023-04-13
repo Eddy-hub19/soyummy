@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,7 +22,7 @@ const Favorites = () => {
   const dispatch = useDispatch();
   const storageFavorite = useSelector(getFavorites);
   const isRefreshing = useSelector(getFavoritesRefreshStatus);
-  const isFirstRender = useRef(true);
+  // const isFirstRender = useRef(true);
 
   const [recipes, setRecipes] = useState([]);
   const [isLoading, setisLoading] = useState(true);
@@ -36,10 +36,6 @@ const Favorites = () => {
   const perPage = 4;
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
     dispatch(fetchFavorites());
     setRecipes(storageFavorite);
     // eslint-disable-next-line react-hooks/exhaustive-deps

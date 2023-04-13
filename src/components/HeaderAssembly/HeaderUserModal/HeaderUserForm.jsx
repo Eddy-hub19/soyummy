@@ -46,12 +46,13 @@ const EditNameSchema = Yup.object().shape({
     .required('Name is required'),
 });
 
-export const UserFormAssembly = ({ name, avatarUrl, closeModal }) => {
+export const UserFormAssembly = ({ avatarUrl, closeModal }) => {
   // const dispatch = useDispatch();
   // const userAvatar = useSelector(getAvatar);
   const user = useSelector(authSelectors.getUserData);
   const [path, setPath] = useState(user.avatarUrl);
-
+  const [name, setName] = useState('');
+  const [url, setUrl] = useState('');
   const handleSubmit = async values => {
     const formData = new FormData();
     formData.append('name', values.name.trim());
@@ -65,7 +66,14 @@ export const UserFormAssembly = ({ name, avatarUrl, closeModal }) => {
         },
       });
       const newData = response.data;
+
       console.log(newData);
+      const newAvatarUrl = newData.updatedAvatarUrl;
+      const newName = newData.name;
+      setName(newName);
+      setUrl(newAvatarUrl);
+      console.log(newAvatarUrl);
+      console.log(newName);
     } catch (error) {
       console.error('Error:', error.message);
       console.log('Error Response:', error.response);
@@ -77,7 +85,7 @@ export const UserFormAssembly = ({ name, avatarUrl, closeModal }) => {
   return (
     <Formik
       initialValues={{
-        picture: '',
+        picture: url,
         name: name,
       }}
       validationSchema={EditNameSchema}

@@ -18,7 +18,8 @@ export const ContainerForm = styled.div`
 export const OtherButton = styled.button`
   border-radius: 18px 44px;
   color: ${p => p.theme.colors.mainBtnText};
-  background-color: ${p => p.theme.colors.searchSelectBg};
+  /* background-color: ${p => p.theme.colors.searchSelectBg}; */
+  background-color: transparent;
   border: ${p => p.theme.borders.btnHover};
   cursor: pointer;
   font-family: ${p => p.theme.fonts.main};

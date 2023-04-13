@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState} from 'react';
 import { useMediaRules } from 'hooks/MediaRules';
 import { nanoid } from '@reduxjs/toolkit';
 import store from 'store';
@@ -42,7 +42,7 @@ const AddRecipe = () => {
   // const navigate = useNavigate();
 
   const { isDesktop, isMobile, isTablet } = useMediaRules();
-  const isFirstRender = useRef(true);
+  // const isFirstRender = useRef(true);
 
   const [inputs, setInputs] = useState(() => {
     const inputs = store.get('userInputs');
@@ -60,10 +60,7 @@ const AddRecipe = () => {
   const [isLoading, setisLoading] = useState(false);
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
+
     // убирает ошибку при первом рендере!!
     store.set('userInputs', inputs);
     store.set('userIngredients', userIngredients);
