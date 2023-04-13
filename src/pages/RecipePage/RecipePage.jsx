@@ -13,15 +13,15 @@ const RecipePage = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const { recipeId } = useParams();
-  const isFirstRender = useRef(true);
+  // const isFirstRender = useRef(true);
   // const location = useLocation();
   // const backLinkHref = location.state?.from ?? '/recipes';
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
+    // if (isFirstRender.current) {
+    //   isFirstRender.current = false;
+    //   return;
+    // }
     setIsLoading(true);
     getRecipeById(recipeId).then(setRecipe);
     setIsLoading(false);
