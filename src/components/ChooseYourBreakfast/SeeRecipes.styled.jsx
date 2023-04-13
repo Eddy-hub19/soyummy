@@ -34,6 +34,16 @@ export const ChooseBlock = styled.div`
     right: 122px;
     top: 462px;
   }
+
+    @media (min-width: 2560px) {
+    line-height: 20px;
+    padding: 16px;
+    width: 298px;
+    height: 114px;
+    position: absolute;
+    right: 610px;
+    top: 462px;
+  }
 `;
 
 export const ChooseText = styled.p`

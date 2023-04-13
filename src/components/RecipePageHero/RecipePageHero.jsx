@@ -13,6 +13,8 @@ import {
   HeroText,
   CookingTime,
 } from './RecipePageHero.styled';
+  import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 
 const RecipePageHero = ({ recipe }) => {
@@ -20,8 +22,6 @@ const RecipePageHero = ({ recipe }) => {
 
   const favorites = useSelector(getFavorites);
   const isFavorite = favorites.some(item => item._id === _id);
-    // const favorites = useSelector(state => state.auth.user.favorite);
-    // const isFavorite = favorites.some(item => item === recipe._id);
   
   const [isFav, setIsFav] = useState(isFavorite);
   const dispatch = useDispatch();
@@ -29,12 +29,14 @@ const RecipePageHero = ({ recipe }) => {
   function addToFavoriteRecipes() {
     dispatch(addFavorite(_id));
     setIsFav(true);
+    toast.success("Recipe added to favorite");
     return;
   };
 
     function removeFromFavoriteRecipes() {
       dispatch(deleteFavorite(_id));
       setIsFav(false);
+      toast.success("Recipe removed from favorite");
       return;
     }
   
@@ -64,7 +66,6 @@ const RecipePageHero = ({ recipe }) => {
             fn={removeFromFavoriteRecipes}
           />
         )}
-
         {time !== '' ? (
           <CookingTime>
             <svg>
@@ -75,6 +76,7 @@ const RecipePageHero = ({ recipe }) => {
         ) : (
           <CookingTime></CookingTime>
         )}
+        <ToastContainer />
       </RecipeHeroContainer>
     </>
   );
