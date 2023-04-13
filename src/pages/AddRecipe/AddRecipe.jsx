@@ -1,4 +1,4 @@
-import { useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import { useMediaRules } from 'hooks/MediaRules';
 import { nanoid } from '@reduxjs/toolkit';
 import store from 'store';
@@ -60,7 +60,6 @@ const AddRecipe = () => {
   const [isLoading, setisLoading] = useState(false);
 
   useEffect(() => {
-
     // убирает ошибку при первом рендере!!
     store.set('userInputs', inputs);
     store.set('userIngredients', userIngredients);
@@ -131,7 +130,7 @@ const AddRecipe = () => {
     setisLoading(true);
     scrollToTop();
     // собираем значения ингредиентов в отдельный массив
-    const ingredients = userIngredients.map(ingredient => {
+    const ingredient = userIngredients.map(ingredient => {
       return {
         id: ingredient.id,
         name: ingredient.ingredient,
@@ -154,7 +153,7 @@ const AddRecipe = () => {
         category,
         description,
         title,
-        ingredients,
+        ingredient,
         imageUrl,
         path: imageUrl,
         thumb: imageUrl,
@@ -162,7 +161,7 @@ const AddRecipe = () => {
         area: 'Kyiv',
       };
 
-      // console.log('Form data:', data);
+      console.log('Form data:', data);
       const addRecipe = await axiosInstance.post('/own-recipes/add', data);
       if (addRecipe) {
         // console.log('Recipe add succes');
