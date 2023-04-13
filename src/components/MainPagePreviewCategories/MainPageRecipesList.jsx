@@ -1,5 +1,9 @@
 import { OtherButton } from 'pages/SearchPage/SearchPage/SearchPage.styled';
-import { List, TitlePageCategory } from './MainPageRecipesList.styled';
+import {
+  ItemRecipe,
+  List,
+  TitlePageCategory,
+} from './MainPageRecipesList.styled';
 import { MainPageRecipesListItem } from './MainPageRecipesListItem';
 import { SeeAllButton } from './SeeAllButton';
 import { NavLink } from 'react-router-dom';
@@ -9,7 +13,7 @@ export const MainPageRecipesList = ({ recipes }) => {
   return (
     <div style={{ margin: '0 auto' }}>
       <ul style={{ listStyle: 'none' }}>
-        <li key={Object.keys(recipes)[0]} style={{ marginBottom: 100 }}>
+        <ItemRecipe key={Object.keys(recipes)[0]}>
           <TitlePageCategory>Breakfast</TitlePageCategory>
 
           <List>
@@ -22,9 +26,9 @@ export const MainPageRecipesList = ({ recipes }) => {
           </List>
 
           <SeeAllButton adress={`/categories/${Object.keys(recipes)[0]}`} />
-        </li>
+        </ItemRecipe>
 
-        <li key={Object.keys(recipes)[1]} style={{ marginBottom: 100 }}>
+        <ItemRecipe key={Object.keys(recipes)[1]}>
           <TitlePageCategory>Miscellaneous</TitlePageCategory>
           <List>
             {recipes.miscellaneous.map(recipe => {
@@ -35,9 +39,9 @@ export const MainPageRecipesList = ({ recipes }) => {
           </List>
 
           <SeeAllButton adress={`/categories/${Object.keys(recipes)[1]}`} />
-        </li>
+        </ItemRecipe>
 
-        <li key={Object.keys(recipes)[2]} style={{ marginBottom: 100 }}>
+        <ItemRecipe key={Object.keys(recipes)[2]}>
           <TitlePageCategory>Chicken</TitlePageCategory>
           <List>
             {recipes.chicken.map(recipe => {
@@ -48,9 +52,9 @@ export const MainPageRecipesList = ({ recipes }) => {
           </List>
 
           <SeeAllButton adress={`/categories/${Object.keys(recipes)[2]}`} />
-        </li>
+        </ItemRecipe>
 
-        <li key={Object.keys(recipes)[3]} style={{ marginBottom: 100 }}>
+        <ItemRecipe key={Object.keys(recipes)[3]}>
           <TitlePageCategory>Desserts</TitlePageCategory>
           <List>
             {recipes.desserts.map(recipe => {
@@ -61,14 +65,17 @@ export const MainPageRecipesList = ({ recipes }) => {
           </List>
 
           <SeeAllButton adress={`/categories/${Object.keys(recipes)[3]}`} />
-        </li>
+        </ItemRecipe>
 
-        <OtherButton
-          type="button"
-          style={{ margin: '30px auto', display: 'block' }}
-        >
-          <NavLink style={{color: 'black'}} to={`/categories/pork`}>Other categories</NavLink>
-        </OtherButton>
+        <NavLink to={`/categories/pork`}>
+          <OtherButton
+            to={`/categories/pork`}
+            type="button"
+            style={{ margin: '0 auto 118px', display: 'block' }}
+          >
+            Other categories
+          </OtherButton>
+        </NavLink>
       </ul>
     </div>
   );

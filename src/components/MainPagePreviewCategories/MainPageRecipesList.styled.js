@@ -5,15 +5,27 @@ export const List = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   margin-bottom: 20px;
   gap: 14px;
+
+  @media (min-width: 375px) {
+    justify-content: center;
+    padding: 0 16px;
+  }
+
+  @media (min-width: 660px) and (max-width: 970px) {
+    justify-content: space-evenly;
+  }
+`;
+
+export const ItemRecipe = styled.li`
+  margin-bottom: 32px;
+  padding: 0 16px;
 `;
 
 export const Item = styled.li`
   width: 300px;
   height: 323px;
-  /* min-width: 100%; */
   border-radius: 8px;
   position: relative;
   overflow: hidden;
@@ -27,27 +39,32 @@ export const Item = styled.li`
     transform: scale(1.25);
   }
 
-  @media (max-width: 375px) {
+  @media (min-width: 375px) {
+    width: 100%;
+  }
+
+  @media (max-width: 500px) {
     width: 300px;
     :nth-last-child(-n + 3) {
       display: none;
     }
   }
 
-  @media (min-width: 376px) and (max-width: 650px) {
+  @media (min-width: 501px) and (max-width: 690px) {
     :nth-last-child(-n + 2) {
       display: none;
     }
   }
 
-  @media (min-width: 660px) and (max-width: 1439px) {
+  @media (min-width: 691px) and (max-width: 970px) {
     :nth-last-child(-n + 2) {
       display: none;
     }
   }
 
-  @media (max-width: 1439px) {
+  @media (min-width: 970px) {
     display: flex;
+    justify-content: space-between;
   }
 `;
 
@@ -62,6 +79,20 @@ export const TitlePageCategory = styled.h4`
   color: ${p => p.theme.colors.sectionHeader};
   margin-bottom: 50px;
   background: transparent;
+
+  @media (min-width: 691px) and (max-width: 970px) {
+    margin-left: 37px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 42px;
+    margin-left: 20px;
+  }
+
+  @media (max-width: 375px) {
+    font-size: 28px;
+    margin-left: 16px;
+  }
 `;
 
 export const NavLinkBtnSeeAll = styled(NavLink)`
@@ -76,21 +107,16 @@ export const NavLinkBtnSeeAll = styled(NavLink)`
     background-color: rgb(35, 38, 42);
     color: white;
   }
-`;
 
-export const BtnOtherCategories = styled.button`
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 0.6;
-  position: absolute;
+  @media (min-width: 691px) and (max-width: 970px) {
+    margin-right: 82px;
+  }
 
-  color: ${p => p.theme.colors.mainBtnText};
+  @media (min-width: 376px) and (max-width: 915px) {
+    margin-right: 22px;
+  }
 
-  clip-path: inset(25% 0 25% 0 round 15% 35% 15% 30%);
-  padding: 50px 42px;
-  background-color: transparent;
-  border: none;
-  border: 1px solid black;
+  @media (max-width: 375px) {
+    margin-right: 10px;
+  }
 `;
