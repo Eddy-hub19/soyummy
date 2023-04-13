@@ -18,10 +18,6 @@ const RecipePage = () => {
   // const backLinkHref = location.state?.from ?? '/recipes';
 
   useEffect(() => {
-    // if (isFirstRender.current) {
-    //   isFirstRender.current = false;
-    //   return;
-    // }
     setIsLoading(true);
     getRecipeById(recipeId).then(setRecipe);
     setIsLoading(false);
