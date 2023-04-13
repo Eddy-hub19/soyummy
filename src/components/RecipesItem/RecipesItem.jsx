@@ -20,7 +20,7 @@ export const RecipesItem = ({ ViewMode, id, text, title, img, time }) => {
   return (
     <Recipe ViewMode={ViewMode}>
       {!RowDirrection && ViewMode === 'favorite' ? (
-        <NavLink to={`/recipe/${id}`}>
+        <NavLink to={`/recipes/${id}`}>
           <ImageWrapper ViewMode={ViewMode}>
             <img src={img} alt={title} />
           </ImageWrapper>
