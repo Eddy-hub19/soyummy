@@ -65,6 +65,7 @@ export const CategoryList = () => {
   const onMouseLeave = () => {
     setFlag(false);
   };
+  const isMobile = window.innerWidth < 375;
 
   return (
     <Box
@@ -90,7 +91,7 @@ export const CategoryList = () => {
           },
           
           '& .MuiTabs-flexContainer': {
-            gap: '55px',
+            gap: isMobile ? '26px' : '55px',
             '& :hover': {
               color: '#8BAA36',
             },
@@ -99,7 +100,7 @@ export const CategoryList = () => {
           '& .MuiTab-root': {
             textTransform: 'capitalize',
             minWidth: 'unset',
-            fontSize: '18px',
+            fontSize: isMobile ? '14px' : '18px',
             fontFamily: 'Poppins',
             fontWeight: '400',
             lineHeight: '18px',
