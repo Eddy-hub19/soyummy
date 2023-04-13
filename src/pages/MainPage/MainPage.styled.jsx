@@ -17,7 +17,6 @@ export const MainPageHero = styled.div`
   display: flex;
   height: 777px;
   margin-bottom: 60px;
-  padding: 0 16px;
 
   @media screen and (min-device-pixel-ratio: 2),
     screen and (min-resolution: 192dpi),
@@ -25,11 +24,11 @@ export const MainPageHero = styled.div`
     screen and (min-resolution: 2dppx) {
     background-image: url(${bgrImageMob2});
     }
+
   @media (min-width: 768px) {
     background-image: url(${bgrImageTab});
     height: 640px;
     margin-bottom: 72px;
-    padding: 0 32px;
     @media screen and (min-device-pixel-ratio: 2),
     screen and (min-resolution: 192dpi),
     (-webkit-min-device-pixel-ratio: 2),
@@ -42,7 +41,6 @@ export const MainPageHero = styled.div`
     background-image: url(${bgrImageDesk});
     height: 800px;
     margin-bottom: 100px;
-    padding: 0 100px;
     @media screen and (min-device-pixel-ratio: 2),
     screen and (min-resolution: 192dpi),
     (-webkit-min-device-pixel-ratio: 2),
@@ -78,10 +76,6 @@ export const Title = styled.h1`
   }
 `;
 
-// export const ColorWrap = styled.div`
-//   background-color: ${theme.colors.btnTextLight};
-// `;
-
 export const Span = styled.span`
   color: ${p => p.theme.colors.mainAccent};
   font-family: ${theme.fonts.main};
@@ -116,7 +110,6 @@ export const Text = styled.p`
   & br {
     display: none;
   }
-  
 
   @media (min-width: 768px) {
     width: 362px;
@@ -140,14 +133,9 @@ export const Text = styled.p`
 export const HeroTextWrapper = styled.div`
   @media (min-width: 768px) {
     display: flex;
-    // margin-right: 368px;
     flex-wrap: wrap;
     justify-content: flex-start;
-  }
-
-  @media (min-width: 1440px) {
-    // margin-right: 835px;
-  }
+    }
 `;
 
 export const MainPageBg = styled.div`
@@ -195,20 +183,22 @@ export const MainPageBg = styled.div`
 `;
 
 export const MainPageContainer = styled.div`
+    margin-left: auto;
+    margin-right: auto;  
   position: relative;
-  // padding-bottom: 149px;
   max-width: 767px;
-  // margin-left: auto;
-  // margin-right: auto;
+  padding: 0 16px;
 
   @media screen and (min-width: 768px) {
-    // padding: 0 32px;
-    // padding-bottom: 200px;
+    margin-left: 0;
+    margin-right: 0;
     max-width: 1439px;
+    padding: 0 32px;
   }
 
   @media screen and (min-width: 1440px) {
     padding: 0 100px;
     margin: 0 auto;
+    padding: 0 100px;
   }
 `;
