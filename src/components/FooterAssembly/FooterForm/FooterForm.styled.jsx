@@ -25,8 +25,7 @@ export const FooterWrap = styled.form`
     }
 
     @media screen and (min-width: 1440px) {
-      top: 31px;
-      left: 20px;
+      top: 50%;
     }
   }
 
@@ -36,7 +35,7 @@ export const FooterWrap = styled.form`
     justify-content: center;
     width: 100%;
     height: auto;
-    gap: 12px;
+    gap: 7px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -71,24 +70,34 @@ export const FooterWrap = styled.form`
 `;
 
 export const FooterWrapText = styled.div`
-  margin-bottom: 28px;
-
-  h4 {
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 27px;
-    color: ${p => p.theme.colors.mainLight};
-    margin-bottom: 14px;
+  visibity: hidden;
+  display: none;
+  @media screen and (min-width: 768px) {
+    visibility: hidden;
   }
 
-  p {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 18px;
-    letter-spacing: -0.02em;
-    color: ${p => p.theme.colors.mainLight};
+  @media screen and (min-width: 1440px) {
+    display: block;
+    visibility: visible;
+    margin-bottom: 28px;
+
+    h4 {
+      font-style: normal;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 27px;
+      color: ${p => p.theme.colors.mainLight};
+      margin-bottom: 14px;
+    }
+
+    p {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 18px;
+      letter-spacing: -0.02em;
+      color: ${p => p.theme.colors.mainLight};
+    }
   }
 `;
 
@@ -150,28 +159,6 @@ export const FooterWrapInput = styled.input`
   }
 `;
 
-export const InputFlag = styled.div`
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  width: 20px;
-  height: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-
-  @media screen and (min-width: 768px) {
-    top: 21px;
-    right: 302px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    top: 148px;
-    right: 12px;
-  }
-`;
-
 export const FooterWrapBtn = styled.button`
   width: 204px;
   height: 38px;
@@ -185,6 +172,10 @@ export const FooterWrapBtn = styled.button`
   cursor: pointer;
   transition: ${p => p.theme.transitions.main};
 
+  :hover {
+    color: ${p => p.theme.colors.btnHoverText};
+  }
+
   @media screen and (min-width: 768px) {
     width: 171px;
     height: 50px;
@@ -197,13 +188,7 @@ export const FooterWrapBtn = styled.button`
     font-size: 16px;
     line-height: 18px;
   }
-
-  :hover:not([disabled]),
-  :focus:not([disabled]) {
-    color: ${p => p.theme.colors.btnHoverText};
-  }
-
-  &[disabled] {
-    opacity: 0.7;
-  }
+`;
+export const InputContainer = styled.div`
+  position: relative;
 `;
