@@ -17,7 +17,7 @@ export const StyledLink = styled(NavLink)`
       ? p.theme.colors.mainAccent
       : p.navcolor === 'light'
       ? p.theme.colors.mainDark
-      : p.theme.colors.mainDark};
+      : p.theme.colors.userName};
   transition: ${p => p.theme.transitions.main};
 
   :hover:not(.active),
