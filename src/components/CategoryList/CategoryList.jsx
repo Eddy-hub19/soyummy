@@ -65,7 +65,7 @@ export const CategoryList = () => {
   const onMouseLeave = () => {
     setFlag(false);
   };
-  const isMobile = window.innerWidth < 375;
+  const isMobile = window.innerWidth < 376;
 
   return (
     <Box
@@ -105,6 +105,7 @@ export const CategoryList = () => {
             fontWeight: '400',
             lineHeight: '18px',
             borderColor: '#8BAA36',
+            paddingTop: '10px',
           },
 
           '& svg': {
