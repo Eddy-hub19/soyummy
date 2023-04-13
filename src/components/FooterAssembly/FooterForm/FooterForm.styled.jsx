@@ -9,7 +9,7 @@ export const FooterWrap = styled.form`
   width: 204px;
 
   .Envelope {
-    position: absolute;
+    position: relative;
     top: 20px;
     left: 14px;
     width: 1.1rem;
@@ -93,6 +93,7 @@ export const FooterWrapText = styled.div`
 `;
 
 export const FooterWrapInput = styled.input`
+  position: relative;
   height: 38px;
   font-weight: 400;
   font-size: 10px;
@@ -196,14 +197,5 @@ export const FooterWrapBtn = styled.button`
     height: 60px;
     font-size: 16px;
     line-height: 18px;
-  }
-
-  :hover:not([disabled]),
-  :focus:not([disabled]) {
-    color: ${p => p.theme.colors.btnHoverText};
-  }
-
-  &[disabled] {
-    opacity: 0.7;
   }
 `;
