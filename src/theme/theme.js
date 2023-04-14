@@ -29,6 +29,7 @@ export const theme = createTheme({
     deleteBtnIcon: '#FFFFFF',
     recipeBlockBtnBg: '#22252A',
     recipeBlockBg: '#EBF3D4',
+    recipeComponentBlockBg: '#FFFFFF',
     paginationBg: '#EBF3D4',
     paginationText: '#656565',
     paginationShadow: '0px 4px 4px rgba(135, 135, 135, 0.2)',
@@ -49,7 +50,7 @@ export const theme = createTheme({
     iconHover: ' #1E1F28',
     switchBg: '#EFEFEF',
     burgerRecipeBtn: '#23262A',
-    background: '#FAFAFA'
+    background: '#FAFAFA',
   },
 
   fonts: {
@@ -120,6 +121,7 @@ export const darkTheme = {
     deleteBtnIcon: '#FFFFFF',
     recipeBlockBtnBg: '#8BAA36',
     recipeBlockBg: '#2A2C36',
+    recipeComponentBlockBg: '#2A2C36',
     paginationBg: '#8BAA36',
     paginationText: 'rgba(255, 255, 255, 0.6)',
     mainSearchInput: '#2A2C36',
@@ -143,7 +145,7 @@ export const darkTheme = {
     iconHover: '#FAFAFA',
     switchBg: '#EFEFEF',
     burgerRecipeBtn: '#23262A',
-    background: '#1E1F28'
+    background: '#1E1F28',
   },
   fonts: {
     main: 'Poppins, sans-serif',

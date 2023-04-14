@@ -16,7 +16,6 @@ import {
 
 export const RecipesItem = ({ ViewMode, id, text, title, img, time }) => {
   const RowDirrection = useMediaQuery('(min-width: 768px)');
-
   return (
     <Recipe ViewMode={ViewMode}>
       {!RowDirrection && ViewMode === 'favorite' ? (

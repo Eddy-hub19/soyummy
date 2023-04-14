@@ -7,20 +7,22 @@ export const Recipe = styled.div`
   display: flex;
   gap: ${p => (p.ViewMode === 'favorite' ? '14px' : '4px')};
   background-color: ${p =>
-    p.ViewMode === 'favorite' ? p.theme.colors.recipeBlockBg : 'transparent'};
-  padding: ${p => (p.ViewMode === 'favorite' ? '14px' : '0px')};
+    p.ViewMode === 'favorite'
+      ? p.theme.colors.recipeComponentBlockBg
+      : p.theme.colors.recipeComponentBlockBg};
+  padding: ${p => (p.ViewMode === 'favorite' ? '14px' : '14px')};
   border-radius: ${p => p.theme.radii.image};
 
   @media screen and (min-width: 768px) {
     height: 288px;
     gap: ${p => (p.ViewMode === 'favorite' ? '24px' : '8px')};
-    padding: ${p => (p.ViewMode === 'favorite' ? '28px 24px' : '0px')};
+    padding: ${p => (p.ViewMode === 'favorite' ? '28px 24px' : '28px')};
   }
 
   @media screen and (min-width: 1440px) {
-    height: 372px;
+    /* height: 372px; */
     gap: ${p => (p.ViewMode === 'favorite' ? '40px' : '14px')};
-    padding: ${p => (p.ViewMode === 'favorite' ? '40px' : '0px')};
+    padding: ${p => (p.ViewMode === 'favorite' ? '40px' : '40px')};
   }
 `;
 
@@ -32,17 +34,23 @@ export const ImageWrapper = styled.div`
 
   & img {
     border-radius: ${p => p.theme.radii.image};
-    width: ${p => (p.ViewMode === 'favorite' ? '124px' : '130px')};
-    height: ${p => (p.ViewMode === 'favorite' ? '124px' : '152px')};
+    width: 124px;
+    height: 124px;
+    /* width: ${p => (p.ViewMode === 'favorite' ? '124px' : '130px')};
+    height: ${p => (p.ViewMode === 'favorite' ? '124px' : '152px')}; */
 
     @media screen and (min-width: 768px) {
-      width: ${p => (p.ViewMode === 'favorite' ? '228px' : '250px')};
-      height: ${p => (p.ViewMode === 'favorite' ? '232px' : '100%')};
+      width: 228px;
+      height: 232px;
+      /* width: ${p => (p.ViewMode === 'favorite' ? '228px' : '250px')};
+      height: ${p => (p.ViewMode === 'favorite' ? '232px' : '100%')}; */
     }
 
     @media screen and (min-width: 1440px) {
-      width: ${p => (p.ViewMode === 'favorite' ? '318px' : '340px')};
-      height: ${p => (p.ViewMode === 'favorite' ? '324px' : '372px')};
+      /* width: ${p => (p.ViewMode === 'favorite' ? '318px' : '340px')};
+      height: ${p => (p.ViewMode === 'favorite' ? '324px' : '372px')}; */
+      width: 318px;
+      height: 324px;
     }
   }
 `;
@@ -57,8 +65,10 @@ export const DataWrapper = styled.div`
   border-radius: ${p =>
     p.ViewMode === 'recipes' ? p.theme.radii.image : 'none'};
   background-color: ${p =>
-    p.ViewMode === 'recipes' ? p.theme.colors.recipeBlockBg : 'transparent'};
-  padding: ${p => (p.ViewMode === 'recipes' ? '14px' : '0px')};
+    p.ViewMode === 'recipes'
+      ? p.theme.colors.recipeComponentBlockBg
+      : 'transparent'};
+  /* padding: ${p => (p.ViewMode === 'recipes' ? '14px' : '0px')};
 
   @media screen and (min-width: 768px) {
     padding: ${p => (p.ViewMode === 'recipes' ? '28px' : '0px')};
@@ -66,7 +76,7 @@ export const DataWrapper = styled.div`
 
   @media screen and (min-width: 1440px) {
     padding: ${p => (p.ViewMode === 'recipes' ? '40px' : '0px')};
-  }
+  } */
 `;
 
 export const TitleWrapper = styled.div`
