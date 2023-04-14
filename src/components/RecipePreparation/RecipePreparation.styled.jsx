@@ -17,10 +17,11 @@ export const InstructionWrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     margin-bottom: 53px;
+    width: 704px;
   }
 
   @media screen and (min-width: 1440px) {
-    width: 469px;
+    width: 757px;
     margin-bottom: 0;
   }
 `;
@@ -88,14 +89,6 @@ export const InstructionText = styled.li`
   & p {
     padding-top: 2px;
     color: ${({ theme }) => theme.colors.mainBlack};
-    width: 311px;
-    @media screen and (min-width: 768px) {
-      width: 660px;
-    }
-
-    @media screen and (min-width: 1440px) {
-      width: 433px;
-    }
   }
 `;
 
@@ -107,11 +100,8 @@ export const ImageWrapper = styled.div`
     object-fit: cover;
 
     @media screen and (min-width: 768px) {
-      height: 332px;
-    }
-
-    @media screen and (min-width: 1440px) {
-      width: 664px;
+      width: 433px;
+      height: 322px;
     }
   }
 `;
