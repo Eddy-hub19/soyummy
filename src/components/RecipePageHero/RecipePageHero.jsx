@@ -29,14 +29,14 @@ const RecipePageHero = ({ recipe }) => {
   function addToFavoriteRecipes() {
     dispatch(addFavorite(_id));
     setIsFav(true);
-    toast.success("Recipe added to favorite");
+    toast.success("Recipe added to favorite", {position: "top-center", autoClose: 3000,});
     return;
   };
 
     function removeFromFavoriteRecipes() {
       dispatch(deleteFavorite(_id));
       setIsFav(false);
-      toast.success("Recipe removed from favorite");
+      toast.success("Recipe removed from favorite", {position: "top-center", autoClose: 3000,});
       return;
     }
   

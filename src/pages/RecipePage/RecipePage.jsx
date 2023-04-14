@@ -10,19 +10,17 @@ import { Loader } from 'components/Loader/Loader';
 
 const RecipePage = () => {
   const [recipe, setRecipe] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(true);
   const { recipeId } = useParams();
 
   useEffect(() => {
-    setIsLoading(true);
     getRecipeById(recipeId).then(setRecipe);
     setIsLoading(false);
   }, [recipeId]);
-
+  
   return (
     <>
-      {isLoading ? (
+      {(isLoading || recipe === null) ? (
         <Loader />
       ) : (
         recipe !== null && (

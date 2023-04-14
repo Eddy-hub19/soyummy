@@ -3,12 +3,9 @@ import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import SearchForm from '../SearchForm/SearchForm';
 import SearchRecipesList from '../SearchRecipesList/SearchRecipesList';
-import {
-  OtherButton,
-  Wrapper,
-  Text,
-  ContainerForm,
-} from '../SearchPage/SearchPage.styled';
+
+import { Container } from 'components/Container/Container';
+import { OtherButton, Wrapper, Text } from '../SearchPage/SearchPage.styled';
 import { EmptyPlaceholder } from 'pages/EmptyPlaceholder/EmptyPlaceholder';
 import { axiosInstance } from 'service/API/axios';
 
@@ -67,17 +64,17 @@ const SearchPage = () => {
   }, [page, keyword, LIMIT, status]);
 
   return (
-    <ContainerForm>
+    <Container>
       <SearchForm
         handleSubmit={handleSubmit}
         query={keyword}
         type={searchType}
       />
-      <SearchRecipesList key={recipes._id} recipes={recipes} />
+      <SearchRecipesList key={recipes._id} recipes={recipes} id={recipes._id} />
       <Wrapper>
         {recipes.length !== 0 && hasMore && (
           <OtherButton type="button" onClick={loadNextPage}>
-            More categories
+            Other categories
           </OtherButton>
         )}
         {status === 'rejected' && (
@@ -86,7 +83,7 @@ const SearchPage = () => {
           </Text>
         )}
       </Wrapper>
-    </ContainerForm>
+    </Container>
   );
 };
 
