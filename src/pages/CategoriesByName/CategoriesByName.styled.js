@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const RowTable = styled.ul`
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   width: 100%;
   margin-bottom: 100px;
