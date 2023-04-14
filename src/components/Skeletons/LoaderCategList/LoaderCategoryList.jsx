@@ -4,11 +4,13 @@ import ContentLoader from "react-content-loader"
 const MyLoader = (props) => (
   <ContentLoader 
     speed={2}
-    width={314}
+    width={300}
     height={323}
     viewBox="0 0 300 323"
     backgroundColor="#adb3ad"
     foregroundColor="#959393"
+    
+
     
     {...props}
   >
@@ -18,7 +20,7 @@ const MyLoader = (props) => (
 
 export const LoaderCategoryList = () => {
   return (
-    <div>
+    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', margin: '0 auto', gap: '14px'}}>
           <MyLoader />
           <MyLoader />
           <MyLoader />

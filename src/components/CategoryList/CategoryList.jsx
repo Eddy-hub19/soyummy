@@ -69,7 +69,7 @@ export const CategoryList = () => {
 
   return (
     <Box
-      sx={{ maxWidth: '100%', bgcolor: 'transparent', borderBottom: theme.borders.mainSearchInput }}
+      sx={{ maxWidth: '98%', bgcolor: 'transparent', borderBottom: theme.borders.mainSearchInput }}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
