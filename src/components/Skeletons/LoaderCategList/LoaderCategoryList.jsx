@@ -8,7 +8,7 @@ const MyLoader = (props) => (
     height={323}
     viewBox="0 0 300 323"
     backgroundColor="#adb3ad"
-    foregroundColor="#63d965"
+    foregroundColor="#959393"
     
     {...props}
   >

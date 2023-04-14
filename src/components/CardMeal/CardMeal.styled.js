@@ -68,7 +68,8 @@ export const CardDish = styled.li`
     box-shadow: 0 0 7px 5px ${p => p.theme.colors.mainGrey};
   }
   @media (min-width: 768px) {
-    width: calc((100% - 32px) / 2);
+    /* width: calc((100% - 32px) / 2); */
+    max-width: 336px;
   }
 
   @media (min-width: 1440px) {
