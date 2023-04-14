@@ -69,7 +69,7 @@ export const CardDish = styled.li`
   }
   @media (min-width: 768px) {
     /* width: calc((100% - 32px) / 2); */
-    max-width: 336px;
+    width: 336px;
   }
 
   @media (min-width: 1440px) {
