@@ -221,15 +221,15 @@ export const Button = styled.button`
   color: #fafafa;
 
   transition: ${({ theme }) => theme.transitions.main};
+  &:disabled {
+    background: grey;
+  }
   &:hover {
     color: black;
 
     &:active:focus {
       /* box-shadow: 0 5px #666; */
       transform: translateY(4px);
-    }
-    &:disabled {
-      background: grey;
     }
   }
 `;

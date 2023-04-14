@@ -3,9 +3,8 @@ import * as authOperation from '../../redux/auth/authOperation';
 import { CgLock } from 'react-icons/cg';
 import { HiOutlineMail } from 'react-icons/hi';
 import { FiUser } from 'react-icons/fi';
-import styled from 'styled-components';
 
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   AuthBg,
   Button,
@@ -15,20 +14,13 @@ import {
   Image,
   Container,
   InputWraper,
+  StyledLink,
 } from './Register.styled';
 import { getColor } from 'utils/formikColors';
 import * as Yup from 'yup';
 import { Formik, Form, ErrorMessage } from 'formik';
 import sprite from '../../images/sprite.svg';
-// import { InputFlag } from 'components/FooterAssembly/FooterForm/FooterForm.styled';
-
-const StyledLink = styled(NavLink)`
-  color: black;
-
-  &.active {
-    color: orange;
-  }
-`;
+import { ToastContainer } from 'react-toastify';
 
 const emailRegexp =
   /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
@@ -75,8 +67,26 @@ const Register = () => {
       .required('Type your password please'),
   });
 
+  const navigate = useNavigate();
+
+  function navigateToSignin() {
+    navigate('/signin');
+  }
+
   return (
     <AuthBg>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <Container>
         <Image />
         <BoxWraper>
@@ -96,6 +106,7 @@ const Register = () => {
                 await dispatch(
                   authOperation.register({ name, email, password })
                 );
+                navigateToSignin();
               }}
             >
               {props => (
