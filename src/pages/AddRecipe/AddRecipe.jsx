@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useMediaRules } from 'hooks/MediaRules';
 import { nanoid } from '@reduxjs/toolkit';
 import store from 'store';
@@ -9,7 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Title } from 'components/Title/Title';
 import { Loader } from 'components/Loader/Loader';
-import { Container } from 'components/Container/Container';
+import { Container } from 'pages/AddRecipe/AddrecipeContainer/Container';
 import { AddRecipePopular } from 'components/AddRecipePopular/AddRecipePopular';
 import { AddRecipeMeta } from 'components/AddRecipeMeta/AddRecipeMeta';
 import { AddRecipeIngredients } from 'components/AddRecipeIngredients/AddRecipeIngredients';
@@ -51,19 +51,16 @@ const AddRecipe = () => {
 
   const [file, setFile] = useState(null);
 
-  const [userIngredients, setUserIngredients] = useState(() => {
-    const ingredients = store.get('userIngredients');
-    return ingredients ? ingredients : [];
-  });
+  const [userIngredients, setUserIngredients] = useState([]);
 
   const [path, setPath] = useState('');
   const [isLoading, setisLoading] = useState(false);
 
-  useEffect(() => {
-    // убирает ошибку при первом рендере!!
-    store.set('userInputs', inputs);
-    store.set('userIngredients', userIngredients);
-  }, [inputs, userIngredients]);
+  // useEffect(() => {
+  //   // убирает ошибку при первом рендере!!
+  //   store.set('userInputs', inputs);
+  //   store.set('userIngredients', userIngredients);
+  // }, [inputs, userIngredients]);
 
   const handleDecrement = () => {
     if (userIngredients.length <= 0) return;
@@ -73,7 +70,7 @@ const AddRecipe = () => {
   const handleIncrement = () => {
     setUserIngredients(prev => [
       ...prev,
-      { id: nanoid(), ingredient: 'Beef', unitValue: 100, qty: 'g' },
+      { id: nanoid(), ttl: 'Beef', unitValue: 100, qty: 'g' },
     ]);
   };
 
@@ -103,18 +100,12 @@ const AddRecipe = () => {
     setPath(URL.createObjectURL(file));
   };
 
-  // const resetForm = () => {
-  //   setInputs(init);
-  //   setUserIngredients([]);
-  //   setFile(null);
-  //   setPath('');
-  // };
-
-  // const cb = () => {
-  //   scrollToTop();
-  //   navigate('/my?page=1');
-  //   resetForm();
-  // };
+  const resetForm = () => {
+    setInputs(init);
+    setUserIngredients([]);
+    setFile(null);
+    setPath('');
+  };
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -122,22 +113,50 @@ const AddRecipe = () => {
 
     // console.log(inputs);
     const { instructions, time, category, description, title } = inputs;
-    // ПРОВЕРКА НА ЗАПОЛНЕНОСТЬ ПОЛЕЙ
-    if (!instructions || !time || !category || !description || !title) {
-      toast.error('Please fill out all fields');
+    let missingFields = [];
+
+    if (!instructions) {
+      missingFields.push('Instructions');
+    }
+
+    if (!time) {
+      missingFields.push('Time');
+    }
+
+    if (!category) {
+      missingFields.push('Category');
+    }
+
+    if (!description) {
+      missingFields.push('Description');
+    }
+
+    if (!title) {
+      missingFields.push('Title');
+    }
+    if (!file) {
+      missingFields.push('file');
+    }
+
+    if (missingFields.length > 0) {
+      toast.error(
+        `Please fill out the following field(s): ${missingFields.join(', ')}`
+      );
       return;
     }
     setisLoading(true);
     scrollToTop();
     // собираем значения ингредиентов в отдельный массив
+
     const ingredient = userIngredients.map(ingredient => {
       return {
         id: ingredient.id,
-        name: ingredient.ingredient,
+        ttl: ingredient.ingredient,
         unitValue: ingredient.unitValue,
         qty: ingredient.qty,
       };
     });
+    console.log(userIngredients);
 
     formData.append('file', file);
     formData.append('upload_preset', 'alex_preset');
@@ -165,7 +184,8 @@ const AddRecipe = () => {
       const addRecipe = await axiosInstance.post('/own-recipes/add', data);
       if (addRecipe) {
         // console.log('Recipe add succes');
-        setInputs(init);
+        resetForm();
+
         toast.success('Recipe added successfully');
       }
       setisLoading(false);

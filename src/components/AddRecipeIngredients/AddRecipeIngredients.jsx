@@ -63,7 +63,7 @@ export const AddRecipeIngredients = ({
           options={options}
           placeholder=" "
           onChange={handleUserIngredient}
-          name={`ingredient ${id}`}
+          name={`ttl ${id}`}
         />
         <ValueInputWrapper isMobile={isMobile} localTheme={localTheme}>
           <InputUnitValue

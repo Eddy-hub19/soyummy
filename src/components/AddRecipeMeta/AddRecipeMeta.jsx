@@ -39,7 +39,9 @@ export const AddRecipeMeta = ({
         console.log(error);
       }
     };
-    handleEffect();
+    setTimeout(() => {
+      handleEffect();
+    }, 1);
   }, []);
 
   const options = items.map(item => ({
@@ -51,12 +53,12 @@ export const AddRecipeMeta = ({
     <AddRecepiSection isDesktop={isDesktop} path={path}>
       <div>
         <label htmlFor="file" id="labelFile">
-          {!file ? (
-            <svg width="50" height="50">
-              <use href={icons + '#icon-img'} alt="ico"></use>
-            </svg>
+          {file ? (
+            <img src={URL.createObjectURL(file)} alt="preview" />
           ) : (
-            ''
+            <svg width="50" height="50">
+              <use href={`${icons}#icon-img`} alt="ico" />
+            </svg>
           )}
         </label>
         <input type="file" id="file" name="file" onChange={handleFile} />
