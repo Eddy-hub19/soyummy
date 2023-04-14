@@ -2,6 +2,8 @@ import { useDispatch } from 'react-redux';
 import * as authOperation from '../../redux/auth/authOperation';
 import { CgLock } from 'react-icons/cg';
 import { HiOutlineMail } from 'react-icons/hi';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import {
   AuthBg,
@@ -53,6 +55,19 @@ const SignIn = () => {
 
   return (
     <AuthBg>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      <ToastContainer />
       <Container>
         <Image />
         <BoxWraper>
@@ -63,12 +78,11 @@ const SignIn = () => {
                 email: '',
                 password: '',
               }}
-              isSubmitting={false}
-              isInitialValid={true}
+              isSubmitting={true}
+              validateOnMount={true}
               validationSchema={schema}
               onSubmit={async (values, actions) => {
                 const { email, password } = values;
-                console.log(email, password);
                 await dispatch(authOperation.logIn({ email, password }));
               }}
             >
