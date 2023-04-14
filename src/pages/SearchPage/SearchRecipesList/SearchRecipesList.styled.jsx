@@ -22,23 +22,20 @@ export const GridItem = styled.li`
   position: relative;
   transition: box-shadow 500ms cubic-bezier(0.4, 0, 0.2, 1);
 
-
   :hover {
     box-shadow: 0 0 7px 5px ${p => p.theme.colors.mainGrey};
   }
-  
+
   a {
     display: block;
     overflow: hidden;
     border-radius: 8px;
-  
 
     :hover img {
       transform: scale(1.25);
       filter: contrast(130%);
     }
-   
-
+  }
 `;
 
 export const RecipeTitle = styled.p`

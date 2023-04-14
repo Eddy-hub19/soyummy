@@ -10,7 +10,7 @@ export const RecipesList = styled.ul`
   gap: 18px;
 
   & li {
-    width: 100%;
+    width: 95%;
   }
 
   @media screen and (min-width: 768px) {
