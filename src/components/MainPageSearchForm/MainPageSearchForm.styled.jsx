@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import {theme} from '../../theme/theme'
 
 export const SearchBtn = styled.button`
   display: flex;
@@ -125,7 +124,7 @@ export const SearchBtn = styled.button`
 export const SearchInput = styled.input`
   box-sizing: border-box;
   border: ${p => p.theme.borders.mainSearchInput};
-  background-color:# ${p => p.theme.colors.mainSearchInput};
+  background-color: ${p => p.theme.colors.mainSearchInput};
   width:295px;
   height:52px;
   padding-left: 30px;
@@ -134,19 +133,24 @@ export const SearchInput = styled.input`
   font-size:16px;
   line-height: ${p => p.theme.lineHeights.subheader};
   border-radius: 18px 44px;
-  background-color: ${theme.colors.mainSearchInput};
 
   color: ${p => p.theme.colors.disabledGrey};
   &:hover {
-    border: none;
+    border-color: rgba(35, 38, 42, 0.2);
+    color: ${p => p.theme.colors.mainBlack};
+    outline: none;
     outline: none;
   }
   &:active {
-    border: none;
+    border-color: rgba(35, 38, 42, 0.2);
+    color: ${p => p.theme.colors.mainBlack};
+    outline: none;
     outline: none;
   }
   &:focus {
-    border: none;
+    border-color: rgba(35, 38, 42, 0.2);
+    color: ${p => p.theme.colors.mainBlack};
+    outline: none;
     outline: none;
   }
 

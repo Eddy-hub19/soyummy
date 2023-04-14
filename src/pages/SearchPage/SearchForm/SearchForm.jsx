@@ -72,7 +72,7 @@ const SearchForm = props => {
         <Select
           sx={{
             color: 'rgb(189, 189, 189);',
-
+            backgroundColor: '#D9D9D9;',
             '.MuiOutlinedInput-notchedOutline': {
               borderColor: 'rgba(217, 217, 217, 0.2)',
             },

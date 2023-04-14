@@ -49,6 +49,7 @@ export const theme = createTheme({
     iconHover: ' #1E1F28',
     switchBg: '#EFEFEF',
     burgerRecipeBtn: '#23262A',
+    background: '#FAFAFA'
   },
 
   fonts: {
@@ -142,6 +143,7 @@ export const darkTheme = {
     iconHover: '#FAFAFA',
     switchBg: '#EFEFEF',
     burgerRecipeBtn: '#23262A',
+    background: '#1E1F28'
   },
   fonts: {
     main: 'Poppins, sans-serif',
