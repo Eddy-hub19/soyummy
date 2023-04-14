@@ -27,7 +27,6 @@ export const OtherButton = styled.button`
   line-height: ${p => p.theme.lineHeights.subheader};
   font-size: 14px;
   margin-top: 40px;
-  margin-bottom: 100px;
   padding: 20px 52px;
   min-width: 61px;
 
@@ -42,7 +41,6 @@ export const OtherButton = styled.button`
     padding: 16px 42px;
     min-width: 130px;
     margin-top: 50px;
-    margin-bottom: 200px;
   }
   @media screen and (min-width: 1440px) {
     font-size: 16px;

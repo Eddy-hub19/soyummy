@@ -77,7 +77,7 @@ const SearchPage = () => {
       <Wrapper>
         {recipes.length !== 0 && hasMore && (
           <OtherButton type="button" onClick={loadNextPage}>
-            Other categories
+            More categories
           </OtherButton>
         )}
         {status === 'rejected' && (

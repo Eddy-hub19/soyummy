@@ -1,53 +1,5 @@
 import styled from 'styled-components';
-// import { NavLink } from 'react-router-dom';
-
-// export const StyledLinkBtn = styled(NavLink)`
-//   color: ${p => p.theme.colors.btnTextLight};
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   width: fit-content;
-//   white-space: nowrap;
-//   box-sizing: border-box;
-//   font-family: ${p => p.theme.fonts.main};
-//   font-weight: ${p => p.theme.fontWeights[0]};
-//   line-height: ${p => p.theme.lineHeights.subheader};
-//   font-size: 14px;
-//   position: absolute;
-//   right:0px;
-//   top:0px;
-//   z-index:4;
-
-//   padding: 53px 28px;
-//   min-width: 60px;
-//   top: -55%;
-//   left: 68%;
-
-//   clip-path: inset(25% 0 25% 0 round 15% 35% 15% 30%);
-//   background-color: ${p => p.theme.colors.mainNavLinkHover};
-//   border: none;
-//   cursor: pointer;
-
-//   :hover,
-//   :focus {
-//     background-color: ${p => p.theme.colors.mainAccent};
-//   }
-
-//   @media screen and (min-width: 768px) {
-//     top: -52%;
-//     left: 59%;
-//     padding: 57px 16px;
-//     min-width: 130px;
-//   }
-//   @media screen and (min-width: 1440px) {
-//     font-size: 16px;
-//     line-height: ${p => p.theme.lineHeights.btnText};
-//     padding: 67px 23px;
-//     min-width: 160px;
-//     top: -50%;
-//     left: 60%;
-//   }
-// `;
+import {theme} from '../../theme/theme'
 
 export const SearchBtn = styled.button`
   display: flex;
@@ -163,10 +115,10 @@ export const SearchBtn = styled.button`
 
   @media screen and (min-width: 1440px) {
 
-    padding: 23px 52px !important;
+    padding: 23px 52px;
     min-width: 160px;
     position: absolute;
-    left: 349px;
+    left: 355px;
   }
 `;
 
@@ -182,7 +134,7 @@ export const SearchInput = styled.input`
   font-size:16px;
   line-height: ${p => p.theme.lineHeights.subheader};
   border-radius: 18px 44px;
-  background-color: transparent;
+  background-color: ${theme.colors.mainSearchInput};
 
   color: ${p => p.theme.colors.disabledGrey};
   &:hover {
@@ -217,13 +169,16 @@ export const Form = styled.form`
   justify-content: center;
   align-items: start;
   height:52px;
-  width:295px;
+  width:290px;
   z-index:3;
 
-    @media screen and (min-width: 768px) {
+  @media screen and (min-width: 375px) {
+    padding-left: 32px
+  }
+
+  @media screen and (min-width: 768px) {
     width:362px;
     height:59px;
-    // margin-left: 50px;
   }
   @media screen and (min-width: 1440px) {
   width:510px;
@@ -236,16 +191,15 @@ box-sizing:border-box;
 
   position: absolute;
   top: 662px;
-  left: 40px;
+  left: 24px;
 
   @media screen and (min-width: 768px) {
-    
-   top: 386px;
+  top: 386px;
   left:0px;
   }
   @media screen and (min-width: 1440px) {
-    margin-left: 100px;
-   top: 462px;
+  margin-left: 100px;
+  top: 462px;
   left:0px;
   }
 `;

@@ -88,20 +88,7 @@ const SearchForm = props => {
           value={searchType}
           onChange={handleSearchTypeChange}
         >
-          <MenuItem
-            // sx={{
-            //   '& .MuiMenuItem-root': {
-            //     backgroundColor: 'green',
-            //     outline: 'none',
-            //   },
-            //   '&:active': {
-            //     backgroundColor: 'green',
-            //   },
-            // }}
-            value="title"
-          >
-            Title
-          </MenuItem>
+          <MenuItem value="title">Title</MenuItem>
           <MenuItem value="ingredient">Ingredient</MenuItem>
         </Select>
       </DropdownWrapper>

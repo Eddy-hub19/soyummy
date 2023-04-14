@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {theme} from '../../theme/theme'
 
 import mob1 from '../../images/mobile/recipeHero_mob_1x.jpg';
 import mob2 from '../../images/mobile/recipeHero_mob_2x.jpg';
@@ -112,7 +113,7 @@ export const HeroTitle = styled.title`
 
 export const HeroText = styled.p`
   font-weight: ${p => p.theme.fontWeights[0]};
-  color: ${p => p.theme.colors.secondaryDark};
+  color: ${theme.colors.secondaryDark};
   
   text-align: center;
   font-size: 12px;
