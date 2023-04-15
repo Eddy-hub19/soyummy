@@ -3,9 +3,12 @@ import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import SearchForm from '../SearchForm/SearchForm';
 import SearchRecipesList from '../SearchRecipesList/SearchRecipesList';
-
-import { Container } from 'components/Container/Container';
-import { OtherButton, Wrapper, Text } from '../SearchPage/SearchPage.styled';
+import {
+  OtherButton,
+  Wrapper,
+  Text,
+  ContainerForm,
+} from '../SearchPage/SearchPage.styled';
 import { EmptyPlaceholder } from 'pages/EmptyPlaceholder/EmptyPlaceholder';
 import { axiosInstance } from 'service/API/axios';
 
@@ -64,7 +67,7 @@ const SearchPage = () => {
   }, [page, keyword, LIMIT, status]);
 
   return (
-    <Container>
+    <ContainerForm>
       <SearchForm
         handleSubmit={handleSubmit}
         query={keyword}
@@ -83,7 +86,7 @@ const SearchPage = () => {
           </Text>
         )}
       </Wrapper>
-    </Container>
+    </ContainerForm>
   );
 };
 
