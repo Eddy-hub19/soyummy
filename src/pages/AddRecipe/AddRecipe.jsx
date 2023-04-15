@@ -38,11 +38,7 @@ const init = {
 };
 
 const AddRecipe = () => {
-  // const dispatch = useDispatch();
-  // const navigate = useNavigate();
-
   const { isDesktop, isMobile, isTablet } = useMediaRules();
-  // const isFirstRender = useRef(true);
 
   const [inputs, setInputs] = useState(() => {
     const inputs = store.get('userInputs');
@@ -54,13 +50,8 @@ const AddRecipe = () => {
   const [userIngredients, setUserIngredients] = useState([]);
 
   const [path, setPath] = useState('');
-  const [isLoading, setisLoading] = useState(false);
 
-  // useEffect(() => {
-  //   // убирает ошибку при первом рендере!!
-  //   store.set('userInputs', inputs);
-  //   store.set('userIngredients', userIngredients);
-  // }, [inputs, userIngredients]);
+  const [isLoading, setisLoading] = useState(false);
 
   const handleDecrement = () => {
     if (userIngredients.length <= 0) return;
@@ -70,7 +61,7 @@ const AddRecipe = () => {
   const handleIncrement = () => {
     setUserIngredients(prev => [
       ...prev,
-      { id: nanoid(), ttl: 'Beef', unitValue: 100, qty: 'g' },
+      { id: nanoid(), ingredient: 'Beef', unitValue: 100, qty: 'g' },
     ]);
   };
 
@@ -149,11 +140,14 @@ const AddRecipe = () => {
     // собираем значения ингредиентов в отдельный массив
 
     const ingredient = userIngredients.map(ingredient => {
+      const measure =
+        typeof ingredient.unitValue === 'number'
+          ? `${ingredient.unitValue} ${ingredient.qty}`
+          : `${ingredient.unitValue} ${ingredient.qty}`;
       return {
-        id: ingredient.id,
+        ingredient: ingredient.id,
         ttl: ingredient.ingredient,
-        unitValue: ingredient.unitValue,
-        qty: ingredient.qty,
+        measure: measure,
       };
     });
     console.log(userIngredients);
@@ -183,15 +177,11 @@ const AddRecipe = () => {
       console.log('Form data:', data);
       const addRecipe = await axiosInstance.post('/own-recipes/add', data);
       if (addRecipe) {
-        // console.log('Recipe add succes');
         resetForm();
-
         toast.success('Recipe added successfully');
       }
       setisLoading(false);
     } catch (error) {
-      // console.error('Error:', error.message);
-      // console.log('Error Response:', error.response);
       toast.error(<AddRecipeToastifyError />);
       setisLoading(false);
     }
