@@ -37,7 +37,6 @@ const SearchPage = () => {
     axiosInstance
       .get(`recipes/search/${keyword}?page=${page}&limit=${LIMIT}&searchType=${searchType}`)
       .then(function (data) {
-        console.log(recipes, data.data);
         if (data.data.recepies.length === 0) {
           setStatus("rejected");
           console.log("error");
@@ -51,7 +50,6 @@ const SearchPage = () => {
         }
       })
       .catch(function (error) {
-        console.log("no data");
       });
 
     // eslint-disable-next-line

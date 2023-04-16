@@ -60,16 +60,16 @@ export const Input = styled.input`
   color: ${(p) => p.theme.colors.disabledGrey};
   &:hover {
     border-color: rgba(35, 38, 42, 0.2);
-    color: ${(p) => p.theme.colors.mainBlack};
+    color: ${(p) => p.theme.colors.mainDark};
     outline: none;
   }
   &:active {
     border-color: rgba(35, 38, 42, 0.2);
-    color: ${(p) => p.theme.colors.mainBlack};
+    color: ${(p) => p.theme.colors.mainDark};
     outline: none;
   }
   &:focus {
-    color: ${(p) => p.theme.colors.mainBlack};
+    color: ${(p) => p.theme.colors.mainDark};
     border-color: rgba(35, 38, 42, 0.2);
     outline: none;
   }
