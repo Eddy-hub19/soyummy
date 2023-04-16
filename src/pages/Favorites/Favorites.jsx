@@ -1,28 +1,24 @@
-import { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchFavorites } from 'redux/favorites/favoritesOperation';
-import {
-  getFavorites,
-  getFavoritesRefreshStatus,
-} from 'redux/favorites/favoritesSelectors';
+import { useDispatch, useSelector } from "react-redux";
+import { fetchFavorites } from "redux/favorites/favoritesOperation";
+import { getFavorites, getFavoritesRefreshStatus } from "redux/favorites/favoritesSelectors";
 
-import { Container } from '../../components/Container/Container';
-import { Title } from 'components/Title/Title';
-import { RecipesItem } from 'components/RecipesItem/RecipesItem';
-import { EmptyPlaceholder } from 'pages/EmptyPlaceholder/EmptyPlaceholder';
-import { Loader } from 'components/Loader/Loader';
-import { Paginator } from 'components/Pagination/Paginator';
+import { Container } from "../../components/Container/Container";
+import { Title } from "components/Title/Title";
+import { RecipesItem } from "components/RecipesItem/RecipesItem";
+import { EmptyPlaceholder } from "pages/EmptyPlaceholder/EmptyPlaceholder";
+import { Loader } from "components/Loader/Loader";
+import { Paginator } from "components/Pagination/Paginator";
 
-import { scrollToTop } from 'utils/scrollUp';
-import { RecipesList, Thumb, img } from './Favorites.styled';
+import { scrollToTop } from "utils/scrollUp";
+import { RecipesList, Thumb, img } from "./Favorites.styled";
 
 const Favorites = () => {
   const dispatch = useDispatch();
   const storageFavorite = useSelector(getFavorites);
   const isRefreshing = useSelector(getFavoritesRefreshStatus);
-  // const isFirstRender = useRef(true);
 
   const [recipes, setRecipes] = useState([]);
   const [isLoading, setisLoading] = useState(true);
@@ -56,9 +52,6 @@ const Favorites = () => {
   };
 
   useEffect(() => {
-    // if (pageNumber <= 0 || pageNumber > Math.ceil(total / perPage)) {
-    //   setPageNumber(1);
-    // }
     if (pageNumber <= 0) {
       setPageNumber(1);
     }
@@ -81,22 +74,16 @@ const Favorites = () => {
           <Title>Favorites</Title>
           {storageFavorite && storageFavorite.length > 0 ? (
             <RecipesList>
-              {recipes.slice(...currentSlice).map(recipe => {
+              {recipes.slice(...currentSlice).map((recipe) => {
                 return (
                   <li key={recipe._id}>
                     <RecipesItem
                       ViewMode="favorite"
                       id={recipe._id}
                       img={recipe.thumb ?? img}
-                      title={recipe.title ?? 'No name'}
-                      text={
-                        <span>
-                          {recipe.about ??
-                            recipe.description ??
-                            'No description'}
-                        </span>
-                      }
-                      time={recipe.time ? `${recipe.time} min` : ''}
+                      title={recipe.title ?? "No name"}
+                      text={<span>{recipe.about ?? recipe.description ?? "No description"}</span>}
+                      time={recipe.time ? `${recipe.time} min` : ""}
                     />
                   </li>
                 );
@@ -106,11 +93,7 @@ const Favorites = () => {
             <EmptyPlaceholder text="You currently don't have any own recipes added. Let's add some!" />
           )}
           {recipes && recipes.length > 0 && (
-            <Paginator
-              count={Math.ceil(total / perPage)}
-              page={pageNumber}
-              handleChange={handleChange}
-            />
+            <Paginator count={Math.ceil(total / perPage)} page={pageNumber} handleChange={handleChange} />
           )}
         </Container>
       )}

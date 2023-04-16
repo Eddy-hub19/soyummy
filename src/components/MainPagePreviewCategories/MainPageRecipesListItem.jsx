@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { Item } from './MainPageRecipesList.styled';
 import { CardImg, CardTitle } from 'components/CardMeal/CardMeal.styled';
-//============================================================//
 
 export const MainPageRecipesListItem = ({ recipe }) => {
   return (

@@ -1,10 +1,10 @@
-import styled from 'styled-components';
-import { Field, Form } from 'formik';
+import styled from "styled-components";
+import { Field, Form } from "formik";
 
-import PlusIcon from '../../../images/plus.svg';
+import PlusIcon from "../../../images/plus.svg";
 
 export const UserForm = styled(Form)`
-  input[type='file'] {
+  input[type="file"] {
     width: 0;
     height: 0;
     opacity: 0;
@@ -17,7 +17,7 @@ export const UserForm = styled(Form)`
   & img {
     height: 88px;
     width: 88px;
-    border-radius: ${p => p.theme.radii.circle};
+    border-radius: ${(p) => p.theme.radii.circle};
 
     @media screen and (min-width: 768px) {
       height: 103px;
@@ -33,13 +33,13 @@ export const UserSvgWrapper = styled.div`
   width: 88px;
   justify-content: center;
   align-items: center;
-  border-radius: ${p => p.theme.radii.circle};
-  background-color: ${p => p.theme.colors.mainGreyBg};
+  border-radius: ${(p) => p.theme.radii.circle};
+  background-color: ${(p) => p.theme.colors.mainGreyBg};
 
   & svg {
     height: 40px;
     width: 40px;
-    stroke: ${p => p.theme.colors.secondaryGreyBg};
+    stroke: ${(p) => p.theme.colors.secondaryGreyBg};
   }
 
   &::after {
@@ -53,8 +53,8 @@ export const UserSvgWrapper = styled.div`
     content: url(${PlusIcon});
     width: 24px;
     height: 26px;
-    background-color: ${p => p.theme.colors.mainAccent};
-    border-radius: ${p => p.theme.radii.circle};
+    background-color: ${(p) => p.theme.colors.mainAccent};
+    border-radius: ${(p) => p.theme.radii.circle};
   }
 
   @media screen and (min-width: 768px) {
@@ -101,19 +101,18 @@ export const InputWrapper = styled.div`
 
 export const NameInput = styled(Field)`
   outline: none;
-  // width: 100%;
   font-size: 14px;
   width: 250px;
   padding: 14px;
   padding-left: 63px;
   background-color: transparent;
-  border-radius: ${p => p.theme.radii.btnStandart};
-  font-family: ${p => p.theme.fonts.main};
+  border-radius: ${(p) => p.theme.radii.btnStandart};
+  font-family: ${(p) => p.theme.fonts.main};
 
-  font-weight: ${p => p.theme.fontWeights[0]};
-  letter-spacing: ${p => p.theme.letterSpacings.content};
-  line-height: ${p => p.theme.lineHeights.subheader};
-  color: ${p => p.theme.colors.mainDark};
+  font-weight: ${(p) => p.theme.fontWeights[0]};
+  letter-spacing: ${(p) => p.theme.letterSpacings.content};
+  line-height: ${(p) => p.theme.lineHeights.subheader};
+  color: ${(p) => p.theme.colors.mainDark};
 
   border: 2px solid ${({ color }) => color};
 
@@ -123,6 +122,7 @@ export const NameInput = styled(Field)`
 
   @media screen and (min-width: 1440px) {
     width: 420px;
+  }
 `;
 
 export const NameLabel = styled.label`
@@ -146,14 +146,14 @@ export const SaveChangesBtn = styled.button`
   padding: 14px;
   font-size: 14px;
   white-space: nowrap;
-  background-color: ${p => p.theme.colors.mainAccent};
-  border-radius: ${p => p.theme.radii.btnStandart};
-  font-family: ${p => p.theme.fonts.btnStandart};
-  font-weight: ${p => p.theme.fontWeights[0]};
-  line-height: ${p => p.theme.lineHeights.extraContent};
-  color: ${p => p.theme.colors.btnTextLight};
+  background-color: ${(p) => p.theme.colors.mainAccent};
+  border-radius: ${(p) => p.theme.radii.btnStandart};
+  font-family: ${(p) => p.theme.fonts.btnStandart};
+  font-weight: ${(p) => p.theme.fontWeights[0]};
+  line-height: ${(p) => p.theme.lineHeights.extraContent};
+  color: ${(p) => p.theme.colors.btnTextLight};
 
-  transition: ${p => p.theme.transitions.main};
+  transition: ${(p) => p.theme.transitions.main};
 
   &:disabled {
     pointer-events: none;
@@ -162,12 +162,12 @@ export const SaveChangesBtn = styled.button`
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
-    line-height: ${p => p.theme.lineHeights.btnText};
+    line-height: ${(p) => p.theme.lineHeights.btnText};
   }
 
   &:hover,
   &:focus {
-    color: ${p => p.theme.colors.btnHoverBg};
+    color: ${(p) => p.theme.colors.btnHoverBg};
   }
 `;
 
@@ -182,10 +182,10 @@ export const BtnWrapper = styled.button`
   right: 18px;
   transform: translateY(-50%);
 
-  transition: ${p => p.theme.transitions.main};
+  transition: ${(p) => p.theme.transitions.main};
 
   & svg {
-    stroke: ${p => p.theme.colors.mainDark};
+    stroke: ${(p) => p.theme.colors.mainDark};
     height: 18px;
     width: 18px;
   }
@@ -209,17 +209,16 @@ export const ErrorMessage = styled.p`
   position: absolute;
   color: red;
   top: 50%;
-  left: ${p => (p.location === 'file' ? '24px' : '0')};
+  left: ${(p) => (p.location === "file" ? "24px" : "0")};
   font-size: 11px;
-  transform: ${p =>
-    p.location === 'file' ? 'translateY(-150%)' : 'translateY(-50%)'};
+  transform: ${(p) => (p.location === "file" ? "translateY(-150%)" : "translateY(-50%)")};
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
-    left: ${p => (p.location === 'file' ? '40px' : '0')};
+    left: ${(p) => (p.location === "file" ? "40px" : "0")};
   }
 
   @media screen and (min-width: 1440px) {
-    left: ${p => (p.location === 'file' ? '50px' : '0')};
+    left: ${(p) => (p.location === "file" ? "50px" : "0")};
   }
 `;

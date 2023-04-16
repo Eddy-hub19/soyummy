@@ -1,27 +1,20 @@
-import { OtherButton } from 'pages/SearchPage/SearchPage/SearchPage.styled';
-import {
-  ItemRecipe,
-  List,
-  TitlePageCategory,
-} from './MainPageRecipesList.styled';
-import { MainPageRecipesListItem } from './MainPageRecipesListItem';
-import { SeeAllButton } from './SeeAllButton';
-import { NavLink } from 'react-router-dom';
-//============================================================//
+import { OtherButton } from "pages/SearchPage/SearchPage/SearchPage.styled";
+import { ItemRecipe, List, TitlePageCategory } from "./MainPageRecipesList.styled";
+import { MainPageRecipesListItem } from "./MainPageRecipesListItem";
+import { SeeAllButton } from "./SeeAllButton";
+import { NavLink } from "react-router-dom";
 
 export const MainPageRecipesList = ({ recipes }) => {
   return (
-    <div style={{ margin: '0 auto' }}>
-      <ul style={{ listStyle: 'none' }}>
+    <div style={{ margin: "0 auto" }}>
+      <ul style={{ listStyle: "none" }}>
         <ItemRecipe key={Object.keys(recipes)[0]}>
           <TitlePageCategory>Breakfast</TitlePageCategory>
 
           <List>
             {/* Recipe item */}
-            {recipes.breakfast.map(recipe => {
-              return (
-                <MainPageRecipesListItem recipe={recipe} key={recipe._id} />
-              );
+            {recipes.breakfast.map((recipe) => {
+              return <MainPageRecipesListItem recipe={recipe} key={recipe._id} />;
             })}
           </List>
 
@@ -31,10 +24,8 @@ export const MainPageRecipesList = ({ recipes }) => {
         <ItemRecipe key={Object.keys(recipes)[1]}>
           <TitlePageCategory>Miscellaneous</TitlePageCategory>
           <List>
-            {recipes.miscellaneous.map(recipe => {
-              return (
-                <MainPageRecipesListItem recipe={recipe} key={recipe._id} />
-              );
+            {recipes.miscellaneous.map((recipe) => {
+              return <MainPageRecipesListItem recipe={recipe} key={recipe._id} />;
             })}
           </List>
 
@@ -44,10 +35,8 @@ export const MainPageRecipesList = ({ recipes }) => {
         <ItemRecipe key={Object.keys(recipes)[2]}>
           <TitlePageCategory>Chicken</TitlePageCategory>
           <List>
-            {recipes.chicken.map(recipe => {
-              return (
-                <MainPageRecipesListItem recipe={recipe} key={recipe._id} />
-              );
+            {recipes.chicken.map((recipe) => {
+              return <MainPageRecipesListItem recipe={recipe} key={recipe._id} />;
             })}
           </List>
 
@@ -57,10 +46,8 @@ export const MainPageRecipesList = ({ recipes }) => {
         <ItemRecipe key={Object.keys(recipes)[3]}>
           <TitlePageCategory>Desserts</TitlePageCategory>
           <List>
-            {recipes.desserts.map(recipe => {
-              return (
-                <MainPageRecipesListItem recipe={recipe} key={recipe._id} />
-              );
+            {recipes.desserts.map((recipe) => {
+              return <MainPageRecipesListItem recipe={recipe} key={recipe._id} />;
             })}
           </List>
 
@@ -68,11 +55,7 @@ export const MainPageRecipesList = ({ recipes }) => {
         </ItemRecipe>
 
         <NavLink to={`/categories/pork`}>
-          <OtherButton
-            to={`/categories/pork`}
-            type="button"
-            style={{ margin: '0 auto 118px', display: 'block' }}
-          >
+          <OtherButton to={`/categories/pork`} type="button" style={{ margin: "0 auto 118px", display: "block" }}>
             Other categories
           </OtherButton>
         </NavLink>

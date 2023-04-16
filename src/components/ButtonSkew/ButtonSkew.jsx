@@ -2,7 +2,6 @@ import { ButtonSkewStyle } from './buttonSkew.styled';
 
 export const ButtonSkew = ({ type, fn, styled, text, location }) => {
   const onClick = e => {
-    // console.log(e);
     if (!fn) return;
     fn(e);
   };

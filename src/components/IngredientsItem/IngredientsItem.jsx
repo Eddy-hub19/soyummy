@@ -1,7 +1,7 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import {addShoppingListItem,} from 'redux/shoplist/shoplistOperation';
-import { ReactComponent as DefaultIngredient } from 'images/svg-before sprite/paperbag.svg';
+import React from "react";
+import { useDispatch } from "react-redux";
+import { addShoppingListItem } from "redux/shoplist/shoplistOperation";
+import { ReactComponent as DefaultIngredient } from "images/svg-before sprite/paperbag.svg";
 import {
   RecipeIngredientsItem,
   ImageWrapper,
@@ -12,18 +12,15 @@ import {
   TextContainer,
   IngName,
   IngDescr,
-} from './IngredientsItem.styled';
-import sprite from '../../images/sprite.svg';
+} from "./IngredientsItem.styled";
+import sprite from "../../images/sprite.svg";
 
 const IngredientsItem = ({ image, title, weight, description, recipeId }) => {
   const dispatch = useDispatch();
-  
-  // const userId = useSelector(state => state.auth.user._id)
-  
+
   const addToShoppingList = () => {
     dispatch(
       addShoppingListItem({
-        // userId: userId,
         nameIngredient: title,
         weight: weight,
         image: image,
@@ -36,18 +33,13 @@ const IngredientsItem = ({ image, title, weight, description, recipeId }) => {
   return (
     <RecipeIngredientsItem>
       <Label>
-        <ImageWrapper>
-          {image ? <img src={image} alt={title} /> : <DefaultIngredient />}
-        </ImageWrapper>
+        <ImageWrapper>{image ? <img src={image} alt={title} /> : <DefaultIngredient />}</ImageWrapper>
         <TextContainer>
           <IngName>{title}</IngName>
           <IngDescr>{description}</IngDescr>
         </TextContainer>
         <Weight>{weight}</Weight>
-        <RealCheckbox
-          type="checkbox"
-          onChange={addToShoppingList}
-        />
+        <RealCheckbox type="checkbox" onChange={addToShoppingList} />
         <CustomCheckbox>
           <svg>
             <use href={sprite + `#icon-pick`} />

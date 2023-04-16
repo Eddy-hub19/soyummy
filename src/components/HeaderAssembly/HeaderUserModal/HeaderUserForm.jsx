@@ -1,15 +1,11 @@
 import { useState } from 'react';
 import { ErrorMessage, Formik } from 'formik';
 import { useSelector } from 'react-redux';
-//import axios from 'axios';
 import { axiosInstance } from 'service/API/axios';
-// import { useDispatch, useSelector } from 'react-redux';
 import { getColor } from 'utils/formikColors';
 import authSelectors from 'redux/auth/authSelectors';
-// import { updateUserInfo } from 'redux/auth/authOperation';
 import sprite from '../../../images/sprite.svg';
 import * as Yup from 'yup';
-// import { getAvatar } from 'redux/auth/authSelectors';
 
 import {
   UserForm,
@@ -47,8 +43,6 @@ const EditNameSchema = Yup.object().shape({
 });
 
 export const UserFormAssembly = ({ avatarUrl, closeModal }) => {
-  // const dispatch = useDispatch();
-  // const userAvatar = useSelector(getAvatar);
   const user = useSelector(authSelectors.getUserData);
   const [path, setPath] = useState(user.avatarUrl);
   const [name, setName] = useState('');

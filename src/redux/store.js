@@ -1,25 +1,16 @@
-import { configureStore } from '@reduxjs/toolkit';
-import {
-  persistStore,
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from 'redux-persist';
+import { configureStore } from "@reduxjs/toolkit";
+import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist";
 
-import storage from 'redux-persist/lib/storage';
+import storage from "redux-persist/lib/storage";
 
-import authSlice from './auth/authSlice';
-import favoritesSlice from './favorites/favoritesSlice';
-import myRecipesSlice from './myRecipes/myRecipesSlice';
-import themeReducer from './themeR/themeSlice';
-import shoplistSlice from './shoplist/shoplistSlice';
+import authSlice from "./auth/authSlice";
+import favoritesSlice from "./favorites/favoritesSlice";
+import myRecipesSlice from "./myRecipes/myRecipesSlice";
+import themeReducer from "./themeR/themeSlice";
+import shoplistSlice from "./shoplist/shoplistSlice";
 
 const authPersistConfig = {
-  key: 'auth',
+  key: "auth",
   storage,
   // whitelist: ['token'],
 };
@@ -35,7 +26,7 @@ const authPersistConfig = {
 // };
 
 const themePersistConfig = {
-  key: 'theme',
+  key: "theme",
   storage,
 };
 
@@ -44,8 +35,6 @@ const persistedThemeReducer = persistReducer(themePersistConfig, themeReducer);
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authSlice),
-    // favorites: persistReducer(favoritesPersistConfig, favoritesSlice),
-    // myRecipes: persistReducer(myRecipesConfig, myRecipesSlice),
     favorites: favoritesSlice,
     myRecipes: myRecipesSlice,
     theme: persistReducer(themePersistConfig, persistedThemeReducer),
