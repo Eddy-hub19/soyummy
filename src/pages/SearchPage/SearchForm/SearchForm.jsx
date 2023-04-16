@@ -48,6 +48,7 @@ const SearchForm = (props) => {
           localTheme={theme}
           type="text"
           name="name"
+          placeholder="Enter the text"
           value={keyword}
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For

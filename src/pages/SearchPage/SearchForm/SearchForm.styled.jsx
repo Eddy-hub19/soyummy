@@ -47,7 +47,7 @@ export const Button = styled.button`
 
 export const Input = styled.input`
   border: ${(p) => p.theme.borders.searchInput};
-  background-color: ${(p) => p.theme.colors.searchInput};
+  background-color: ${(p) => p.theme.colors.secondaryAccent};
   width: 295px;
   height: 53px;
 
@@ -60,16 +60,16 @@ export const Input = styled.input`
   color: ${(p) => p.theme.colors.disabledGrey};
   &:hover {
     border-color: rgba(35, 38, 42, 0.2);
-    color: ${(p) => p.theme.colors.mainDark};
+    color: ${(p) => p.theme.colors.mainBlack};
     outline: none;
   }
   &:active {
     border-color: rgba(35, 38, 42, 0.2);
-    color: ${(p) => p.theme.colors.mainDark};
+    color: ${(p) => p.theme.colors.mainBlack};
     outline: none;
   }
   &:focus {
-    color: ${(p) => p.theme.colors.mainDark};
+    color: ${(p) => p.theme.colors.mainBlack};
     border-color: rgba(35, 38, 42, 0.2);
     outline: none;
   }
