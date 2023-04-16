@@ -47,7 +47,7 @@ export const Button = styled.button`
 
 export const Input = styled.input`
   border: ${(p) => p.theme.borders.searchInput};
-  background-color: ${(p) => p.theme.colors.searchInput};
+  background-color: ${(p) => p.theme.colors.secondaryAccent};
   width: 295px;
   height: 53px;
 
