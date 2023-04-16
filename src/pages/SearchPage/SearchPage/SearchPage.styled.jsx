@@ -1,9 +1,10 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ContainerForm = styled.div`
   padding: 0 16px;
   padding-bottom: 149px;
   max-width: 767px;
+  margin: 0 auto;
 
   @media screen and (min-width: 768px) {
     padding: 0 32px;
@@ -17,14 +18,13 @@ export const ContainerForm = styled.div`
 `;
 export const OtherButton = styled.button`
   border-radius: 18px 44px;
-  color: ${p => p.theme.colors.mainBtnText};
-  /* background-color: ${p => p.theme.colors.searchSelectBg}; */
+  color: ${(p) => p.theme.colors.mainBtnText};
   background-color: transparent;
-  border: ${p => p.theme.borders.btnHover};
+  border: ${(p) => p.theme.borders.btnHover};
   cursor: pointer;
-  font-family: ${p => p.theme.fonts.main};
-  font-weight: ${p => p.theme.fontWeights[0]};
-  line-height: ${p => p.theme.lineHeights.subheader};
+  font-family: ${(p) => p.theme.fonts.main};
+  font-weight: ${(p) => p.theme.fontWeights[0]};
+  line-height: ${(p) => p.theme.lineHeights.subheader};
   font-size: 14px;
   margin-top: 40px;
   padding: 20px 52px;
@@ -32,9 +32,9 @@ export const OtherButton = styled.button`
 
   :hover,
   :focus {
-    border-color: ${p => p.theme.borders.btnHover};
-    background-color: ${p => p.theme.colors.mainAccent};
-    color: ${p => p.theme.colors.bodyBg};
+    border-color: ${(p) => p.theme.borders.btnHover};
+    background-color: ${(p) => p.theme.colors.mainAccent};
+    color: ${(p) => p.theme.colors.bodyBg};
   }
 
   @media screen and (min-width: 768px) {
@@ -44,7 +44,7 @@ export const OtherButton = styled.button`
   }
   @media screen and (min-width: 1440px) {
     font-size: 16px;
-    line-height: ${p => p.theme.lineHeights.btnText};
+    line-height: ${(p) => p.theme.lineHeights.btnText};
     padding: 23px 52px;
     min-width: 160px;
     margin-bottom: 118px;
