@@ -40,6 +40,7 @@ export const AddRecipeIngredients = ({
         const options = allIngredients.map(ingr => ({
           label: ingr.ttl,
           value: ingr.ttl,
+          'data-id': ingr._id,
         }));
 
         setOptions([...options]);
@@ -64,6 +65,7 @@ export const AddRecipeIngredients = ({
           placeholder=" "
           onChange={handleUserIngredient}
           name={`ttl ${id}`}
+          getOptionData={option => option['data-id']}
         />
         <ValueInputWrapper isMobile={isMobile} localTheme={localTheme}>
           <InputUnitValue

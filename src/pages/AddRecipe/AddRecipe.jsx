@@ -31,6 +31,7 @@ const init = {
   category: 'Breakfast',
   time: '30',
   unitValue: 100,
+  qty: 'g',
   path: '',
   thumb: '',
   preview: null,
@@ -52,6 +53,8 @@ const AddRecipe = () => {
   const [path, setPath] = useState('');
 
   const [isLoading, setisLoading] = useState(false);
+
+  const [ingrId, setIngrId] = useState([]);
 
   const handleDecrement = () => {
     if (userIngredients.length <= 0) return;
@@ -94,15 +97,37 @@ const AddRecipe = () => {
   const resetForm = () => {
     setInputs(init);
     setUserIngredients([]);
+    setIngrId([]);
     setFile(null);
     setPath('');
+  };
+
+  const handleSelect = (...arg) => {
+    const [valueObj, nameObj] = arg;
+    const { value } = valueObj;
+    const { name } = nameObj;
+    setInputs(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleUserIngredient = (selectedOption, { name }) => {
+    const [key, id] = name.split(' ');
+
+    setUserIngredients(prev => {
+      const index = prev.findIndex(el => el.id === id);
+      const item = { ...prev[index] };
+      item[key] = selectedOption.value;
+      item.ingredientId = selectedOption['data-id'];
+      prev[index] = item;
+      return [...prev];
+    });
+
+    setIngrId(prevIngrId => [...prevIngrId, selectedOption['data-id']]);
   };
 
   const handleSubmit = async e => {
     e.preventDefault();
     const formData = new FormData();
 
-    // console.log(inputs);
     const { instructions, time, category, description, title } = inputs;
     let missingFields = [];
 
@@ -137,21 +162,26 @@ const AddRecipe = () => {
     }
     setisLoading(true);
     scrollToTop();
-    // собираем значения ингредиентов в отдельный массив
+    //собираем значения ингредиентов в отдельный массив
 
-    const ingredient = userIngredients.map(ingredient => {
-      const measure =
-        typeof ingredient.unitValue === 'number'
-          ? `${ingredient.unitValue} ${ingredient.qty}`
-          : `${ingredient.unitValue} ${ingredient.qty}`;
+    const ingredients = ingrId.map(id => {
+      const matchingUserIngredient = userIngredients.find(
+        ingredient => ingredient.ingredientId === id
+      );
+
+      const myMeasure =
+        typeof matchingUserIngredient.unitValue === 'number'
+          ? `${matchingUserIngredient.unitValue} ${matchingUserIngredient.qty}`
+          : `${matchingUserIngredient.unitValue} ${matchingUserIngredient.qty}`;
+
       return {
-        ingredient: ingredient.id,
-        ttl: ingredient.ingredient,
-        measure: measure,
+        ingredient: id,
+        measure: myMeasure,
       };
     });
-    console.log(userIngredients);
 
+    // console.log(userIngredients);
+    // console.log(ingredients);
     formData.append('file', file);
     formData.append('upload_preset', 'alex_preset');
 
@@ -166,7 +196,7 @@ const AddRecipe = () => {
         category,
         description,
         title,
-        ingredient,
+        ingredients,
         imageUrl,
         path: imageUrl,
         thumb: imageUrl,
@@ -174,7 +204,7 @@ const AddRecipe = () => {
         area: 'Kyiv',
       };
 
-      console.log('Form data:', data);
+      // console.log('Form data:', data);
       const addRecipe = await axiosInstance.post('/own-recipes/add', data);
       if (addRecipe) {
         resetForm();
@@ -185,26 +215,6 @@ const AddRecipe = () => {
       toast.error(<AddRecipeToastifyError />);
       setisLoading(false);
     }
-  };
-
-  const handleSelect = (...arg) => {
-    const [valueObj, nameObj] = arg;
-    const { value } = valueObj;
-    const { name } = nameObj;
-    setInputs(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleUserIngredient = (...args) => {
-    const [{ value }, { name: dirtyName }] = args;
-    const [name, id] = dirtyName.split(' ');
-
-    setUserIngredients(prev => {
-      const idx = prev.findIndex(el => el.id === id);
-      const [item] = prev.filter(el => el.id === id);
-      item[name] = value;
-      prev[idx] = item;
-      return [...prev];
-    });
   };
 
   const handleUnitValue = ({ currentTarget }) => {
