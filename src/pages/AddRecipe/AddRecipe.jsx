@@ -51,8 +51,6 @@ const AddRecipe = () => {
   const [isLoading, setisLoading] = useState(false);
 
   const [ingrId, setIngrId] = useState([]);
-  console.log(userIngredients);
-  console.log(ingrId);
 
   const handleDecrement = () => {
     if (userIngredients.length <= 0) return;
@@ -60,7 +58,6 @@ const AddRecipe = () => {
   };
 
   const handleIncrement = () => {
-    console.log("HI");
     setUserIngredients((prev) => [...prev, { id: nanoid(), ingredient: "Beef", unitValue: 100, qty: "g" }]);
   };
 
@@ -99,20 +96,14 @@ const AddRecipe = () => {
   };
 
   const handleSelect = (...arg) => {
-    console.log("HS");
     const [valueObj, nameObj] = arg;
     const { value } = valueObj;
     const { name } = nameObj;
     setInputs((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleUserIngredient = (selectedOption, { name }) => {
+  const handleTtlChange = (selectedOption, { name }) => {
     const [key, id] = name.split(" ");
-    console.log(selectedOption);
-    if (!selectedOption["data-id"]) {
-      console.log("no data id");
-      return;
-    }
 
     setUserIngredients((prev) => {
       const index = prev.findIndex((el) => el.id === id);
@@ -122,8 +113,19 @@ const AddRecipe = () => {
       prev[index] = item;
       return [...prev];
     });
-
     setIngrId((prevIngrId) => [...prevIngrId, selectedOption["data-id"]]);
+  };
+
+  const handleQtyChange = (selectedOption, { name }) => {
+    const [key, id] = name.split(" ");
+
+    setUserIngredients((prev) => {
+      const index = prev.findIndex((el) => el.id === id);
+      const item = { ...prev[index] };
+      item[key] = selectedOption.value;
+      prev[index] = item;
+      return [...prev];
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -163,11 +165,10 @@ const AddRecipe = () => {
     setisLoading(true);
     scrollToTop();
     //collect the values ​​of the ingredients in a separate array
-    console.log(ingrId);
+    // console.log(ingrId);
     const ingredients = ingrId.map((id) => {
       const matchingUserIngredient = userIngredients.find((ingredient) => ingredient.ingredientId === id);
 
-      console.log(matchingUserIngredient);
       const myMeasure =
         typeof matchingUserIngredient.unitValue === "number"
           ? `${matchingUserIngredient.unitValue} ${matchingUserIngredient.qty}`
@@ -222,10 +223,9 @@ const AddRecipe = () => {
 
     setUserIngredients((prev) => {
       const idx = prev.findIndex((el) => el.id === id);
-      const [item] = prev.filter((el) => el.id === id);
-      item[name] = value;
-      prev[idx] = item;
-      return [...prev];
+      const updatedItem = { ...prev[idx], [name]: value };
+      const updatedIngredients = [...prev.slice(0, idx), updatedItem, ...prev.slice(idx + 1)];
+      return updatedIngredients;
     });
   };
 
@@ -257,7 +257,9 @@ const AddRecipe = () => {
                 isMobile={isMobile}
                 handleDecrement={handleDecrement}
                 handleIncrement={handleIncrement}
-                handleUserIngredient={handleUserIngredient}
+                handleTtlChange={handleTtlChange}
+                handleQtyChange={handleQtyChange}
+                // handleUserIngredient={handleUserIngredient}
                 handleUnitValue={handleUnitValue}
                 handleRemove={handleRemove}
                 localTheme={theme}

@@ -25,7 +25,8 @@ export const AddRecipeIngredients = ({
   isMobile,
   handleDecrement,
   handleIncrement,
-  handleUserIngredient,
+  handleTtlChange,
+  handleQtyChange,
   handleUnitValue,
   handleRemove,
   localTheme,
@@ -37,7 +38,7 @@ export const AddRecipeIngredients = ({
       try {
         const ingredientsObj = await getIngradientsFieldsApi();
         const allIngredients = ingredientsObj.ingredients;
-        console.log(allIngredients);
+
         const options = allIngredients.map((ingr) => ({
           label: ingr.ttl,
           value: ingr.ttl,
@@ -64,7 +65,7 @@ export const AddRecipeIngredients = ({
           styles={stylesIngredient(localTheme)}
           options={options}
           placeholder=" "
-          onChange={handleUserIngredient}
+          onChange={handleTtlChange}
           name={`ttl ${id}`}
           getOptionData={(option) => option["data-id"]}
         />
@@ -83,7 +84,7 @@ export const AddRecipeIngredients = ({
             options={unitsOptionsList}
             defaultValue={{ label: qty, value: qty }}
             placeholder=" "
-            onChange={handleUserIngredient}
+            onChange={handleQtyChange}
             isSearchable={false}
             name={`qty ${id}`}
           />
