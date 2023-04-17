@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/soyummy/static/css/main.4bb91b4f.css",
-    "main.js": "/soyummy/static/js/main.e159b9c8.js",
+    "main.js": "/soyummy/static/js/main.d266f700.js",
     "static/js/218.504bbb24.chunk.js": "/soyummy/static/js/218.504bbb24.chunk.js",
     "static/js/950.5504457e.chunk.js": "/soyummy/static/js/950.5504457e.chunk.js",
     "static/js/711.fd2d4767.chunk.js": "/soyummy/static/js/711.fd2d4767.chunk.js",
@@ -19,6 +19,7 @@
     "static/media/mainpage2x_mob.png": "/soyummy/static/media/mainpage2x_mob.d48be9cc28c1dcdfd6b1.png",
     "static/media/bg_big_desktop_2x.png": "/soyummy/static/media/bg_big_desktop_2x.088180e00dd0b716a522.png",
     "static/media/mainpage1x_desk.png": "/soyummy/static/media/mainpage1x_desk.7c9ba1d121fa87c3fbc3.png",
+    "static/media/mainDes.png": "/soyummy/static/media/mainDes.d13214dc4a08569781ae.png",
     "static/media/bg_big_tablet_2x.png": "/soyummy/static/media/bg_big_tablet_2x.315208ec35d471abc100.png",
     "static/media/mainTab-min.png": "/soyummy/static/media/mainTab-min.0b3a2e47751bdfde27fc.png",
     "static/media/bg_search_desktop@2x.png": "/soyummy/static/media/bg_search_desktop@2x.195c8cc165ac8d4aba1f.png",
@@ -59,7 +60,7 @@
     "static/media/logo_tablet-desk_footer.svg": "/soyummy/static/media/logo_tablet-desk_footer.3973999e1d5e8f9f9106b706397f54e9.svg",
     "static/media/plus.svg": "/soyummy/static/media/plus.e2a277e044198db3f782f3e240f0af13.svg",
     "main.4bb91b4f.css.map": "/soyummy/static/css/main.4bb91b4f.css.map",
-    "main.e159b9c8.js.map": "/soyummy/static/js/main.e159b9c8.js.map",
+    "main.d266f700.js.map": "/soyummy/static/js/main.d266f700.js.map",
     "218.504bbb24.chunk.js.map": "/soyummy/static/js/218.504bbb24.chunk.js.map",
     "950.5504457e.chunk.js.map": "/soyummy/static/js/950.5504457e.chunk.js.map",
     "711.fd2d4767.chunk.js.map": "/soyummy/static/js/711.fd2d4767.chunk.js.map",
@@ -75,6 +76,6 @@
   },
   "entrypoints": [
     "static/css/main.4bb91b4f.css",
-    "static/js/main.e159b9c8.js"
+    "static/js/main.d266f700.js"
   ]
 }
