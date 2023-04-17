@@ -1,11 +1,12 @@
-import { useState } from 'react';
-import { ErrorMessage, Formik } from 'formik';
-import { useSelector } from 'react-redux';
-import { axiosInstance } from 'service/API/axios';
-import { getColor } from 'utils/formikColors';
-import authSelectors from 'redux/auth/authSelectors';
-import sprite from '../../../images/sprite.svg';
-import * as Yup from 'yup';
+import { useState } from "react";
+import { ErrorMessage, Formik } from "formik";
+import { useDispatch, useSelector } from "react-redux";
+import { axiosInstance } from "service/API/axios";
+import { getColor } from "utils/formikColors";
+import authSelectors from "redux/auth/authSelectors";
+import sprite from "../../../images/sprite.svg";
+import * as Yup from "yup";
+import * as authOperation from "../../../redux/auth/authOperation";
 
 import {
   UserForm,
@@ -18,59 +19,54 @@ import {
   UserSvgWrapper,
   BtnWrapper,
   SaveChangesBtn,
-} from './HeaderUserForm.styled.js';
+} from "./HeaderUserForm.styled.js";
 
-const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png'];
+const SUPPORTED_FORMATS = ["image/jpg", "image/jpeg", "image/png"];
 
 const EditNameSchema = Yup.object().shape({
-  picture: Yup.mixed().test(
-    'type',
-    'Only PNG, JPEG and JPG formats are supported',
-    value => {
-      return !value || (value && SUPPORTED_FORMATS.includes(value?.type));
-    }
-  ),
+  picture: Yup.mixed().test("type", "Only PNG, JPEG and JPG formats are supported", (value) => {
+    return !value || (value && SUPPORTED_FORMATS.includes(value?.type));
+  }),
 
   name: Yup.string()
-    .min(1, 'Name must contain at least 2 letters')
-    .max(16, 'Name must contain maximum 16 letters')
+    .min(1, "Name must contain at least 2 letters")
+    .max(16, "Name must contain maximum 16 letters")
     .matches(
       /^[ыЫа-яА-Я1-9a-zA-ZіІєЄґҐїЇ]+(([' -][ыЫа-яА-Я1-9a-zA-ZіІєЄґҐїЇ])?[ыЫа-яА-Я1-9a-zA-ZіІєЄґҐїЇ]*)*$/,
-      'Name must contain only letters'
+      "Name must contain only letters"
     )
 
-    .required('Name is required'),
+    .required("Name is required"),
 });
 
 export const UserFormAssembly = ({ avatarUrl, closeModal }) => {
+  const dispatch = useDispatch();
   const user = useSelector(authSelectors.getUserData);
-  const [path, setPath] = useState(user.avatarUrl);
-  const [name, setName] = useState('');
-  const [url, setUrl] = useState('');
-  const handleSubmit = async values => {
+  const [path, setPath] = useState(avatarUrl);
+  const [name, setName] = useState(user.name);
+  const [url, setUrl] = useState(user.avatarUrl);
+
+  const handleSubmit = async (values) => {
     const formData = new FormData();
-    formData.append('name', values.name.trim());
-    formData.append('picture', values.picture);
-    formData.append('upload_preset', 'alex_preset');
-    console.log(values);
+    formData.append("name", values.name.trim());
+    formData.append("picture", values.picture);
+    formData.append("upload_preset", "alex_preset");
     try {
-      const response = await axiosInstance.patch('/auth/avatar', formData, {
+      const response = await axiosInstance.patch("/auth/avatar", formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          "Content-Type": "multipart/form-data",
         },
       });
+      dispatch(authOperation.fetchCurrentUser());
       const newData = response.data;
-
-      console.log(newData);
-      const newAvatarUrl = newData.updatedAvatarUrl;
+      const newAvatarUrl = response.updatedAvatarUrl;
       const newName = newData.name;
       setName(newName);
-      setUrl(newAvatarUrl);
-      console.log(newAvatarUrl);
-      console.log(newName);
+      setUrl(response.updatedAvatarUrl);
+      setPath(newAvatarUrl);
     } catch (error) {
-      console.error('Error:', error.message);
-      console.log('Error Response:', error.response);
+      console.error("Error:", error.message);
+      console.log("Error Response:", error.response);
     }
 
     closeModal();
@@ -89,7 +85,7 @@ export const UserFormAssembly = ({ avatarUrl, closeModal }) => {
         actions.resetForm();
       }}
     >
-      {props => (
+      {(props) => (
         <UserForm onSubmit={props.handleSubmit}>
           <UserAvatarWrapper>
             <label htmlFor="picture" id="labelFile">
@@ -114,13 +110,13 @@ export const UserFormAssembly = ({ avatarUrl, closeModal }) => {
                   picture: true,
                 });
               }}
-              onChange={event => {
+              onChange={(event) => {
                 if (event.target.files[0]) {
                   if (SUPPORTED_FORMATS.includes(event.target.files[0].type)) {
                     setPath(window.URL.createObjectURL(event.target.files[0]));
-                    props.setFieldValue('picture', event.target.files[0]);
+                    props.setFieldValue("picture", event.target.files[0]);
                   }
-                  props.setFieldValue('picture', event.target.files[0]);
+                  props.setFieldValue("picture", event.target.files[0]);
                 }
               }}
             />
@@ -140,42 +136,24 @@ export const UserFormAssembly = ({ avatarUrl, closeModal }) => {
                     name: true,
                   });
                 }}
-                onChange={event => {
+                onChange={(event) => {
                   props.setTouched({
                     name: true,
                   });
-                  props.setFieldValue('name', event.target.value);
+                  props.setFieldValue("name", event.target.value);
                 }}
-                color={getColor(
-                  props.errors.name,
-                  props.values.name,
-                  '#C4C4C4'
-                )}
+                color={getColor(props.errors.name, props.values.name, "#C4C4C4")}
               />
-              <UserIcon
-                stroke={getColor(
-                  props.errors.name,
-                  props.values.name,
-                  '#C4C4C4'
-                )}
-              >
+              <UserIcon stroke={getColor(props.errors.name, props.values.name, "#C4C4C4")}>
                 <use href={sprite + `#user`} />
               </UserIcon>
               {props.touched.name && props.values.name ? (
                 <FlagInput>
-                  <use
-                    href={`${sprite}${getColor(
-                      props.errors.name,
-                      props.values.name
-                    )}`}
-                  ></use>
+                  <use href={`${sprite}${getColor(props.errors.name, props.values.name)}`}></use>
                 </FlagInput>
               ) : (
                 props.values.name && (
-                  <BtnWrapper
-                    type="button"
-                    onClick={() => props.setFieldValue('name', '')}
-                  >
+                  <BtnWrapper type="button" onClick={() => props.setFieldValue("name", "")}>
                     <svg>
                       <use href={sprite + `#edit`} />
                     </svg>
@@ -183,19 +161,13 @@ export const UserFormAssembly = ({ avatarUrl, closeModal }) => {
                 )
               )}
             </NameLabel>
-            {props.errors.name && props.touched.name ? (
-              <ErrorMessage>{props.errors.name}</ErrorMessage>
-            ) : null}
+            {props.errors.name && props.touched.name ? <ErrorMessage>{props.errors.name}</ErrorMessage> : null}
             <SaveChangesBtn
               type="submit"
               disabled={
                 !(
-                  (props.touched.name &&
-                    props.values.name &&
-                    !props.errors.name) ||
-                  (props.touched.picture &&
-                    props.values.picture &&
-                    !props.errors.picture)
+                  (props.touched.name && props.values.name && !props.errors.name) ||
+                  (props.touched.picture && props.values.picture && !props.errors.picture)
                 )
               }
             >
