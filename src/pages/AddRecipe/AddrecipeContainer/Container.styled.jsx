@@ -14,9 +14,5 @@ export const MainConteiner = styled.div`
   @media screen and (min-width: 1440px) {
     /* padding: 0 100px; */
     margin: 0 auto !important;
-
-    h2 {
-      margin-left: -180px;
-    }
   }
 `;
