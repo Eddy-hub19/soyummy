@@ -4,7 +4,6 @@ export const ContainerForm = styled.div`
   padding: 0 16px;
   padding-bottom: 149px;
   max-width: 767px;
-  margin: 0 auto;
 
   @media screen and (min-width: 768px) {
     padding: 0 32px;

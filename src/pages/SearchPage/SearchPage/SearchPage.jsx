@@ -49,8 +49,7 @@ const SearchPage = () => {
           setStatus("resolved");
         }
       })
-      .catch(function (error) {
-      });
+      .catch(function (error) {});
 
     // eslint-disable-next-line
   }, [page, keyword, LIMIT, status]);
