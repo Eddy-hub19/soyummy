@@ -1,11 +1,11 @@
-import styled from 'styled-components';
-import FormAuthDes from '../../images/desktop/FormAuthDes.png';
-import mobileBg from '../../images/mobile/FormAuthMob-min.png';
-import tabletBg from '../../images/tablet/FormAuthTab-min.png';
-import authPanaDesRet from '../../images/desktop/AuthPanaDesRet.png';
-import authImgMob from '../../images/mobile/AuthPanaMobRet-min.png';
-import authTabletImg from '../../images/tablet/AuthPanaTabRet-min.png';
-import { NavLink } from 'react-router-dom';
+import styled from "styled-components";
+import FormAuthDes from "../../images/desktop/FormAuthDes.png";
+import mobileBg from "../../images/mobile/FormAuthMob-min.png";
+import tabletBg from "../../images/tablet/FormAuthTab-min.png";
+import authPanaDesRet from "../../images/desktop/AuthPanaDesRet.png";
+import authImgMob from "../../images/mobile/AuthPanaMobRet-min.png";
+import authTabletImg from "../../images/tablet/AuthPanaTabRet-min.png";
+import { NavLink } from "react-router-dom";
 
 export const Input = styled.input`
   font-style: normal;
@@ -15,14 +15,14 @@ export const Input = styled.input`
   font-size: 14px;
   line-height: 21px;
   letter-spacing: -0.02em;
-  color: ${p => p.theme.colors.mainLight};
+  color: ${(p) => p.theme.colors.mainLight};
   background-color: transparent;
   border-radius: 6px;
   padding-left: 42px;
   padding-right: 38px;
   border: 1px solid ${({ borderColor }) => borderColor};
   outline: transparent;
-  transition: ${p => p.theme.transitions.main};
+  transition: ${(p) => p.theme.transitions.main};
   margin-bottom: 12px;
 
   @media screen and (max-width: 768px) {
@@ -56,7 +56,7 @@ export const Input = styled.input`
     font-size: 10px;
     line-height: 15px;
     letter-spacing: -0.02em;
-    color: ${p => p.theme.colors.mainLight};
+    color: ${(p) => p.theme.colors.mainLight};
     opacity: 0.8;
 
     @media screen and (min-width: 768px) {
@@ -119,7 +119,7 @@ export const InputWraper = styled.div`
     line-height: 21px;
     text-align: center;
     transform: translateY(-90%);
-    color: ${p => p.children[1].props.color};
+    color: ${(p) => p.children[1].props.color};
   }
 `;
 

@@ -1,9 +1,20 @@
-import styled from 'styled-components';
-import bgImg from '../../images/tablet/mainTab-min.png';
+import styled from "styled-components";
+import bgImg from "../../images/tablet/mainTab-min.png";
+import bgImgDes from "../../images/desktop/mainDes.png";
 
 export const BgImg = styled.div`
   height: 100vh;
   width: 100vw;
+
+  @media screen and (min-width: 1440px) {
+    background-image: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.6) 58.58%,
+        rgba(0, 0, 0, 0.345172) 78.98%,
+        rgba(0, 0, 0, 0) 100%
+      ),
+      url(${bgImgDes});
+  }
   background-image: linear-gradient(
       180deg,
       rgba(0, 0, 0, 0.6) 58.58%,
@@ -14,7 +25,7 @@ export const BgImg = styled.div`
 
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: 50% 40%;
 `;
 
 export const Wraper = styled.div`
