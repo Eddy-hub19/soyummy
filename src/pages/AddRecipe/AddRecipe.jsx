@@ -9,7 +9,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Title } from "components/Title/Title";
 import { Loader } from "components/Loader/Loader";
-import { Container } from "pages/AddRecipe/AddrecipeContainer/Container";
 import { AddRecipePopular } from "components/AddRecipePopular/AddRecipePopular";
 import { AddRecipeMeta } from "components/AddRecipeMeta/AddRecipeMeta";
 import { AddRecipeIngredients } from "components/AddRecipeIngredients/AddRecipeIngredients";
@@ -19,6 +18,7 @@ import { AddRecipeToastifyError } from "components/AddRecipeToastifyError/AddRec
 import { FollowUs } from "components/FollowUs/FollowUs";
 
 import { RecipeForm, MainWrapper, StyledSocialWrepper } from "./addRecipe.styled";
+import { MainConteiner } from "./AddrecipeContainer/Container.styled";
 
 const init = {
   instructions: "",
@@ -236,7 +236,7 @@ const AddRecipe = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <Container>
+        <MainConteiner>
           <Title>Add recipe</Title>
           <MainWrapper isDesktop={isDesktop}>
             <RecipeForm onSubmit={handleSubmit} enctype="multipart/form-data" isMobile={isMobile} localTheme={theme}>
@@ -275,7 +275,7 @@ const AddRecipe = () => {
               <AddRecipePopular isDesktop={isDesktop} isTablet={isTablet} localTheme={theme} />
             </div>
           </MainWrapper>
-        </Container>
+        </MainConteiner>
       )}
     </>
   );
