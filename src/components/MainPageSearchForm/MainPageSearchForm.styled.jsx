@@ -191,7 +191,6 @@ export const Form = styled.form`
 
 export const Wrapper = styled.div`
   box-sizing: border-box;
-
   position: absolute;
   top: 662px;
   left: 24px;
