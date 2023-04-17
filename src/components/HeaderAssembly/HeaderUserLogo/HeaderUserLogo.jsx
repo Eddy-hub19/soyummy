@@ -23,7 +23,9 @@ export const HeaderUserLogo = ({ avatarUrl = userAvatar, color = "light" }) => {
   };
 
   const handleBlur = () => {
-    setShowUserMenu(false);
+    setTimeout(() => {
+      setShowUserMenu(false);
+    }, 300);
   };
 
   useEffect(() => {
