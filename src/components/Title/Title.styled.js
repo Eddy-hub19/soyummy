@@ -39,7 +39,6 @@ export const TitleConteiner = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    height: 308px;
     padding-top: 164px;
     background-position: top 122px left 228px, top 205px left 707px,
       top 135px left 1150px;

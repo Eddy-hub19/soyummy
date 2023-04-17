@@ -54,8 +54,8 @@ export const MainPageRecipesList = ({ recipes }) => {
           <SeeAllButton adress={`/categories/${Object.keys(recipes)[3]}`} />
         </ItemRecipe>
 
-        <NavLink to={`/categories/pork`}>
-          <OtherButton to={`/categories/pork`} type="button" style={{ margin: "0 auto 118px", display: "block" }}>
+        <NavLink to={`/categories/beef`}>
+          <OtherButton type="button" style={{ margin: "0 auto 118px", display: "block" }}>
             Other categories
           </OtherButton>
         </NavLink>

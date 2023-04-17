@@ -1,12 +1,12 @@
-import { H3 } from 'components/SubTitle/subTitle.styled';
-import styled from 'styled-components';
+import { H3 } from "components/SubTitle/subTitle.styled";
+import styled from "styled-components";
 
 export const MainWrapper = styled.div`
-  display: ${({ isDesktop }) => (isDesktop ? 'flex' : 'unset')};
+  display: ${({ isDesktop }) => (isDesktop ? "flex" : "unset")};
   gap: 121px;
   padding-bottom: 200px;
-  margin-top: 72px;
-  @media screen and (min-width: 768px) {
+  /* margin-top: 72px; */
+  @media screen and (max-width: 768px) {
     margin-top: 100px;
   }
   @media screen and (min-width: 1440px) {
@@ -59,9 +59,9 @@ export const AddRecepiSection = styled.div`
     padding: 15px 0;
   }
 
-  label[id='labelFile'] {
-    width: ${({ isDesktop }) => (isDesktop ? '360px' : '280px')};
-    height: ${({ isDesktop }) => (isDesktop ? '345px' : '270px')};
+  label[id="labelFile"] {
+    width: ${({ isDesktop }) => (isDesktop ? "360px" : "280px")};
+    height: ${({ isDesktop }) => (isDesktop ? "345px" : "270px")};
     background-color: #8baa36;
     border-radius: 8px;
     display: flex;
@@ -70,11 +70,11 @@ export const AddRecepiSection = styled.div`
     cursor: pointer;
     color: black !important;
     overflow: hidden;
-    background-image: ${({ path }) => (path ? `url(${path})` : 'unset')};
+    background-image: ${({ path }) => (path ? `url(${path})` : "unset")};
     background-size: cover;
   }
 
-  input[type='file'] {
+  input[type="file"] {
     width: 0;
     height: 0;
     opacity: 0;
@@ -93,10 +93,9 @@ export const SelectComp = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.colors.mainGreyBg};
 
   p {
-    font-size: ${({ isMobile }) => (isMobile ? '14px' : '16px')};
+    font-size: ${({ isMobile }) => (isMobile ? "14px" : "16px")};
 
-    color: ${({ localTheme }) =>
-      localTheme === 'light' ? 'rgba(0, 0, 0, 0.5)' : 'white'};
+    color: ${({ localTheme }) => (localTheme === "light" ? "rgba(0, 0, 0, 0.5)" : "white")};
   }
 `;
 
@@ -110,20 +109,19 @@ export const InputsWrapper = styled.div`
     outline: none;
     border: none;
     border-bottom: 1px solid ${({ theme }) => theme.colors.mainGreyBg};
-    font-size: ${({ isMobile }) => (isMobile ? '14px' : '16px')};
-    line-height: ${({ isMobile }) => (isMobile ? '1.3' : '1.5')};
+    font-size: ${({ isMobile }) => (isMobile ? "14px" : "16px")};
+    line-height: ${({ isMobile }) => (isMobile ? "1.3" : "1.5")};
     color: ${({ theme }) => theme.colors.mainBlack};
 
     &::placeholder {
       /* opacity: 1;
       color: rgba(0, 0, 0, 0.5); */
-      color: ${({ localTheme }) =>
-        localTheme === 'light' ? 'rgba(0, 0, 0, 0.5)' : 'white'};
+      color: ${({ localTheme }) => (localTheme === "light" ? "rgba(0, 0, 0, 0.5)" : "white")};
     }
   }
 
   .css-1dimb5e-singleValue {
-    color: ${({ localTheme }) => (localTheme === 'light' ? 'black' : 'white')};
+    color: ${({ localTheme }) => (localTheme === "light" ? "black" : "white")};
     /* color: black; */
   }
 `;
@@ -150,14 +148,14 @@ export const RecepieSection = styled.div`
     border: none;
     margin-top: 24px;
     height: 155px;
-    font-size: ${({ isMobile }) => (isMobile ? '14px' : '16px')};
-    line-height: ${({ isMobile }) => (isMobile ? '1.3' : '1.5')};
+    font-size: ${({ isMobile }) => (isMobile ? "14px" : "16px")};
+    line-height: ${({ isMobile }) => (isMobile ? "1.3" : "1.5")};
     color: ${({ theme }) => theme.colors.mainBlack};
     font-family: inherit;
     border: ${({ theme }) => `1px solid ${theme.colors.mainGreyBg}`};
 
     background-color: ${({ localTheme, theme }) => {
-      return localTheme === 'light' ? theme.colors.mainGreyBg : 'transparent';
+      return localTheme === "light" ? theme.colors.mainGreyBg : "transparent";
     }};
 
     &::placeholder {
@@ -173,7 +171,7 @@ export const RecepieSection = styled.div`
 
 export const PopularSection = styled.div`
   margin-top: 72px;
-  width: ${({ isDesktop }) => (isDesktop ? '320px' : '100%')};
+  width: ${({ isDesktop }) => (isDesktop ? "320px" : "100%")};
   padding-bottom: 100px;
 `;
 
@@ -189,7 +187,7 @@ export const IngredientsItem = styled.li`
   align-items: center;
 
   .css-1dimb5e-singleValue {
-    color: ${({ localTheme }) => (localTheme === 'light' ? 'black' : 'white')};
+    color: ${({ localTheme }) => (localTheme === "light" ? "black" : "white")};
     /* color: black;
     opacity: 0.5; */
   }
@@ -211,14 +209,14 @@ export const ValueInputWrapper = styled.div`
   border: ${({ theme }) => `1px solid ${theme.colors.mainGreyBg}`};
 
   background-color: ${({ localTheme, theme }) => {
-    return localTheme === 'light' ? theme.colors.mainGreyBg : 'transparent';
+    return localTheme === "light" ? theme.colors.mainGreyBg : "transparent";
   }};
   border-radius: 6px;
-  margin-left: ${({ isMobile }) => (isMobile ? '14px' : '32px')};
+  margin-left: ${({ isMobile }) => (isMobile ? "14px" : "32px")};
 
   .css-1dimb5e-singleValue {
     color: ${({ localTheme }) => {
-      return localTheme === 'light' ? 'black' : 'white';
+      return localTheme === "light" ? "black" : "white";
     }};
   }
 `;
