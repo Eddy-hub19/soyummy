@@ -1,10 +1,10 @@
-import { Counter } from 'components/Counter/Counter';
-import { SubTitle } from 'components/SubTitle/SubTitle';
-import { useState, useEffect } from 'react';
-import Select from 'react-select';
-import icons from '../../images/sprite.svg';
+import { Counter } from "components/Counter/Counter";
+import { SubTitle } from "components/SubTitle/SubTitle";
+import { useState, useEffect } from "react";
+import Select from "react-select";
+import icons from "../../images/sprite.svg";
 
-import { getIngradientsFieldsApi } from 'service/API/Addrecipes';
+import { getIngradientsFieldsApi } from "service/API/Addrecipes";
 
 import {
   ButtonRemoveItem,
@@ -14,10 +14,10 @@ import {
   IngredientsTitle,
   InputUnitValue,
   ValueInputWrapper,
-} from 'pages/AddRecipe/addRecipe.styled';
+} from "pages/AddRecipe/addRecipe.styled";
 
-import { unitsOptionsList } from 'utils/unitsOptionsList';
-import { stylesIngredient, stylesUnit } from 'pages/AddRecipe/selectStyles';
+import { unitsOptionsList } from "utils/unitsOptionsList";
+import { stylesIngredient, stylesUnit } from "pages/AddRecipe/selectStyles";
 
 export const AddRecipeIngredients = ({
   counter,
@@ -37,10 +37,11 @@ export const AddRecipeIngredients = ({
       try {
         const ingredientsObj = await getIngradientsFieldsApi();
         const allIngredients = ingredientsObj.ingredients;
-        const options = allIngredients.map(ingr => ({
+        console.log(allIngredients);
+        const options = allIngredients.map((ingr) => ({
           label: ingr.ttl,
           value: ingr.ttl,
-          'data-id': ingr._id,
+          "data-id": ingr._id,
         }));
 
         setOptions([...options]);
@@ -65,7 +66,7 @@ export const AddRecipeIngredients = ({
           placeholder=" "
           onChange={handleUserIngredient}
           name={`ttl ${id}`}
-          getOptionData={option => option['data-id']}
+          getOptionData={(option) => option["data-id"]}
         />
         <ValueInputWrapper isMobile={isMobile} localTheme={localTheme}>
           <InputUnitValue
@@ -89,7 +90,7 @@ export const AddRecipeIngredients = ({
         </ValueInputWrapper>
         <ButtonRemoveItem type="button" id={id} onClick={handleRemove}>
           <svg width={20} height={20}>
-            <use href={icons + '#icon-cross'}></use>
+            <use href={icons + "#icon-cross"}></use>
           </svg>
         </ButtonRemoveItem>
       </IngredientsItem>
@@ -99,11 +100,7 @@ export const AddRecipeIngredients = ({
     <IngredientsSection>
       <IngredientsTitle>
         <SubTitle text="Ingredients" />
-        <Counter
-          counter={counter}
-          handleDecrement={handleDecrement}
-          handleIncrement={handleIncrement}
-        />
+        <Counter counter={counter} handleDecrement={handleDecrement} handleIncrement={handleIncrement} />
       </IngredientsTitle>
       <IngredientsList>{userIngredientsList}</IngredientsList>
     </IngredientsSection>

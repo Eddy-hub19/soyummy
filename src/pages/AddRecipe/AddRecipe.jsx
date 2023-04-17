@@ -51,6 +51,8 @@ const AddRecipe = () => {
   const [isLoading, setisLoading] = useState(false);
 
   const [ingrId, setIngrId] = useState([]);
+  console.log(userIngredients);
+  console.log(ingrId);
 
   const handleDecrement = () => {
     if (userIngredients.length <= 0) return;
@@ -58,6 +60,7 @@ const AddRecipe = () => {
   };
 
   const handleIncrement = () => {
+    console.log("HI");
     setUserIngredients((prev) => [...prev, { id: nanoid(), ingredient: "Beef", unitValue: 100, qty: "g" }]);
   };
 
@@ -96,6 +99,7 @@ const AddRecipe = () => {
   };
 
   const handleSelect = (...arg) => {
+    console.log("HS");
     const [valueObj, nameObj] = arg;
     const { value } = valueObj;
     const { name } = nameObj;
@@ -104,6 +108,11 @@ const AddRecipe = () => {
 
   const handleUserIngredient = (selectedOption, { name }) => {
     const [key, id] = name.split(" ");
+    console.log(selectedOption);
+    if (!selectedOption["data-id"]) {
+      console.log("no data id");
+      return;
+    }
 
     setUserIngredients((prev) => {
       const index = prev.findIndex((el) => el.id === id);
@@ -154,10 +163,11 @@ const AddRecipe = () => {
     setisLoading(true);
     scrollToTop();
     //collect the values ​​of the ingredients in a separate array
-
+    console.log(ingrId);
     const ingredients = ingrId.map((id) => {
       const matchingUserIngredient = userIngredients.find((ingredient) => ingredient.ingredientId === id);
 
+      console.log(matchingUserIngredient);
       const myMeasure =
         typeof matchingUserIngredient.unitValue === "number"
           ? `${matchingUserIngredient.unitValue} ${matchingUserIngredient.qty}`
