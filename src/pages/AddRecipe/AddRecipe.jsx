@@ -155,7 +155,10 @@ const AddRecipe = () => {
       missingFields.push("Title");
     }
     if (!file) {
-      missingFields.push("file");
+      missingFields.push("File");
+    }
+    if (!ingrId.length) {
+      missingFields.push("Ingredient");
     }
 
     if (missingFields.length > 0) {
