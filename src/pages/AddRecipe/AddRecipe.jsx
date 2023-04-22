@@ -77,9 +77,18 @@ const AddRecipe = () => {
   const handleFile = ({ currentTarget }) => {
     const { files } = currentTarget;
     const [file] = files;
-
     if (!file || !file.type.includes("image")) {
-      setFile(null);
+      toast.error("Wrong file type. Please, choose different image type", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      // setFile(null);
       setPath("");
       return;
     }
