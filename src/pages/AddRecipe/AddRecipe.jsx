@@ -72,6 +72,10 @@ const AddRecipe = () => {
       ...prev,
       [name]: value,
     }));
+    if (value.trim() === "") {
+      toast.error("Please, add a title and recipe describtion");
+      return;
+    }
   };
 
   const handleFile = ({ currentTarget }) => {
@@ -160,7 +164,7 @@ const AddRecipe = () => {
       missingFields.push("Description");
     }
 
-    if (!title) {
+    if (!title.length !== 0) {
       missingFields.push("Title");
     }
     if (!file) {
