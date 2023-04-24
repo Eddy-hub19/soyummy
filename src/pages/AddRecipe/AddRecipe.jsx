@@ -52,13 +52,16 @@ const AddRecipe = () => {
 
   const [ingrId, setIngrId] = useState([]);
 
+  console.log(ingrId);
+  console.log(userIngredients);
+
   const handleDecrement = () => {
     if (userIngredients.length <= 0) return;
     setUserIngredients((prev) => [...prev.slice(0, prev.length - 1)]);
   };
 
   const handleIncrement = () => {
-    setUserIngredients((prev) => [...prev, { id: nanoid(), ingredient: "Beef", unitValue: 100, qty: "g" }]);
+    setUserIngredients((prev) => [...prev, { id: nanoid(), unitValue: 100, qty: "g" }]);
   };
 
   const handleRemove = ({ currentTarget }) => {
@@ -77,9 +80,18 @@ const AddRecipe = () => {
   const handleFile = ({ currentTarget }) => {
     const { files } = currentTarget;
     const [file] = files;
-
     if (!file || !file.type.includes("image")) {
-      setFile(null);
+      toast.error("Wrong file type. Please, choose different image type", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      // setFile(null);
       setPath("");
       return;
     }
@@ -118,11 +130,13 @@ const AddRecipe = () => {
 
   const handleQtyChange = (selectedOption, { name }) => {
     const [key, id] = name.split(" ");
+    console.log(key);
 
     setUserIngredients((prev) => {
       const index = prev.findIndex((el) => el.id === id);
       const item = { ...prev[index] };
       item[key] = selectedOption.value;
+      console.log(item[key]);
       prev[index] = item;
       return [...prev];
     });
@@ -147,17 +161,17 @@ const AddRecipe = () => {
       missingFields.push("Category");
     }
 
-    if (!description) {
+    if (!description.trim()) {
       missingFields.push("Description");
     }
 
-    if (!title) {
+    if (title.trim().length === 0) {
       missingFields.push("Title");
     }
     if (!file) {
       missingFields.push("File");
     }
-    if (!ingrId.length) {
+    if (!userIngredients.length || !userIngredients.filter((i) => i.ttl).length) {
       missingFields.push("Ingredient");
     }
 
