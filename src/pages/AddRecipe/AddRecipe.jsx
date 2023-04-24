@@ -52,13 +52,16 @@ const AddRecipe = () => {
 
   const [ingrId, setIngrId] = useState([]);
 
+  console.log(ingrId);
+  console.log(userIngredients);
+
   const handleDecrement = () => {
     if (userIngredients.length <= 0) return;
     setUserIngredients((prev) => [...prev.slice(0, prev.length - 1)]);
   };
 
   const handleIncrement = () => {
-    setUserIngredients((prev) => [...prev, { id: nanoid(), ingredient: "Beef", unitValue: 100, qty: "g" }]);
+    setUserIngredients((prev) => [...prev, { id: nanoid(), unitValue: 100, qty: "g" }]);
   };
 
   const handleRemove = ({ currentTarget }) => {
@@ -72,10 +75,6 @@ const AddRecipe = () => {
       ...prev,
       [name]: value,
     }));
-    if (value.trim() === "") {
-      toast.error("Please, add a title and recipe describtion");
-      return;
-    }
   };
 
   const handleFile = ({ currentTarget }) => {
@@ -131,11 +130,13 @@ const AddRecipe = () => {
 
   const handleQtyChange = (selectedOption, { name }) => {
     const [key, id] = name.split(" ");
+    console.log(key);
 
     setUserIngredients((prev) => {
       const index = prev.findIndex((el) => el.id === id);
       const item = { ...prev[index] };
       item[key] = selectedOption.value;
+      console.log(item[key]);
       prev[index] = item;
       return [...prev];
     });
@@ -160,17 +161,17 @@ const AddRecipe = () => {
       missingFields.push("Category");
     }
 
-    if (!description) {
+    if (!description.trim()) {
       missingFields.push("Description");
     }
 
-    if (!title.length !== 0) {
+    if (title.trim().length === 0) {
       missingFields.push("Title");
     }
     if (!file) {
       missingFields.push("File");
     }
-    if (!ingrId.length) {
+    if (!userIngredients.length || !userIngredients.filter((i) => i.ttl).length) {
       missingFields.push("Ingredient");
     }
 
