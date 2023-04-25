@@ -149,10 +149,10 @@ const AddRecipe = () => {
     e.preventDefault();
     const formData = new FormData();
 
-    const { instructions, time, category, description, title } = inputs;
+    let { instructions, time, category, description, title } = inputs;
     let missingFields = [];
 
-    if (!instructions) {
+    if (!instructions || instructions.replace(/ +/, " ").trim().length < 50) {
       missingFields.push("Instructions");
     }
 
@@ -189,14 +189,14 @@ const AddRecipe = () => {
     scrollToTop();
     //collect the values ​​of the ingredients in a separate array
 
-    const ingredients = userIngredients.map((ing) => {
-      return {
-        ingredient: ing.ingredientId,
-        measure: `${ing.unitValue} ${ing.qty}`,
-      };
-    });
-
-    console.log("new ingredients", ingredients);
+    const ingredients = userIngredients
+      .map((ing) => {
+        return {
+          ingredient: ing.ingredientId,
+          measure: `${ing.unitValue} ${ing.qty}`,
+        };
+      })
+      .filter((i) => i.ingredient); //remove empty selects
 
     formData.append("file", file);
     formData.append("upload_preset", "alex_preset");
@@ -205,6 +205,7 @@ const AddRecipe = () => {
       const response = await axiosInstance.post("/auth/picture", formData);
 
       const imageUrl = response.data.secure_url;
+      instructions = instructions.replace(/ +/, " ").trim();
 
       const data = {
         instructions,
