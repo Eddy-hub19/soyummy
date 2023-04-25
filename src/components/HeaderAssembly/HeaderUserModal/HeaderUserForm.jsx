@@ -3,6 +3,8 @@ import { ErrorMessage, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { axiosInstance } from "service/API/axios";
 import { getColor } from "utils/formikColors";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import authSelectors from "redux/auth/authSelectors";
 import sprite from "../../../images/sprite.svg";
 import * as Yup from "yup";
@@ -25,7 +27,20 @@ const SUPPORTED_FORMATS = ["image/jpg", "image/jpeg", "image/png"];
 
 const EditNameSchema = Yup.object().shape({
   picture: Yup.mixed().test("type", "Only PNG, JPEG and JPG formats are supported", (value) => {
-    return !value || (value && SUPPORTED_FORMATS.includes(value?.type));
+    if (!value || (value && SUPPORTED_FORMATS.includes(value?.type))) {
+      return;
+    } else {
+      toast.error("Wrong file type. Please, choose different image type", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
   }),
 
   name: Yup.string()
@@ -120,6 +135,7 @@ export const UserFormAssembly = ({ avatarUrl, closeModal }) => {
                 }
               }}
             />
+            <ToastContainer />
           </UserAvatarWrapper>
           {props.errors.picture && props.touched.picture ? (
             <ErrorMessage location="file">{props.errors.picture}</ErrorMessage>

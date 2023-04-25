@@ -56,7 +56,7 @@ const AddRecipe = () => {
   console.log(userIngredients);
 
   const handleDecrement = () => {
-    if (userIngredients.length <= 0) return;
+    if (userIngredients.length < 0) return;
     setUserIngredients((prev) => [...prev.slice(0, prev.length - 1)]);
   };
 
@@ -141,6 +141,9 @@ const AddRecipe = () => {
       return [...prev];
     });
   };
+  const validateIndredients = () => {
+    return userIngredients.every((i) => i.unitValue > 0);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -173,6 +176,9 @@ const AddRecipe = () => {
     }
     if (!userIngredients.length || !userIngredients.filter((i) => i.ttl).length) {
       missingFields.push("Ingredient");
+    }
+    if (!validateIndredients()) {
+      missingFields.push("Your ingredient measurements are incorrect. Please add correct measurement ");
     }
 
     if (missingFields.length > 0) {
