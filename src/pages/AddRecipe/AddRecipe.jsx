@@ -56,7 +56,7 @@ const AddRecipe = () => {
   console.log(userIngredients);
 
   const handleDecrement = () => {
-    if (userIngredients.length <= 0) return;
+    if (userIngredients.length < 0) return;
     setUserIngredients((prev) => [...prev.slice(0, prev.length - 1)]);
   };
 
@@ -141,6 +141,9 @@ const AddRecipe = () => {
       return [...prev];
     });
   };
+  const validateIndredients = () => {
+    return userIngredients.every((i) => i.unitValue > 0);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -174,6 +177,9 @@ const AddRecipe = () => {
     if (!userIngredients.length || !userIngredients.filter((i) => i.ttl).length) {
       missingFields.push("Ingredient");
     }
+    if (!validateIndredients()) {
+      missingFields.push("Your ingredient measurements are incorrect. Please add correct measurement ");
+    }
 
     if (missingFields.length > 0) {
       toast.error(`Please fill out the following field(s): ${missingFields.join(", ")}`);
@@ -182,20 +188,15 @@ const AddRecipe = () => {
     setisLoading(true);
     scrollToTop();
     //collect the values ​​of the ingredients in a separate array
-    // console.log(ingrId);
-    const ingredients = ingrId.map((id) => {
-      const matchingUserIngredient = userIngredients.find((ingredient) => ingredient.ingredientId === id);
 
-      const myMeasure =
-        typeof matchingUserIngredient.unitValue === "number"
-          ? `${matchingUserIngredient.unitValue} ${matchingUserIngredient.qty}`
-          : `${matchingUserIngredient.unitValue} ${matchingUserIngredient.qty}`;
-
+    const ingredients = userIngredients.map((ing) => {
       return {
-        ingredient: id,
-        measure: myMeasure,
+        ingredient: ing.ingredientId,
+        measure: `${ing.unitValue} ${ing.qty}`,
       };
     });
+
+    console.log("new ingredients", ingredients);
 
     formData.append("file", file);
     formData.append("upload_preset", "alex_preset");
