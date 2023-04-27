@@ -80,7 +80,9 @@ const AddRecipe = () => {
   const handleFile = ({ currentTarget }) => {
     const { files } = currentTarget;
     const [file] = files;
-    if (!file || !file.type.includes("image")) {
+    console.log(file);
+    let allowedImageTypes = ["image/jpeg", "image/gif", "image/png"];
+    if (!file || !allowedImageTypes.includes(file.type)) {
       toast.error("Wrong file type. Please, choose different image type", {
         position: "top-right",
         autoClose: 2000,
@@ -91,6 +93,7 @@ const AddRecipe = () => {
         progress: undefined,
         theme: "light",
       });
+      console.log("file" + JSON.stringify(file));
       // setFile(null);
       setPath("");
       return;
