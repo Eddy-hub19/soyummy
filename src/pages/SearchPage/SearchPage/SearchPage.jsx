@@ -49,7 +49,9 @@ const SearchPage = () => {
           setStatus("resolved");
         }
       })
-      .catch(function (error) {});
+      .catch(function (error) {
+        console.log("no recipes found");
+      });
 
     // eslint-disable-next-line
   }, [page, keyword, LIMIT, status]);
@@ -61,7 +63,7 @@ const SearchPage = () => {
       <Wrapper>
         {recipes.length !== 0 && hasMore && (
           <OtherButton type="button" onClick={loadNextPage}>
-            Other categories
+            More categories
           </OtherButton>
         )}
         {status === "rejected" && (
