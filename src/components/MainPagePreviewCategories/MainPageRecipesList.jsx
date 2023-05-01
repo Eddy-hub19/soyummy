@@ -3,6 +3,7 @@ import { ItemRecipe, List, TitlePageCategory } from "./MainPageRecipesList.style
 import { MainPageRecipesListItem } from "./MainPageRecipesListItem";
 import { SeeAllButton } from "./SeeAllButton";
 import { NavLink } from "react-router-dom";
+import { scrollToTop } from "utils/scrollUp";
 
 export const MainPageRecipesList = ({ recipes }) => {
   return (
@@ -51,10 +52,10 @@ export const MainPageRecipesList = ({ recipes }) => {
             })}
           </List>
 
-          <SeeAllButton adress={`/categories/${Object.keys(recipes)[3]}`} />
+          <SeeAllButton adress={`/categories/dessert`} />
         </ItemRecipe>
 
-        <NavLink to={`/categories/beef`}>
+        <NavLink to={`/categories/beef`} onClick={scrollToTop}>
           <OtherButton type="button" style={{ margin: "0 auto 118px", display: "block" }}>
             Other categories
           </OtherButton>

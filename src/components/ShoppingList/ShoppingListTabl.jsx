@@ -1,18 +1,14 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import {
-  fetchShoppingList,
-  deleteShoppingListItem,
-} from '../../redux/shoplist/shoplistOperation';
-import {
-  getShoppingList,
-  getShoppingListRefreshStatus,
-} from '../../redux/shoplist/shoplistSelectors';
-import { Loader } from 'components/Loader/Loader';
-import icons from 'images/sprite.svg';
-import defaultImg from '../../images/default.jpg';
-import { EmptyPlaceholder } from 'pages/EmptyPlaceholder/EmptyPlaceholder';
+import { fetchShoppingList, deleteShoppingListItem } from "../../redux/shoplist/shoplistOperation";
+import { getShoppingList, getShoppingListRefreshStatus } from "../../redux/shoplist/shoplistSelectors";
+import { Loader } from "components/Loader/Loader";
+import icons from "images/sprite.svg";
+import defaultImg from "../../images/default.jpg";
+import { EmptyPlaceholder } from "pages/EmptyPlaceholder/EmptyPlaceholder";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import {
   Table,
@@ -25,7 +21,7 @@ import {
   DeleteBtn,
   Image,
   Thumb,
-} from './shoppingListTabl.styled.js';
+} from "./shoppingListTabl.styled.js";
 
 const ShoppingListTabl = () => {
   const dispatcher = useDispatch();
@@ -49,7 +45,7 @@ const ShoppingListTabl = () => {
     setShopItems(storageItems);
   }, [storageItems]);
 
-  const deleteItem = e => {
+  const deleteItem = (e) => {
     if (e.target.id) {
       dispatcher(deleteShoppingListItem(e.target.id));
     }
@@ -60,6 +56,7 @@ const ShoppingListTabl = () => {
 
     if (e.target.parentNode.parentNode.id) {
       dispatcher(deleteShoppingListItem(e.target.parentNode.parentNode.id));
+      toast.success("Ingredient was removed from shopping list");
     }
   };
 
@@ -81,10 +78,7 @@ const ShoppingListTabl = () => {
                   <TableItem key={_id}>
                     <TableFirstCol>
                       <BoxForImage>
-                        <Image
-                          src={image || defaultImg}
-                          alt={`product ${nameIngredient}`}
-                        />
+                        <Image src={image || defaultImg} alt={`product ${nameIngredient}`} />
                       </BoxForImage>
                       <ItemName>{nameIngredient}</ItemName>
                     </TableFirstCol>
@@ -94,7 +88,7 @@ const ShoppingListTabl = () => {
                     <TableSecondThirdCol>
                       <DeleteBtn type="button" id={_id} onClick={deleteItem}>
                         <svg width="20" height="20">
-                          <use href={icons + '#icon-cross'}></use>
+                          <use href={icons + "#icon-cross"}></use>
                         </svg>
                       </DeleteBtn>
                     </TableSecondThirdCol>

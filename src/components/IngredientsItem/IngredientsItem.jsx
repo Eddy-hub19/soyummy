@@ -22,6 +22,8 @@ import {
   IngDescr,
 } from "./IngredientsItem.styled";
 import sprite from "../../images/sprite.svg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const IngredientsItem = ({ ingregientId, image, title, weight, description, recipeId }) => {
   const dispatch = useDispatch();
@@ -52,6 +54,7 @@ const IngredientsItem = ({ ingregientId, image, title, weight, description, reci
     }
     };
 
+
   return (
     <RecipeIngredientsItem>
       <Label>
@@ -68,6 +71,7 @@ const IngredientsItem = ({ ingregientId, image, title, weight, description, reci
           </svg>
         </CustomCheckbox>
       </Label>
+      <ToastContainer />
     </RecipeIngredientsItem>
   );
 };

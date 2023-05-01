@@ -92,8 +92,10 @@ const Register = () => {
               validationSchema={schema}
               onSubmit={async (values, actions) => {
                 const { name, email, password } = values;
-                await dispatch(authOperation.register({ name, email, password }));
-                navigateToSignin();
+                const response = await dispatch(authOperation.register({ name, email, password }));
+                if (!response.error?.message) {
+                  navigateToSignin();
+                }
               }}
             >
               {(props) => (
