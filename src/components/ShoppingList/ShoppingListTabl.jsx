@@ -50,8 +50,6 @@ const ShoppingListTabl = () => {
   }, [storageItems]);
 
   const deleteItem = e => {
-    console.log(e.target.parentNode.id);
-
     if (e.target.id) {
       dispatcher(deleteShoppingListItem(e.target.id));
     }

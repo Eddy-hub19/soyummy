@@ -1,7 +1,14 @@
 import React from "react";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addShoppingListItem, deleteShoppingListItem } from "redux/shoplist/shoplistOperation";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchShoppingList,
+  addShoppingListItem,
+  deleteShoppingListItem
+} from "redux/shoplist/shoplistOperation";
+import {
+  getShoppingList
+} from '../../redux/shoplist/shoplistSelectors';
 import { ReactComponent as DefaultIngredient } from "images/svg-before sprite/paperbag.svg";
 import {
   RecipeIngredientsItem,
@@ -17,19 +24,21 @@ import {
 import sprite from "../../images/sprite.svg";
 
 const IngredientsItem = ({ ingregientId, image, title, weight, description, recipeId }) => {
-  const [checked, setChecked] = useState(false);
   const dispatch = useDispatch();
-
-  // const handleChange = (event) => {
-  //   setChecked(event.target.checked);
-  //   console.log(checked);
-  // }
+  const storedItems = useSelector(getShoppingList);
+  const [checked, setChecked] = useState(false);
+  
+  useEffect(() => {
+    dispatch(fetchShoppingList());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [checked]);
 
   const updateShoppingList = (event) => {
-    console.log(checked);
-    console.log(ingregientId);
+    dispatch(fetchShoppingList());
+
     if (checked) {
-    dispatch(deleteShoppingListItem(ingregientId));
+      const itemToDelete = storedItems.find(item => item.nameIngredient === title);
+    dispatch(deleteShoppingListItem(itemToDelete._id));
     setChecked(event.target.checked);
     } else {
     dispatch(addShoppingListItem({
@@ -38,43 +47,10 @@ const IngredientsItem = ({ ingregientId, image, title, weight, description, reci
           image: image,
           recipeId: recipeId,
         })
-      );
-    setChecked(event.target.checked);
+    );
+      setChecked(event.target.checked);
     }
-    // setChecked(event.target.checked);
-    // return;
     };
-  
-  // const updateShoppingList = (event) => {
-  //   if (!checked) {
-  //     dispatch(
-  //       addShoppingListItem({
-  //         nameIngredient: title,
-  //         weight: weight,
-  //         image: image,
-  //         recipeId: recipeId,
-  //       })
-  //     );
-  //   setChecked(event.target.checked);
-  //   } else {
-  //     dispatch(deleteShoppingListItem(ingregientId));
-  //     setChecked(event.target.checked);
-  //   }
-  //   setChecked(event.target.checked);
-  //   return;
-  // };
-
-  // const addToShoppingList = () => {
-  //   dispatch(
-  //     addShoppingListItem({
-  //       nameIngredient: title,
-  //       weight: weight,
-  //       image: image,
-  //       recipeId: recipeId,
-  //     })
-  //   );
-  //   return;
-  // };
 
   return (
     <RecipeIngredientsItem>
