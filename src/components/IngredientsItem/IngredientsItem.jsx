@@ -1,6 +1,14 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { addShoppingListItem } from "redux/shoplist/shoplistOperation";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchShoppingList,
+  addShoppingListItem,
+  deleteShoppingListItem
+} from "redux/shoplist/shoplistOperation";
+import {
+  getShoppingList
+} from '../../redux/shoplist/shoplistSelectors';
 import { ReactComponent as DefaultIngredient } from "images/svg-before sprite/paperbag.svg";
 import {
   RecipeIngredientsItem,
@@ -17,30 +25,35 @@ import sprite from "../../images/sprite.svg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const IngredientsItem = ({ image, title, weight, description, recipeId }) => {
+const IngredientsItem = ({ ingregientId, image, title, weight, description, recipeId }) => {
   const dispatch = useDispatch();
+  const storedItems = useSelector(getShoppingList);
+  const [checked, setChecked] = useState(false);
+  
+  useEffect(() => {
+    dispatch(fetchShoppingList());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [checked]);
 
-  const addToShoppingList = () => {
-    dispatch(
-      addShoppingListItem({
-        nameIngredient: title,
-        weight: weight,
-        image: image,
-        recipeId: recipeId,
-      })
+  const updateShoppingList = (event) => {
+    dispatch(fetchShoppingList());
+
+    if (checked) {
+      const itemToDelete = storedItems.find(item => item.nameIngredient === title);
+    dispatch(deleteShoppingListItem(itemToDelete._id));
+    setChecked(event.target.checked);
+    } else {
+    dispatch(addShoppingListItem({
+          nameIngredient: title,
+          weight: weight,
+          image: image,
+          recipeId: recipeId,
+        })
     );
-    toast.success("Indredient added to shopping list", {
-      position: "top-right",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-    return;
-  };
+      setChecked(event.target.checked);
+    }
+    };
+
 
   return (
     <RecipeIngredientsItem>
@@ -51,7 +64,7 @@ const IngredientsItem = ({ image, title, weight, description, recipeId }) => {
           <IngDescr>{description}</IngDescr>
         </TextContainer>
         <Weight>{weight}</Weight>
-        <RealCheckbox type="checkbox" onChange={addToShoppingList} />
+        <RealCheckbox type="checkbox" onChange={updateShoppingList} />
         <CustomCheckbox>
           <svg>
             <use href={sprite + `#icon-pick`} />
@@ -62,4 +75,5 @@ const IngredientsItem = ({ image, title, weight, description, recipeId }) => {
     </RecipeIngredientsItem>
   );
 };
+
 export default IngredientsItem;
