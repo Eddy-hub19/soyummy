@@ -34,24 +34,25 @@ const SearchPage = () => {
   };
 
   useEffect(() => {
-    axiosInstance
-      .get(`recipes/search/${keyword}?page=${page}&limit=${LIMIT}&searchType=${searchType}`)
-      .then(function (data) {
-        if (data.data.recepies.length === 0) {
-          setStatus("rejected");
-          console.log("error");
-        } else {
-          console.log(data.data.recepies);
-          setRecipes(
-            [...recipes, ...data.data.recepies].filter((v, i, a) => a.findIndex((v2) => v2._id === v._id) === i)
-          );
-          setHasMore(data.data.nextPage);
-          setStatus("resolved");
-        }
-      })
-      .catch(function (error) {
-        console.log("no recipes found");
-      });
+    keyword.length &&
+      axiosInstance
+        .get(`recipes/search/${keyword}?page=${page}&limit=${LIMIT}&searchType=${searchType}`)
+        .then(function (data) {
+          if (data.data.recepies.length === 0 && !recipes.length) {
+            setStatus("rejected");
+            console.log("no recipes found");
+          } else {
+            console.log(data.data);
+            setRecipes(
+              [...recipes, ...data.data.recepies].filter((v, i, a) => a.findIndex((v2) => v2._id === v._id) === i)
+            );
+            setHasMore(data.data.nextPage);
+            setStatus("resolved");
+          }
+        })
+        .catch(function (error) {
+          console.log("no recipes found");
+        });
 
     // eslint-disable-next-line
   }, [page, keyword, LIMIT, status]);
@@ -59,11 +60,11 @@ const SearchPage = () => {
   return (
     <ContainerForm>
       <SearchForm handleSubmit={handleSubmit} query={keyword} type={searchType} />
-      <SearchRecipesList key={recipes._id} recipes={recipes} id={recipes._id} />
+      <SearchRecipesList recipes={recipes} />
       <Wrapper>
         {recipes.length !== 0 && hasMore && (
           <OtherButton type="button" onClick={loadNextPage}>
-            More categories
+            More recipes
           </OtherButton>
         )}
         {status === "rejected" && (

@@ -5,22 +5,24 @@ import {
   InstructionTitle,
   InstructionText,
   InstructionList,
-} from './RecipePreparation.styled';
-import { nanoid } from 'nanoid';
+} from "./RecipePreparation.styled";
+import { nanoid } from "nanoid";
+import { scrollToTop } from "utils/scrollUp";
 
 const RecipePreparation = ({ instructions, image }) => {
+  scrollToTop();
   const items = instructions
-    .split('\r\n')
-    .filter(elem => {
+    .split("\r\n")
+    .filter((elem) => {
       if (!elem) return false;
       if (!isNaN(elem)) return false;
-      if (elem.toLowerCase().includes('step')) return false;
+      if (elem.toLowerCase().includes("step")) return false;
       return true;
     })
     .map((item, index) => {
       let slicedItem = item;
       for (let i = 0; i < 2; i++) {
-        if (!isNaN(slicedItem[i]) || slicedItem[i] === '.') {
+        if (!isNaN(slicedItem[i]) || slicedItem[i] === ".") {
           slicedItem = slicedItem.slice(i + 1);
         }
       }
