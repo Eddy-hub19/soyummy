@@ -1,12 +1,13 @@
-import { useMediaRules } from 'hooks/MediaRules';
-import { FooterTextContainer, FooterContent, Link } from './FooterText.styled';
-import footerLogo from '../../../images/footer/logo_tablet-desk_footer.svg';
+import { useMediaRules } from "hooks/MediaRules";
+import { FooterTextContainer, FooterContent, Link } from "./FooterText.styled";
+import footerLogo from "../../../images/footer/logo_tablet-desk_footer.svg";
+import { scrollToTop } from "utils/scrollUp";
 
 export const FooterText = () => {
   const { isMobile } = useMediaRules();
   return (
     <FooterTextContainer>
-      <Link to="/">
+      <Link to="/" onClick={scrollToTop}>
         <img src={footerLogo} alt="logo footer" />
         So Yummy
       </Link>

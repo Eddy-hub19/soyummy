@@ -1,14 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchShoppingList,
-  addShoppingListItem,
-  deleteShoppingListItem
-} from "redux/shoplist/shoplistOperation";
-import {
-  getShoppingList
-} from '../../redux/shoplist/shoplistSelectors';
+import { fetchShoppingList, addShoppingListItem, deleteShoppingListItem } from "redux/shoplist/shoplistOperation";
+import { getShoppingList } from "../../redux/shoplist/shoplistSelectors";
 import { ReactComponent as DefaultIngredient } from "images/svg-before sprite/paperbag.svg";
 import {
   RecipeIngredientsItem,
@@ -29,7 +23,7 @@ const IngredientsItem = ({ ingregientId, image, title, weight, description, reci
   const dispatch = useDispatch();
   const storedItems = useSelector(getShoppingList);
   const [checked, setChecked] = useState(false);
-  
+
   useEffect(() => {
     dispatch(fetchShoppingList());
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -39,21 +33,23 @@ const IngredientsItem = ({ ingregientId, image, title, weight, description, reci
     dispatch(fetchShoppingList());
 
     if (checked) {
-      const itemToDelete = storedItems.find(item => item.nameIngredient === title);
-    dispatch(deleteShoppingListItem(itemToDelete._id));
-    setChecked(event.target.checked);
+      const itemToDelete = storedItems.find((item) => item.nameIngredient === title);
+      dispatch(deleteShoppingListItem(itemToDelete._id));
+      setChecked(event.target.checked);
+      toast.success("Ingridient removed from Shopping List", { position: "top-right", autoClose: 2000 });
     } else {
-    dispatch(addShoppingListItem({
+      dispatch(
+        addShoppingListItem({
           nameIngredient: title,
           weight: weight,
           image: image,
           recipeId: recipeId,
         })
-    );
+      );
       setChecked(event.target.checked);
+      toast.success("Ingridient added to Shopping List", { position: "top-right", autoClose: 2000 });
     }
-    };
-
+  };
 
   return (
     <RecipeIngredientsItem>
