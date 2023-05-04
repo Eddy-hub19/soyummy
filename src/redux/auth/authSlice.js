@@ -31,6 +31,16 @@ const AuthSlice = createSlice({
       state.user = { ...action.payload };
       state.isloggedIn = true;
     },
+    [authOperation.logOut.rejected](state, _) {
+      state.user = { name: null, email: null };
+      state.token = null;
+      state.isloggedIn = false;
+    },
+    [authOperation.fetchCurrentUser.rejected](state, _) {
+      state.user = { name: null, email: null };
+      state.token = null;
+      state.isloggedIn = false;
+    },
   },
 });
 
