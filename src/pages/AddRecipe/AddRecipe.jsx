@@ -17,7 +17,7 @@ import { AddRecipeSubmit } from "components/AddRecipeSubmit/AddRecipeSubmit";
 import { AddRecipeToastifyError } from "components/AddRecipeToastifyError/AddRecipeToastifyError";
 import { FollowUs } from "components/FollowUs/FollowUs";
 
-import { RecipeForm, MainWrapper, StyledSocialWrepper } from "./addRecipe.styled";
+import { RecipeForm, MainWrapper, StyledSocialWrepper, Thumb } from "./addRecipe.styled";
 import { MainConteiner } from "./AddrecipeContainer/Container.styled";
 
 const init = {
@@ -254,7 +254,7 @@ const AddRecipe = () => {
   const theme = store.get("theme");
 
   return (
-    <>
+    <Thumb>
       {isLoading ? (
         <Loader />
       ) : (
@@ -299,7 +299,7 @@ const AddRecipe = () => {
           </MainWrapper>
         </MainConteiner>
       )}
-    </>
+    </Thumb>
   );
 };
 
