@@ -36,7 +36,10 @@ const SearchPage = () => {
   };
 
   useEffect(() => {
-    keyword.length && setisLoading(true);
+    if (!keyword.length) {
+      return;
+    }
+    setisLoading(true);
     axiosInstance
       .get(`recipes/search/${keyword}?page=${page}&limit=${LIMIT}&searchType=${searchType}`)
       .then(function (data) {

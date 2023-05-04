@@ -129,6 +129,7 @@ const AddRecipe = () => {
       return [...prev];
     });
     setIngrId((prevIngrId) => [...prevIngrId, selectedOption["data-id"]]);
+    console.debug(ingrId);
   };
 
   const handleQtyChange = (selectedOption, { name }) => {
